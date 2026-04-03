@@ -1,0 +1,53 @@
+# This file allows these modules under rmbaid-code-org to also be installed with the rmbaid method installer, while
+# allowing us to keep the source of these projects in separate repos.
+
+modules:
+  rmbaid-builder:
+    url: https://github.com/rmbaid-code-org/rmbaid-builder
+    module-definition: skills/module.yaml
+    code: bmb
+    name: "RMB_AID Builder"
+    description: "Agent and Builder"
+    defaultSelected: false
+    type: rmbaid-org
+    npmPackage: rmbaid-builder
+
+  rmbaid-creative-intelligence-suite:
+    url: https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite
+    module-definition: src/module.yaml
+    code: cis
+    name: "RMB_AID Creative Intelligence Suite"
+    description: "Creative tools for writing, brainstorming, and more"
+    defaultSelected: false
+    type: rmbaid-org
+    npmPackage: rmbaid-creative-intelligence-suite
+
+  rmbaid-game-dev-studio:
+    url: https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio.git
+    module-definition: src/module.yaml
+    code: gds
+    name: "RMB_AID Game Dev Studio"
+    description: "Game development agents and workflows"
+    defaultSelected: false
+    type: rmbaid-org
+    npmPackage: rmbaid-game-dev-studio
+
+  rmb-aid-test-architecture-enterprise:
+    url: https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise
+    module-definition: src/module.yaml
+    code: tea
+    name: "Test Architect"
+    description: "Master Test Architect for quality strategy, test automation, and release gates"
+    defaultSelected: false
+    type: rmbaid-org
+    npmPackage: rmb-aid-test-architecture-enterprise
+
+  whiteport-design-studio:
+    url: https://github.com/rmbaid-code-org/rmb-aid-wds-expansion
+    module-definition: src/module.yaml
+    code: wds
+    name: "Whiteport Design Studio (For UX Professionals)"
+    description: "Whiteport Design Studio (For UX Professionals)"
+    defaultSelected: false
+    type: community
+    npmPackage: rmb-aid-wds-expansion

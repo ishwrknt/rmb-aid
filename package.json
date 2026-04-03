@@ -1,0 +1,39 @@
+{
+  "name": "rmb-aid",
+  "version": "1.0.0",
+  "description": "RMB_AID — Research Methodology Based AI Development. A structured scientific problem-solving framework for AI coding assistants.",
+  "keywords": [
+    "research",
+    "methodology",
+    "ai",
+    "agents",
+    "science",
+    "computational",
+    "problem-solving",
+    "claude-code",
+    "cursor"
+  ],
+  "author": "Ishwar",
+  "license": "MIT",
+  "bin": {
+    "rmb-aid": "./install.js"
+  },
+  "scripts": {
+    "install-framework": "node install.js",
+    "quality": "node --check install.js && test -f .rmbaid-core/rmbaid-core.md && test -f .rmbaid-core/skills/rmbaid-help.md && test -f .rmbaid-core/workflows/new-solution-fullstack.md && test -f .rmbaid-core/workflows/existing-solution-fullstack.md"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/rmb-aid"
+  },
+  "homepage": "https://github.com/YOUR_GITHUB_USERNAME/rmb-aid#readme",
+  "files": [
+    ".rmbaid-core",
+    "README.md",
+    "LICENSE",
+    "install.js"
+  ]
+}

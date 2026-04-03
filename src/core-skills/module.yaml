@@ -1,0 +1,25 @@
+code: core
+name: "RMB_AID Core Module"
+
+header: "RMB_AID Core Configuration"
+subheader: "Configure the core settings for your RMB_AID installation.\nThese settings will be used across all installed rmbaid skills, workflows, and agents."
+
+user_name:
+  prompt: "What should agents call you? (Use your name or a team name)"
+  default: "RMB_AID"
+  result: "{value}"
+
+communication_language:
+  prompt: "What language should agents use when chatting with you?"
+  default: "English"
+  result: "{value}"
+
+document_output_language:
+  prompt: "Preferred document output language?"
+  default: "English"
+  result: "{value}"
+
+output_folder:
+  prompt: "Where should output files be saved?"
+  default: "_rmbaid-output"
+  result: "{project-root}/{value}"

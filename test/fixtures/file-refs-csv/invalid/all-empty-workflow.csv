@@ -1,0 +1,3 @@
+module,phase,name,workflow-file,description
+rmbaid,anytime,Document,,Analyze project
+rmbaid,1-analysis,Brainstorm,,Brainstorm ideas

@@ -1,0 +1,3 @@
+module,phase,name,code,sequence,workflow-file,command,required,agent,options,description,output-location,outputs
+core,anytime,Brainstorming,BSP,,_rmbaid/core/workflows/brainstorming/workflow.md,rmbaid-brainstorming,false,analyst,,"Generate ideas",{output_folder}/brainstorming.md,
+core,anytime,Party Mode,PM,,_rmbaid/core/workflows/rmbaid-party-mode/workflow.md,rmbaid-party-mode,false,facilitator,,"Multi-agent discussion",,
