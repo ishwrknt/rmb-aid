@@ -50,7 +50,68 @@ function copyDir(src, dest) {
   }
 }
 
+function getCodexSkillDescription(skillId) {
+  const descriptions = {
+    'rmbaid-help': 'Guide the user to the right RMB_AID workflow or next step.',
+    'rmbaid-drishti': 'Frame the research or computational problem before solving it.',
+    'rmbaid-bodhi': 'Map existing knowledge, tools, and solution gaps for the problem.',
+    'rmbaid-tarka': 'Form a falsifiable method hypothesis with explicit success criteria.',
+    'rmbaid-yukti': 'Select the computational method, tools, and evaluation pipeline.',
+    'rmbaid-karma': 'Implement the selected method as clean, runnable code.',
+    'rmbaid-satya': 'Validate the implementation against the defined criteria.',
+    'rmbaid-siddhi': 'Package the validated solution into a usable deliverable.'
+  };
+
+  return descriptions[skillId] || 'RMB_AID skill';
+}
+
+function toCodexSkillContent(skillId, body) {
+  return `---
+name: ${skillId}
+description: ${getCodexSkillDescription(skillId)}
+---
+
+${body}`;
+}
+
+function installCodexSkills(projectDir, srcCore, platform) {
+  const launcherDir = path.join(projectDir, platform.dir);
+  if (!fs.existsSync(launcherDir)) {
+    fs.mkdirSync(launcherDir, { recursive: true });
+  }
+
+  const skills = [
+    { id: 'rmbaid-help', source: path.join(srcCore, 'skills', 'rmbaid-help.md') },
+    { id: 'rmbaid-drishti', source: path.join(srcCore, 'agents', 'drishti.md') },
+    { id: 'rmbaid-bodhi', source: path.join(srcCore, 'agents', 'bodhi.md') },
+    { id: 'rmbaid-tarka', source: path.join(srcCore, 'agents', 'tarka.md') },
+    { id: 'rmbaid-yukti', source: path.join(srcCore, 'agents', 'yukti.md') },
+    { id: 'rmbaid-karma', source: path.join(srcCore, 'agents', 'karma.md') },
+    { id: 'rmbaid-satya', source: path.join(srcCore, 'agents', 'satya.md') },
+    { id: 'rmbaid-siddhi', source: path.join(srcCore, 'agents', 'siddhi.md') }
+  ];
+
+  for (const skill of skills) {
+    if (!fs.existsSync(skill.source)) {
+      continue;
+    }
+
+    const skillDir = path.join(launcherDir, skill.id);
+    fs.mkdirSync(skillDir, { recursive: true });
+    const body = fs.readFileSync(skill.source, 'utf8');
+    const content = toCodexSkillContent(skill.id, body);
+    fs.writeFileSync(path.join(skillDir, 'SKILL.md'), content);
+  }
+
+  console.log(`  ✓ ${platform.name} → ${platform.dir}`);
+}
+
 function installForPlatform(platform, projectDir, srcCore) {
+  if (platform.name === 'Codex') {
+    installCodexSkills(projectDir, srcCore, platform);
+    return;
+  }
+
   const launcherDir = path.join(projectDir, platform.dir);
   if (!fs.existsSync(launcherDir)) {
     fs.mkdirSync(launcherDir, { recursive: true });
