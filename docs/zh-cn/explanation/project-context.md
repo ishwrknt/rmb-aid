@@ -1,5 +1,5 @@
 ---
-title: "项目上下文"
+title: '项目上下文'
 description: project-context.md 如何使用项目规则和偏好指导 AI 智能体
 sidebar:
   order: 7
@@ -10,6 +10,7 @@ sidebar:
 ## project context 解决什么问题
 
 没有统一上下文时，智能体往往会：
+
 - 套用通用最佳实践，而不是你的项目约定
 - 在不同 `story` 中做出不一致实现
 - 漏掉代码里不易推断的隐性约束
@@ -21,6 +22,7 @@ sidebar:
 多数实现相关工作流会自动加载 `project-context.md`（若存在），并把它作为共享上下文参与决策。
 
 **常见加载方包括：**
+
 - `rmbaid-create-architecture`：在 solutioning 时纳入你的技术偏好
 - `rmbaid-create-story`：按项目约定拆分和描述 story
 - `rmbaid-dev-story`：约束实现路径和代码风格
@@ -30,12 +32,12 @@ sidebar:
 
 ## 什么时候建立或更新
 
-| 场景 | 建议时机 | 目标 |
-|----------|----------------|---------|
-| **新项目（架构前）** | 在 `rmbaid-create-architecture` 前手动创建 | 先声明技术偏好，避免架构偏航 |
-| **新项目（架构后）** | 通过 `rmbaid-generate-project-context` 生成并补充 | 把架构决策转成可执行规则 |
-| **既有项目** | 先生成，再人工校对 | 让智能体学习现有约定而非重造体系 |
-| **Quick Flow 场景** | 在 `rmbaid-quick-dev` 前或过程中维护 | 弥补跳过完整规划带来的上下文缺口 |
+| 场景                 | 建议时机                                          | 目标                             |
+| -------------------- | ------------------------------------------------- | -------------------------------- |
+| **新项目（架构前）** | 在 `rmbaid-create-architecture` 前手动创建        | 先声明技术偏好，避免架构偏航     |
+| **新项目（架构后）** | 通过 `rmbaid-generate-project-context` 生成并补充 | 把架构决策转成可执行规则         |
+| **既有项目**         | 先生成，再人工校对                                | 让智能体学习现有约定而非重造体系 |
+| **Quick Flow 场景**  | 在 `rmbaid-quick-dev` 前或过程中维护              | 弥补跳过完整规划带来的上下文缺口 |
 
 :::tip[推荐做法]
 如果你有强技术偏好（例如数据库、状态管理、目录规范），尽量在架构前写入。否则可在架构后生成，再按项目现实补齐。
@@ -62,14 +64,17 @@ sidebar:
 ## Critical Implementation Rules
 
 **TypeScript Configuration:**
+
 - Strict mode enabled — no `any` types without explicit approval
 - Use `interface` for public APIs, `type` for unions/intersections
 
 **Code Organization:**
+
 - Components in `/src/components/` with co-located `.test.tsx`
 - API calls use the `apiClient` singleton — never fetch directly
 
 **Testing Patterns:**
+
 - Integration tests use MSW to mock API responses
 - E2E tests cover critical user journeys only
 ```

@@ -1,5 +1,5 @@
 ---
-title: "Comment passer à la v6"
+title: 'Comment passer à la v6'
 description: Migrer de RMB_AID v4 vers v6
 sidebar:
   order: 3
@@ -14,9 +14,10 @@ Utilisez l'installateur RMB_AID pour passer de la v4 à la v6, qui inclut une d�
 - Vous avez des artefacts de planification existants à préserver
 
 :::note[Prérequis]
+
 - Node.js 20+
 - Installation RMB_AID v4 existante
-:::
+  :::
 
 ## Étapes
 
@@ -82,25 +83,29 @@ votre-projet/
 
 ## Migration des modules
 
-| Module v4                     | Statut v6                                 |
-| ----------------------------- | ----------------------------------------- |
-| `.rmbaid-2d-phaser-game-dev`    | Intégré dans le Module BMGD               |
-| `.rmbaid-2d-unity-game-dev`     | Intégré dans le Module BMGD               |
-| `.rmbaid-godot-game-dev`        | Intégré dans le Module BMGD               |
+| Module v4                       | Statut v6                                         |
+| ------------------------------- | ------------------------------------------------- |
+| `.rmbaid-2d-phaser-game-dev`    | Intégré dans le Module BMGD                       |
+| `.rmbaid-2d-unity-game-dev`     | Intégré dans le Module BMGD                       |
+| `.rmbaid-godot-game-dev`        | Intégré dans le Module BMGD                       |
 | `.rmbaid-infrastructure-devops` | Déprécié - nouvel agent DevOps bientôt disponible |
-| `.rmbaid-creative-writing`      | Non adapté - nouveau module v6 bientôt disponible   |
+| `.rmbaid-creative-writing`      | Non adapté - nouveau module v6 bientôt disponible |
 
 ## Changements clés
 
-| Concept       | v4                                    | v6                                   |
-| ------------- | ------------------------------------- | ------------------------------------ |
+| Concept       | v4                                              | v6                                         |
+| ------------- | ----------------------------------------------- | ------------------------------------------ |
 | **Core**      | `_rmbaid-core` était en fait la méthode RMB_AID | `_rmbaid/core/` est le framework universel |
-| **Method**    | `_rmbaid-method`                        | `_rmbaid/rmbaid/`                         |
-| **Config**    | Fichiers modifiés directement         | `config.yaml` par module             |
-| **Documents** | Division ou non division requise | Entièrement flexible, scan automatique         |
+| **Method**    | `_rmbaid-method`                                | `_rmbaid/rmbaid/`                          |
+| **Config**    | Fichiers modifiés directement                   | `config.yaml` par module                   |
+| **Documents** | Division ou non division requise                | Entièrement flexible, scan automatique     |
 
 ## Glossaire
+
 [^1]: PRD (Product Requirements Document) : document de référence qui décrit les objectifs du produit, les besoins utilisateurs, les fonctionnalités attendues, les contraintes et les critères de succès, afin d'aligner les équipes sur ce qui doit être construit et pourquoi.
+
 [^2]: Epic : dans les méthodologies agiles, une grande unité de travail qui peut être décomposée en plusieurs stories. Un epic représente généralement une fonctionnalité majeure ou un ensemble de capacités livrable sur plusieurs sprints.
+
 [^3]: Story (User Story) : une description courte et simple d'une fonctionnalité du point de vue de l'utilisateur. Les stories sont des unités de travail suffisamment petites pour être complétées en un sprint.
+
 [^4]: Sprint : dans Scrum, une période de temps fixe (généralement 1 à 4 semaines) pendant laquelle l'équipe travaille à livrer un incrément de produit potentiellement libérable.

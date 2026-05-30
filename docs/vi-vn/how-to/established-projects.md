@@ -1,5 +1,5 @@
 ---
-title: "Dự án đã tồn tại"
+title: 'Dự án đã tồn tại'
 description: Cách sử dụng RMB_AID trên các codebase hiện có
 sidebar:
   order: 6
@@ -10,10 +10,11 @@ Sử dụng RMB_AID hiệu quả khi làm việc với các dự án hiện có 
 Tài liệu này mô tả workflow cốt lõi để on-board vào các dự án đã tồn tại bằng RMB_AID.
 
 :::note[Điều kiện tiên quyết]
+
 - Đã cài RMB_AID (`npx rmb-aid install`)
 - Một codebase hiện có mà bạn muốn làm việc cùng
 - Quyền truy cập vào một IDE tích hợp AI (Claude Code hoặc Cursor)
-:::
+  :::
 
 ## Bước 1: Dọn dẹp các tài liệu lập kế hoạch đã hoàn tất
 
@@ -36,6 +37,7 @@ rmbaid-generate-project-context
 ```
 
 Workflow này sẽ quét codebase để nhận diện:
+
 - Stack công nghệ và các phiên bản
 - Các pattern tổ chức code
 - Quy ước đặt tên
@@ -79,10 +81,10 @@ RMB_AID-Help cũng **tự động chạy ở cuối mỗi workflow**, đưa ra h
 
 Bạn có hai lựa chọn chính, tùy thuộc vào phạm vi thay đổi:
 
-| Phạm vi | Cách tiếp cận được khuyến nghị |
-| --- | --- |
+| Phạm vi                       | Cách tiếp cận được khuyến nghị                                                                                                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Cập nhật hoặc bổ sung nhỏ** | Chạy `rmbaid-quick-dev` để làm rõ ý định, lập kế hoạch, triển khai và review trong một workflow duy nhất. Quy trình RMB_AID đầy đủ có thể là quá mức cần thiết. |
-| **Thay đổi hoặc bổ sung lớn** | Bắt đầu với RMB_AID, áp dụng mức độ chặt chẽ phù hợp với nhu cầu của bạn. |
+| **Thay đổi hoặc bổ sung lớn** | Bắt đầu với RMB_AID, áp dụng mức độ chặt chẽ phù hợp với nhu cầu của bạn.                                                                                       |
 
 ### Khi tạo PRD
 

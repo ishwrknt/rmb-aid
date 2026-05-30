@@ -1,5 +1,5 @@
 ---
-title: "Corrections Rapides"
+title: 'Corrections Rapides'
 description: Comment effectuer des corrections rapides et des modifications ciblées
 sidebar:
   order: 5
@@ -15,9 +15,10 @@ Utilisez **Quick Dev** pour les corrections de bugs, les refactorisations ou les
 - Mises à jour de dépendances
 
 :::note[Prérequis]
+
 - Méthode RMB_AID installée (`npx rmb-aid install`)
 - Un IDE IA (Claude Code, Cursor, ou similaire)
-:::
+  :::
 
 ## Étapes
 

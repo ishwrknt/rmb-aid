@@ -1,5 +1,5 @@
 ---
-title: "Hướng Dẫn Phong Cách Tài Liệu"
+title: 'Hướng Dẫn Phong Cách Tài Liệu'
 description: Các quy ước tài liệu dành riêng cho dự án, dựa trên phong cách tài liệu của Google và cấu trúc Diataxis
 ---
 
@@ -7,17 +7,17 @@ Dự án này tuân theo [Google Developer Documentation Style Guide](https://de
 
 ## Quy tắc riêng của dự án
 
-| Quy tắc | Quy định |
-| --- | --- |
-| Không dùng đường kẻ ngang (`---`) | Làm gián đoạn dòng đọc |
-| Không dùng tiêu đề `####` | Dùng chữ in đậm hoặc admonition thay thế |
-| Không có mục "Related" hoặc "Next:" | Sidebar đã xử lý điều hướng |
-| Không dùng danh sách lồng quá sâu | Tách thành các mục riêng |
-| Không dùng code block cho nội dung không phải code | Dùng admonition cho ví dụ hội thoại |
-| Không dùng cả đoạn in đậm để làm callout | Dùng admonition thay thế |
-| Mỗi mục tối đa 1-2 admonition | Tutorial có thể dùng 3-4 admonition cho mỗi phần lớn |
-| Ô bảng / mục danh sách | Tối đa 1-2 câu |
-| Ngân sách tiêu đề | 8-12 `##` cho mỗi tài liệu; 2-3 `###` cho mỗi phần |
+| Quy tắc                                            | Quy định                                             |
+| -------------------------------------------------- | ---------------------------------------------------- |
+| Không dùng đường kẻ ngang (`---`)                  | Làm gián đoạn dòng đọc                               |
+| Không dùng tiêu đề `####`                          | Dùng chữ in đậm hoặc admonition thay thế             |
+| Không có mục "Related" hoặc "Next:"                | Sidebar đã xử lý điều hướng                          |
+| Không dùng danh sách lồng quá sâu                  | Tách thành các mục riêng                             |
+| Không dùng code block cho nội dung không phải code | Dùng admonition cho ví dụ hội thoại                  |
+| Không dùng cả đoạn in đậm để làm callout           | Dùng admonition thay thế                             |
+| Mỗi mục tối đa 1-2 admonition                      | Tutorial có thể dùng 3-4 admonition cho mỗi phần lớn |
+| Ô bảng / mục danh sách                             | Tối đa 1-2 câu                                       |
+| Ngân sách tiêu đề                                  | 8-12 `##` cho mỗi tài liệu; 2-3 `###` cho mỗi phần   |
 
 ## Admonition (cú pháp Starlight)
 
@@ -41,31 +41,31 @@ Chỉ dùng cho cảnh báo nghiêm trọng — mất dữ liệu, vấn đề b
 
 ### Cách dùng chuẩn
 
-| Admonition | Dùng cho |
-| --- | --- |
+| Admonition                      | Dùng cho                        |
+| ------------------------------- | ------------------------------- |
 | `:::note[Điều kiện tiên quyết]` | Các phụ thuộc trước khi bắt đầu |
-| `:::tip[Lối đi nhanh]` | Tóm tắt TL;DR ở đầu tài liệu |
-| `:::caution[Quan trọng]` | Cảnh báo quan trọng |
-| `:::note[Ví dụ]` | Ví dụ lệnh / phản hồi |
+| `:::tip[Lối đi nhanh]`          | Tóm tắt TL;DR ở đầu tài liệu    |
+| `:::caution[Quan trọng]`        | Cảnh báo quan trọng             |
+| `:::note[Ví dụ]`                | Ví dụ lệnh / phản hồi           |
 
 ## Mẫu bảng chuẩn
 
 **Phase:**
 
 ```md
-| Phase | Tên | Điều xảy ra |
-| ----- | --- | ------------ |
-| 1     | Analysis | Brainstorm, nghiên cứu *(tùy chọn)* |
-| 2     | Planning | Yêu cầu — PRD hoặc spec *(bắt buộc)* |
+| Phase | Tên      | Điều xảy ra                          |
+| ----- | -------- | ------------------------------------ |
+| 1     | Analysis | Brainstorm, nghiên cứu _(tùy chọn)_  |
+| 2     | Planning | Yêu cầu — PRD hoặc spec _(bắt buộc)_ |
 ```
 
 **Skill:**
 
 ```md
-| Skill | Agent | Mục đích |
-| ----- | ----- | -------- |
-| `rmbaid-brainstorming` | Analyst | Brainstorm cho dự án mới |
-| `rmbaid-create-prd` | PM | Tạo tài liệu yêu cầu sản phẩm |
+| Skill                  | Agent   | Mục đích                      |
+| ---------------------- | ------- | ----------------------------- |
+| `rmbaid-brainstorming` | Analyst | Brainstorm cho dự án mới      |
+| `rmbaid-create-prd`    | PM      | Tạo tài liệu yêu cầu sản phẩm |
 ```
 
 ## Khối cấu trúc thư mục
@@ -144,13 +144,13 @@ your-project/
 
 ### Các loại
 
-| Loại | Ví dụ |
-| --- | --- |
-| **Trang chỉ mục / landing** | `core-concepts/index.md` |
-| **Khái niệm** | `what-are-agents.md` |
-| **Tính năng** | `quick-dev.md` |
-| **Triết lý** | `why-solutioning-matters.md` |
-| **FAQ** | `established-projects-faq.md` |
+| Loại                        | Ví dụ                         |
+| --------------------------- | ----------------------------- |
+| **Trang chỉ mục / landing** | `core-concepts/index.md`      |
+| **Khái niệm**               | `what-are-agents.md`          |
+| **Tính năng**               | `quick-dev.md`                |
+| **Triết lý**                | `why-solutioning-matters.md`  |
+| **FAQ**                     | `established-projects-faq.md` |
 
 ### Mẫu tổng quát
 
@@ -220,14 +220,14 @@ your-project/
 
 ### Các loại
 
-| Loại | Ví dụ |
-| --- | --- |
-| **Trang chỉ mục / landing** | `workflows/index.md` |
-| **Danh mục** | `agents/index.md` |
-| **Đào sâu** | `document-project.md` |
-| **Cấu hình** | `core-tasks.md` |
-| **Bảng thuật ngữ** | `glossary/index.md` |
-| **Tổng hợp đầy đủ** | `bmgd-workflows.md` |
+| Loại                        | Ví dụ                 |
+| --------------------------- | --------------------- |
+| **Trang chỉ mục / landing** | `workflows/index.md`  |
+| **Danh mục**                | `agents/index.md`     |
+| **Đào sâu**                 | `document-project.md` |
+| **Cấu hình**                | `core-tasks.md`       |
+| **Bảng thuật ngữ**          | `glossary/index.md`   |
+| **Tổng hợp đầy đủ**         | `bmgd-workflows.md`   |
 
 ### Trang chỉ mục của Reference
 
@@ -306,19 +306,19 @@ Starlight tạo phần điều hướng "On this page" từ các tiêu đề:
 ```md
 ## Tên nhóm
 
-| Thuật ngữ | Định nghĩa |
-| --------- | ---------- |
-| **Agent** | AI persona chuyên biệt với chuyên môn cụ thể để dẫn dắt người dùng qua workflow. |
+| Thuật ngữ    | Định nghĩa                                                                              |
+| ------------ | --------------------------------------------------------------------------------------- |
+| **Agent**    | AI persona chuyên biệt với chuyên môn cụ thể để dẫn dắt người dùng qua workflow.        |
 | **Workflow** | Quy trình nhiều bước có hướng dẫn, điều phối hoạt động của agent AI để tạo deliverable. |
 ```
 
 ### Quy tắc viết định nghĩa
 
-| Nên làm | Không nên làm |
-| --- | --- |
+| Nên làm                                | Không nên làm                                         |
+| -------------------------------------- | ----------------------------------------------------- |
 | Bắt đầu bằng việc nó LÀ gì hoặc LÀM gì | Bắt đầu bằng "Đây là..." hoặc "Một [thuật ngữ] là..." |
-| Giữ trong 1-2 câu | Viết thành nhiều đoạn dài |
-| Bôi đậm tên thuật ngữ trong ô | Để thuật ngữ ở dạng chữ thường |
+| Giữ trong 1-2 câu                      | Viết thành nhiều đoạn dài                             |
+| Bôi đậm tên thuật ngữ trong ô          | Để thuật ngữ ở dạng chữ thường                        |
 
 ### Dấu hiệu ngữ cảnh
 

@@ -1,5 +1,5 @@
 ---
-title: "Analysis Phase: From Idea to Foundation"
+title: 'Analysis Phase: From Idea to Foundation'
 description: What brainstorming, research, product briefs, and PRFAQs are — and when to use each
 sidebar:
   order: 1
@@ -51,13 +51,13 @@ See [Brainstorming](./brainstorming.md) for a deeper look at how sessions work.
 
 ## Which Should I Use?
 
-| Situation | Recommended tool |
-| --------- | ---------------- |
-| "I have a vague idea, not sure where to start" | Brainstorming |
-| "I need to understand the market before deciding" | Research |
-| "I know what I want to build, just need to document it" | Product Brief |
-| "I want to make sure this idea is actually worth building" | PRFAQ |
-| "I want to explore, then validate, then document" | Brainstorming → Research → PRFAQ or Brief |
+| Situation                                                  | Recommended tool                          |
+| ---------------------------------------------------------- | ----------------------------------------- |
+| "I have a vague idea, not sure where to start"             | Brainstorming                             |
+| "I need to understand the market before deciding"          | Research                                  |
+| "I know what I want to build, just need to document it"    | Product Brief                             |
+| "I want to make sure this idea is actually worth building" | PRFAQ                                     |
+| "I want to explore, then validate, then document"          | Brainstorming → Research → PRFAQ or Brief |
 
 Product Brief and PRFAQ both produce input for the PRD — choose one based on how much challenge you want. The brief is collaborative discovery. The PRFAQ is a gauntlet. Both get you to the same destination; the PRFAQ tests whether your concept deserves to get there.
 

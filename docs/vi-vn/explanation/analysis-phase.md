@@ -1,5 +1,5 @@
 ---
-title: "Giai đoạn Analysis: từ ý tưởng đến nền tảng"
+title: 'Giai đoạn Analysis: từ ý tưởng đến nền tảng'
 description: Brainstorming, research, product brief và PRFAQ là gì, và nên dùng từng công cụ khi nào
 sidebar:
   order: 1
@@ -51,13 +51,13 @@ Xem [Brainstorming](./brainstorming.md) để hiểu sâu hơn về cách một 
 
 ## Tôi nên dùng cái nào?
 
-| Tình huống | Công cụ được khuyến nghị |
-| --------- | ------------------------ |
-| "Tôi có một ý tưởng mơ hồ, chưa biết bắt đầu từ đâu" | Brainstorming |
-| "Tôi cần hiểu thị trường trước khi quyết định" | Research |
-| "Tôi biết mình muốn xây gì rồi, chỉ cần ghi lại" | Product Brief |
-| "Tôi muốn chắc rằng ý tưởng này thực sự đáng để xây" | PRFAQ |
-| "Tôi muốn khám phá, rồi kiểm chứng, rồi ghi lại" | Brainstorming → Research → PRFAQ hoặc Brief |
+| Tình huống                                           | Công cụ được khuyến nghị                    |
+| ---------------------------------------------------- | ------------------------------------------- |
+| "Tôi có một ý tưởng mơ hồ, chưa biết bắt đầu từ đâu" | Brainstorming                               |
+| "Tôi cần hiểu thị trường trước khi quyết định"       | Research                                    |
+| "Tôi biết mình muốn xây gì rồi, chỉ cần ghi lại"     | Product Brief                               |
+| "Tôi muốn chắc rằng ý tưởng này thực sự đáng để xây" | PRFAQ                                       |
+| "Tôi muốn khám phá, rồi kiểm chứng, rồi ghi lại"     | Brainstorming → Research → PRFAQ hoặc Brief |
 
 Product Brief và PRFAQ đều tạo ra đầu vào cho PRD. Hãy chọn một trong hai tùy vào mức độ thách thức bạn muốn. Brief là discovery mang tính cộng tác. PRFAQ là một bài kiểm tra khắc nghiệt. Cả hai đều đưa bạn tới cùng một đích; PRFAQ chỉ kiểm tra xem concept của bạn có thật sự xứng đáng để đến đó hay không.
 

@@ -1,5 +1,5 @@
 ---
-title: "Quick Fixes"
+title: 'Quick Fixes'
 description: Cách thực hiện các sửa nhanh và thay đổi ad-hoc
 sidebar:
   order: 5
@@ -15,9 +15,10 @@ Sử dụng **Quick Dev** cho sửa lỗi, refactor, hoặc các thay đổi nh�
 - Cập nhật dependency
 
 :::note[Điều kiện tiên quyết]
+
 - Đã cài RMB_AID (`npx rmb-aid install`)
 - Một IDE tích hợp AI (Claude Code, Cursor, hoặc tương tự)
-:::
+  :::
 
 ## Các bước thực hiện
 

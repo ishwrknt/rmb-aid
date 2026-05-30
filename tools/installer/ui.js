@@ -30,6 +30,7 @@ class UI {
    */
   async promptInstall(options = {}) {
     await CLIUtils.displayLogo();
+    const simpleMode = !options.advanced && !options.yes;
 
     // Display version-specific start message from install-messages.yaml
     const { MessageLoader } = require('./message-loader');
@@ -55,7 +56,7 @@ class UI {
     const installer = new Installer();
     const { rmbaidDir } = await installer.findRmbaidDir(confirmedDirectory);
 
-    // Check if there's an existing RMB_AID installation
+    // Check if there's an existing SMART installation
     const hasExistingInstall = await fs.pathExists(rmbaidDir);
 
     let customContentConfig = { hasCustomContent: false };
@@ -86,7 +87,7 @@ class UI {
       }
 
       // Common actions
-      choices.push({ name: 'Modify RMB_AID Installation', value: 'update' });
+      choices.push({ name: 'Modify SMART Installation', value: 'update' });
 
       // Check if action is provided via command-line
       if (options.action) {
@@ -104,10 +105,13 @@ class UI {
         const hasQuickUpdate = choices.some((c) => c.value === 'quick-update');
         actionType = hasQuickUpdate ? 'quick-update' : choices[0].value;
         await prompts.log.info(`Non-interactive mode (--yes): defaulting to ${actionType}`);
-      } else {
-        actionType = await prompts.select({
-          message: 'How would you like to proceed?',
-          choices: choices,
+        } else if (simpleMode) {
+          actionType = choices[0].value;
+          await prompts.log.info(`Using default action: ${actionType}`);
+        } else {
+          actionType = await prompts.select({
+            message: 'How would you like to proceed?',
+            choices: choices,
           default: choices[0].value,
         });
       }
@@ -182,6 +186,9 @@ class UI {
           await prompts.log.info(
             `Non-interactive mode (--yes): using default modules (installed + defaults): ${selectedModules.join(', ')}`,
           );
+        } else if (simpleMode) {
+          selectedModules = await this.getDefaultModules(installedModuleIds);
+          await prompts.log.info(`Using recommended modules: ${selectedModules.join(', ')}`);
         } else {
           selectedModules = await this.selectAllModules(installedModuleIds);
         }
@@ -269,7 +276,7 @@ class UI {
           } else {
             await prompts.log.info('Non-interactive mode (--yes): no existing custom modules found');
           }
-        } else {
+        } else if (!simpleMode) {
           const changeCustomModules = await prompts.confirm({
             message: 'Modify custom modules, agents, or workflows?',
             default: false,
@@ -290,6 +297,17 @@ class UI {
                 if (entry.isDirectory()) {
                   customModuleResult.selectedCustomModules.push(entry.name);
                 }
+              }
+            }
+          }
+        } else {
+          // Simple mode: preserve existing custom modules without asking.
+          const cacheDir = path.join(rmbaidDir, '_config', 'custom');
+          if (await fs.pathExists(cacheDir)) {
+            const entries = await fs.readdir(cacheDir, { withFileTypes: true });
+            for (const entry of entries) {
+              if (entry.isDirectory()) {
+                customModuleResult.selectedCustomModules.push(entry.name);
               }
             }
           }
@@ -340,6 +358,9 @@ class UI {
       // Use default modules when --yes flag is set
       selectedModules = await this.getDefaultModules(installedModuleIds);
       await prompts.log.info(`Using default modules (--yes flag): ${selectedModules.join(', ')}`);
+    } else if (simpleMode) {
+      selectedModules = await this.getDefaultModules(installedModuleIds);
+      await prompts.log.info(`Using recommended modules: ${selectedModules.join(', ')}`);
     } else {
       selectedModules = await this.selectAllModules(installedModuleIds);
     }
@@ -406,7 +427,7 @@ class UI {
           selectedModuleIds: selectedModuleIds,
         };
       }
-    } else if (!options.yes) {
+    } else if (!options.yes && !simpleMode) {
       const wantsCustomContent = await prompts.confirm({
         message: 'Add custom modules, agents, or workflows from your computer?',
         default: false,
@@ -711,6 +732,7 @@ class UI {
   async collectModuleConfigs(directory, modules, options = {}) {
     const { OfficialModules } = require('./modules/official-modules');
     const configCollector = new OfficialModules();
+    const simpleMode = !options.advanced && !options.yes;
 
     // Seed core config from CLI options if provided
     if (options.userName || options.communicationLanguage || options.documentOutputLanguage || options.outputFolder) {
@@ -737,14 +759,25 @@ class UI {
       const existingConfig = configCollector.collectedConfig.core || {};
       configCollector.collectedConfig.core = { ...existingConfig, ...coreConfig };
 
-      // If not all options are provided, collect the missing ones interactively (unless --yes flag)
+      // In simple mode, rely on defaults for any omitted core settings.
       if (
         !options.yes &&
+        !simpleMode &&
         (!options.userName || !options.communicationLanguage || !options.documentOutputLanguage || !options.outputFolder)
       ) {
         await configCollector.collectModuleConfig('core', directory, false, true);
+      } else if (simpleMode) {
+        const safeUsername = existingConfig.user_name || configCollector.getDefaultUsername();
+        configCollector.collectedConfig.core = {
+          user_name: coreConfig.user_name || safeUsername,
+          communication_language: coreConfig.communication_language || existingConfig.communication_language || 'English',
+          document_output_language:
+            coreConfig.document_output_language || existingConfig.document_output_language || 'English',
+          output_folder: coreConfig.output_folder || existingConfig.output_folder || '_rmbaid-output',
+        };
+        await prompts.log.info('Using simple defaults for core configuration');
       }
-    } else if (options.yes) {
+    } else if (options.yes || simpleMode) {
       // Use all defaults when --yes flag is set
       await configCollector.loadExistingConfig(directory);
       const existingConfig = configCollector.collectedConfig.core || {};
@@ -763,13 +796,14 @@ class UI {
           document_output_language: 'English',
           output_folder: '_rmbaid-output',
         };
-        await prompts.log.info('Using default configuration (--yes flag)');
+        await prompts.log.info(options.yes ? 'Using default configuration (--yes flag)' : 'Using simple defaults for core configuration');
       }
     }
 
     // Collect all module configs — core is skipped if already seeded above
     await configCollector.collectAllConfigurations(modules, directory, {
       skipPrompts: options.yes || false,
+      simpleMode,
     });
 
     return configCollector.collectedConfig;
@@ -880,7 +914,7 @@ class UI {
     const lockedValues = ['core'];
 
     // Core module is always installed — show it locked at the top
-    allOptions.push({ label: 'RMB_AID Core Module', value: 'core', hint: 'Core configuration and shared resources' });
+    allOptions.push({ label: 'SMART Core Module', value: 'core', hint: 'Core configuration and shared resources' });
     initialValues.push('core');
 
     // Helper to build module entry with proper sorting and selection
@@ -895,7 +929,7 @@ class UI {
       };
     };
 
-    // Local modules (RMB_AID, BMB, etc.)
+    // Local modules (SMART, BMB, etc.)
     const localEntries = [];
     for (const mod of localModules) {
       if (!mod.isCustom && mod.id !== 'core') {
@@ -908,7 +942,7 @@ class UI {
     }
     allOptions.push(...localEntries.map(({ label, value, hint }) => ({ label, value, hint })));
 
-    // Group 2: RMB_AID Official Modules (type: rmbaid-org)
+    // Group 2: SMART Official Modules (type: rmbaid-org)
     const officialModules = [];
     for (const mod of externalModules) {
       if (mod.type === 'rmbaid-org') {
@@ -969,7 +1003,7 @@ class UI {
 
     const defaultModules = [];
 
-    // Add default-selected local modules (typically RMB_AID)
+    // Add default-selected local modules (typically SMART)
     for (const mod of localModules) {
       if (mod.defaultSelected === true || installedModuleIds.has(mod.id)) {
         defaultModules.push(mod.id);
@@ -1027,9 +1061,10 @@ class UI {
           const installer = new Installer();
           const rmbaidResult = await installer.findRmbaidDir(directory);
           const hasRmbaidInstall =
-            (await fs.pathExists(rmbaidResult.rmbaidDir)) && (await fs.pathExists(path.join(rmbaidResult.rmbaidDir, '_config', 'manifest.yaml')));
+            (await fs.pathExists(rmbaidResult.rmbaidDir)) &&
+            (await fs.pathExists(path.join(rmbaidResult.rmbaidDir, '_config', 'manifest.yaml')));
 
-          const rmbaidNote = hasRmbaidInstall ? ` including existing RMB_AID installation (${path.basename(rmbaidResult.rmbaidDir)})` : '';
+          const rmbaidNote = hasRmbaidInstall ? ` including existing SMART installation (${path.basename(rmbaidResult.rmbaidDir)})` : '';
           await prompts.log.message(`Directory exists and contains ${files.length} item(s)${rmbaidNote}`);
         } else {
           await prompts.log.message('Directory exists and is empty');
@@ -1646,7 +1681,7 @@ class UI {
       `Last Updated:  ${installation.lastUpdated ? new Date(installation.lastUpdated).toLocaleDateString() : 'unknown'}`,
     ];
 
-    await prompts.note(infoLines.join('\n'), 'RMB_AID Status');
+    await prompts.note(infoLines.join('\n'), 'SMART Status');
 
     // Module versions
     await this.displayModuleVersions(modules, availableUpdates);

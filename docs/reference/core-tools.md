@@ -13,19 +13,19 @@ Run any core tool by typing its skill name (e.g., `rmbaid-help`) in your IDE. No
 
 ## Overview
 
-| Tool | Type | Purpose |
-| --- | --- | --- |
-| [`rmbaid-help`](#rmbaid-help) | Task | Get context-aware guidance on what to do next |
-| [`rmbaid-brainstorming`](#rmbaid-brainstorming) | Workflow | Facilitate interactive brainstorming sessions |
-| [`rmbaid-party-mode`](#rmbaid-party-mode) | Workflow | Orchestrate multi-agent group discussions |
-| [`rmbaid-distillator`](#rmbaid-distillator) | Task | Lossless LLM-optimized compression of documents |
-| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation) | Task | Push LLM output through iterative refinement methods |
-| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Task | Cynical review that finds what's missing and what's wrong |
-| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter) | Task | Exhaustive branching-path analysis for unhandled edge cases |
-| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose) | Task | Clinical copy-editing for communication clarity |
-| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Task | Structural editing — cuts, merges, and reorganization |
-| [`rmbaid-shard-doc`](#rmbaid-shard-doc) | Task | Split large markdown files into organized sections |
-| [`rmbaid-index-docs`](#rmbaid-index-docs) | Task | Generate or update an index of all docs in a folder |
+| Tool                                                                      | Type     | Purpose                                                     |
+| ------------------------------------------------------------------------- | -------- | ----------------------------------------------------------- |
+| [`rmbaid-help`](#rmbaid-help)                                             | Task     | Get context-aware guidance on what to do next               |
+| [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | Facilitate interactive brainstorming sessions               |
+| [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | Orchestrate multi-agent group discussions                   |
+| [`rmbaid-distillator`](#rmbaid-distillator)                               | Task     | Lossless LLM-optimized compression of documents             |
+| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation)             | Task     | Push LLM output through iterative refinement methods        |
+| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Task     | Cynical review that finds what's missing and what's wrong   |
+| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter)       | Task     | Exhaustive branching-path analysis for unhandled edge cases |
+| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose)         | Task     | Clinical copy-editing for communication clarity             |
+| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Task     | Structural editing — cuts, merges, and reorganization       |
+| [`rmbaid-shard-doc`](#rmbaid-shard-doc)                                   | Task     | Split large markdown files into organized sections          |
+| [`rmbaid-index-docs`](#rmbaid-index-docs)                                 | Task     | Generate or update an index of all docs in a folder         |
 
 ## rmbaid-help
 

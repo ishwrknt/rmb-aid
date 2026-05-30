@@ -1,5 +1,5 @@
 ---
-title: "Comment personnaliser RMB_AID"
+title: 'Comment personnaliser RMB_AID'
 description: Personnalisez les agents, les workflows et les modules tout en préservant la compatibilité avec les mises à jour
 sidebar:
   order: 7
@@ -15,9 +15,10 @@ Utilisez les fichiers `.customize.yaml` pour adapter le comportement, les person
 - Vous voulez que les agents effectuent des actions spécifiques à chaque démarrage
 
 :::note[Prérequis]
+
 - RMB_AID installé dans votre projet (voir [Comment installer RMB_AID](./install-rmbaid.md))
 - Un éditeur de texte pour les fichiers YAML
-:::
+  :::
 
 :::caution[Protégez vos personnalisations]
 Utilisez toujours les fichiers `.customize.yaml` décrits ici plutôt que de modifier directement les fichiers d'agents. L'installateur écrase les fichiers d'agents lors des mises à jour, mais préserve vos modifications dans les fichiers `.customize.yaml`.
@@ -40,14 +41,14 @@ _rmbaid/_config/agents/
 
 Ouvrez le fichier `.customize.yaml` de l'agent que vous souhaitez modifier. Chaque section est facultative — personnalisez uniquement ce dont vous avez besoin.
 
-| Section            | Comportement | Objectif                                         |
-| ------------------ | ------------ | ------------------------------------------------ |
-| `agent.metadata`   | Remplace     | Remplacer le nom d'affichage de l'agent          |
-| `persona`          | Remplace     | Définir le rôle, l'identité, le style et les principes |
-| `memories`         | Ajoute       | Ajouter un contexte persistant que l'agent se rappelle toujours |
+| Section            | Comportement | Objectif                                                                 |
+| ------------------ | ------------ | ------------------------------------------------------------------------ |
+| `agent.metadata`   | Remplace     | Remplacer le nom d'affichage de l'agent                                  |
+| `persona`          | Remplace     | Définir le rôle, l'identité, le style et les principes                   |
+| `memories`         | Ajoute       | Ajouter un contexte persistant que l'agent se rappelle toujours          |
 | `menu`             | Ajoute       | Ajouter des éléments de menu personnalisés pour les workflows ou prompts |
-| `critical_actions` | Ajoute       | Définir les instructions de démarrage de l'agent |
-| `prompts`          | Ajoute       | Créer des prompts réutilisables pour les actions du menu |
+| `critical_actions` | Ajoute       | Définir les instructions de démarrage de l'agent                         |
+| `prompts`          | Ajoute       | Créer des prompts réutilisables pour les actions du menu                 |
 
 Les sections marquées **Remplace** écrasent entièrement les valeurs par défaut de l'agent. Les sections marquées **Ajoute** s'ajoutent à la configuration existante.
 
@@ -135,10 +136,10 @@ npx rmb-aid install
 
 L'installateur détecte l'installation existante et propose ces options :
 
-| Option                              | Ce qu'elle fait                                                        |
-| ----------------------------------- | ---------------------------------------------------------------------- |
-| **Quick Update**                    | Met à jour tous les modules vers la dernière version et applique les personnalisations |
-| **Modify RMB_AID Installation**        | Flux d'installation complet pour ajouter ou supprimer des modules     |
+| Option                          | Ce qu'elle fait                                                                        |
+| ------------------------------- | -------------------------------------------------------------------------------------- |
+| **Quick Update**                | Met à jour tous les modules vers la dernière version et applique les personnalisations |
+| **Modify RMB_AID Installation** | Flux d'installation complet pour ajouter ou supprimer des modules                      |
 
 Pour des modifications de personnalisation uniquement, **Quick Update** est l'option la plus rapide.
 

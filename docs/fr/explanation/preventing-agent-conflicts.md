@@ -1,5 +1,5 @@
 ---
-title: "Prévention des conflits entre agents"
+title: 'Prévention des conflits entre agents'
 description: Comment l'architecture empêche les conflits lorsque plusieurs agents implémentent un système
 sidebar:
   order: 4
@@ -12,33 +12,39 @@ Lorsque plusieurs agents IA implémentent différentes parties d'un système, il
 ### Conflits de style d'API
 
 Sans architecture :
+
 - L'agent A utilise REST avec `/users/{id}`
 - L'agent B utilise des mutations GraphQL
 - Résultat : Patterns d'API incohérents, consommateurs confus
 
 Avec architecture :
+
 - L'ADR[^1] spécifie : « Utiliser GraphQL pour toute communication client-serveur »
 - Tous les agents suivent le même pattern
 
 ### Conflits de conception de base de données
 
 Sans architecture :
+
 - L'agent A utilise des noms de colonnes en snake_case
 - L'agent B utilise des noms de colonnes en camelCase
 - Résultat : Schéma incohérent, requêtes illisibles
 
 Avec architecture :
+
 - Un document de standards spécifie les conventions de nommage
 - Tous les agents suivent les mêmes patterns
 
 ### Conflits de gestion d'état
 
 Sans architecture :
+
 - L'agent A utilise Redux pour l'état global
 - L'agent B utilise React Context
 - Résultat : Multiples approches de gestion d'état, complexité
 
 Avec architecture :
+
 - L'ADR spécifie l'approche de gestion d'état
 - Tous les agents implémentent de manière cohérente
 
@@ -47,6 +53,7 @@ Avec architecture :
 ### 1. Décisions explicites via les ADR[^1]
 
 Chaque choix technologique significatif est documenté avec :
+
 - Contexte (pourquoi cette décision est importante)
 - Options considérées (quelles alternatives existent)
 - Décision (ce qui a été choisi)
@@ -56,12 +63,14 @@ Chaque choix technologique significatif est documenté avec :
 ### 2. Guidance spécifique aux FR/NFR[^2]
 
 L'architecture associe chaque exigence fonctionnelle à une approche technique :
+
 - FR-001 : Gestion des utilisateurs → Mutations GraphQL
 - FR-002 : Application mobile → Requêtes optimisées
 
 ### 3. Standards et conventions
 
 Documentation explicite de :
+
 - La structure des répertoires
 - Les conventions de nommage
 - L'organisation du code
@@ -99,19 +108,22 @@ Décisions courantes qui préviennent les conflits :
 ## Anti-patterns à éviter
 
 :::caution[Erreurs courantes]
+
 - **Décisions implicites** — « On décidera du style d'API au fur et à mesure » mène à l'incohérence
 - **Sur-documentation** — Documenter chaque choix mineur cause une paralysie analytique
 - **Architecture obsolète** — Les documents écrits une fois et jamais mis à jour poussent les agents à suivre des patterns dépassés
-:::
+  :::
 
 :::tip[Approche correcte]
+
 - Documenter les décisions qui traversent les frontières des epics
 - Se concentrer sur les zones sujettes aux conflits
 - Mettre à jour l'architecture au fur et à mesure des apprentissages
 - Utiliser `rmbaid-correct-course` pour les changements significatifs
-:::
+  :::
 
 ## Glossaire
 
 [^1]: ADR (Architecture Decision Record) : document qui consigne une décision d’architecture, son contexte, les options envisagées, le choix retenu et ses conséquences, afin d’assurer la traçabilité et la compréhension des décisions techniques dans le temps.
+
 [^2]: FR / NFR (Functional / Non-Functional Requirement) : exigences décrivant respectivement **ce que le système doit faire** (fonctionnalités, comportements attendus) et **comment il doit le faire** (contraintes de performance, sécurité, fiabilité, ergonomie, etc.).

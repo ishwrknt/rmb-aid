@@ -1,4 +1,4 @@
-# RMB_AID — Research Methodology Based AI Development
+# SMART — Scientific Methodology for AI Research and Technology
 
 > Apply scientific rigor to arrive at working computational solutions.
 > Not just "what to build" — but "how to think about it first."
@@ -9,19 +9,20 @@
 npx rmb-aid install
 ```
 
+The published npm package name remains `rmb-aid` during the compatibility transition.
 Follow the prompts to select your AI platform.
 
 ## The Seven Agents
 
-| Agent | Sanskrit Meaning | Role |
-|-------|------------------|------|
-| **Drishti** | Vision | Problem framing via GPS state-space |
-| **Bodhi** | Awakened Knowledge | Map existing knowledge & tools |
-| **Tarka** | Logic & Inference | Form falsifiable hypothesis |
-| **Yukti** | Right Method | Select algorithm & computational plan |
-| **Karma** | Action | Implement clean, documented solution |
-| **Satya** | Truth | Validate results against criteria |
-| **Siddhi** | Accomplishment | Package final deliverable |
+| Agent       | Sanskrit Meaning   | Role                                  |
+| ----------- | ------------------ | ------------------------------------- |
+| **Drishti** | Vision             | Problem framing via GPS state-space   |
+| **Bodhi**   | Awakened Knowledge | Map existing knowledge & tools        |
+| **Tarka**   | Logic & Inference  | Form falsifiable hypothesis           |
+| **Yukti**   | Right Method       | Select algorithm & computational plan |
+| **Karma**   | Action             | Implement clean, documented solution  |
+| **Satya**   | Truth              | Validate results against criteria     |
+| **Siddhi**  | Accomplishment     | Package final deliverable             |
 
 ## The Pipeline
 
@@ -52,4 +53,4 @@ MIT — Free to use, modify, and distribute.
 
 ## Author
 
-Ishwar — RMB_AID Project
+Ishwar — SMART Project

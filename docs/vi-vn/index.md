@@ -26,12 +26,12 @@ Cài RMB_AID và dùng skill `rmbaid-help` — nó sẽ hướng dẫn bạn m�
 
 Bộ tài liệu này được chia thành bốn phần, dựa trên mục tiêu của bạn:
 
-| Phần | Mục đích |
-| ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Tutorials** | Thiên về học theo từng bước. Đây là các hướng dẫn tuần tự giúp bạn xây dựng một thứ gì đó. Nếu bạn mới làm quen, hãy bắt đầu ở đây. |
+| Phần              | Mục đích                                                                                                                                      |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Tutorials**     | Thiên về học theo từng bước. Đây là các hướng dẫn tuần tự giúp bạn xây dựng một thứ gì đó. Nếu bạn mới làm quen, hãy bắt đầu ở đây.           |
 | **How-To Guides** | Thiên về tác vụ. Đây là các hướng dẫn thực tế để giải quyết một vấn đề cụ thể. Câu hỏi kiểu “Làm sao để tùy chỉnh một agent?” nằm ở phần này. |
-| **Explanation** | Thiên về hiểu bản chất. Đây là các bài phân tích sâu về khái niệm và kiến trúc. Hãy đọc khi bạn muốn hiểu *vì sao*. |
-| **Reference** | Thiên về tra cứu thông tin. Đây là đặc tả kỹ thuật cho agent, workflow, và cấu hình. |
+| **Explanation**   | Thiên về hiểu bản chất. Đây là các bài phân tích sâu về khái niệm và kiến trúc. Hãy đọc khi bạn muốn hiểu _vì sao_.                           |
+| **Reference**     | Thiên về tra cứu thông tin. Đây là đặc tả kỹ thuật cho agent, workflow, và cấu hình.                                                          |
 
 ## Mở rộng và tùy chỉnh
 

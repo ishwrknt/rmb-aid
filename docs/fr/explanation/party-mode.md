@@ -1,5 +1,5 @@
 ---
-title: "Party Mode"
+title: 'Party Mode'
 description: Collaboration multi-agents - regroupez tous vos agents IA dans une seule conversation
 sidebar:
   order: 7
@@ -61,4 +61,5 @@ De meilleures décisions grâce à des perspectives diverses. Bienvenue dans le 
 ## Glossaire
 
 [^1]: MVP (Minimum Viable Product) : version minimale d'un produit contenant juste assez de fonctionnalités pour être utilisée par des utilisateurs précoces et valider les hypothèses de marché avant d'investir dans un développement plus complet.
+
 [^2]: Time-to-market : délai nécessaire pour concevoir, développer et lancer un produit sur le marché. Plus ce délai est court, plus l'entreprise peut prendre de l'avance sur ses concurrents.

@@ -1,5 +1,5 @@
 ---
-title: "Advanced Elicitation"
+title: 'Advanced Elicitation'
 description: Push the LLM to rethink its work using structured reasoning methods
 sidebar:
   order: 6

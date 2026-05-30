@@ -1,39 +1,100 @@
 {
   "name": "rmb-aid",
-  "version": "1.0.0",
-  "description": "RMB_AID — Research Methodology Based AI Development. A structured scientific problem-solving framework for AI coding assistants.",
+  "version": "6.2.2",
+  "description": "SMART — Scientific Methodology for AI Research and Technology with specialized agents and workflows.",
   "keywords": [
     "research",
     "methodology",
+    "smart",
     "ai",
     "agents",
     "science",
     "computational",
     "problem-solving",
     "claude-code",
-    "cursor"
+    "cursor",
+    "codex",
+    "copilot",
+    "installer",
+    "workflow"
   ],
-  "author": "Ishwar",
-  "license": "MIT",
-  "bin": {
-    "rmb-aid": "./install.js"
-  },
-  "scripts": {
-    "install-framework": "node install.js",
-    "quality": "node --check install.js && test -f .rmbaid-core/rmbaid-core.md && test -f .rmbaid-core/skills/rmbaid-help.md && test -f .rmbaid-core/workflows/new-solution-fullstack.md && test -f .rmbaid-core/workflows/existing-solution-fullstack.md"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
+  "homepage": "https://github.com/ishwrknt/rmb-aid#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_GITHUB_USERNAME/rmb-aid"
+    "url": "https://github.com/ishwrknt/rmb-aid.git"
   },
-  "homepage": "https://github.com/YOUR_GITHUB_USERNAME/rmb-aid#readme",
+  "bugs": {
+    "url": "https://github.com/ishwrknt/rmb-aid/issues"
+  },
+  "license": "MIT",
+  "author": "Ishwar",
+  "bin": {
+    "rmb-aid": "./tools/installer/rmbaid-cli.js",
+    "rmbaid": "./tools/installer/rmbaid-cli.js",
+    "smart": "./tools/installer/rmbaid-cli.js"
+  },
   "files": [
-    ".rmbaid-core",
+    "src",
+    "tools",
     "README.md",
     "LICENSE",
     "install.js"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "docs:build": "node tools/build-docs.mjs",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "install-framework": "node install.js",
+    "lint": "eslint .",
+    "lint:md": "markdownlint-cli2",
+    "quality": "npm run format:check && npm run lint && npm run lint:md && npm run docs:build && npm run test:install && npm run test:refs && npm run test:rehype && npm run validate:refs && npm run validate:skills",
+    "test:install": "node test/test-installation-components.js",
+    "test:refs": "node test/test-file-refs-csv.js",
+    "test:rehype": "node test/test-rehype-plugins.mjs",
+    "validate:refs": "node tools/validate-file-refs.js --strict",
+    "validate:skills": "node tools/validate-skills.js --strict"
+  },
+  "dependencies": {
+    "@clack/core": "^1.0.0",
+    "@clack/prompts": "^1.0.0",
+    "@kayvan/markdown-tree-parser": "^1.6.1",
+    "chalk": "^4.1.2",
+    "commander": "^14.0.0",
+    "csv-parse": "^6.1.0",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.3",
+    "ignore": "^7.0.5",
+    "js-yaml": "^4.1.0",
+    "picocolors": "^1.1.1",
+    "semver": "^7.6.3",
+    "xml2js": "^0.6.2",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/starlight": "^0.37.5",
+    "@eslint/js": "^9.33.0",
+    "astro": "^5.16.0",
+    "c8": "^10.1.3",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^17.21.3",
+    "eslint-plugin-unicorn": "^60.0.0",
+    "eslint-plugin-yml": "^1.18.0",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.1.1",
+    "markdownlint-cli2": "^0.19.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-packagejson": "^2.5.19",
+    "sharp": "^0.33.5",
+    "yaml-eslint-parser": "^1.2.3",
+    "yaml-lint": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
 }

@@ -120,9 +120,15 @@ async function createSkillCollisionFixture() {
   await fs.ensureDir(agentDir);
   await fs.writeFile(
     path.join(agentDir, 'rmbaid-master.md'),
-    ['---', 'name: RMB_AID Master', 'description: Master agent', '---', '', '<agent name="RMB_AID Master" title="Master">', '</agent>'].join(
-      '\n',
-    ),
+    [
+      '---',
+      'name: RMB_AID Master',
+      'description: Master agent',
+      '---',
+      '',
+      '<agent name="RMB_AID Master" title="Master">',
+      '</agent>',
+    ].join('\n'),
   );
 
   return { root: fixtureRoot, rmbaidDir: fixtureDir };
@@ -719,7 +725,10 @@ async function runTests() {
     // Verify name frontmatter matches directory name
     const skillContent17 = await fs.readFile(skillFile17, 'utf8');
     const nameMatch17 = skillContent17.match(/^name:\s*(.+)$/m);
-    assert(nameMatch17 && nameMatch17[1].trim() === 'rmbaid-master', 'GitHub Copilot skill name frontmatter matches directory name exactly');
+    assert(
+      nameMatch17 && nameMatch17[1].trim() === 'rmbaid-master',
+      'GitHub Copilot skill name frontmatter matches directory name exactly',
+    );
 
     assert(!(await fs.pathExists(legacyAgentsDir17)), 'GitHub Copilot setup removes legacy agents dir');
 

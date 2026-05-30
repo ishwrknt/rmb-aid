@@ -1,5 +1,5 @@
 ---
-title: "如何安装 RMB_AID"
+title: '如何安装 RMB_AID'
 description: 在项目中安装 RMB_AID 的分步指南
 sidebar:
   order: 1
@@ -16,10 +16,11 @@ sidebar:
 - 更新现有的 RMB_AID 安装
 
 :::note[前置条件]
+
 - **Node.js** 20+（安装程序必需）
 - **Git**（推荐）
 - **AI 工具**（Claude Code、Cursor 或类似工具）
-:::
+  :::
 
 ## 步骤
 
@@ -31,6 +32,7 @@ npx rmb-aid install
 
 :::tip[想要最新预发布版本？]
 使用 `next` 发布标签：
+
 ```bash
 npx rmb-aid@next install
 ```
@@ -40,9 +42,11 @@ npx rmb-aid@next install
 
 :::tip[前沿版本]
 要从主分支安装最新版本（可能不稳定）：
+
 ```bash
 npx github:rmbaid-code-org/RMB_AID install
 ```
+
 :::
 
 ### 2. 选择安装位置
@@ -102,11 +106,13 @@ your-project/
 运行 `rmbaid-help` 来验证一切正常并查看下一步操作。
 
 **RMB_AID-Help 是你的智能向导**，它会：
+
 - 确认你的安装正常工作
 - 根据你安装的模块显示可用内容
 - 推荐你的第一步
 
 你也可以向它提问：
+
 ```
 rmbaid-help 我刚安装完成，应该先做什么？
 rmbaid-help 对于 SaaS 项目我有哪些选项？
@@ -117,4 +123,3 @@ rmbaid-help 对于 SaaS 项目我有哪些选项？
 **安装程序抛出错误**——将输出复制粘贴到你的 AI 助手中，让它来解决问题。
 
 **安装程序工作正常但后续出现问题**——你的 AI 需要 RMB_AID 上下文才能提供帮助。请参阅[如何获取关于 RMB_AID 的答案](./get-answers-about-rmbaid.md)了解如何将你的 AI 指向正确的来源。
-

@@ -1,5 +1,5 @@
 ---
-title: "Checkpoint Preview"
+title: 'Checkpoint Preview'
 description: LLM-assisted human-in-the-loop review that guides you through a change from purpose to details
 sidebar:
   order: 3
@@ -37,7 +37,7 @@ This is the "is this what I think it is?" moment. Before reading any code, the r
 
 ### 2. Walkthrough
 
-The change is organized by **concern** — cohesive design intents like "input validation" or "API contract" — not by file. Each concern gets a short explanation of *why* this approach was chosen, followed by clickable `path:line` stops that the reviewer can follow through the code.
+The change is organized by **concern** — cohesive design intents like "input validation" or "API contract" — not by file. Each concern gets a short explanation of _why_ this approach was chosen, followed by clickable `path:line` stops that the reviewer can follow through the code.
 
 This is the design judgment step. The reviewer evaluates whether the approach is right for the system, not whether the code is correct. Concerns are sequenced top-down: the highest-level intent first, then supporting implementation. The reviewer never encounters a reference to something they haven't seen yet.
 

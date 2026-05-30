@@ -1,5 +1,5 @@
 ---
-title: "Project Context"
+title: 'Project Context'
 description: How project-context.md guides AI agents with your project's rules and preferences
 sidebar:
   order: 7
@@ -10,6 +10,7 @@ The `project-context.md` file is your project's implementation guide for AI agen
 ## What It Does
 
 AI agents make implementation decisions constantly — which patterns to follow, how to structure code, what conventions to use. Without clear guidance, they may:
+
 - Follow generic best practices that don't match your codebase
 - Make inconsistent decisions across different stories
 - Miss project-specific requirements or constraints
@@ -21,6 +22,7 @@ The `project-context.md` file solves this by documenting what agents need to kno
 Every implementation workflow automatically loads `project-context.md` if it exists. The architect workflow also loads it to respect your technical preferences when designing the architecture.
 
 **Loaded by these workflows:**
+
 - `rmbaid-create-architecture` — respects technical preferences during solutioning
 - `rmbaid-create-story` — informs story creation with project patterns
 - `rmbaid-dev-story` — guides implementation decisions
@@ -32,12 +34,12 @@ Every implementation workflow automatically loads `project-context.md` if it exi
 
 The `project-context.md` file is useful at any stage of a project:
 
-| Scenario | When to Create | Purpose |
-|----------|----------------|---------|
-| **New project, before architecture** | Manually, before `rmbaid-create-architecture` | Document your technical preferences so the architect respects them |
-| **New project, after architecture** | Via `rmbaid-generate-project-context` or manually | Capture architecture decisions for implementation agents |
-| **Existing project** | Via `rmbaid-generate-project-context` | Discover existing patterns so agents follow established conventions |
-| **Quick Flow project** | Before or during `rmbaid-quick-dev` | Ensure quick implementation respects your patterns |
+| Scenario                             | When to Create                                    | Purpose                                                             |
+| ------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------------- |
+| **New project, before architecture** | Manually, before `rmbaid-create-architecture`     | Document your technical preferences so the architect respects them  |
+| **New project, after architecture**  | Via `rmbaid-generate-project-context` or manually | Capture architecture decisions for implementation agents            |
+| **Existing project**                 | Via `rmbaid-generate-project-context`             | Discover existing patterns so agents follow established conventions |
+| **Quick Flow project**               | Before or during `rmbaid-quick-dev`               | Ensure quick implementation respects your patterns                  |
 
 :::tip[Recommended]
 For new projects, create it manually before architecture if you have strong technical preferences. Otherwise, generate it after architecture to capture those decisions.
@@ -68,20 +70,24 @@ Documents patterns and conventions that agents might otherwise miss:
 ## Critical Implementation Rules
 
 **TypeScript Configuration:**
+
 - Strict mode enabled — no `any` types without explicit approval
 - Use `interface` for public APIs, `type` for unions/intersections
 
 **Code Organization:**
+
 - Components in `/src/components/` with co-located `.test.tsx`
 - Utilities in `/src/lib/` for reusable pure functions
 - API calls use the `apiClient` singleton — never fetch directly
 
 **Testing Patterns:**
+
 - Unit tests focus on business logic, not implementation details
 - Integration tests use MSW to mock API responses
 - E2E tests cover critical user journeys only
 
 **Framework-Specific:**
+
 - All async operations use the `handleError` wrapper for consistent error handling
 - Feature flags accessed via `featureFlag()` from `@/lib/flags`
 - New routes follow the file-based routing pattern in `/src/app/`
@@ -129,14 +135,15 @@ The workflow analyzes your codebase to identify conventions, then generates a co
 
 Without `project-context.md`, agents make assumptions that may not match your project:
 
-| Without Context | With Context |
-|----------------|--------------|
-| Uses generic patterns | Follows your established conventions |
-| Inconsistent style across stories | Consistent implementation |
-| May miss project-specific constraints | Respects all technical requirements |
-| Each agent decides independently | All agents align with same rules |
+| Without Context                       | With Context                         |
+| ------------------------------------- | ------------------------------------ |
+| Uses generic patterns                 | Follows your established conventions |
+| Inconsistent style across stories     | Consistent implementation            |
+| May miss project-specific constraints | Respects all technical requirements  |
+| Each agent decides independently      | All agents align with same rules     |
 
 This is especially important for:
+
 - **Quick Flow** — skips PRD and architecture, so context file fills the gap
 - **Team projects** — ensures all agents follow the same standards
 - **Existing projects** — prevents breaking established patterns

@@ -1,5 +1,5 @@
 ---
-title: "Động não ý tưởng"
+title: 'Động não ý tưởng'
 description: Các phiên sáng tạo tương tác sử dụng hơn 60 kỹ thuật khơi ý đã được kiểm chứng
 sidebar:
   order: 2

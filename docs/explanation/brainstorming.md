@@ -1,5 +1,5 @@
 ---
-title: "Brainstorming"
+title: 'Brainstorming'
 description: Interactive creative sessions using 60+ proven ideation techniques
 sidebar:
   order: 2

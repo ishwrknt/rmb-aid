@@ -1,5 +1,5 @@
 ---
-title: "Gérer le contexte du projet"
+title: 'Gérer le contexte du projet'
 description: Créer et maintenir project-context.md pour guider les agents IA
 sidebar:
   order: 8
@@ -8,9 +8,10 @@ sidebar:
 Utilisez le fichier `project-context.md` pour garantir que les agents IA respectent les préférences techniques et les règles d'implémentation de votre projet tout au long des workflows. Pour vous assurer qu'il est toujours disponible, vous pouvez également ajouter la ligne `Le contexte et les conventions importantes du projet se trouvent dans [chemin vers le contexte du projet]/project-context.md` à votre fichier de contexte ou de règles permanentes (comme `AGENTS.md`).
 
 :::note[Prérequis]
+
 - Méthode RMB_AID installée
 - Connaissance de la pile technologique et des conventions de votre projet
-:::
+  :::
 
 ## Quand utiliser cette fonctionnalité
 
@@ -60,14 +61,17 @@ sections_completed: ['technology_stack', 'critical_rules']
 ## Règles d'Implémentation Critiques
 
 **TypeScript :**
+
 - Mode strict activé, pas de types `any`
 - Utiliser `interface` pour les API publiques, `type` pour les unions
 
 **Organisation du Code :**
+
 - Composants dans `/src/components/` avec tests co-localisés
 - Les appels API utilisent le singleton `apiClient` — jamais de fetch direct
 
 **Tests :**
+
 - Tests unitaires axés sur la logique métier
 - Tests d'intégration utilisent MSW pour le mock API
 ```
@@ -115,11 +119,12 @@ Un fichier `project-context.md` qui :
 ## Conseils
 
 :::tip[Bonnes pratiques]
+
 - **Concentrez-vous sur ce qui n'est pas évident** — Documentez les patterns que les agents pourraient manquer (par ex. « Utiliser JSDoc sur chaque classe publique »), et non les pratiques universelles comme « utiliser des noms de variables significatifs ».
 - **Gardez-le concis** — Ce fichier est chargé par chaque workflow d'implémentation. Les fichiers longs gaspillent le contexte. Excluez le contenu qui ne s'applique qu'à un périmètre restreint ou à des stories spécifiques.
 - **Mettez à jour si nécessaire** — Modifiez manuellement lorsque les patterns changent, ou régénérez après des changements d'architecture significatifs.
 - Fonctionne aussi bien pour Quick Dev que pour les projets complets méthode RMB_AID.
-:::
+  :::
 
 ## Prochaines étapes
 

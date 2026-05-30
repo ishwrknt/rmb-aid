@@ -1,10 +1,9 @@
 ---
-title: "Why Solutioning Matters"
+title: 'Why Solutioning Matters'
 description: Understanding why the solutioning phase is critical for multi-epic projects
 sidebar:
   order: 3
 ---
-
 
 Phase 3 (Solutioning) translates **what** to build (from Planning) into **how** to build it (technical design). This phase prevents agent conflicts in multi-epic projects by documenting architectural decisions before implementation begins.
 
@@ -44,6 +43,7 @@ By documenting technical decisions explicitly, all agents implement consistently
 **Make technical decisions explicit and documented** so all agents implement consistently.
 
 This prevents:
+
 - API style conflicts (REST vs GraphQL)
 - Database design inconsistencies
 - State management disagreements
@@ -52,12 +52,12 @@ This prevents:
 
 ## When Solutioning is Required
 
-| Track | Solutioning Required? |
-|-------|----------------------|
-| Quick Flow | No - skip entirely |
-| RMB_AID Simple | Optional |
-| RMB_AID Complex | Yes |
-| Enterprise | Yes |
+| Track           | Solutioning Required? |
+| --------------- | --------------------- |
+| Quick Flow      | No - skip entirely    |
+| RMB_AID Simple  | Optional              |
+| RMB_AID Complex | Yes                   |
+| Enterprise      | Yes                   |
 
 :::tip[Rule of Thumb]
 If you have multiple epics that could be implemented by different agents, you need solutioning.

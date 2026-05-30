@@ -278,7 +278,9 @@ class ConfigDrivenIdeSetup {
       const rmbaidFiles = entries.filter((e) => typeof e === 'string' && e.startsWith('rmbaid'));
 
       if (rmbaidFiles.length > 0 && !options.silent) {
-        await prompts.log.warn(`Found ${rmbaidFiles.length} stale RMB_AID file(s) in ${expanded}. Remove manually: rm ${expanded}/rmbaid-*`);
+        await prompts.log.warn(
+          `Found ${rmbaidFiles.length} stale RMB_AID file(s) in ${expanded}. Remove manually: rm ${expanded}/rmbaid-*`,
+        );
       }
     } catch {
       // Errors reading global paths are silently ignored

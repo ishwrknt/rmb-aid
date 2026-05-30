@@ -1,5 +1,5 @@
 ---
-title: "智能体"
+title: '智能体'
 description: 默认 RMB_AID 智能体的 skill ID、触发器与主要 workflow 速查。
 sidebar:
   order: 2
@@ -9,14 +9,14 @@ sidebar:
 
 ## 默认智能体列表
 
-| 智能体 | Skill ID | 触发器 | 主要 workflow |
-| --- | --- | --- | --- |
-| Analyst (Mary) | `rmbaid-analyst` | `BP`、`RS`、`CB`、`DP` | Brainstorm、Research、Create Brief、Document Project |
-| Product Manager (John) | `rmbaid-pm` | `CP`、`VP`、`EP`、`CE`、`IR`、`CC` | Create/Validate/Edit PRD、Create Epics and Stories、Implementation Readiness、Correct Course |
-| Architect (Winston) | `rmbaid-architect` | `CA`、`IR` | Create Architecture、Implementation Readiness |
-| Developer (Amelia) | `rmbaid-agent-dev` | `DS`、`QD`、`QA`、`CR`、`SP`、`CS`、`ER` | Dev Story、Quick Dev、QA Test Generation、Code Review、Sprint Planning、Create Story、Epic Retrospective |
-| UX Designer (Sally) | `rmbaid-ux-designer` | `CU` | Create UX Design |
-| Technical Writer (Paige) | `rmbaid-tech-writer` | `DP`、`WD`、`US`、`MG`、`VD`、`EC` | Document Project、Write Document、Update Standards、Mermaid Generate、Validate Doc、Explain Concept |
+| 智能体                   | Skill ID             | 触发器                                   | 主要 workflow                                                                                            |
+| ------------------------ | -------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Analyst (Mary)           | `rmbaid-analyst`     | `BP`、`RS`、`CB`、`DP`                   | Brainstorm、Research、Create Brief、Document Project                                                     |
+| Product Manager (John)   | `rmbaid-pm`          | `CP`、`VP`、`EP`、`CE`、`IR`、`CC`       | Create/Validate/Edit PRD、Create Epics and Stories、Implementation Readiness、Correct Course             |
+| Architect (Winston)      | `rmbaid-architect`   | `CA`、`IR`                               | Create Architecture、Implementation Readiness                                                            |
+| Developer (Amelia)       | `rmbaid-agent-dev`   | `DS`、`QD`、`QA`、`CR`、`SP`、`CS`、`ER` | Dev Story、Quick Dev、QA Test Generation、Code Review、Sprint Planning、Create Story、Epic Retrospective |
+| UX Designer (Sally)      | `rmbaid-ux-designer` | `CU`                                     | Create UX Design                                                                                         |
+| Technical Writer (Paige) | `rmbaid-tech-writer` | `DP`、`WD`、`US`、`MG`、`VD`、`EC`       | Document Project、Write Document、Update Standards、Mermaid Generate、Validate Doc、Explain Concept      |
 
 ## 使用说明
 
@@ -36,13 +36,13 @@ sidebar:
 
 部分触发器进入自由对话模式，需要你在触发码后描述需求。
 
-| 智能体 | 触发器 | 你需要提供的内容 |
-| --- | --- | --- |
-| Technical Writer (Paige) | `WD` | 要撰写的文档主题与目标 |
-| Technical Writer (Paige) | `US` | 要补充到标准中的偏好/规范 |
-| Technical Writer (Paige) | `MG` | 图示类型与图示内容描述 |
-| Technical Writer (Paige) | `VD` | 待验证文档与关注点 |
-| Technical Writer (Paige) | `EC` | 需要解释的概念名称 |
+| 智能体                   | 触发器 | 你需要提供的内容          |
+| ------------------------ | ------ | ------------------------- |
+| Technical Writer (Paige) | `WD`   | 要撰写的文档主题与目标    |
+| Technical Writer (Paige) | `US`   | 要补充到标准中的偏好/规范 |
+| Technical Writer (Paige) | `MG`   | 图示类型与图示内容描述    |
+| Technical Writer (Paige) | `VD`   | 待验证文档与关注点        |
+| Technical Writer (Paige) | `EC`   | 需要解释的概念名称        |
 
 示例：
 

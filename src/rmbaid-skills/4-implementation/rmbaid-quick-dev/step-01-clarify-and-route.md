@@ -60,7 +60,6 @@ Never ask extra questions if you already understand what the user intends.
 
    **b) Plan-code-review** — everything else. When uncertain whether blast radius is truly zero, choose this path.
 
-
 ## NEXT
 
 Read fully and follow `./step-02-plan.md`

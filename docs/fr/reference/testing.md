@@ -9,10 +9,10 @@ RMB_AID propose deux approches de test : un workflow QA[^1] intégré pour une g
 
 ## Lequel Choisir ?
 
-| Facteur                 | QA Intégré                           | Module TEA                                                          |
-|-------------------------|----------------------------------------------|---------------------------------------------------------------------|
+| Facteur                 | QA Intégré                                   | Module TEA                                                          |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------- |
 | **Idéal pour**          | Projets petits et moyens, couverture rapide  | Grands projets, domaines réglementés ou complexes                   |
-| **Installation**        | Rien à installer — inclus dans RMB_AID          | Installer séparément via `npx rmb-aid install`                  |
+| **Installation**        | Rien à installer — inclus dans RMB_AID       | Installer séparément via `npx rmb-aid install`                      |
 | **Approche**            | Générer les tests rapidement, itérer ensuite | Planifier d'abord, puis générer avec traçabilité                    |
 | **Types de tests**      | Tests API et E2E                             | API, E2E, ATDD[^2], NFR, et plus                                    |
 | **Stratégie**           | Chemin nominal + cas limites critiques       | Priorisation basée sur les risques (P0-P3)                          |
@@ -72,7 +72,7 @@ TEA est un module autonome qui fournit un agent expert (Murat) et neuf workflows
 ### Ce que TEA Fournit
 
 | Workflow              | Objectif                                                                             |
-|-----------------------|--------------------------------------------------------------------------------------|
+| --------------------- | ------------------------------------------------------------------------------------ |
 | Test Design           | Créer une stratégie de test complète liée aux exigences                              |
 | ATDD                  | Développement piloté par les tests d'acceptation avec critères des parties prenantes |
 | Automate              | Générer des tests avec des patterns et utilitaires avancés                           |
@@ -108,4 +108,5 @@ Pour en savoir plus sur la place des tests dans le processus global, consultez l
 ## Glossaire
 
 [^1]: QA (Quality Assurance) : assurance qualité, ensemble des processus et activités visant à garantir que le produit logiciel répond aux exigences de qualité définies.
+
 [^2]: ATDD (Acceptance Test-Driven Development) : méthode de développement où les tests d'acceptation sont écrits avant le code, en collaboration avec les parties prenantes pour définir les critères de réussite.

@@ -7,9 +7,9 @@ const installer = new Installer();
 
 module.exports = {
   command: 'uninstall',
-  description: 'Remove RMB_AID installation from the current project',
+  description: 'Remove SMART installation from the current project',
   options: [
-    ['-y, --yes', 'Remove all RMB_AID components without prompting (preserves user artifacts)'],
+    ['-y, --yes', 'Remove all SMART components without prompting (preserves user artifacts)'],
     ['--directory <path>', 'Project directory (default: current directory)'],
   ],
   action: async (options) => {
@@ -26,7 +26,7 @@ module.exports = {
         // Interactive: ask user which directory to uninstall from
         // select() handles cancellation internally (exits process)
         const dirChoice = await prompts.select({
-          message: 'Where do you want to uninstall RMB_AID from?',
+          message: 'Where do you want to uninstall SMART from?',
           choices: [
             { value: 'cwd', name: `Current directory (${process.cwd()})` },
             { value: 'other', name: 'Another directory...' },
@@ -57,7 +57,7 @@ module.exports = {
       const { rmbaidDir } = await installer.findRmbaidDir(projectDir);
 
       if (!(await fs.pathExists(rmbaidDir))) {
-        await prompts.log.warn('No RMB_AID installation found.');
+        await prompts.log.warn('No SMART installation found.');
         process.exit(0);
       }
 
@@ -68,7 +68,7 @@ module.exports = {
 
       const outputFolder = await installer.getOutputFolder(projectDir);
 
-      await prompts.intro('RMB_AID Uninstall');
+      await prompts.intro('SMART Uninstall');
       await prompts.note(`Version: ${version}\nModules: ${modules}\nIDE integrations: ${ides}`, 'Current Installation');
 
       let removeModules = true;
@@ -82,7 +82,7 @@ module.exports = {
           options: [
             {
               value: 'modules',
-              label: `RMB_AID Modules & data (${installer.rmbaidFolderName}/)`,
+              label: `SMART Modules & data (${installer.rmbaidFolderName}/)`,
               hint: 'Core installation, agents, workflows, config',
             },
             { value: 'ide', label: 'IDE integrations', hint: ides || 'No IDEs configured' },
@@ -133,10 +133,10 @@ module.exports = {
         s.stop('User artifacts removed');
       }
 
-      // Phase 3: RMB_AID modules & data (last — other phases may need _rmbaid/)
+      // Phase 3: SMART modules & data (last — other phases may need _rmbaid/)
       if (removeModules) {
         const s = await prompts.spinner();
-        s.start(`Removing RMB_AID modules & data (${installer.rmbaidFolderName}/)...`);
+        s.start(`Removing SMART modules & data (${installer.rmbaidFolderName}/)...`);
         await installer.uninstallModules(projectDir);
         s.stop('Modules & data removed');
       }

@@ -60,11 +60,11 @@ npx rmb-aid install --directory /path/to/project --modules bmm --tools claude-co
 
 RMB_AID có thể được mở rộng bằng các mô-đun chính thức cho những miền chuyên biệt. Chúng có sẵn trong lúc cài đặt hoặc bất kỳ lúc nào sau đó.
 
-| Module                                                                                                            | Mục đích                                           |
-| ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **[RMB_AID (BMM)](https://github.com/rmbaid-code-org/RMB_AID)**                                             | Khung lõi với hơn 34 quy trình                     |
-| **[RMB_AID Builder (BMB)](https://github.com/rmbaid-code-org/rmbaid-builder)**                                           | Tạo agent và quy trình RMB_AID tùy chỉnh             |
-| **[Test Architect (TEA)](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)**             | Chiến lược kiểm thử và tự động hóa dựa trên rủi ro |
+| Module                                                                                                                | Mục đích                                           |
+| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **[RMB_AID (BMM)](https://github.com/rmbaid-code-org/RMB_AID)**                                                       | Khung lõi với hơn 34 quy trình                     |
+| **[RMB_AID Builder (BMB)](https://github.com/rmbaid-code-org/rmbaid-builder)**                                        | Tạo agent và quy trình RMB_AID tùy chỉnh           |
+| **[Test Architect (TEA)](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)**                   | Chiến lược kiểm thử và tự động hóa dựa trên rủi ro |
 | **[Game Dev Studio (BMGD)](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)**                        | Quy trình phát triển game (Unity, Unreal, Godot)   |
 | **[Creative Intelligence Suite (CIS)](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)** | Đổi mới, động não ý tưởng, tư duy thiết kế         |
 
@@ -73,6 +73,7 @@ RMB_AID có thể được mở rộng bằng các mô-đun chính thức cho nh
 [Trang tài liệu RMB_AID](https://docs.rmb-aid.org/vi-vn/) - bài hướng dẫn, hướng dẫn tác vụ, giải thích khái niệm và tài liệu tham chiếu
 
 **Liên kết nhanh:**
+
 - [Hướng dẫn bắt đầu](https://docs.rmb-aid.org/vi-vn/tutorials/getting-started/)
 - [Nâng cấp từ các phiên bản trước](https://docs.rmb-aid.org/vi-vn/how-to/upgrade-to-v6/)
 - [Tài liệu Test Architect](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)

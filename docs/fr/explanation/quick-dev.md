@@ -1,5 +1,5 @@
 ---
-title: "Quick Dev"
+title: 'Quick Dev'
 description: Réduire la friction de l’interaction humaine sans renoncer aux points de contrôle qui protègent la qualité des résultats
 sidebar:
   order: 2
@@ -75,5 +75,7 @@ Ce triage sera parfois imparfait. C’est acceptable. Il est généralement pré
 ## Glossaire
 
 [^1]: Sous-agent : agent IA secondaire créé temporairement pour effectuer une tâche spécifique (comme une revue de code) de manière isolée, sans hériter du contexte complet de l’agent principal, ce qui permet une analyse plus objective et impartiale.
+
 [^2]: Revues agentiques (agentic review) : revue de code effectuée par un agent IA de manière autonome, capable d’analyser, d’identifier des problèmes et de formuler des recommandations sans intervention humaine directe.
+
 [^3]: Triage : processus de filtrage et de priorisation des observations issues d’une revue, afin de distinguer les problèmes pertinents à traiter immédiatement de ceux qui peuvent être mis de côté pour plus tard.

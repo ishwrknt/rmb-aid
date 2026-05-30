@@ -18,6 +18,7 @@ When this skill completes, the user should:
 3. **Know how to invoke it** — skill name, menu code, action context, and any args that shortcut the conversation
 4. **Get offered a quick start** — when a single skill is the clear next step, offer to run it for the user right now rather than just listing it
 5. **Feel oriented, not overwhelmed** — surface only what's relevant to their current position; don't dump the entire catalog
+6. **Understand renamed aliases** — if they ask using renamed compatibility commands such as `elevate`, `verify`, `expert-view`, `scout`, or `builder`, map them to the matching RMB_AID skill
 
 ## Data Sources
 
@@ -35,19 +36,23 @@ module,skill,display-name,menu-code,description,action,args,phase,after,before,r
 ```
 
 **Phases** determine the high-level flow:
+
 - `anytime` — available regardless of workflow state
 - Numbered phases (`1-analysis`, `2-planning`, etc.) flow in order; naming varies by module
 
 **Dependencies** determine ordering within and across phases:
+
 - `after` — skills that should ideally complete before this one
 - `before` — skills that should run after this one
 - Format: `skill-name` for single-action skills, `skill-name:action` for multi-action skills
 
 **Required gates**:
+
 - `required=true` items must complete before the user can meaningfully proceed to later phases
 - A phase with no required items is entirely optional — recommend it but be clear about what's actually required next
 
 **Completion detection**:
+
 - Search resolved output paths for `outputs` patterns
 - Fuzzy-match found files to catalog rows
 - User may also state completion explicitly, or it may be evident from the current conversation
@@ -57,6 +62,7 @@ module,skill,display-name,menu-code,description,action,args,phase,after,before,r
 ## Response Format
 
 For each recommended item, present:
+
 - `[menu-code]` **Display name** — e.g., "[CP] Create PRD"
 - Skill name in backticks — e.g., `rmbaid-create-prd`
 - For multi-action skills: action invocation context — e.g., "tech-writer lets create a mermaid diagram!"
@@ -71,3 +77,7 @@ For each recommended item, present:
 - Recommend running each skill in a **fresh context window**
 - Match the user's tone — conversational when they're casual, structured when they want specifics
 - If the active module is ambiguous, ask rather than guess
+- Recognize renamed compatibility commands and persona aliases:
+  - Modes: `elevate`, `verify`, `expert-view`, `ideate`, `squad`
+  - Personas: `scout`, `strategist`, `systems`, `builder`, `experience`, `scribe`
+- Recognize quick keys `A`, `C`, and `Z` when the user is clearly referring to the renamed command layer

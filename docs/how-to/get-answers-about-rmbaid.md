@@ -1,5 +1,5 @@
 ---
-title: "How to Get Answers About RMB_AID"
+title: 'How to Get Answers About RMB_AID'
 description: Use an LLM to quickly answer your own RMB_AID questions
 sidebar:
   order: 4
@@ -10,6 +10,7 @@ sidebar:
 **The fastest way to get answers about RMB_AID is the `rmbaid-help` skill.** This intelligent guide will answer upwards of 80% of all questions and is available to you directly in your IDE as you work.
 
 RMB_AID-Help is more than a lookup tool — it:
+
 - **Inspects your project** to see what's already been completed
 - **Understands natural language** — ask questions in plain English
 - **Varies based on your installed modules** — shows relevant options
@@ -38,6 +39,7 @@ rmbaid-help Show me what's been done so far
 ```
 
 RMB_AID-Help responds with:
+
 - What's recommended for your situation
 - What the first required task is
 - What the rest of the process looks like
@@ -45,6 +47,7 @@ RMB_AID-Help responds with:
 ## When to Use This Guide
 
 Use this section when:
+
 - You want to understand RMB_AID's architecture or internals
 - You need answers outside of what RMB_AID-Help provides
 - You're researching RMB_AID before installing
@@ -54,11 +57,11 @@ Use this section when:
 
 ### 1. Choose Your Source
 
-| Source               | Best For                                  | Examples                     |
-| -------------------- | ----------------------------------------- | ---------------------------- |
-| **`_rmbaid` folder**   | How RMB_AID works—agents, workflows, prompts | "What does the PM agent do?" |
-| **Full GitHub repo** | History, installer, architecture          | "What changed in v6?"        |
-| **`llms-full.txt`**  | Quick overview from docs                  | "Explain RMB_AID's four phases" |
+| Source               | Best For                                     | Examples                        |
+| -------------------- | -------------------------------------------- | ------------------------------- |
+| **`_rmbaid` folder** | How RMB_AID works—agents, workflows, prompts | "What does the PM agent do?"    |
+| **Full GitHub repo** | History, installer, architecture             | "What changed in v6?"           |
+| **`llms-full.txt`**  | Quick overview from docs                     | "Explain RMB_AID's four phases" |
 
 The `_rmbaid` folder is created when you install RMB_AID. If you don't have it yet, clone the repo instead.
 
@@ -76,7 +79,6 @@ Fetch `llms-full.txt` into your session:
 ```text
 https://rmbaid-code-org.github.io/RMB_AID/llms-full.txt
 ```
-
 
 ### 3. Ask Your Question
 
@@ -101,7 +103,7 @@ Tried the LLM approach and still need help? You now have a much better question 
 
 | Channel                   | Use For                                     |
 | ------------------------- | ------------------------------------------- |
-| `#rmb-aid-help`       | Quick questions (real-time chat)            |
+| `#rmb-aid-help`           | Quick questions (real-time chat)            |
 | `help-requests` forum     | Detailed questions (searchable, persistent) |
 | `#suggestions-feedback`   | Ideas and feature requests                  |
 | `#report-bugs-and-issues` | Bug reports                                 |
@@ -110,27 +112,27 @@ Tried the LLM approach and still need help? You now have a much better question 
 
 **GitHub Issues:** [github.com/rmbaid-code-org/RMB_AID/issues](https://github.com/rmbaid-code-org/RMB_AID/issues) (for clear bugs)
 
-*You!*
-        *Stuck*
-             *in the queue—*
-                      *waiting*
-                              *for who?*
+_You!_
+_Stuck_
+_in the queue—_
+_waiting_
+_for who?_
 
-*The source*
-        *is there,*
-                *plain to see!*
+_The source_
+_is there,_
+_plain to see!_
 
-*Point*
-     *your machine.*
-              *Set it free.*
+_Point_
+_your machine._
+_Set it free._
 
-*It reads.*
-        *It speaks.*
-                *Ask away—*
+_It reads._
+_It speaks._
+_Ask away—_
 
-*Why wait*
-        *for tomorrow*
-                *when you have*
-                        *today?*
+_Why wait_
+_for tomorrow_
+_when you have_
+_today?_
 
-*—Claude*
+_—Claude_

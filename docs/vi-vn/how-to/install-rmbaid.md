@@ -1,11 +1,13 @@
 ---
-title: "Cách cài đặt RMB_AID"
+title: 'Cách cài đặt RMB_AID'
 description: Hướng dẫn từng bước để cài đặt RMB_AID vào dự án của bạn
 sidebar:
   order: 1
 ---
 
 Sử dụng lệnh `npx rmb-aid install` để thiết lập RMB_AID trong dự án của bạn với các module và công cụ AI theo lựa chọn.
+
+Tên package được phát hành trên npm là `rmb-aid`. `rmbaid` là alias lệnh, nhưng với cài đặt mới qua `npx` thì hãy dùng `rmb-aid`.
 
 Nếu bạn muốn dùng trình cài đặt không tương tác và cung cấp toàn bộ tùy chọn ngay trên dòng lệnh, xem [hướng dẫn này](./non-interactive-installation.md).
 
@@ -16,10 +18,11 @@ Nếu bạn muốn dùng trình cài đặt không tương tác và cung cấp t
 - Cập nhật bản cài đặt RMB_AID hiện tại
 
 :::note[Điều kiện tiên quyết]
+
 - **Node.js** 20+ (bắt buộc cho trình cài đặt)
 - **Git** (khuyến nghị)
 - **Công cụ AI** (Claude Code, Cursor, hoặc tương tự)
-:::
+  :::
 
 ## Các bước thực hiện
 
@@ -31,6 +34,7 @@ npx rmb-aid install
 
 :::tip[Muốn dùng bản prerelease mới nhất?]
 Sử dụng dist-tag `next`:
+
 ```bash
 npx rmb-aid@next install
 ```
@@ -40,9 +44,11 @@ Cách này giúp bạn nhận các thay đổi mới sớm hơn, đổi lại kh
 
 :::tip[Bản rất mới]
 Để cài đặt trực tiếp từ nhánh `main` mới nhất (có thể không ổn định):
+
 ```bash
 npx github:rmbaid-code-org/RMB_AID install
 ```
+
 :::
 
 ### 2. Chọn vị trí cài đặt
@@ -99,11 +105,13 @@ du-an-cua-ban/
 Chạy `rmbaid-help` để xác minh mọi thứ hoạt động và xem bạn nên làm gì tiếp theo.
 
 **RMB_AID-Help là công cụ hướng dẫn thông minh** sẽ:
+
 - Xác nhận bản cài đặt hoạt động đúng
 - Hiển thị những gì có sẵn dựa trên module đã cài
 - Đề xuất bước đầu tiên của bạn
 
 Bạn cũng có thể hỏi nó:
+
 ```text
 rmbaid-help Tôi vừa cài xong, giờ nên làm gì đầu tiên?
 rmbaid-help Tôi có những lựa chọn nào cho một dự án SaaS?

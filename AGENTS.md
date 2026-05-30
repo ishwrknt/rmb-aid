@@ -1,4 +1,4 @@
-# RMB_AID
+# SMART
 
 Open source framework for structured, agent-assisted software delivery.
 

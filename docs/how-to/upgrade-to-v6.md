@@ -1,5 +1,5 @@
 ---
-title: "How to Upgrade to v6"
+title: 'How to Upgrade to v6'
 description: Migrate from RMB_AID v4 to v6
 sidebar:
   order: 3
@@ -14,9 +14,10 @@ Use the RMB_AID installer to upgrade from v4 to v6, which includes automatic det
 - You have existing planning artifacts to preserve
 
 :::note[Prerequisites]
+
 - Node.js 20+
 - Existing RMB_AID v4 installation
-:::
+  :::
 
 ## Steps
 
@@ -82,8 +83,8 @@ your-project/
 
 ## Module Migration
 
-| v4 Module                     | v6 Status                                 |
-| ----------------------------- | ----------------------------------------- |
+| v4 Module                       | v6 Status                                 |
+| ------------------------------- | ----------------------------------------- |
 | `.rmbaid-2d-phaser-game-dev`    | Integrated into BMGD Module               |
 | `.rmbaid-2d-unity-game-dev`     | Integrated into BMGD Module               |
 | `.rmbaid-godot-game-dev`        | Integrated into BMGD Module               |
@@ -92,9 +93,9 @@ your-project/
 
 ## Key Changes
 
-| Concept       | v4                                    | v6                                   |
-| ------------- | ------------------------------------- | ------------------------------------ |
+| Concept       | v4                                  | v6                                     |
+| ------------- | ----------------------------------- | -------------------------------------- |
 | **Core**      | `_rmbaid-core` was actually RMB_AID | `_rmbaid/core/` is universal framework |
-| **Method**    | `_rmbaid-method`                        | `_rmbaid/rmbaid/`                         |
-| **Config**    | Modified files directly               | `config.yaml` per module             |
-| **Documents** | Sharded or unsharded required setup   | Fully flexible, auto-scanned         |
+| **Method**    | `_rmbaid-method`                    | `_rmbaid/rmbaid/`                      |
+| **Config**    | Modified files directly             | `config.yaml` per module               |
+| **Documents** | Sharded or unsharded required setup | Fully flexible, auto-scanned           |

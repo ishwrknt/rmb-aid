@@ -1,5 +1,5 @@
 ---
-title: "Khai thác nâng cao"
+title: 'Khai thác nâng cao'
 description: Buộc LLM xem xét lại kết quả của nó bằng các phương pháp lập luận có cấu trúc
 sidebar:
   order: 6

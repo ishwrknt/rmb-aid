@@ -1,5 +1,5 @@
 ---
-title: "管理项目上下文"
+title: '管理项目上下文'
 description: 创建并维护 project-context.md 以指导 AI 智能体
 sidebar:
   order: 8
@@ -11,9 +11,10 @@ sidebar:
 `Important project context and conventions are located in [path to project context]/project-context.md`
 
 :::note[前置条件]
+
 - 已安装 RMB_AID
 - 了解项目的技术栈与团队约定
-:::
+  :::
 
 ## 何时使用
 
@@ -63,14 +64,17 @@ sections_completed: ['technology_stack', 'critical_rules']
 ## 关键实现规则
 
 **TypeScript：**
+
 - 开启严格模式，禁止使用 `any` 类型
 - 对外 API 使用 `interface`，联合类型使用 `type`
 
 **代码组织：**
+
 - 组件放在 `/src/components/`，并与测试文件同目录（co-located）
 - API 调用统一使用 `apiClient` 单例，不要直接使用 `fetch`
 
 **测试：**
+
 - 单元测试聚焦业务逻辑
 - 集成测试使用 MSW 模拟 API
 ```
@@ -118,13 +122,14 @@ rmbaid-generate-project-context
 ## 提示
 
 :::tip[最佳实践]
+
 - **聚焦“不明显但重要”的规则**：优先记录智能体容易漏掉的项目约束，而不是
   “变量要有意义”这类通用建议。
 - **保持精简**：此文件会被多数实现工作流加载，过长会浪费上下文窗口。避免写入
   只适用于单一 story 的细节。
 - **按需更新**：当团队约定变化时手动更新，或在架构发生较大变化后重新生成。
 - **适用于 Quick Flow 与完整 RMB_AID**：两种模式都可共享同一份项目上下文。
-:::
+  :::
 
 ## 后续步骤
 

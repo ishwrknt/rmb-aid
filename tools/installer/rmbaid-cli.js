@@ -44,6 +44,9 @@ async function checkForUpdate() {
         '',
         'To update, exit and first run:',
         `  npm cache clean --force && npx rmb-aid@${tag} install`,
+        '',
+        'CLI alias after package resolution:',
+        `  npx --package rmb-aid@${tag} rmbaid install`,
       ].join('\n');
       await prompts.box(updateMsg, 'Update Available', {
         rounded: true,
@@ -84,7 +87,7 @@ for (const file of commandFiles) {
 }
 
 // Set up main program
-program.version(packageJson.version).description('RMB_AID Core CLI - Universal AI agent framework');
+program.version(packageJson.version).description('SMART Core CLI - Universal AI agent framework');
 
 // Register all commands
 for (const [name, cmd] of Object.entries(commands)) {

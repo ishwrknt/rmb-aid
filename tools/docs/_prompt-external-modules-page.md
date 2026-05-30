@@ -10,8 +10,9 @@ Read `tools/installer/external-official-modules.yaml` — this is the authoritat
 
 ## Research Step
 
-For each module in the registry, visit its GitHub repository (url in the YAML record) 
+For each module in the registry, visit its GitHub repository (url in the YAML record)
 and read its README to get:
+
 - A 1-2 sentence description of what the module does
 - The key agents and workflows it provides (if listed)
 - Any notable features or use cases
@@ -29,7 +30,8 @@ Create `docs/reference/modules.md` following the project's Reference Catalog str
 ```
 
 ## Style
-use @docs/_STYLE_GUIDE.md
+
+use @docs/\_STYLE_GUIDE.md
 
 ## Frontmatter
 
@@ -54,6 +56,7 @@ title: Official Modules
 ## Existing Pages for Reference
 
 Look at these files to match the tone and style of existing reference docs:
+
 - `docs/reference/agents.md`
 - `docs/reference/commands.md`
 - `docs/reference/testing.md`

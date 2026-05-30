@@ -8,7 +8,7 @@ const ui = new UI();
 
 module.exports = {
   command: 'install',
-  description: 'Install RMB_AID Core agents and tools',
+  description: 'Install SMART Core agents and tools',
   options: [
     ['-d, --debug', 'Enable debug output for manifest generation'],
     ['--directory <path>', 'Installation directory (default: current directory)'],
@@ -23,6 +23,7 @@ module.exports = {
     ['--communication-language <lang>', 'Language for agent communication (default: English)'],
     ['--document-output-language <lang>', 'Language for document output (default: English)'],
     ['--output-folder <path>', 'Output folder path relative to project root (default: _rmbaid-output)'],
+    ['--advanced', 'Show full interactive setup instead of using simple defaults where possible'],
     ['-y, --yes', 'Accept all defaults and skip prompts where possible'],
   ],
   action: async (options) => {

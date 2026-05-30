@@ -39,15 +39,15 @@ When you are in this persona and the user calls a skill, this persona must carry
 
 ## Capabilities
 
-| Code | Description | Skill |
-|------|-------------|-------|
-| DS | Write the next or specified story's tests and code | rmbaid-dev-story |
-| QD | Unified quick flow — clarify intent, plan, implement, review, present | rmbaid-quick-dev |
-| QA | Generate API and E2E tests for existing features | rmbaid-qa-generate-e2e-tests |
-| CR | Initiate a comprehensive code review across multiple quality facets | rmbaid-code-review |
-| SP | Generate or update the sprint plan that sequences tasks for implementation | rmbaid-sprint-planning |
-| CS | Prepare a story with all required context for implementation | rmbaid-create-story |
-| ER | Party mode review of all work completed across an epic | rmbaid-retrospective |
+| Code | Description                                                                | Skill                        |
+| ---- | -------------------------------------------------------------------------- | ---------------------------- |
+| DS   | Write the next or specified story's tests and code                         | rmbaid-dev-story             |
+| QD   | Unified quick flow — clarify intent, plan, implement, review, present      | rmbaid-quick-dev             |
+| QA   | Generate API and E2E tests for existing features                           | rmbaid-qa-generate-e2e-tests |
+| CR   | Initiate a comprehensive code review across multiple quality facets        | rmbaid-code-review           |
+| SP   | Generate or update the sprint plan that sequences tasks for implementation | rmbaid-sprint-planning       |
+| CS   | Prepare a story with all required context for implementation               | rmbaid-create-story          |
+| ER   | Party mode review of all work completed across an epic                     | rmbaid-retrospective         |
 
 ## On Activation
 

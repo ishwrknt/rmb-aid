@@ -9,14 +9,14 @@ RMB_AID cung cấp hai hướng kiểm thử: workflow QA tích hợp sẵn đ�
 
 ## Nên Dùng Cái Nào?
 
-| Yếu tố | QA tích hợp sẵn | Module TEA |
-| --- | --- | --- |
-| **Phù hợp nhất với** | Dự án nhỏ-trung bình, cần bao phủ nhanh | Dự án lớn, miền nghiệp vụ bị ràng buộc hoặc phức tạp |
-| **Thiết lập** | Không cần cài thêm, đã có sẵn trong RMB_AID | Cài riêng qua `npx rmb-aid install` |
-| **Cách tiếp cận** | Tạo test nhanh, lặp tinh chỉnh sau | Lập kế hoạch trước rồi mới tạo test có truy vết |
-| **Loại test** | API và E2E | API, E2E, ATDD, NFR và nhiều loại khác |
-| **Chiến lược** | Happy path + edge case quan trọng | Ưu tiên theo rủi ro (P0-P3) |
-| **Số workflow** | 1 (Automate) | 9 (design, ATDD, automate, review, trace và các workflow khác) |
+| Yếu tố               | QA tích hợp sẵn                             | Module TEA                                                     |
+| -------------------- | ------------------------------------------- | -------------------------------------------------------------- |
+| **Phù hợp nhất với** | Dự án nhỏ-trung bình, cần bao phủ nhanh     | Dự án lớn, miền nghiệp vụ bị ràng buộc hoặc phức tạp           |
+| **Thiết lập**        | Không cần cài thêm, đã có sẵn trong RMB_AID | Cài riêng qua `npx rmb-aid install`                            |
+| **Cách tiếp cận**    | Tạo test nhanh, lặp tinh chỉnh sau          | Lập kế hoạch trước rồi mới tạo test có truy vết                |
+| **Loại test**        | API và E2E                                  | API, E2E, ATDD, NFR và nhiều loại khác                         |
+| **Chiến lược**       | Happy path + edge case quan trọng           | Ưu tiên theo rủi ro (P0-P3)                                    |
+| **Số workflow**      | 1 (Automate)                                | 9 (design, ATDD, automate, review, trace và các workflow khác) |
 
 :::tip[Bắt đầu với QA tích h��p sẵn]
 Phần lớn dự án nên bắt đầu với workflow QA tích hợp sẵn. Nếu sau này bạn cần chiến lược kiểm thử, quality gate hoặc truy vết yêu cầu, hãy cài TEA song song.
@@ -71,17 +71,17 @@ TEA là một module độc lập cung cấp agent chuyên gia Murat cùng chín
 
 ### TEA Cung Cấp Gì
 
-| Workflow | Mục đích |
-| --- | --- |
-| Test Design | Tạo chiến lược kiểm thử toàn diện gắn với yêu cầu |
-| ATDD | Phát triển hướng acceptance test với tiêu chí của stakeholder |
-| Automate | Tạo test bằng pattern và utility nâng cao |
-| Test Review | Kiểm tra chất lượng và độ bao phủ của test so với chiến lược |
-| Traceability | Liên kết test ngược về yêu cầu để phục vụ audit và tuân thủ |
-| NFR Assessment | Đánh giá các yêu cầu phi chức năng như hiệu năng, bảo mật |
-| CI Setup | Cấu hình thực thi test trong pipeline tích hợp liên tục |
-| Framework Scaffolding | Dựng hạ tầng và cấu trúc dự án kiểm thử |
-| Release Gate | Ra quyết định phát hành go/no-go dựa trên dữ liệu |
+| Workflow              | Mục đích                                                      |
+| --------------------- | ------------------------------------------------------------- |
+| Test Design           | Tạo chiến lược kiểm thử toàn diện gắn với yêu cầu             |
+| ATDD                  | Phát triển hướng acceptance test với tiêu chí của stakeholder |
+| Automate              | Tạo test bằng pattern và utility nâng cao                     |
+| Test Review           | Kiểm tra chất lượng và độ bao phủ của test so với chiến lược  |
+| Traceability          | Liên kết test ngược về yêu cầu để phục vụ audit và tuân thủ   |
+| NFR Assessment        | Đánh giá các yêu cầu phi chức năng như hiệu năng, bảo mật     |
+| CI Setup              | Cấu hình thực thi test trong pipeline tích hợp liên tục       |
+| Framework Scaffolding | Dựng hạ tầng và cấu trúc dự án kiểm thử                       |
+| Release Gate          | Ra quyết định phát hành go/no-go dựa trên dữ liệu             |
 
 TEA cũng hỗ trợ ưu tiên theo rủi ro P0-P3 và tích hợp tùy chọn với Playwright Utils cùng công cụ MCP.
 

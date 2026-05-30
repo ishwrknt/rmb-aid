@@ -1,11 +1,13 @@
 ---
-title: "Comment installer RMB_AID"
+title: 'Comment installer RMB_AID'
 description: Guide étape par étape pour installer RMB_AID dans votre projet
 sidebar:
   order: 1
 ---
 
 Utilisez la commande `npx rmb-aid install` pour configurer RMB_AID dans votre projet avec votre choix de modules et d'outils d'IA.
+
+Le nom du package publié sur npm est `rmb-aid`. `rmbaid` existe comme alias de commande, mais pour une nouvelle installation via `npx`, utilisez `rmb-aid`.
 
 Si vous souhaitez utiliser un installateur non interactif et fournir toutes les options d'installation en ligne de commande, consultez [ce guide](./non-interactive-installation.md).
 
@@ -16,10 +18,11 @@ Si vous souhaitez utiliser un installateur non interactif et fournir toutes les 
 - Mettre à jour une installation RMB_AID existante
 
 :::note[Prérequis]
+
 - **Node.js** 20+ (requis pour l'installateur)
 - **Git** (recommandé)
 - **Outil d'IA** (Claude Code, Cursor, ou similaire)
-:::
+  :::
 
 ## Étapes
 
@@ -31,6 +34,7 @@ npx rmb-aid install
 
 :::tip[Vous voulez la dernière version préliminaire ?]
 Utilisez le dist-tag `next` :
+
 ```bash
 npx rmb-aid@next install
 ```
@@ -40,9 +44,11 @@ Cela vous permet d'obtenir les nouvelles modifications plus tôt, avec un risque
 
 :::tip[Version de développement]
 Pour installer la dernière version depuis la branche main (peut être instable) :
+
 ```bash
 npx github:rmbaid-code-org/RMB_AID install
 ```
+
 :::
 
 ### 2. Choisir l'emplacement d'installation
@@ -99,11 +105,13 @@ votre-projet/
 Exécutez `rmbaid-help` pour vérifier que tout fonctionne et voir quoi faire ensuite.
 
 **RMB_AID-Help est votre guide intelligent** qui va :
+
 - Confirmer que votre installation fonctionne
 - Afficher ce qui est disponible en fonction de vos modules installés
 - Recommander votre première étape
 
 Vous pouvez aussi lui poser des questions :
+
 ```
 rmbaid-help Je viens d'installer, que dois-je faire en premier ?
 rmbaid-help Quelles sont mes options pour un projet SaaS ?

@@ -1,5 +1,5 @@
 ---
-title: "Quick Fixes"
+title: 'Quick Fixes'
 description: How to make quick fixes and ad-hoc changes
 sidebar:
   order: 5
@@ -15,9 +15,10 @@ Use **Quick Dev** for bug fixes, refactorings, or small targeted changes that do
 - Dependency updates
 
 :::note[Prerequisites]
+
 - RMB_AID installed (`npx rmb-aid install`)
 - An AI-powered IDE (Claude Code, Cursor, or similar)
-:::
+  :::
 
 ## Steps
 

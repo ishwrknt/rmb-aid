@@ -33,12 +33,12 @@ You may **not**:
 
 ## Examples
 
-| Permitted                                              | Not Permitted                                |
-| ------------------------------------------------------ | -------------------------------------------- |
-| "My workflow tool, compatible with RMB_AID"        | "RMB_AIDFlow" or "RMB_AID Studio"                  |
-| "An alternative implementation inspired by RMB_AID"       | "RMB_AID Pro" or "RMB_AID Enterprise"              |
-| "My Awesome Healthcare Module (RMB_AID Community Module)" | "The Official RMB_AID Core Healthcare Module"   |
-| Accurately stating you use RMB_AID as a dependency        | Implying official endorsement or partnership |
+| Permitted                                                 | Not Permitted                                 |
+| --------------------------------------------------------- | --------------------------------------------- |
+| "My workflow tool, compatible with RMB_AID"               | "RMB_AIDFlow" or "RMB_AID Studio"             |
+| "An alternative implementation inspired by RMB_AID"       | "RMB_AID Pro" or "RMB_AID Enterprise"         |
+| "My Awesome Healthcare Module (RMB_AID Community Module)" | "The Official RMB_AID Core Healthcare Module" |
+| Accurately stating you use RMB_AID as a dependency        | Implying official endorsement or partnership  |
 
 ## Commercial Use
 

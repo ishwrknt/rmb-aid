@@ -889,6 +889,7 @@ class OfficialModules {
     // Store custom module paths for use in collectModuleConfig
     this.customModulePaths = options.customModulePaths || new Map();
     this.skipPrompts = options.skipPrompts || false;
+    this.simpleMode = options.simpleMode || false;
     this.modulesToCustomize = undefined;
     await this.loadExistingConfig(projectDir);
 
@@ -907,7 +908,7 @@ class OfficialModules {
     const coreModules = allModules.filter((m) => m === 'core');
     const nonCoreModules = allModules.filter((m) => m !== 'core');
 
-    // Collect core config first (always fully prompted)
+    // Collect core config first unless it was already seeded by the UI layer.
     for (const moduleName of coreModules) {
       await this.collectModuleConfig(moduleName, projectDir);
     }
@@ -916,6 +917,9 @@ class OfficialModules {
     // Scan all non-core module schemas for display names and config metadata
     let scannedModules = [];
     if (!this.skipPrompts && nonCoreModules.length > 0) {
+      if (this.simpleMode) {
+        this.modulesToCustomize = new Set();
+      } else {
       scannedModules = await this.scanModuleSchemas(nonCoreModules);
       const customizableModules = scannedModules.filter((m) => m.questionCount > 0);
 
@@ -949,6 +953,7 @@ class OfficialModules {
       } else {
         // All non-core modules have zero config - no gateway needed
         this.modulesToCustomize = new Set();
+      }
       }
     }
 

@@ -1,9 +1,10 @@
 ---
-title: "FAQ Projets Existants"
+title: 'FAQ Projets Existants'
 description: Questions courantes sur l'utilisation de la méthode RMB_AID sur des projets existants
 sidebar:
   order: 8
 ---
+
 Réponses rapides aux questions courantes sur l'utilisation de la méthode RMB_AID (RMB_AID) sur des projets existants.
 
 ## Questions

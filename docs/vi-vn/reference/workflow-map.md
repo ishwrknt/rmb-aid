@@ -1,5 +1,5 @@
 ---
-title: "Workflow Map"
+title: 'Workflow Map'
 description: Tài liệu trực quan về các phase workflow và output của RMB_AID
 sidebar:
   order: 1
@@ -23,52 +23,52 @@ Lưu ý quan trọng cuối cùng: mọi workflow dưới đây đều có thể
 
 Khám phá không gian vấn đề và xác nhận ý tưởng trước khi cam kết đi vào lập kế hoạch. [**Tìm hiểu từng công cụ làm gì và nên dùng khi nào**](../explanation/analysis-phase.md).
 
-| Workflow | Mục đích | Tạo ra |
-| ------------------------------- | -------------------------------------------------------------------------- | ------------------------- |
-| `rmbaid-brainstorming` | Brainstorm ý tưởng dự án với sự điều phối của brainstorming coach | `brainstorming-report.md` |
-| `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Xác thực giả định về thị trường, kỹ thuật hoặc miền nghiệp vụ | Kết quả nghiên cứu |
-| `rmbaid-product-brief` | Ghi lại tầm nhìn chiến lược — phù hợp nhất khi concept của bạn đã rõ | `product-brief.md` |
-| `rmbaid-prfaq` | Working Backwards — stress-test và rèn sắc concept sản phẩm của bạn | `prfaq-{project}.md` |
+| Workflow                                                                        | Mục đích                                                             | Tạo ra                    |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------- |
+| `rmbaid-brainstorming`                                                          | Brainstorm ý tưởng dự án với sự điều phối của brainstorming coach    | `brainstorming-report.md` |
+| `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Xác thực giả định về thị trường, kỹ thuật hoặc miền nghiệp vụ        | Kết quả nghiên cứu        |
+| `rmbaid-product-brief`                                                          | Ghi lại tầm nhìn chiến lược — phù hợp nhất khi concept của bạn đã rõ | `product-brief.md`        |
+| `rmbaid-prfaq`                                                                  | Working Backwards — stress-test và rèn sắc concept sản phẩm của bạn  | `prfaq-{project}.md`      |
 
 ## Phase 2: Planning
 
 Xác định cần xây gì và xây cho ai.
 
-| Workflow | Mục đích | Tạo ra |
-| --------------------------- | ---------------------------------------- | ------------ |
-| `rmbaid-create-prd` | Xác định yêu cầu (FR/NFR) | `PRD.md` |
+| Workflow                  | Mục đích                                                    | Tạo ra       |
+| ------------------------- | ----------------------------------------------------------- | ------------ |
+| `rmbaid-create-prd`       | Xác định yêu cầu (FR/NFR)                                   | `PRD.md`     |
 | `rmbaid-create-ux-design` | Thiết kế trải nghiệm người dùng khi UX là yếu tố quan trọng | `ux-spec.md` |
 
 ## Phase 3: Solutioning
 
 Quyết định cách xây và chia nhỏ công việc thành stories.
 
-| Workflow | Mục đích | Tạo ra |
-| ----------------------------------------- | ------------------------------------------ | --------------------------- |
-| `rmbaid-create-architecture` | Làm rõ các quyết định kỹ thuật | `architecture.md` kèm ADR |
-| `rmbaid-create-epics-and-stories` | Phân rã yêu cầu thành các phần việc có thể triển khai | Các file epic chứa stories |
-| `rmbaid-check-implementation-readiness` | Cổng kiểm tra trước khi triển khai | Quyết định PASS/CONCERNS/FAIL |
+| Workflow                                | Mục đích                                              | Tạo ra                        |
+| --------------------------------------- | ----------------------------------------------------- | ----------------------------- |
+| `rmbaid-create-architecture`            | Làm rõ các quyết định kỹ thuật                        | `architecture.md` kèm ADR     |
+| `rmbaid-create-epics-and-stories`       | Phân rã yêu cầu thành các phần việc có thể triển khai | Các file epic chứa stories    |
+| `rmbaid-check-implementation-readiness` | Cổng kiểm tra trước khi triển khai                    | Quyết định PASS/CONCERNS/FAIL |
 
 ## Phase 4: Implementation
 
 Xây dựng từng story một. Tự động hóa toàn bộ phase 4 sẽ sớm ra mắt.
 
-| Workflow | Mục đích | Tạo ra |
-| -------------------------- | ------------------------------------------------------------------------ | -------------------------------- |
-| `rmbaid-sprint-planning` | Khởi tạo theo dõi, thường chạy một lần mỗi dự án để sắp thứ tự chu trình dev | `sprint-status.yaml` |
-| `rmbaid-create-story` | Chuẩn bị story tiếp theo cho implementation | `story-[slug].md` |
-| `rmbaid-dev-story` | Triển khai story | Code chạy được + tests |
-| `rmbaid-code-review` | Kiểm tra chất lượng phần triển khai | Được duyệt hoặc yêu cầu thay đổi |
-| `rmbaid-correct-course` | Xử lý thay đổi lớn giữa sprint | Kế hoạch cập nhật hoặc định tuyến lại |
-| `rmbaid-sprint-status` | Theo dõi tiến độ sprint và trạng thái story | Cập nhật trạng thái sprint |
-| `rmbaid-retrospective` | Review sau khi hoàn tất epic | Bài học rút ra |
+| Workflow                 | Mục đích                                                                     | Tạo ra                                |
+| ------------------------ | ---------------------------------------------------------------------------- | ------------------------------------- |
+| `rmbaid-sprint-planning` | Khởi tạo theo dõi, thường chạy một lần mỗi dự án để sắp thứ tự chu trình dev | `sprint-status.yaml`                  |
+| `rmbaid-create-story`    | Chuẩn bị story tiếp theo cho implementation                                  | `story-[slug].md`                     |
+| `rmbaid-dev-story`       | Triển khai story                                                             | Code chạy được + tests                |
+| `rmbaid-code-review`     | Kiểm tra chất lượng phần triển khai                                          | Được duyệt hoặc yêu cầu thay đổi      |
+| `rmbaid-correct-course`  | Xử lý thay đổi lớn giữa sprint                                               | Kế hoạch cập nhật hoặc định tuyến lại |
+| `rmbaid-sprint-status`   | Theo dõi tiến độ sprint và trạng thái story                                  | Cập nhật trạng thái sprint            |
+| `rmbaid-retrospective`   | Review sau khi hoàn tất epic                                                 | Bài học rút ra                        |
 
 ## Quick Flow (Nhánh Song Song)
 
 Bỏ qua phase 1-3 đối với những việc nhỏ, rõ và đã hiểu đầy đủ.
 
-| Workflow | Mục đích | Tạo ra |
-| ------------------ | --------------------------------------------------------------------------- | ---------------------- |
+| Workflow           | Mục đích                                                                             | Tạo ra                 |
+| ------------------ | ------------------------------------------------------------------------------------ | ---------------------- |
 | `rmbaid-quick-dev` | Luồng nhanh hợp nhất — làm rõ yêu cầu, lập kế hoạch, triển khai, review và trình bày | `spec-*.md` + mã nguồn |
 
 ## Quản Lý Context

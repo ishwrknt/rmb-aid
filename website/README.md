@@ -46,9 +46,11 @@ The `website/src/content/docs` symlink may not work correctly on Windows without
    - This allows creating symlinks without admin rights
 
 2. **Or use Git's symlink support**:
+
    ```bash
    git config core.symlinks true
    ```
+
    Then re-clone the repository.
 
 3. **Or create a junction** (alternative):
@@ -58,6 +60,7 @@ The `website/src/content/docs` symlink may not work correctly on Windows without
    ```
 
 **If symlinks don't work**, you can copy the docs folder instead:
+
 ```bash
 # Remove the symlink
 rm website/src/content/docs
@@ -71,5 +74,6 @@ Note: If copying, remember to keep the copy in sync with changes to `docs/`.
 ## Build Output
 
 The build pipeline (`npm run docs:build`) produces:
+
 - Static HTML site in `build/site/`
 - LLM-friendly files: `llms.txt`, `llms-full.txt`

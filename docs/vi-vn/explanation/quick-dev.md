@@ -1,5 +1,5 @@
 ---
-title: "Quick Dev"
+title: 'Quick Dev'
 description: Giảm ma sát human-in-the-loop mà vẫn giữ các checkpoint bảo vệ chất lượng output
 sidebar:
   order: 2

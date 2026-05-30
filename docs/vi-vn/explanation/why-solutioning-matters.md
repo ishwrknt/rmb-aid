@@ -1,5 +1,5 @@
 ---
-title: "Vì sao solutioning quan trọng"
+title: 'Vì sao solutioning quan trọng'
 description: Hiểu vì sao giai đoạn solutioning là tối quan trọng đối với dự án nhiều epic
 sidebar:
   order: 3
@@ -29,20 +29,21 @@ Bằng cách tài liệu hóa rõ ràng các quyết định kỹ thuật, tất
 
 ## Solutioning và Planning khác nhau ở đâu
 
-| Khía cạnh | Planning (Giai đoạn 2) | Solutioning (Giai đoạn 3) |
-| -------- | ----------------------- | --------------------------------- |
-| Câu hỏi | Xây gì và vì sao? | Xây như thế nào? Rồi chia thành đơn vị công việc gì? |
-| Đầu ra | FR/NFR (Yêu cầu) | Kiến trúc + Epics/Stories |
-| Agent | PM | Architect → PM |
-| Đối tượng đọc | Stakeholder | Developer |
-| Tài liệu | PRD (FRs/NFRs) | Kiến trúc + Tệp Epic |
-| Mức độ | Logic nghiệp vụ | Thiết kế kỹ thuật + Phân rã công việc |
+| Khía cạnh     | Planning (Giai đoạn 2) | Solutioning (Giai đoạn 3)                            |
+| ------------- | ---------------------- | ---------------------------------------------------- |
+| Câu hỏi       | Xây gì và vì sao?      | Xây như thế nào? Rồi chia thành đơn vị công việc gì? |
+| Đầu ra        | FR/NFR (Yêu cầu)       | Kiến trúc + Epics/Stories                            |
+| Agent         | PM                     | Architect → PM                                       |
+| Đối tượng đọc | Stakeholder            | Developer                                            |
+| Tài liệu      | PRD (FRs/NFRs)         | Kiến trúc + Tệp Epic                                 |
+| Mức độ        | Logic nghiệp vụ        | Thiết kế kỹ thuật + Phân rã công việc                |
 
 ## Nguyên lý cốt lõi
 
 **Biến các quyết định kỹ thuật thành tường minh và được tài liệu hóa** để tất cả agent triển khai nhất quán.
 
 Điều này ngăn chặn:
+
 - Xung đột phong cách API (REST vs GraphQL)
 - Không nhất quán trong thiết kế cơ sở dữ liệu
 - Bất đồng về quản lý state
@@ -51,12 +52,12 @@ Bằng cách tài liệu hóa rõ ràng các quyết định kỹ thuật, tất
 
 ## Khi nào solutioning là bắt buộc
 
-| Track | Có cần solutioning không? |
-|-------|----------------------|
-| Quick Flow | Không - bỏ qua hoàn toàn |
-| RMB_AID đơn giản | Tùy chọn |
-| RMB_AID phức tạp | Có |
-| Enterprise | Có |
+| Track            | Có cần solutioning không? |
+| ---------------- | ------------------------- |
+| Quick Flow       | Không - bỏ qua hoàn toàn  |
+| RMB_AID đơn giản | Tùy chọn                  |
+| RMB_AID phức tạp | Có                        |
+| Enterprise       | Có                        |
 
 :::tip[Quy tắc ngón tay cái]
 Nếu bạn có nhiều epic có thể được các agent khác nhau triển khai, bạn cần solutioning.

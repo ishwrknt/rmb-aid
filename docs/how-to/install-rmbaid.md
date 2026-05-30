@@ -1,11 +1,18 @@
 ---
-title: "How to Install RMB_AID"
+title: 'How to Install RMB_AID'
 description: Step-by-step guide to installing RMB_AID in your project
 sidebar:
   order: 1
 ---
 
 Use the `npx rmb-aid install` command to set up RMB_AID in your project with your choice of modules and AI tools.
+
+The published npm package name is `rmb-aid`. The `rmbaid` name is available as a CLI/bin alias, but for fresh installs through `npx`, use `rmb-aid`.
+
+By default, the interactive installer now uses a simplified flow:
+- recommended modules are selected automatically
+- optional custom-content questions are skipped
+- module and core settings use defaults unless something important is missing
 
 If you want to use a non interactive installer and provide all install options on the command line, see [this guide](./non-interactive-installation.md).
 
@@ -72,7 +79,11 @@ The installer shows available modules. Select whichever ones you need — most u
 
 ### 5. Follow the Prompts
 
-The installer guides you through the rest — custom content, settings, etc.
+The installer only asks the important questions in the default flow. If you want the older full setup experience with more configuration prompts, run:
+
+```bash
+npx rmb-aid install --advanced
+```
 
 ## What You Get
 

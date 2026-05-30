@@ -1,5 +1,5 @@
 ---
-title: "为什么解决方案阶段很重要"
+title: '为什么解决方案阶段很重要'
 description: 理解为什么解决方案阶段对于多史诗项目至关重要
 sidebar:
   order: 3
@@ -29,20 +29,21 @@ solutioning 的本质不是“多写一份文档”，而是把高冲突风险�
 
 ## solutioning 与 planning 的边界
 
-| 方面 | Planning（阶段 2） | Solutioning（阶段 3） |
-| -------- | ----------------------- | --------------------------------- |
-| 核心问题 | 做什么，为什么做？ | 如何做，再如何拆分工作？ |
-| 输出物 | FRs/NFRs（需求） | `architecture` + `epic/story` 拆分 |
-| 主导角色 | PM | Architect → PM |
-| 受众 | 利益相关者 | 开发人员 |
-| 文档 | PRD（FRs/NFRs） | 架构文档 + epics 文件 |
-| 决策层级 | 业务目标与范围 | 技术策略与实现边界 |
+| 方面     | Planning（阶段 2） | Solutioning（阶段 3）              |
+| -------- | ------------------ | ---------------------------------- |
+| 核心问题 | 做什么，为什么做？ | 如何做，再如何拆分工作？           |
+| 输出物   | FRs/NFRs（需求）   | `architecture` + `epic/story` 拆分 |
+| 主导角色 | PM                 | Architect → PM                     |
+| 受众     | 利益相关者         | 开发人员                           |
+| 文档     | PRD（FRs/NFRs）    | 架构文档 + epics 文件              |
+| 决策层级 | 业务目标与范围     | 技术策略与实现边界                 |
 
 ## 核心原则
 
 **让跨 `epic` 的关键技术决策显式、可追溯、可复用。**
 
 这能直接降低：
+
 - API 风格冲突（REST vs GraphQL）
 - 数据模型与命名约定不一致
 - 状态管理方案分裂
@@ -51,12 +52,12 @@ solutioning 的本质不是“多写一份文档”，而是把高冲突风险�
 
 ## 什么时候需要 solutioning
 
-| 流程 | 需要 solutioning？ |
-|-------|----------------------|
-| Quick Flow | 否 - 完全跳过 |
-| RMB_AID Simple | 可选 |
-| RMB_AID Complex | 是 |
-| Enterprise | 是 |
+| 流程            | 需要 solutioning？ |
+| --------------- | ------------------ |
+| Quick Flow      | 否 - 完全跳过      |
+| RMB_AID Simple  | 可选               |
+| RMB_AID Complex | 是                 |
+| Enterprise      | 是                 |
 
 :::tip[经验法则]
 只要需求会拆成多个 `epic`，并且可能由不同智能体并行实现，就应该做 solutioning。

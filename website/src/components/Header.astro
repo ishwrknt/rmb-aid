@@ -15,6 +15,7 @@ import Banner from './Banner.astro';
  */
 const shouldRenderSearch =
 	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+const base = import.meta.env.BASE_URL ?? '/';
 ---
 
 <Banner />
@@ -26,6 +27,7 @@ const shouldRenderSearch =
 		{shouldRenderSearch && <Search {...Astro.props} />}
 	</div>
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
+		<a class="app-link" href={`${base}apps/1d-hydrogen/`}>1D H App</a>
 		<div class="sl-flex social-icons">
 			<SocialIcons {...Astro.props} />
 		</div>
@@ -55,6 +57,29 @@ const shouldRenderSearch =
 	.social-icons {
 		gap: 1rem;
 		align-items: center;
+	}
+
+	.app-link {
+		padding: 0.5rem 0.8rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 999px;
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 600;
+		transition:
+			border-color 0.15s ease,
+			background-color 0.15s ease,
+			color 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	.app-link:hover,
+	.app-link:focus-visible {
+		border-color: var(--sl-color-accent);
+		background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+		color: var(--sl-color-white);
+		transform: translateY(-1px);
 	}
 
 	.social-icons::after {

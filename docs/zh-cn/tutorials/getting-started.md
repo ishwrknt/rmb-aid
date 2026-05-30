@@ -1,5 +1,5 @@
 ---
-title: "快速入门"
+title: '快速入门'
 description: 安装 RMB_AID 并构建你的第一个项目
 ---
 
@@ -14,11 +14,12 @@ description: 安装 RMB_AID 并构建你的第一个项目
 - 有效使用智能体和工作流
 
 :::note[前置条件]
+
 - **Node.js 20+** — 安装程序必需
 - **Git** — 推荐用于版本控制
 - **AI 驱动的 IDE** — Claude Code、Cursor 或类似工具
 - **一个项目想法** — 即使是简单的想法也可以用于学习
-:::
+  :::
 
 :::tip[最简单的路径]
 **安装** → `npx rmb-aid install`
@@ -50,6 +51,7 @@ rmbaid-help 我有一个 SaaS 产品的想法，我已经知道我想要的所�
 ```
 
 RMB_AID-Help 将回应：
+
 - 针对你的情况推荐什么
 - 第一个必需任务是什么
 - 其余流程是什么样的
@@ -66,22 +68,22 @@ RMB_AID-Help 不仅回答问题 —— **它会在每个工作流结束时自动
 
 RMB_AID 通过带有专门 AI 智能体的引导工作流帮助你构建软件。该过程遵循四个阶段：
 
-| 阶段 | 名称           | 发生什么                                           |
-| ---- | -------------- | -------------------------------------------------- |
-| 1    | 分析           | 头脑风暴、研究、产品简报 *（可选）*                |
-| 2    | 规划           | 创建需求（PRD 或技术规范）                         |
-| 3    | 解决方案设计   | 设计架构 *（仅适用于 RMB_AID/Enterprise）*          |
-| 4    | 实现           | 逐个史诗、逐个故事地构建                           |
+| 阶段 | 名称         | 发生什么                                   |
+| ---- | ------------ | ------------------------------------------ |
+| 1    | 分析         | 头脑风暴、研究、产品简报 _（可选）_        |
+| 2    | 规划         | 创建需求（PRD 或技术规范）                 |
+| 3    | 解决方案设计 | 设计架构 _（仅适用于 RMB_AID/Enterprise）_ |
+| 4    | 实现         | 逐个史诗、逐个故事地构建                   |
 
 **[打开工作流地图](../reference/workflow-map.md)** 以探索阶段、工作流和上下文管理。
 
 根据项目的复杂性，RMB_AID 提供三种规划路径：
 
-| 路径           | 最适合                                               | 创建的文档                              |
-| --------------- | ---------------------------------------------------- | --------------------------------------- |
-| **Quick Flow**  | 错误修复、简单功能、范围清晰（1-15 个故事）          | 仅技术规范                              |
-| **RMB_AID** | 产品、平台、复杂功能（10-50+ 个故事）                | PRD + 架构 + UX                         |
-| **Enterprise**  | 合规、多租户系统（30+ 个故事）                       | PRD + 架构 + 安全 + DevOps              |
+| 路径           | 最适合                                      | 创建的文档                 |
+| -------------- | ------------------------------------------- | -------------------------- |
+| **Quick Flow** | 错误修复、简单功能、范围清晰（1-15 个故事） | 仅技术规范                 |
+| **RMB_AID**    | 产品、平台、复杂功能（10-50+ 个故事）       | PRD + 架构 + UX            |
+| **Enterprise** | 合规、多租户系统（30+ 个故事）              | PRD + 架构 + 安全 + DevOps |
 
 :::note
 故事数量是指导，而非定义。根据规划需求选择你的路径，而不是故事数学。
@@ -100,6 +102,7 @@ npx rmb-aid install
 当提示选择模块时，选择 **RMB_AID**。
 
 安装程序会创建两个文件夹：
+
 - `_rmbaid/` — 智能体、工作流、任务和配置
 - `_rmbaid-output/` — 目前为空，但这是你的工件将被保存的地方
 
@@ -134,6 +137,7 @@ RMB_AID-Help 将检测你已完成的内容，并准确推荐下一步该做什�
 ### 阶段 1：分析（可选）
 
 此阶段中的所有工作流都是可选的：
+
 - **头脑风暴**（`rmbaid-brainstorming`） — 引导式构思
 - **研究**（`rmbaid-market-research` / `rmbaid-domain-research` / `rmbaid-technical-research`） — 市场、领域和技术研究
 - **创建产品简报**（`rmbaid-create-product-brief`） — 推荐的基础文档
@@ -141,11 +145,13 @@ RMB_AID-Help 将检测你已完成的内容，并准确推荐下一步该做什�
 ### 阶段 2：规划（必需）
 
 **对于 RMB_AID 和 Enterprise 路径：**
+
 1. 在新对话中调用 **PM 智能体**（`rmbaid-agent-pm`）
 2. 运行 `rmbaid-create-prd` 工作流（`rmbaid-create-prd`）
 3. 输出：`PRD.md`
 
 **对于 Quick Flow 路径：**
+
 - 运行 `rmbaid-quick-dev` —— 它会在一个工作流里同时处理规划与实现，可直接进入实现阶段
 
 :::note[UX 设计（可选）]
@@ -155,6 +161,7 @@ RMB_AID-Help 将检测你已完成的内容，并准确推荐下一步该做什�
 ### 阶段 3：解决方案设计（RMB_AID/Enterprise）
 
 **创建架构**
+
 1. 在新对话中调用 **Architect 智能体**（`rmbaid-agent-architect`）
 2. 运行 `rmbaid-create-architecture`（`rmbaid-create-architecture`）
 3. 输出：包含技术决策的架构文档
@@ -169,7 +176,8 @@ RMB_AID-Help 将检测你已完成的内容，并准确推荐下一步该做什�
 2. 运行 `rmbaid-create-epics-and-stories`（`rmbaid-create-epics-and-stories`）
 3. 工作流使用 PRD 和架构来创建技术信息丰富的故事
 
-**实现就绪检查** *（强烈推荐）*
+**实现就绪检查** _（强烈推荐）_
+
 1. 在新对话中调用 **Architect 智能体**（`rmbaid-agent-architect`）
 2. 运行 `rmbaid-check-implementation-readiness`（`rmbaid-check-implementation-readiness`）
 3. 验证所有规划文档之间的一致性
@@ -186,11 +194,11 @@ RMB_AID-Help 将检测你已完成的内容，并准确推荐下一步该做什�
 
 对于每个故事，使用新对话重复此周期：
 
-| 步骤 | 智能体 | 工作流       | 命令                    | 目的                            |
-| ---- | ------ | ------------ | ----------------------- | ------------------------------- |
-| 1    | DEV    | `rmbaid-create-story` | `rmbaid-create-story` | 从史诗创建故事文件              |
-| 2    | DEV    | `rmbaid-dev-story`    | `rmbaid-dev-story`    | 实现故事                        |
-| 3    | DEV    | `rmbaid-code-review`  | `rmbaid-code-review`  | 质量验证 *（推荐）*             |
+| 步骤 | 智能体 | 工作流                | 命令                  | 目的                |
+| ---- | ------ | --------------------- | --------------------- | ------------------- |
+| 1    | DEV    | `rmbaid-create-story` | `rmbaid-create-story` | 从史诗创建故事文件  |
+| 2    | DEV    | `rmbaid-dev-story`    | `rmbaid-dev-story`    | 实现故事            |
+| 3    | DEV    | `rmbaid-code-review`  | `rmbaid-code-review`  | 质量验证 _（推荐）_ |
 
 完成史诗中的所有故事后，调用 **Developer 智能体**（`rmbaid-agent-dev`）并运行 `rmbaid-retrospective`（`rmbaid-retrospective`）。
 
@@ -221,18 +229,18 @@ your-project/
 
 ## 快速参考
 
-| 工作流                              | 命令                                    | 智能体   | 目的                                         |
-| ----------------------------------- | --------------------------------------- | -------- | -------------------------------------------- |
-| **`rmbaid-help`** ⭐                  | `rmbaid-help`                            | 任意     | **你的智能向导 —— 随时询问任何问题！**        |
-| `rmbaid-create-prd`                   | `rmbaid-create-prd`                      | PM       | 创建产品需求文档                             |
-| `rmbaid-create-architecture`          | `rmbaid-create-architecture`             | Architect | 创建架构文档                                |
-| `rmbaid-generate-project-context`     | `rmbaid-generate-project-context`        | Analyst  | 创建项目上下文文件                           |
-| `rmbaid-create-epics-and-stories`     | `rmbaid-create-epics-and-stories`        | PM       | 将 PRD 分解为史诗                            |
-| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | 验证规划一致性                              |
-| `rmbaid-sprint-planning`              | `rmbaid-sprint-planning`                 | DEV      | 初始化冲刺跟踪                               |
-| `rmbaid-create-story`                 | `rmbaid-create-story`                    | DEV      | 创建故事文件                                 |
-| `rmbaid-dev-story`                    | `rmbaid-dev-story`                       | DEV      | 实现故事                                     |
-| `rmbaid-code-review`                  | `rmbaid-code-review`                     | DEV      | 审查已实现的代码                             |
+| 工作流                                  | 命令                                    | 智能体    | 目的                                   |
+| --------------------------------------- | --------------------------------------- | --------- | -------------------------------------- |
+| **`rmbaid-help`** ⭐                    | `rmbaid-help`                           | 任意      | **你的智能向导 —— 随时询问任何问题！** |
+| `rmbaid-create-prd`                     | `rmbaid-create-prd`                     | PM        | 创建产品需求文档                       |
+| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Architect | 创建架构文档                           |
+| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`       | Analyst   | 创建项目上下文文件                     |
+| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | PM        | 将 PRD 分解为史诗                      |
+| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | 验证规划一致性                         |
+| `rmbaid-sprint-planning`                | `rmbaid-sprint-planning`                | DEV       | 初始化冲刺跟踪                         |
+| `rmbaid-create-story`                   | `rmbaid-create-story`                   | DEV       | 创建故事文件                           |
+| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | DEV       | 实现故事                               |
+| `rmbaid-code-review`                    | `rmbaid-code-review`                    | DEV       | 审查已实现的代码                       |
 
 ## 常见问题
 
@@ -252,6 +260,7 @@ your-project/
 
 :::tip[第一站：RMB_AID-Help]
 **随时运行 `rmbaid-help`** —— 这是摆脱困境的最快方式。问它任何问题：
+
 - "安装后我应该做什么？"
 - "我在工作流 X 上卡住了"
 - "我在 Y 方面有什么选项？"
@@ -266,10 +275,11 @@ RMB_AID-Help 检查你的项目，检测你已完成的内容，并确切地告�
 ## 关键要点
 
 :::tip[记住这些]
+
 - **从 `rmbaid-help` 开始** — 你的智能向导，了解你的项目和选项
 - **始终使用新对话** — 为每个工作流开始新对话
 - **路径很重要** — Quick Flow 使用 `rmbaid-quick-dev`；Method/Enterprise 需要 PRD 和架构
 - **RMB_AID-Help 自动运行** — 每个工作流结束时都会提供下一步的指导
-:::
+  :::
 
 准备好开始了吗？安装 RMB_AID，运行 `rmbaid-help`，让你的智能向导为你引路。

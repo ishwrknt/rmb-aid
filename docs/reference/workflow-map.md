@@ -1,5 +1,5 @@
 ---
-title: "Workflow Map"
+title: 'Workflow Map'
 description: Visual reference for RMB_AID workflow phases and outputs
 sidebar:
   order: 1
@@ -23,28 +23,28 @@ Final important note: Every workflow below can be run directly with your tool of
 
 Explore the problem space and validate ideas before committing to planning. [**Learn what each tool does and when to use it**](../explanation/analysis-phase.md).
 
-| Workflow                        | Purpose                                                                    | Produces                  |
-| ------------------------------- | -------------------------------------------------------------------------- | ------------------------- |
-| `rmbaid-brainstorming`            | Brainstorm Project Ideas with guided facilitation of a brainstorming coach | `brainstorming-report.md` |
-| `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Validate market, technical, or domain assumptions | Research findings |
-| `rmbaid-product-brief`            | Capture strategic vision — best when your concept is clear                 | `product-brief.md`        |
-| `rmbaid-prfaq`                    | Working Backwards — stress-test and forge your product concept             | `prfaq-{project}.md`      |
+| Workflow                                                                        | Purpose                                                                    | Produces                  |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------- |
+| `rmbaid-brainstorming`                                                          | Brainstorm Project Ideas with guided facilitation of a brainstorming coach | `brainstorming-report.md` |
+| `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Validate market, technical, or domain assumptions                          | Research findings         |
+| `rmbaid-product-brief`                                                          | Capture strategic vision — best when your concept is clear                 | `product-brief.md`        |
+| `rmbaid-prfaq`                                                                  | Working Backwards — stress-test and forge your product concept             | `prfaq-{project}.md`      |
 
 ## Phase 2: Planning
 
 Define what to build and for whom.
 
-| Workflow                    | Purpose                                  | Produces     |
-| --------------------------- | ---------------------------------------- | ------------ |
-| `rmbaid-create-prd`    | Define requirements (FRs/NFRs)           | `PRD.md`     |
-| `rmbaid-create-ux-design`  | Design user experience (when UX matters) | `ux-spec.md` |
+| Workflow                  | Purpose                                  | Produces     |
+| ------------------------- | ---------------------------------------- | ------------ |
+| `rmbaid-create-prd`       | Define requirements (FRs/NFRs)           | `PRD.md`     |
+| `rmbaid-create-ux-design` | Design user experience (when UX matters) | `ux-spec.md` |
 
 ## Phase 3: Solutioning
 
 Decide how to build it and break work into stories.
 
-| Workflow                                  | Purpose                                    | Produces                    |
-| ----------------------------------------- | ------------------------------------------ | --------------------------- |
+| Workflow                                | Purpose                                    | Produces                    |
+| --------------------------------------- | ------------------------------------------ | --------------------------- |
 | `rmbaid-create-architecture`            | Make technical decisions explicit          | `architecture.md` with ADRs |
 | `rmbaid-create-epics-and-stories`       | Break requirements into implementable work | Epic files with stories     |
 | `rmbaid-check-implementation-readiness` | Gate check before implementation           | PASS/CONCERNS/FAIL decision |
@@ -53,23 +53,23 @@ Decide how to build it and break work into stories.
 
 Build it, one story at a time. Coming soon, full phase 4 automation!
 
-| Workflow                   | Purpose                                                                  | Produces                         |
-| -------------------------- | ------------------------------------------------------------------------ | -------------------------------- |
-| `rmbaid-sprint-planning` | Initialize tracking (once per project to sequence the dev cycle)         | `sprint-status.yaml`          |
-| `rmbaid-create-story`    | Prepare next story for implementation                                    | `story-[slug].md`             |
-| `rmbaid-dev-story`       | Implement the story                                                      | Working code + tests          |
-| `rmbaid-code-review`     | Validate implementation quality                                          | Approved or changes requested |
-| `rmbaid-correct-course`  | Handle significant mid-sprint changes                                    | Updated plan or re-routing    |
-| `rmbaid-sprint-status`   | Track sprint progress and story status                                   | Sprint status update          |
-| `rmbaid-retrospective`   | Review after epic completion                                             | Lessons learned               |
+| Workflow                 | Purpose                                                          | Produces                      |
+| ------------------------ | ---------------------------------------------------------------- | ----------------------------- |
+| `rmbaid-sprint-planning` | Initialize tracking (once per project to sequence the dev cycle) | `sprint-status.yaml`          |
+| `rmbaid-create-story`    | Prepare next story for implementation                            | `story-[slug].md`             |
+| `rmbaid-dev-story`       | Implement the story                                              | Working code + tests          |
+| `rmbaid-code-review`     | Validate implementation quality                                  | Approved or changes requested |
+| `rmbaid-correct-course`  | Handle significant mid-sprint changes                            | Updated plan or re-routing    |
+| `rmbaid-sprint-status`   | Track sprint progress and story status                           | Sprint status update          |
+| `rmbaid-retrospective`   | Review after epic completion                                     | Lessons learned               |
 
 ## Quick Flow (Parallel Track)
 
 Skip phases 1-3 for small, well-understood work.
 
-| Workflow           | Purpose                                                                     | Produces               |
-| ------------------ | --------------------------------------------------------------------------- | ---------------------- |
-| `rmbaid-quick-dev`   | Unified quick flow — clarify intent, plan, implement, review, and present   | `spec-*.md` + code  |
+| Workflow           | Purpose                                                                   | Produces           |
+| ------------------ | ------------------------------------------------------------------------- | ------------------ |
+| `rmbaid-quick-dev` | Unified quick flow — clarify intent, plan, implement, review, and present | `spec-*.md` + code |
 
 ## Context Management
 

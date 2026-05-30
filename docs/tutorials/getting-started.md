@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: 'Getting Started'
 description: Install RMB_AID and build your first project
 ---
 
@@ -14,11 +14,12 @@ Build software faster using AI-powered workflows with specialized agents that gu
 - Use agents and workflows effectively
 
 :::note[Prerequisites]
+
 - **Node.js 20+** — Required for the installer
 - **Git** — Recommended for version control
 - **AI-powered IDE** — Claude Code, Cursor, or similar
 - **A project idea** — Even a simple one works for learning
-:::
+  :::
 
 :::tip[The Easiest Path]
 **Install** → `npx rmb-aid install`
@@ -50,6 +51,7 @@ rmbaid-help I have an idea for a SaaS product, I already know all the features I
 ```
 
 RMB_AID-Help will respond with:
+
 - What's recommended for your situation
 - What the first required task is
 - What the rest of the process looks like
@@ -66,22 +68,22 @@ After installing RMB_AID, invoke the `rmbaid-help` skill immediately. It will de
 
 RMB_AID helps you build software through guided workflows with specialized AI agents. The process follows four phases:
 
-| Phase | Name           | What Happens                                        |
-| ----- | -------------- | --------------------------------------------------- |
-| 1     | Analysis       | Brainstorming, research, product brief or PRFAQ *(optional)* |
-| 2     | Planning       | Create requirements (PRD or spec)              |
-| 3     | Solutioning    | Design architecture *(RMB_AID/Enterprise only)* |
-| 4     | Implementation | Build epic by epic, story by story                  |
+| Phase | Name           | What Happens                                                 |
+| ----- | -------------- | ------------------------------------------------------------ |
+| 1     | Analysis       | Brainstorming, research, product brief or PRFAQ _(optional)_ |
+| 2     | Planning       | Create requirements (PRD or spec)                            |
+| 3     | Solutioning    | Design architecture _(RMB_AID/Enterprise only)_              |
+| 4     | Implementation | Build epic by epic, story by story                           |
 
 **[Open the Workflow Map](../reference/workflow-map.md)** to explore phases, workflows, and context management.
 
 Based on your project's complexity, RMB_AID offers three planning tracks:
 
-| Track           | Best For                                               | Documents Created                      |
-| --------------- | ------------------------------------------------------ | -------------------------------------- |
-| **Quick Flow**  | Bug fixes, simple features, clear scope (1-15 stories) | Tech-spec only                         |
-| **RMB_AID** | Products, platforms, complex features (10-50+ stories) | PRD + Architecture + UX                |
-| **Enterprise**  | Compliance, multi-tenant systems (30+ stories)         | PRD + Architecture + Security + DevOps |
+| Track          | Best For                                               | Documents Created                      |
+| -------------- | ------------------------------------------------------ | -------------------------------------- |
+| **Quick Flow** | Bug fixes, simple features, clear scope (1-15 stories) | Tech-spec only                         |
+| **RMB_AID**    | Products, platforms, complex features (10-50+ stories) | PRD + Architecture + UX                |
+| **Enterprise** | Compliance, multi-tenant systems (30+ stories)         | PRD + Architecture + Security + DevOps |
 
 :::note
 Story counts are guidance, not definitions. Choose your track based on planning needs, not story math.
@@ -100,6 +102,7 @@ If you want the newest prerelease build instead of the default release channel, 
 When prompted to select modules, choose **RMB_AID**.
 
 The installer creates two folders:
+
 - `_rmbaid/` — agents, workflows, tasks, and configuration
 - `_rmbaid-output/` — empty for now, but this is where your artifacts will be saved
 
@@ -134,6 +137,7 @@ Create it manually at `_rmbaid-output/project-context.md` or generate it after a
 ### Phase 1: Analysis (Optional)
 
 All workflows in this phase are optional. [**Not sure which to use?**](../explanation/analysis-phase.md)
+
 - **brainstorming** (`rmbaid-brainstorming`) — Guided ideation
 - **research** (`rmbaid-market-research` / `rmbaid-domain-research` / `rmbaid-technical-research`) — Market, domain, and technical research
 - **product-brief** (`rmbaid-product-brief`) — Recommended foundation document when your concept is clear
@@ -142,11 +146,13 @@ All workflows in this phase are optional. [**Not sure which to use?**](../explan
 ### Phase 2: Planning (Required)
 
 **For RMB_AID and Enterprise tracks:**
+
 1. Invoke the **PM agent** (`rmbaid-agent-pm`) in a new chat
 2. Run the `rmbaid-create-prd` workflow (`rmbaid-create-prd`)
 3. Output: `PRD.md`
 
 **For Quick Flow track:**
+
 - Run `rmbaid-quick-dev` — it handles planning and implementation in a single workflow, skip to implementation
 
 :::note[UX Design (Optional)]
@@ -156,6 +162,7 @@ If your project has a user interface, invoke the **UX-Designer agent** (`rmbaid-
 ### Phase 3: Solutioning (RMB_AID/Enterprise)
 
 **Create Architecture**
+
 1. Invoke the **Architect agent** (`rmbaid-agent-architect`) in a new chat
 2. Run `rmbaid-create-architecture` (`rmbaid-create-architecture`)
 3. Output: Architecture document with technical decisions
@@ -163,14 +170,15 @@ If your project has a user interface, invoke the **UX-Designer agent** (`rmbaid-
 **Create Epics and Stories**
 
 :::tip[V6 Improvement]
-Epics and stories are now created *after* architecture. This produces better quality stories because architecture decisions (database, API patterns, tech stack) directly affect how work should be broken down.
+Epics and stories are now created _after_ architecture. This produces better quality stories because architecture decisions (database, API patterns, tech stack) directly affect how work should be broken down.
 :::
 
 1. Invoke the **PM agent** (`rmbaid-agent-pm`) in a new chat
 2. Run `rmbaid-create-epics-and-stories` (`rmbaid-create-epics-and-stories`)
 3. The workflow uses both PRD and Architecture to create technically-informed stories
 
-**Implementation Readiness Check** *(Highly Recommended)*
+**Implementation Readiness Check** _(Highly Recommended)_
+
 1. Invoke the **Architect agent** (`rmbaid-agent-architect`) in a new chat
 2. Run `rmbaid-check-implementation-readiness` (`rmbaid-check-implementation-readiness`)
 3. Validates cohesion across all planning documents
@@ -187,11 +195,11 @@ Invoke the **Developer agent** (`rmbaid-agent-dev`) and run `rmbaid-sprint-plann
 
 For each story, repeat this cycle with fresh chats:
 
-| Step | Agent | Workflow       | Command                    | Purpose                            |
-| ---- | ----- | -------------- | -------------------------- | ---------------------------------- |
-| 1    | DEV   | `rmbaid-create-story` | `rmbaid-create-story`  | Create story file from epic        |
-| 2    | DEV   | `rmbaid-dev-story`    | `rmbaid-dev-story`     | Implement the story                |
-| 3    | DEV   | `rmbaid-code-review`  | `rmbaid-code-review`   | Quality validation *(recommended)* |
+| Step | Agent | Workflow              | Command               | Purpose                            |
+| ---- | ----- | --------------------- | --------------------- | ---------------------------------- |
+| 1    | DEV   | `rmbaid-create-story` | `rmbaid-create-story` | Create story file from epic        |
+| 2    | DEV   | `rmbaid-dev-story`    | `rmbaid-dev-story`    | Implement the story                |
+| 3    | DEV   | `rmbaid-code-review`  | `rmbaid-code-review`  | Quality validation _(recommended)_ |
 
 After completing all stories in an epic, invoke the **Developer agent** (`rmbaid-agent-dev`) and run `rmbaid-retrospective` (`rmbaid-retrospective`).
 
@@ -222,18 +230,18 @@ your-project/
 
 ## Quick Reference
 
-| Workflow                              | Command                                    | Agent     | Purpose                                         |
-| ------------------------------------- | ------------------------------------------ | --------- | ----------------------------------------------- |
-| **`rmbaid-help`** ⭐                    | `rmbaid-help`                               | Any       | **Your intelligent guide — ask anything!**      |
-| `rmbaid-create-prd`                | `rmbaid-create-prd`                     | PM        | Create Product Requirements Document            |
-| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Architect | Create architecture document                     |
-| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`           | Analyst   | Create project context file                     |
-| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | PM        | Break down PRD into epics            |
-| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | Validate planning cohesion           |
-| `rmbaid-sprint-planning`                | `rmbaid-sprint-planning`                | DEV       | Initialize sprint tracking           |
-| `rmbaid-create-story`                   | `rmbaid-create-story`                   | DEV       | Create a story file                  |
-| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | DEV       | Implement a story                    |
-| `rmbaid-code-review`                    | `rmbaid-code-review`                    | DEV       | Review implemented code              |
+| Workflow                                | Command                                 | Agent     | Purpose                                    |
+| --------------------------------------- | --------------------------------------- | --------- | ------------------------------------------ |
+| **`rmbaid-help`** ⭐                    | `rmbaid-help`                           | Any       | **Your intelligent guide — ask anything!** |
+| `rmbaid-create-prd`                     | `rmbaid-create-prd`                     | PM        | Create Product Requirements Document       |
+| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Architect | Create architecture document               |
+| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`       | Analyst   | Create project context file                |
+| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | PM        | Break down PRD into epics                  |
+| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | Validate planning cohesion                 |
+| `rmbaid-sprint-planning`                | `rmbaid-sprint-planning`                | DEV       | Initialize sprint tracking                 |
+| `rmbaid-create-story`                   | `rmbaid-create-story`                   | DEV       | Create a story file                        |
+| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | DEV       | Implement a story                          |
+| `rmbaid-code-review`                    | `rmbaid-code-review`                    | DEV       | Review implemented code                    |
 
 ## Common Questions
 
@@ -253,6 +261,7 @@ Not strictly. Once you learn the flow, you can run workflows directly using the 
 
 :::tip[First Stop: RMB_AID-Help]
 **Invoke `rmbaid-help` anytime** — it's the fastest way to get unstuck. Ask it anything:
+
 - "What should I do after installing?"
 - "I'm stuck on workflow X"
 - "What are my options for Y?"
@@ -267,10 +276,11 @@ RMB_AID-Help inspects your project, detects what you've completed, and tells you
 ## Key Takeaways
 
 :::tip[Remember These]
+
 - **Start with `rmbaid-help`** — Your intelligent guide that knows your project and options
 - **Always use fresh chats** — Start a new chat for each workflow
 - **Track matters** — Quick Flow uses `rmbaid-quick-dev`; Method/Enterprise need PRD and architecture
 - **RMB_AID-Help runs automatically** — Every workflow ends with guidance on what's next
-:::
+  :::
 
 Ready to start? Install RMB_AID, invoke `rmbaid-help`, and let your intelligent guide lead the way.

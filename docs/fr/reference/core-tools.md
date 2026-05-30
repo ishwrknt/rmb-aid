@@ -13,8 +13,8 @@ Exécutez n'importe quel outil principal en tapant son nom de compétence (par e
 
 ## Vue d'ensemble
 
-| Outil                                                                 | Type     | Objectif                                                                     |
-|-----------------------------------------------------------------------|----------|------------------------------------------------------------------------------|
+| Outil                                                                     | Type     | Objectif                                                                     |
+| ------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
 | [`rmbaid-help`](#rmbaid-help)                                             | Tâche    | Obtenir des conseils contextuels sur la prochaine étape                      |
 | [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | Faciliter des sessions de brainstorming interactives                         |
 | [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | Orchestrer des discussions de groupe multi-agents                            |
@@ -295,4 +295,3 @@ Exécutez à la fois `rmbaid-review-adversarial-general` et `rmbaid-review-edge-
 ## Glossaire
 
 [^1]: Path-tracing : méthode d'analyse qui suit systématiquement tous les chemins d'exécution possibles dans un programme pour identifier les cas non gérés.
-

@@ -1,5 +1,5 @@
 ---
-title: "Cách nâng cấp lên v6"
+title: 'Cách nâng cấp lên v6'
 description: Di chuyển từ RMB_AID v4 sang v6
 sidebar:
   order: 3
@@ -14,9 +14,10 @@ Sử dụng trình cài đặt RMB_AID để nâng cấp từ v4 lên v6, bao g�
 - Bạn có các planning artifact hiện có cần giữ lại
 
 :::note[Điều kiện tiên quyết]
+
 - Node.js 20+
 - Bản cài đặt RMB_AID v4 hiện có
-:::
+  :::
 
 ## Các bước thực hiện
 
@@ -82,19 +83,19 @@ du-an-cua-ban/
 
 ## Di chuyển module
 
-| Module v4 | Trạng thái trong v6 |
-| --- | --- |
-| `.rmbaid-2d-phaser-game-dev` | Đã được tích hợp vào module BMGD |
-| `.rmbaid-2d-unity-game-dev` | Đã được tích hợp vào module BMGD |
-| `.rmbaid-godot-game-dev` | Đã được tích hợp vào module BMGD |
+| Module v4                       | Trạng thái trong v6                              |
+| ------------------------------- | ------------------------------------------------ |
+| `.rmbaid-2d-phaser-game-dev`    | Đã được tích hợp vào module BMGD                 |
+| `.rmbaid-2d-unity-game-dev`     | Đã được tích hợp vào module BMGD                 |
+| `.rmbaid-godot-game-dev`        | Đã được tích hợp vào module BMGD                 |
 | `.rmbaid-infrastructure-devops` | Đã bị ngừng hỗ trợ - agent DevOps mới sắp ra mắt |
-| `.rmbaid-creative-writing` | Chưa được điều chỉnh - module v6 mới sắp ra mắt |
+| `.rmbaid-creative-writing`      | Chưa được điều chỉnh - module v6 mới sắp ra mắt  |
 
 ## Các thay đổi chính
 
-| Khái niệm | v4 | v6 |
-| --- | --- | --- |
-| **Core** | `_rmbaid-core` thực chất là RMB_AID | `_rmbaid/core/` là framework dùng chung |
-| **Method** | `_rmbaid-method` | `_rmbaid/rmbaid/` |
-| **Config** | Sửa trực tiếp các tệp | `config.yaml` theo từng module |
-| **Documents** | Cần thiết lập trước cho bản chia nhỏ hoặc nguyên khối | Linh hoạt hoàn toàn, tự động quét |
+| Khái niệm     | v4                                                    | v6                                      |
+| ------------- | ----------------------------------------------------- | --------------------------------------- |
+| **Core**      | `_rmbaid-core` thực chất là RMB_AID                   | `_rmbaid/core/` là framework dùng chung |
+| **Method**    | `_rmbaid-method`                                      | `_rmbaid/rmbaid/`                       |
+| **Config**    | Sửa trực tiếp các tệp                                 | `config.yaml` theo từng module          |
+| **Documents** | Cần thiết lập trước cho bản chia nhỏ hoặc nguyên khối | Linh hoạt hoàn toàn, tự động quét       |

@@ -1,5 +1,5 @@
 ---
-title: "Guide de Division de Documents"
+title: 'Guide de Division de Documents'
 description: Diviser les fichiers markdown volumineux en fichiers plus petits et organisés pour une meilleure gestion du contexte
 sidebar:
   order: 9

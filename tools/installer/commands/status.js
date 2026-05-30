@@ -10,7 +10,7 @@ const ui = new UI();
 
 module.exports = {
   command: 'status',
-  description: 'Display RMB_AID installation status and module versions',
+  description: 'Display SMART installation status and module versions',
   options: [],
   action: async (options) => {
     try {
@@ -21,7 +21,7 @@ module.exports = {
       // Check if rmbaid directory exists
       const fs = require('fs-extra');
       if (!(await fs.pathExists(rmbaidDir))) {
-        await prompts.log.warn('No RMB_AID installation found in the current directory.');
+        await prompts.log.warn('No SMART installation found in the current directory.');
         await prompts.log.message(`Expected location: ${rmbaidDir}`);
         await prompts.log.message('Run "rmbaid install" to set up a new installation.');
         process.exit(0);
@@ -32,7 +32,7 @@ module.exports = {
       const manifestData = await manifest._readRaw(rmbaidDir);
 
       if (!manifestData) {
-        await prompts.log.warn('No RMB_AID installation manifest found.');
+        await prompts.log.warn('No SMART installation manifest found.');
         await prompts.log.message('Run "rmbaid install" to set up a new installation.');
         process.exit(0);
         return;

@@ -1,5 +1,5 @@
 ---
-title: "Bắt đầu"
+title: 'Bắt đầu'
 description: Cài đặt RMB_AID và xây dựng dự án đầu tiên của bạn
 ---
 
@@ -14,11 +14,12 @@ Xây dựng phần mềm nhanh hơn bằng các workflow vận hành bởi AI, v
 - Sử dụng agent và workflow hiệu quả
 
 :::note[Điều kiện tiên quyết]
+
 - **Node.js 20+** — Bắt buộc cho trình cài đặt
 - **Git** — Khuyến nghị để quản lý phiên bản
 - **IDE có AI** — Claude Code, Cursor hoặc công cụ tương tự
 - **Một ý tưởng dự án** — Chỉ cần đơn giản cũng đủ để học
-:::
+  :::
 
 :::tip[Cách Dễ Nhất]
 **Cài đặt** → `npx rmb-aid install`
@@ -50,6 +51,7 @@ rmbaid-help I have an idea for a SaaS product, I already know all the features I
 ```
 
 RMB_AID-Help sẽ trả lời:
+
 - Điều gì được khuyến nghị trong tình huống của bạn
 - Tác vụ bắt buộc đầu tiên là gì
 - Phần còn lại của quy trình sẽ trông như thế nào
@@ -66,22 +68,22 @@ Sau khi cài RMB_AID, hãy gọi skill `rmbaid-help` ngay. Nó sẽ nhận biế
 
 RMB_AID giúp bạn xây dựng phần mềm thông qua các workflow có hướng dẫn với những AI agent chuyên biệt. Quy trình gồm bốn phase:
 
-| Phase | Tên | Điều xảy ra |
-| ----- | -------------- | --------------------------------------------------- |
-| 1 | Analysis | Brainstorming, nghiên cứu, product brief hoặc PRFAQ *(tùy chọn)* |
-| 2 | Planning | Tạo tài liệu yêu cầu (PRD hoặc spec) |
-| 3 | Solutioning | Thiết kế kiến trúc *(chỉ dành cho RMB_AID/Enterprise)* |
-| 4 | Implementation | Xây dựng theo từng epic, từng story |
+| Phase | Tên            | Điều xảy ra                                                      |
+| ----- | -------------- | ---------------------------------------------------------------- |
+| 1     | Analysis       | Brainstorming, nghiên cứu, product brief hoặc PRFAQ _(tùy chọn)_ |
+| 2     | Planning       | Tạo tài liệu yêu cầu (PRD hoặc spec)                             |
+| 3     | Solutioning    | Thiết kế kiến trúc _(chỉ dành cho RMB_AID/Enterprise)_           |
+| 4     | Implementation | Xây dựng theo từng epic, từng story                              |
 
 **[Mở Workflow Map](../reference/workflow-map.md)** để khám phá các phase, workflow và cách quản lý context.
 
 Dựa trên độ phức tạp của dự án, RMB_AID cung cấp ba nhánh lập kế hoạch:
 
-| Nhánh | Phù hợp nhất với | Tài liệu được tạo |
-| --------------- | ------------------------------------------------------ | -------------------------------------- |
-| **Quick Flow** | Sửa lỗi, tính năng đơn giản, phạm vi rõ ràng (1-15 story) | Chỉ spec |
-| **RMB_AID** | Sản phẩm, nền tảng, tính năng phức tạp (10-50+ story) | PRD + Architecture + UX |
-| **Enterprise** | Yêu cầu tuân thủ, hệ thống đa tenant (30+ story) | PRD + Architecture + Security + DevOps |
+| Nhánh          | Phù hợp nhất với                                          | Tài liệu được tạo                      |
+| -------------- | --------------------------------------------------------- | -------------------------------------- |
+| **Quick Flow** | Sửa lỗi, tính năng đơn giản, phạm vi rõ ràng (1-15 story) | Chỉ spec                               |
+| **RMB_AID**    | Sản phẩm, nền tảng, tính năng phức tạp (10-50+ story)     | PRD + Architecture + UX                |
+| **Enterprise** | Yêu cầu tuân thủ, hệ thống đa tenant (30+ story)          | PRD + Architecture + Security + DevOps |
 
 :::note
 Số lượng story chỉ là gợi ý, không phải định nghĩa cứng. Hãy chọn nhánh dựa trên nhu cầu lập kế hoạch, không phải phép đếm story.
@@ -100,6 +102,7 @@ Nếu bạn muốn dùng bản prerelease mới nhất thay vì kênh release m�
 Khi được hỏi chọn module, hãy chọn **RMB_AID**.
 
 Trình cài đặt sẽ tạo hai thư mục:
+
 - `_rmbaid/` — agents, workflows, tasks và cấu hình
 - `_rmbaid-output/` — hiện tại để trống, nhưng đây là nơi các artifact của bạn sẽ được lưu
 
@@ -134,6 +137,7 @@ Bạn có thể tạo thủ công tại `_rmbaid-output/project-context.md` ho�
 ### Phase 1: Analysis (Tùy chọn)
 
 Tất cả workflow trong phase này đều là tùy chọn. [**Chưa chắc nên dùng cái nào?**](../explanation/analysis-phase.md)
+
 - **brainstorming** (`rmbaid-brainstorming`) — Gợi ý ý tưởng có hướng dẫn
 - **research** (`rmbaid-market-research` / `rmbaid-domain-research` / `rmbaid-technical-research`) — Nghiên cứu thị trường, miền nghiệp vụ và kỹ thuật
 - **product-brief** (`rmbaid-product-brief`) — Tài liệu nền tảng được khuyến nghị khi concept của bạn đã rõ
@@ -142,11 +146,13 @@ Tất cả workflow trong phase này đều là tùy chọn. [**Chưa chắc nê
 ### Phase 2: Planning (Bắt buộc)
 
 **Với nhánh RMB_AID và Enterprise:**
+
 1. Gọi **PM agent** (`rmbaid-agent-pm`) trong một chat mới
 2. Chạy workflow `rmbaid-create-prd` (`rmbaid-create-prd`)
 3. Kết quả: `PRD.md`
 
 **Với nhánh Quick Flow:**
+
 - Chạy `rmbaid-quick-dev` — workflow này gộp cả planning và implementation trong một lần, nên bạn có thể chuyển thẳng sang triển khai
 
 :::note[Thiết kế UX (Tùy chọn)]
@@ -156,6 +162,7 @@ Nếu dự án của bạn có giao diện người dùng, hãy gọi **UX-Desig
 ### Phase 3: Solutioning (RMB_AID/Enterprise)
 
 **Tạo Architecture**
+
 1. Gọi **Architect agent** (`rmbaid-agent-architect`) trong một chat mới
 2. Chạy `rmbaid-create-architecture` (`rmbaid-create-architecture`)
 3. Kết quả: tài liệu kiến trúc chứa các quyết định kỹ thuật
@@ -163,14 +170,15 @@ Nếu dự án của bạn có giao diện người dùng, hãy gọi **UX-Desig
 **Tạo Epics và Stories**
 
 :::tip[Cải tiến trong V6]
-Epics và stories giờ được tạo *sau* kiến trúc. Điều này giúp story có chất lượng tốt hơn vì các quyết định kiến trúc như database, API pattern và tech stack ảnh hưởng trực tiếp đến cách chia nhỏ công việc.
+Epics và stories giờ được tạo _sau_ kiến trúc. Điều này giúp story có chất lượng tốt hơn vì các quyết định kiến trúc như database, API pattern và tech stack ảnh hưởng trực tiếp đến cách chia nhỏ công việc.
 :::
 
 1. Gọi **PM agent** (`rmbaid-agent-pm`) trong một chat mới
 2. Chạy `rmbaid-create-epics-and-stories` (`rmbaid-create-epics-and-stories`)
 3. Workflow sẽ dùng cả PRD lẫn Architecture để tạo story có đủ ngữ cảnh kỹ thuật
 
-**Kiểm tra mức sẵn sàng để triển khai** *(Rất nên dùng)*
+**Kiểm tra mức sẵn sàng để triển khai** _(Rất nên dùng)_
+
 1. Gọi **Architect agent** (`rmbaid-agent-architect`) trong một chat mới
 2. Chạy `rmbaid-check-implementation-readiness` (`rmbaid-check-implementation-readiness`)
 3. Xác nhận tính nhất quán giữa toàn bộ tài liệu lập kế hoạch
@@ -187,11 +195,11 @@ Gọi **Developer agent** (`rmbaid-agent-dev`) và chạy `rmbaid-sprint-plannin
 
 Với mỗi story, lặp lại chu trình này trong chat mới:
 
-| Bước | Agent | Workflow | Lệnh | Mục đích |
-| ---- | ----- | -------------- | -------------------------- | ---------------------------------- |
-| 1 | DEV | `rmbaid-create-story` | `rmbaid-create-story` | Tạo file story từ epic |
-| 2 | DEV | `rmbaid-dev-story` | `rmbaid-dev-story` | Triển khai story |
-| 3 | DEV | `rmbaid-code-review` | `rmbaid-code-review` | Kiểm tra chất lượng *(khuyến nghị)* |
+| Bước | Agent | Workflow              | Lệnh                  | Mục đích                            |
+| ---- | ----- | --------------------- | --------------------- | ----------------------------------- |
+| 1    | DEV   | `rmbaid-create-story` | `rmbaid-create-story` | Tạo file story từ epic              |
+| 2    | DEV   | `rmbaid-dev-story`    | `rmbaid-dev-story`    | Triển khai story                    |
+| 3    | DEV   | `rmbaid-code-review`  | `rmbaid-code-review`  | Kiểm tra chất lượng _(khuyến nghị)_ |
 
 Sau khi hoàn tất tất cả story trong một epic, hãy gọi **Developer agent** (`rmbaid-agent-dev`) và chạy `rmbaid-retrospective` (`rmbaid-retrospective`).
 
@@ -222,18 +230,18 @@ your-project/
 
 ## Tra Cứu Nhanh
 
-| Workflow | Lệnh | Agent | Mục đích |
-| ------------------------------------- | ------------------------------------------ | --------- | ----------------------------------------------- |
-| **`rmbaid-help`** ⭐ | `rmbaid-help` | Bất kỳ | **Người dẫn đường thông minh của bạn — hỏi gì cũng được!** |
-| `rmbaid-create-prd` | `rmbaid-create-prd` | PM | Tạo tài liệu yêu cầu sản phẩm |
-| `rmbaid-create-architecture` | `rmbaid-create-architecture` | Architect | Tạo tài liệu kiến trúc |
-| `rmbaid-generate-project-context` | `rmbaid-generate-project-context` | Analyst | Tạo file project context |
-| `rmbaid-create-epics-and-stories` | `rmbaid-create-epics-and-stories` | PM | Phân rã PRD thành epics |
-| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | Kiểm tra độ nhất quán của kế hoạch |
-| `rmbaid-sprint-planning` | `rmbaid-sprint-planning` | DEV | Khởi tạo theo dõi sprint |
-| `rmbaid-create-story` | `rmbaid-create-story` | DEV | Tạo file story |
-| `rmbaid-dev-story` | `rmbaid-dev-story` | DEV | Triển khai một story |
-| `rmbaid-code-review` | `rmbaid-code-review` | DEV | Review phần code đã triển khai |
+| Workflow                                | Lệnh                                    | Agent     | Mục đích                                                   |
+| --------------------------------------- | --------------------------------------- | --------- | ---------------------------------------------------------- |
+| **`rmbaid-help`** ⭐                    | `rmbaid-help`                           | Bất kỳ    | **Người dẫn đường thông minh của bạn — hỏi gì cũng được!** |
+| `rmbaid-create-prd`                     | `rmbaid-create-prd`                     | PM        | Tạo tài liệu yêu cầu sản phẩm                              |
+| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Architect | Tạo tài liệu kiến trúc                                     |
+| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`       | Analyst   | Tạo file project context                                   |
+| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | PM        | Phân rã PRD thành epics                                    |
+| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Architect | Kiểm tra độ nhất quán của kế hoạch                         |
+| `rmbaid-sprint-planning`                | `rmbaid-sprint-planning`                | DEV       | Khởi tạo theo dõi sprint                                   |
+| `rmbaid-create-story`                   | `rmbaid-create-story`                   | DEV       | Tạo file story                                             |
+| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | DEV       | Triển khai một story                                       |
+| `rmbaid-code-review`                    | `rmbaid-code-review`                    | DEV       | Review phần code đã triển khai                             |
 
 ## Câu Hỏi Thường Gặp
 
@@ -253,6 +261,7 @@ Không hẳn. Khi đã quen flow, bạn có thể chạy workflow trực tiếp 
 
 :::tip[Điểm Dừng Đầu Tiên: RMB_AID-Help]
 **Hãy gọi `rmbaid-help` bất cứ lúc nào** — đây là cách nhanh nhất để gỡ vướng. Bạn có thể hỏi:
+
 - "Tôi nên làm gì sau khi cài đặt?"
 - "Tôi đang kẹt ở workflow X"
 - "Tôi có những lựa chọn nào cho Y?"
@@ -267,10 +276,11 @@ RMB_AID-Help sẽ kiểm tra dự án, phát hiện những gì bạn đã hoàn
 ## Những Điểm Cần Ghi Nhớ
 
 :::tip[Hãy Nhớ Các Điểm Này]
+
 - **Bắt đầu với `rmbaid-help`** — Trợ lý thông minh hiểu dự án và các lựa chọn của bạn
 - **Luôn dùng chat mới** — Mỗi workflow nên bắt đầu trong một chat riêng
 - **Nhánh rất quan trọng** — Quick Flow dùng `rmbaid-quick-dev`; Method/Enterprise cần PRD và kiến trúc
 - **RMB_AID-Help chạy tự động** — Mỗi workflow đều kết thúc bằng hướng dẫn về bước tiếp theo
-:::
+  :::
 
 Sẵn sàng bắt đầu chưa? Hãy cài RMB_AID, gọi `rmbaid-help`, và để người dẫn đường thông minh của bạn đưa bạn đi tiếp.

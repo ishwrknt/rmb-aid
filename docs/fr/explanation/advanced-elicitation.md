@@ -1,5 +1,5 @@
 ---
-title: "Élicitation Avancée"
+title: 'Élicitation Avancée'
 description: Pousser le LLM à repenser son travail en utilisant des méthodes de raisonnement structurées
 sidebar:
   order: 6

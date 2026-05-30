@@ -1,8 +1,8 @@
 ---
-title: "Hướng dẫn chia nhỏ tài liệu"
+title: 'Hướng dẫn chia nhỏ tài liệu'
 description: Tách các tệp markdown lớn thành nhiều tệp nhỏ có tổ chức để quản lý context tốt hơn
 sidebar:
-       order: 9
+  order: 9
 ---
 
 Sử dụng công cụ `rmbaid-shard-doc` nếu bạn cần tách các tệp markdown lớn thành nhiều tệp nhỏ có tổ chức để quản lý context tốt hơn.

@@ -1,4 +1,11 @@
 module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+Core,rmbaid-command-hub,Command Hub,CH,Renamed command router and shortcut registry. Use when you want the BMAD-style command shell with slash commands persona aliases and one-mode routing.,,anytime,,,false,,
+Core,rmbaid-advanced-elicitation,Advanced Elicitation,AE,Push the model to rethink and improve its latest output through structured critique and refinement.,,anytime,,,false,,
+Core,rmbaid-elevate,Elevate,EL,Renamed compatibility mode for BMAD-style promote. Use when you want to improve a draft answer plan or artifact with shortcut-driven critique.,,anytime,,,false,,
+Core,rmbaid-verify,Verify,VF,Renamed compatibility mode for validation and review. Use when you want a strict quality check review pass or artifact validation.,,anytime,,,false,,
+Core,rmbaid-expert-view,Expert View,XV,Run a focused expert-panel analysis with consensus and recommendations. Use when you need specialist viewpoints on a decision artifact or architecture.,,anytime,,,false,,
+Core,rmbaid-ideate,Ideate,IDT,Renamed ideation mode for brainstorming and option expansion. Use when you want a lighter BMAD-style entrypoint for idea generation.,,anytime,,,false,{output_folder}/brainstorming,brainstorming session
+Core,rmbaid-squad,Squad,SQD,Renamed collaboration mode for multi-agent discussion and role debate. Use when you want party-mode behavior through a simpler command.,,anytime,,,false,,
 Core,rmbaid-brainstorming,Brainstorming,BSP,Use early in ideation or when stuck generating ideas.,,anytime,,,false,{output_folder}/brainstorming,brainstorming session
 Core,rmbaid-party-mode,Party Mode,PM,Orchestrate multi-agent discussions when you need multiple perspectives or want agents to collaborate.,,anytime,,,false,,
 Core,rmbaid-help,RMB_AID Help,BH,,,anytime,,,false,,

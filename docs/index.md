@@ -30,7 +30,7 @@ These docs are organized into four sections based on what you're trying to do:
 | ----------------- | ---------------------------------------------------------------------------------------------------------- |
 | **Tutorials**     | Learning-oriented. Step-by-step guides that walk you through building something. Start here if you're new. |
 | **How-To Guides** | Task-oriented. Practical guides for solving specific problems. "How do I customize an agent?" lives here.  |
-| **Explanation**   | Understanding-oriented. Deep dives into concepts and architecture. Read when you want to know *why*.       |
+| **Explanation**   | Understanding-oriented. Deep dives into concepts and architecture. Read when you want to know _why_.       |
 | **Reference**     | Information-oriented. Technical specifications for agents, workflows, and configuration.                   |
 
 ## Extend and Customize

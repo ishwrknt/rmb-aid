@@ -1,5 +1,5 @@
 ---
-title: "Documentation Style Guide"
+title: 'Documentation Style Guide'
 description: 基于 Google 文档风格与 Diataxis 的项目文档规范
 ---
 
@@ -7,17 +7,17 @@ description: 基于 Google 文档风格与 Diataxis 的项目文档规范
 
 ## 项目特定规则
 
-| 规则 | 规范 |
-| --- | --- |
-| 禁用水平分割线（`---`） | 会打断阅读流 |
-| 禁用 `####` 标题 | 用加粗短句或 admonition 替代 |
-| 避免 “Related/Next” 章节 | 交给侧边栏导航 |
-| 避免深层嵌套列表 | 拆成新段落或新小节 |
-| 非代码内容不要放代码块 | 对话/提示用 admonition |
-| 不用整段粗体做提醒 | 统一用 admonition |
-| 每节 1-2 个 admonition | 教程大节可放宽到 3-4 个 |
-| 表格单元格/列表项 | 控制在 1-2 句 |
-| 标题预算 | 每篇约 8-12 个 `##`，每节 2-3 个 `###` |
+| 规则                     | 规范                                   |
+| ------------------------ | -------------------------------------- |
+| 禁用水平分割线（`---`）  | 会打断阅读流                           |
+| 禁用 `####` 标题         | 用加粗短句或 admonition 替代           |
+| 避免 “Related/Next” 章节 | 交给侧边栏导航                         |
+| 避免深层嵌套列表         | 拆成新段落或新小节                     |
+| 非代码内容不要放代码块   | 对话/提示用 admonition                 |
+| 不用整段粗体做提醒       | 统一用 admonition                      |
+| 每节 1-2 个 admonition   | 教程大节可放宽到 3-4 个                |
+| 表格单元格/列表项        | 控制在 1-2 句                          |
+| 标题预算                 | 每篇约 8-12 个 `##`，每节 2-3 个 `###` |
 
 ## 提示块（Starlight 语法）
 
@@ -41,29 +41,29 @@ Critical warnings only — data loss, security issues
 
 ### 标准用途
 
-| 提示块 | 适用场景 |
-| --- | --- |
+| 提示块                   | 适用场景             |
+| ------------------------ | -------------------- |
 | `:::note[Prerequisites]` | 开始前依赖与前置条件 |
-| `:::tip[Quick Path]` | 文档顶部 TL;DR |
-| `:::caution[Important]` | 关键风险提醒 |
-| `:::note[Example]` | 命令/响应示例说明 |
+| `:::tip[Quick Path]`     | 文档顶部 TL;DR       |
+| `:::caution[Important]`  | 关键风险提醒         |
+| `:::note[Example]`       | 命令/响应示例说明    |
 
 ## 标准表格模板
 
 **阶段（Phases）：**
 
 ```md
-| Phase | Name     | What Happens                                 |
-| ----- | -------- | -------------------------------------------- |
-| 1     | Analysis | Brainstorm, research *(optional)*            |
-| 2     | Planning | Requirements — PRD or spec *(required)* |
+| Phase | Name     | What Happens                            |
+| ----- | -------- | --------------------------------------- |
+| 1     | Analysis | Brainstorm, research _(optional)_       |
+| 2     | Planning | Requirements — PRD or spec _(required)_ |
 ```
 
 **技能（Skills）：**
 
 ```md
-| Skill                | Agent   | Purpose                              |
-| -------------------- | ------- | ------------------------------------ |
+| Skill                  | Agent   | Purpose                              |
+| ---------------------- | ------- | ------------------------------------ |
 | `rmbaid-brainstorming` | Analyst | Brainstorm a new project             |
 | `rmbaid-create-prd`    | PM      | Create Product Requirements Document |
 ```
@@ -144,13 +144,13 @@ your-project/
 
 ### 类型
 
-| 类型 | 示例 |
-| --- | --- |
-| **Index/Landing** | `core-concepts/index.md` |
-| **Concept** | `what-are-agents.md` |
-| **Feature** | `quick-dev.md` |
-| **Philosophy** | `why-solutioning-matters.md` |
-| **FAQ** | `established-projects-faq.md` |
+| 类型              | 示例                          |
+| ----------------- | ----------------------------- |
+| **Index/Landing** | `core-concepts/index.md`      |
+| **Concept**       | `what-are-agents.md`          |
+| **Feature**       | `quick-dev.md`                |
+| **Philosophy**    | `why-solutioning-matters.md`  |
+| **FAQ**           | `established-projects-faq.md` |
 
 ### 通用模板
 
@@ -220,14 +220,14 @@ your-project/
 
 ### 类型
 
-| 类型 | 示例 |
-| --- | --- |
-| **Index/Landing** | `workflows/index.md` |
-| **Catalog** | `agents/index.md` |
-| **Deep-Dive** | `document-project.md` |
-| **Configuration** | `core-tasks.md` |
-| **Glossary** | `glossary/index.md` |
-| **Comprehensive** | `bmgd-workflows.md` |
+| 类型              | 示例                  |
+| ----------------- | --------------------- |
+| **Index/Landing** | `workflows/index.md`  |
+| **Catalog**       | `agents/index.md`     |
+| **Deep-Dive**     | `document-project.md` |
+| **Configuration** | `core-tasks.md`       |
+| **Glossary**      | `glossary/index.md`   |
+| **Comprehensive** | `bmgd-workflows.md`   |
 
 ### Reference 索引页
 
@@ -314,11 +314,11 @@ Starlight 右侧 “On this page” 来自标题层级：
 
 ### 定义规则
 
-| 推荐 | 避免 |
-| --- | --- |
+| 推荐                    | 避免                                     |
+| ----------------------- | ---------------------------------------- |
 | 直接写“它是什么/做什么” | 以 “This is...” 或 “A [term] is...” 开头 |
-| 控制在 1-2 句 | 多段长解释 |
-| 术语名称加粗 | 术语用普通文本 |
+| 控制在 1-2 句           | 多段长解释                               |
+| 术语名称加粗            | 术语用普通文本                           |
 
 ### 语境标记（Context Markers）
 

@@ -58,19 +58,20 @@ npx rmb-aid install --directory /path/to/project --modules bmm --tools claude-co
 
 RMB_AID 可通过官方模块扩展到不同专业场景。你可以在安装时选择，也可以后续随时补装。
 
-| 模块                                                                                                                | 用途                           |
-| ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| **[RMB_AID (BMM)](https://github.com/rmbaid-code-org/RMB_AID)**                                             | 核心框架，内含 34+ 工作流         |
-| **[RMB_AID Builder (BMB)](https://github.com/rmbaid-code-org/rmbaid-builder)**                                           | 创建自定义 RMB_AID 智能体与工作流     |
-| **[Test Architect (TEA)](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)**             | 基于风险的测试策略与自动化         |
+| 模块                                                                                                                  | 用途                                 |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| **[RMB_AID (BMM)](https://github.com/rmbaid-code-org/RMB_AID)**                                                       | 核心框架，内含 34+ 工作流            |
+| **[RMB_AID Builder (BMB)](https://github.com/rmbaid-code-org/rmbaid-builder)**                                        | 创建自定义 RMB_AID 智能体与工作流    |
+| **[Test Architect (TEA)](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)**                   | 基于风险的测试策略与自动化           |
 | **[Game Dev Studio (BMGD)](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)**                        | 游戏开发工作流（Unity/Unreal/Godot） |
-| **[Creative Intelligence Suite (CIS)](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)** | 创新、头脑风暴、设计思维           |
+| **[Creative Intelligence Suite (CIS)](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)** | 创新、头脑风暴、设计思维             |
 
 ## 文档
 
 [RMB_AID 方法文档站点](https://docs.rmb-aid.org/zh-cn/) — 教程、指南、概念和参考
 
 **快速链接：**
+
 - [入门教程](https://docs.rmb-aid.org/zh-cn/tutorials/getting-started/)
 - [从旧版本升级](https://docs.rmb-aid.org/zh-cn/how-to/upgrade-to-v6/)
 - [测试架构师文档（英文）](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)

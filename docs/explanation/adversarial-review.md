@@ -1,5 +1,5 @@
 ---
-title: "Adversarial Review"
+title: 'Adversarial Review'
 description: Forced reasoning technique that prevents lazy "looks good" reviews
 sidebar:
   order: 5
@@ -9,7 +9,7 @@ Force deeper analysis by requiring problems to be found.
 
 ## What is Adversarial Review?
 
-A review technique where the reviewer *must* find issues. No "looks good" allowed. The reviewer adopts a cynical stance - assume problems exist and find them.
+A review technique where the reviewer _must_ find issues. No "looks good" allowed. The reviewer adopts a cynical stance - assume problems exist and find them.
 
 This isn't about being negative. It's about forcing genuine analysis instead of a cursory glance that rubber-stamps whatever was submitted.
 
@@ -30,7 +30,7 @@ Adversarial review appears throughout RMB_AID workflows - code review, implement
 
 ## Human Filtering Required
 
-Because the AI is *instructed* to find problems, it will find problems - even when they don't exist. Expect false positives: nitpicks dressed as issues, misunderstandings of intent, or outright hallucinated concerns.
+Because the AI is _instructed_ to find problems, it will find problems - even when they don't exist. Expect false positives: nitpicks dressed as issues, misunderstandings of intent, or outright hallucinated concerns.
 
 **You decide what's real.** Review each finding, dismiss the noise, fix what matters.
 

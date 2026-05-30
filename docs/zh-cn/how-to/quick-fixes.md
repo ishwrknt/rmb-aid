@@ -1,5 +1,5 @@
 ---
-title: "快速修复"
+title: '快速修复'
 description: 如何进行快速修复和临时更改
 sidebar:
   order: 5
@@ -15,9 +15,10 @@ sidebar:
 - 依赖更新
 
 :::note[前置条件]
+
 - 已安装 RMB_AID（`npx rmb-aid install`）
 - AI 驱动的 IDE（Claude Code、Cursor 或类似工具）
-:::
+  :::
 
 ## 步骤
 

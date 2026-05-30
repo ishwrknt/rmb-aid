@@ -78,5 +78,7 @@ Les modules communautaires et une marketplace de modules sont à venir. Consulte
 ## Glossaire
 
 [^1]: SCAMPER : acronyme anglais pour une technique de créativité structurée (Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse) qui permet d'explorer systématiquement les modifications possibles d'un produit ou d'une idée pour générer des innovations.
+
 [^2]: NFR (Non-Functional Requirement) : exigence décrivant les contraintes de qualité du système (performance, sécurité, fiabilité, ergonomie) plutôt que ses fonctionnalités.
+
 [^3]: GDD (Game Design Document) : document de conception de jeu qui décrit en détail les mécaniques, l'univers, les personnages, les niveaux et tous les aspects du jeu à développer.

@@ -11,9 +11,9 @@ Skills are pre-built prompts that load agents, run workflows, or execute tasks i
 
 RMB_AID offers two ways to start work, and they serve different purposes.
 
-| Mechanism | How you invoke it | What happens |
-| --- | --- | --- |
-| **Skill** | Type the skill name (e.g. `rmbaid-help`) in your IDE | Directly loads an agent, runs a workflow, or executes a task |
+| Mechanism              | How you invoke it                                       | What happens                                                                              |
+| ---------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Skill**              | Type the skill name (e.g. `rmbaid-help`) in your IDE    | Directly loads an agent, runs a workflow, or executes a task                              |
 | **Agent menu trigger** | Load an agent first, then type a short code (e.g. `DS`) | The agent interprets the code and starts the matching workflow while staying in character |
 
 Agent menu triggers require an active agent session. Use skills when you know which workflow you want. Use triggers when you are already working with an agent and want to switch tasks without leaving the conversation.
@@ -24,12 +24,12 @@ When you run `npx rmb-aid install`, the installer reads the manifests for every 
 
 The installer uses templates for each skill type:
 
-| Skill type | What the generated file does |
-| --- | --- |
+| Skill type         | What the generated file does                                             |
+| ------------------ | ------------------------------------------------------------------------ |
 | **Agent launcher** | Loads the agent persona file, activates its menu, and stays in character |
-| **Workflow skill** | Loads the workflow config and follows its steps |
-| **Task skill** | Loads a standalone task file and follows its instructions |
-| **Tool skill** | Loads a standalone tool file and follows its instructions |
+| **Workflow skill** | Loads the workflow config and follows its steps                          |
+| **Task skill**     | Loads a standalone task file and follows its instructions                |
+| **Tool skill**     | Loads a standalone tool file and follows its instructions                |
 
 :::note[Re-running the installer]
 If you add or remove modules, run the installer again. It regenerates all skill files to match your current module selection.
@@ -39,12 +39,12 @@ If you add or remove modules, run the installer again. It regenerates all skill 
 
 The installer writes skill files into an IDE-specific directory inside your project. The exact path depends on which IDE you selected during installation.
 
-| IDE / CLI | Skills directory |
-| --- | --- |
-| Claude Code | `.claude/skills/` |
-| Cursor | `.cursor/skills/` |
-| Windsurf | `.windsurf/skills/` |
-| Other IDEs | See the installer output for the target path |
+| IDE / CLI   | Skills directory                             |
+| ----------- | -------------------------------------------- |
+| Claude Code | `.claude/skills/`                            |
+| Cursor      | `.cursor/skills/`                            |
+| Windsurf    | `.windsurf/skills/`                          |
+| Other IDEs  | See the installer output for the target path |
 
 Each skill is a directory containing a `SKILL.md` file. For example, a Claude Code installation looks like:
 
@@ -77,11 +77,11 @@ The generated skill directories in your project are the canonical list. Open the
 
 Agent skills load a specialized AI persona with a defined role, communication style, and menu of workflows. Once loaded, the agent stays in character and responds to menu triggers.
 
-| Example skill | Agent | Role |
-| --- | --- | --- |
-| `rmbaid-agent-dev` | Amelia (Developer) | Implements stories with strict adherence to specs |
-| `rmbaid-pm` | John (Product Manager) | Creates and validates PRDs |
-| `rmbaid-architect` | Winston (Architect) | Designs system architecture |
+| Example skill      | Agent                  | Role                                              |
+| ------------------ | ---------------------- | ------------------------------------------------- |
+| `rmbaid-agent-dev` | Amelia (Developer)     | Implements stories with strict adherence to specs |
+| `rmbaid-pm`        | John (Product Manager) | Creates and validates PRDs                        |
+| `rmbaid-architect` | Winston (Architect)    | Designs system architecture                       |
 
 See [Agents](./agents.md) for the full list of default agents and their triggers.
 
@@ -89,16 +89,16 @@ See [Agents](./agents.md) for the full list of default agents and their triggers
 
 Workflow skills run a structured, multi-step process without loading an agent persona first. They load a workflow configuration and follow its steps.
 
-| Example skill | Purpose |
-| --- | --- |
-| `rmbaid-product-brief` | Create a product brief — guided discovery when your concept is clear |
-| `rmbaid-prfaq` | Working Backwards PRFAQ challenge to stress-test your product concept |
-| `rmbaid-create-prd` | Create a Product Requirements Document |
-| `rmbaid-create-architecture` | Design system architecture |
-| `rmbaid-create-epics-and-stories` | Create epics and stories |
-| `rmbaid-dev-story` | Implement a story |
-| `rmbaid-code-review` | Run a code review |
-| `rmbaid-quick-dev` | Unified quick flow — clarify intent, plan, implement, review, present |
+| Example skill                     | Purpose                                                               |
+| --------------------------------- | --------------------------------------------------------------------- |
+| `rmbaid-product-brief`            | Create a product brief — guided discovery when your concept is clear  |
+| `rmbaid-prfaq`                    | Working Backwards PRFAQ challenge to stress-test your product concept |
+| `rmbaid-create-prd`               | Create a Product Requirements Document                                |
+| `rmbaid-create-architecture`      | Design system architecture                                            |
+| `rmbaid-create-epics-and-stories` | Create epics and stories                                              |
+| `rmbaid-dev-story`                | Implement a story                                                     |
+| `rmbaid-code-review`              | Run a code review                                                     |
+| `rmbaid-quick-dev`                | Unified quick flow — clarify intent, plan, implement, review, present |
 
 See [Workflow Map](./workflow-map.md) for the complete workflow reference organized by phase.
 
@@ -111,11 +111,13 @@ Tasks and tools are standalone operations that do not require an agent or workfl
 `rmbaid-help` is your primary interface for discovering what to do next. It inspects your project, understands natural language queries, and recommends the next required or optional step based on your installed modules.
 
 :::note[Example]
+
 ```
 rmbaid-help
 rmbaid-help I have a SaaS idea and know all the features. Where do I start?
 rmbaid-help What are my options for UX design?
 ```
+
 :::
 
 **Other Core Tasks and Tools**

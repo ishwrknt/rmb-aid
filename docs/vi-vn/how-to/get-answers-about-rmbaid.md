@@ -1,8 +1,8 @@
 ---
-title: "Cách tìm câu trả lời về RMB_AID"
+title: 'Cách tìm câu trả lời về RMB_AID'
 description: Sử dụng LLM để tự nhanh chóng trả lời các câu hỏi về RMB_AID
 sidebar:
-        order: 4
+  order: 4
 ---
 
 ## Bắt đầu tại đây: RMB_AID-Help
@@ -10,6 +10,7 @@ sidebar:
 **Cách nhanh nhất để tìm câu trả lời về RMB_AID là dùng skill `rmbaid-help`.** Đây là công cụ hướng dẫn thông minh có thể trả lời hơn 80% các câu hỏi và có sẵn ngay trong IDE khi bạn làm việc.
 
 RMB_AID-Help không chỉ là công cụ tra cứu, nó còn:
+
 - **Kiểm tra dự án của bạn** để xem những gì đã hoàn thành
 - **Hiểu ngôn ngữ tự nhiên** - đặt câu hỏi bằng ngôn ngữ bình thường
 - **Thay đổi theo module đã cài** - hiển thị các lựa chọn liên quan
@@ -38,6 +39,7 @@ rmbaid-help Cho tôi xem tôi đã làm được gì đến giờ
 ```
 
 RMB_AID-Help sẽ trả lời:
+
 - Điều gì được khuyến nghị cho tình huống của bạn
 - Tác vụ đầu tiên cần thiết là gì
 - Phần còn lại của quy trình trông thế nào
@@ -45,6 +47,7 @@ RMB_AID-Help sẽ trả lời:
 ## Khi nào nên dùng tài liệu này
 
 Hãy xem phần này khi:
+
 - Bạn muốn hiểu kiến trúc hoặc nội bộ của RMB_AID
 - Bạn cần câu trả lời nằm ngoài phạm vi RMB_AID-Help cung cấp
 - Bạn đang nghiên cứu RMB_AID trước khi cài đặt
@@ -54,11 +57,11 @@ Hãy xem phần này khi:
 
 ### 1. Chọn nguồn thông tin
 
-| Nguồn | Phù hợp nhất cho | Ví dụ |
-| --- | --- | --- |
-| **Thư mục `_rmbaid`** | Cách RMB_AID vận hành: agent, workflow, prompt | "PM agent làm gì?" |
-| **Toàn bộ repo GitHub** | Lịch sử, installer, kiến trúc | "v6 thay đổi gì?" |
-| **`llms-full.txt`** | Tổng quan nhanh từ tài liệu | "Giải thích bốn giai đoạn của RMB_AID" |
+| Nguồn                   | Phù hợp nhất cho                               | Ví dụ                                  |
+| ----------------------- | ---------------------------------------------- | -------------------------------------- |
+| **Thư mục `_rmbaid`**   | Cách RMB_AID vận hành: agent, workflow, prompt | "PM agent làm gì?"                     |
+| **Toàn bộ repo GitHub** | Lịch sử, installer, kiến trúc                  | "v6 thay đổi gì?"                      |
+| **`llms-full.txt`**     | Tổng quan nhanh từ tài liệu                    | "Giải thích bốn giai đoạn của RMB_AID" |
 
 Thư mục `_rmbaid` được tạo khi bạn cài đặt RMB_AID. Nếu chưa có, hãy clone repo thay thế.
 
@@ -98,38 +101,38 @@ Các câu trả lời trực tiếp về RMB_AID: agent hoạt động ra sao, w
 
 Đã thử cách tiếp cận bằng LLM mà vẫn cần trợ giúp? Lúc này bạn đã có một câu hỏi tốt hơn để đem đi hỏi.
 
-| Kênh | Dùng cho |
-| --- | --- |
-| `#rmb-aid-help` | Câu hỏi nhanh (trò chuyện thời gian thực) |
-| `help-requests` forum | Câu hỏi chi tiết (có thể tìm lại, tồn tại lâu dài) |
-| `#suggestions-feedback` | Ý tưởng và đề xuất tính năng |
-| `#report-bugs-and-issues` | Báo cáo lỗi |
+| Kênh                      | Dùng cho                                           |
+| ------------------------- | -------------------------------------------------- |
+| `#rmb-aid-help`           | Câu hỏi nhanh (trò chuyện thời gian thực)          |
+| `help-requests` forum     | Câu hỏi chi tiết (có thể tìm lại, tồn tại lâu dài) |
+| `#suggestions-feedback`   | Ý tưởng và đề xuất tính năng                       |
+| `#report-bugs-and-issues` | Báo cáo lỗi                                        |
 
 **Discord:** [discord.gg/gk8jAdXWmj](https://discord.gg/gk8jAdXWmj)
 
 **GitHub Issues:** [github.com/rmbaid-code-org/RMB_AID/issues](https://github.com/rmbaid-code-org/RMB_AID/issues) (dành cho các lỗi rõ ràng)
 
-*Chính bạn,*
-        *đang mắc kẹt*
-             *trong hàng đợi -*
-                      *đợi*
-                              *ai?*
+_Chính bạn,_
+_đang mắc kẹt_
+_trong hàng đợi -_
+_đợi_
+_ai?_
 
-*Mã nguồn*
-        *nằm ngay đó,*
-                *rõ như ban ngày!*
+_Mã nguồn_
+_nằm ngay đó,_
+_rõ như ban ngày!_
 
-*Hãy trỏ*
-        *cho máy của bạn.*
-                    *Thả nó đi.*
+_Hãy trỏ_
+_cho máy của bạn._
+_Thả nó đi._
 
-*Nó đọc.*
-        *Nó nói.*
-                *Cứ hỏi -*
+_Nó đọc._
+_Nó nói._
+_Cứ hỏi -_
 
-*Sao phải chờ*
-        *đến ngày mai*
-                *khi bạn đã có*
-                        *ngày hôm nay?*
+_Sao phải chờ_
+_đến ngày mai_
+_khi bạn đã có_
+_ngày hôm nay?_
 
-*- Claude*
+_- Claude_

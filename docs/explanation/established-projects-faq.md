@@ -1,9 +1,10 @@
 ---
-title: "Established Projects FAQ"
+title: 'Established Projects FAQ'
 description: Common questions about using RMB_AID on established projects
 sidebar:
   order: 8
 ---
+
 Quick answers to common questions about working on established projects with the RMB_AID (RMB_AID).
 
 ## Questions

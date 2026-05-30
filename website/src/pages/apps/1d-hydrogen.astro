@@ -1,0 +1,1048 @@
+---
+const base = import.meta.env.BASE_URL ?? '/';
+const homeHref = base;
+const docsHref = `${base}reference/workflow-map/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>1D Hydrogen Atom Explorer</title>
+    <meta
+      name="description"
+      content="Interactive web app for the standard 1D hydrogen atom model with energy levels, wavefunctions, and probability density."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07111f;
+        --bg-elevated: rgba(12, 23, 40, 0.82);
+        --panel: rgba(8, 18, 33, 0.92);
+        --panel-strong: rgba(11, 28, 48, 0.96);
+        --border: rgba(120, 167, 255, 0.18);
+        --border-strong: rgba(120, 167, 255, 0.32);
+        --text: #eef4ff;
+        --muted: #93a4bf;
+        --accent: #67b7ff;
+        --accent-strong: #2a7fff;
+        --accent-warm: #ffd166;
+        --wave: #7bdff6;
+        --probability: #ffd166;
+        --danger: #ff8f8f;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --font-ui:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-display:
+          'Space Grotesk', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at top left, rgba(42, 127, 255, 0.2), transparent 35%),
+          radial-gradient(circle at 80% 20%, rgba(255, 209, 102, 0.14), transparent 25%),
+          linear-gradient(180deg, #09111f 0%, #040910 100%);
+        color: var(--text);
+        font-family: var(--font-ui);
+      }
+
+      body {
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: '';
+        position: fixed;
+        inset: auto;
+        pointer-events: none;
+        filter: blur(16px);
+      }
+
+      body::before {
+        width: 22rem;
+        height: 22rem;
+        top: 4rem;
+        right: -4rem;
+        background: rgba(42, 127, 255, 0.14);
+        border-radius: 999px;
+      }
+
+      body::after {
+        width: 18rem;
+        height: 18rem;
+        bottom: 8rem;
+        left: -3rem;
+        background: rgba(255, 209, 102, 0.12);
+        border-radius: 999px;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1200px, calc(100vw - 2rem));
+        margin: 0 auto;
+        padding: 1rem 0 4rem;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0.9rem 1.1rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(6, 12, 24, 0.7);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+      }
+
+      .brand-badge {
+        display: grid;
+        place-items: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent-strong), #0f3f88);
+        box-shadow: 0 12px 30px rgba(42, 127, 255, 0.34);
+        font-family: var(--font-display);
+      }
+
+      .toplinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .link-pill {
+        padding: 0.65rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--muted);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          color 180ms ease,
+          background 180ms ease;
+      }
+
+      .link-pill:hover,
+      .link-pill:focus-visible {
+        color: var(--text);
+        border-color: var(--border-strong);
+        background: rgba(255, 255, 255, 0.03);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        position: relative;
+        padding: 2.3rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(135deg, rgba(12, 25, 45, 0.96), rgba(6, 12, 24, 0.92)),
+          linear-gradient(45deg, rgba(42, 127, 255, 0.08), transparent);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: -30% auto auto 60%;
+        width: 28rem;
+        height: 28rem;
+        background:
+          radial-gradient(circle, rgba(103, 183, 255, 0.22) 0%, rgba(103, 183, 255, 0.06) 35%, transparent 68%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid rgba(103, 183, 255, 0.2);
+        border-radius: 999px;
+        background: rgba(103, 183, 255, 0.08);
+        color: var(--accent);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        margin: 1rem 0 0.8rem;
+        max-width: 12ch;
+        font-family: var(--font-display);
+        font-size: clamp(2.6rem, 6vw, 5.2rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr;
+        gap: 1.4rem;
+        align-items: end;
+      }
+
+      .hero-copy p {
+        max-width: 62ch;
+        margin: 0 0 1.35rem;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.72;
+      }
+
+      .formula-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .formula-chip {
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .formula-chip strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.76rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .formula-chip code {
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        color: var(--text);
+      }
+
+      .hero-note {
+        padding: 1.15rem;
+        border: 1px solid rgba(255, 209, 102, 0.2);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(180deg, rgba(255, 209, 102, 0.08), rgba(255, 209, 102, 0.02));
+      }
+
+      .hero-note h2 {
+        margin: 0 0 0.7rem;
+        font-size: 1rem;
+      }
+
+      .hero-note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .app-grid {
+        display: grid;
+        grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+        gap: 1.25rem;
+        margin-top: 1.4rem;
+      }
+
+      .panel {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .panel-inner {
+        padding: 1.35rem;
+      }
+
+      .panel-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .panel-title h2,
+      .panel-title h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        letter-spacing: -0.03em;
+      }
+
+      .panel-title span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .control-stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .control-card {
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--panel-strong);
+      }
+
+      .control-card label,
+      .toggle-legend {
+        display: block;
+        margin-bottom: 0.6rem;
+        font-size: 0.83rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .control-card output {
+        font-family: var(--font-display);
+        color: var(--accent-warm);
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+
+      input[type='range'] {
+        width: 100%;
+        margin: 0.9rem 0 0.4rem;
+        accent-color: var(--accent-strong);
+      }
+
+      .range-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+
+      .toggle-row {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .toggle-option {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        padding: 0.85rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .toggle-option input {
+        margin-top: 0.2rem;
+      }
+
+      .toggle-copy strong {
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+
+      .toggle-copy span {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .stat {
+        padding: 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--muted);
+        font-size: 0.77rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .stat code,
+      .stat span {
+        font-family: var(--font-mono);
+        font-size: 1rem;
+      }
+
+      .viz-panel {
+        overflow: hidden;
+      }
+
+      .plot-wrap {
+        position: relative;
+        padding: 1rem 1rem 0.4rem;
+      }
+
+      .plot-surface {
+        position: relative;
+        min-height: 430px;
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius-xl) - 6px);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(180deg, #09111f, #050a12);
+        background-size:
+          auto,
+          12.5% 100%,
+          100% 16.666%,
+          auto;
+        overflow: hidden;
+      }
+
+      .plot-surface::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 18% 22%, rgba(103, 183, 255, 0.1), transparent 22%),
+          radial-gradient(circle at 82% 20%, rgba(255, 209, 102, 0.08), transparent 16%);
+      }
+
+      svg {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 430px;
+        display: block;
+      }
+
+      .plot-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0.95rem 1rem 0;
+      }
+
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .legend-swatch {
+        width: 0.95rem;
+        height: 0.95rem;
+        border-radius: 999px;
+      }
+
+      .legend-swatch.wave {
+        background: var(--wave);
+      }
+
+      .legend-swatch.probability {
+        background: var(--probability);
+      }
+
+      .axis-labels {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.65rem 1rem 1rem;
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .insight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .insight {
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .insight h3 {
+        margin: 0 0 0.6rem;
+        font-size: 1rem;
+      }
+
+      .insight p,
+      .insight li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .insight ul {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+
+      .warning {
+        border-color: rgba(255, 143, 143, 0.22);
+        background: linear-gradient(180deg, rgba(255, 143, 143, 0.07), rgba(255, 143, 143, 0.02));
+      }
+
+      .equation-block {
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .equation-block pre {
+        margin: 0;
+        overflow-x: auto;
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .footer-note {
+        margin-top: 1.25rem;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.6;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      @media (max-width: 960px) {
+        .hero-grid,
+        .app-grid,
+        .insight-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 1.45rem;
+        }
+
+        .plot-surface,
+        svg {
+          min-height: 360px;
+          height: 360px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100vw - 1rem, 100%);
+          padding-top: 0.5rem;
+        }
+
+        .topbar {
+          border-radius: 24px;
+          padding: 0.9rem;
+        }
+
+        .toplinks {
+          width: 100%;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="topbar">
+        <a class="brand" href={homeHref}>
+          <span class="brand-badge">H</span>
+          <span>RMB_AID Physics Explorer</span>
+        </a>
+        <div class="toplinks">
+          <a class="link-pill" href={homeHref}>Docs Home</a>
+          <a class="link-pill" href={docsHref}>Workflow Map</a>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="eyebrow">Interactive Web App</div>
+        <h1>1D Hydrogen Atom Explorer</h1>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p>
+              This app visualizes the standard regular 1D Coulomb model. It lets you inspect the
+              bound-state spectrum, compare the half-line solution against the odd full-line
+              extension, and see how the wavefunction and probability density change with the
+              principal quantum number.
+            </p>
+            <div class="formula-strip">
+              <div class="formula-chip">
+                <strong>Potential</strong>
+                <code>V(x) = -k / |x|</code>
+              </div>
+              <div class="formula-chip">
+                <strong>Energy</strong>
+                <code>E_n = -13.605693 / n^2 eV</code>
+              </div>
+              <div class="formula-chip">
+                <strong>Regular Choice</strong>
+                <code>psi(0) = 0</code>
+              </div>
+            </div>
+          </div>
+          <aside class="hero-note">
+            <h2>Model Scope</h2>
+            <p>
+              The strict full-line problem is singular at <code>x = 0</code>. This app uses the
+              standard regular boundary condition, solves on <code>x &gt; 0</code>, and optionally
+              reflects that solution into an odd state on the full line.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="app-grid">
+        <aside class="panel">
+          <div class="panel-inner">
+            <div class="panel-title">
+              <h2>Controls</h2>
+              <span>Adjust the state and plot window</span>
+            </div>
+
+            <div class="control-stack">
+              <div class="control-card">
+                <label for="n-slider">Principal Quantum Number</label>
+                <output id="n-output" for="n-slider">1</output>
+                <input id="n-slider" type="range" min="1" max="8" step="1" value="1" />
+                <div class="range-meta">
+                  <span>Ground state</span>
+                  <span>Higher excited states</span>
+                </div>
+              </div>
+
+              <div class="control-card">
+                <label for="range-slider">Plot Extent</label>
+                <output id="range-output" for="range-slider">14 a0</output>
+                <input id="range-slider" type="range" min="6" max="28" step="1" value="14" />
+                <div class="range-meta">
+                  <span>Near-origin detail</span>
+                  <span>Long tail</span>
+                </div>
+              </div>
+
+              <div class="control-card">
+                <span class="toggle-legend">Display Mode</span>
+                <div class="toggle-row">
+                  <label class="toggle-option">
+                    <input type="radio" name="domain" value="half" checked />
+                    <span class="toggle-copy">
+                      <strong>Half-Line Solution</strong>
+                      <span>Plot the regular solution only for x &gt;= 0.</span>
+                    </span>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="domain" value="odd" />
+                    <span class="toggle-copy">
+                      <strong>Odd Full-Line Extension</strong>
+                      <span>Reflect the half-line state as Psi(x) = sgn(x) psi(|x|).</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-card">
+                <span class="toggle-legend">Curves</span>
+                <div class="toggle-row">
+                  <label class="toggle-option">
+                    <input id="wave-toggle" type="checkbox" checked />
+                    <span class="toggle-copy">
+                      <strong>Wavefunction</strong>
+                      <span>Scaled plot of psi_n(x).</span>
+                    </span>
+                  </label>
+                  <label class="toggle-option">
+                    <input id="probability-toggle" type="checkbox" checked />
+                    <span class="toggle-copy">
+                      <strong>Probability Density</strong>
+                      <span>Scaled plot of |psi_n(x)|^2.</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat">
+                <strong>Energy</strong>
+                <span id="energy-ev">-13.605693 eV</span>
+              </div>
+              <div class="stat">
+                <strong>Hartree</strong>
+                <span id="energy-ha">-0.500000 Ha</span>
+              </div>
+              <div class="stat">
+                <strong>Node Count</strong>
+                <span id="node-count">0</span>
+              </div>
+              <div class="stat">
+                <strong>Classical Scale</strong>
+                <span id="length-scale">1.000 a0</span>
+              </div>
+            </div>
+
+            <div class="equation-block">
+              <pre id="wave-equation">psi_n(x) proportional to x * exp(-x / (n a0)) * L_(n-1)^1(2x / (n a0))</pre>
+            </div>
+          </div>
+        </aside>
+
+        <section class="panel viz-panel">
+          <div class="panel-title panel-inner">
+            <h2>Wavefunction Plot</h2>
+            <span id="plot-caption">Half-line regular state</span>
+          </div>
+
+          <div class="plot-wrap">
+            <div class="plot-surface">
+              <svg id="plot-svg" viewBox="0 0 900 430" role="img" aria-labelledby="plot-title plot-desc">
+                <title id="plot-title">1D hydrogen wavefunction plot</title>
+                <desc id="plot-desc">
+                  Interactive plot of the selected 1D hydrogen wavefunction and probability density.
+                </desc>
+                <g id="plot-layer">
+                  <line id="x-axis" x1="60" y1="215" x2="860" y2="215" stroke="rgba(255,255,255,0.20)" stroke-width="1.25" />
+                  <line id="y-axis" x1="60" y1="30" x2="60" y2="400" stroke="rgba(255,255,255,0.14)" stroke-width="1.25" />
+                  <path
+                    id="probability-path"
+                    fill="none"
+                    stroke="var(--probability)"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="wave-path"
+                    fill="none"
+                    stroke="var(--wave)"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <g id="ticks"></g>
+              </svg>
+            </div>
+            <div class="plot-legend">
+              <div class="legend-item">
+                <span class="legend-swatch wave"></span>
+                <span>psi_n(x)</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-swatch probability"></span>
+                <span>|psi_n(x)|^2</span>
+              </div>
+            </div>
+            <div class="axis-labels">
+              <span id="left-label">x = 0</span>
+              <span>x / a0</span>
+              <span id="right-label">x = 14 a0</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="insight-grid">
+        <article class="insight">
+          <h3>Question</h3>
+          <p>
+            Solve the standard 1D Coulomb problem, identify the bound-state spectrum, and expose the
+            origin singularity instead of hiding it.
+          </p>
+        </article>
+
+        <article class="insight">
+          <h3>Consensus</h3>
+          <p>
+            With the regular boundary condition <code>psi(0) = 0</code>, the spectrum matches the 3D
+            hydrogen radial <code>l = 0</code> problem:
+            <code>E_n = -13.605693 / n^2 eV</code>.
+          </p>
+        </article>
+
+        <article class="insight warning">
+          <h3>Open Risk</h3>
+          <p>
+            The strict full-line Hamiltonian is not uniquely fixed until you specify behavior at the
+            singularity. This app intentionally chooses the regular model.
+          </p>
+        </article>
+      </section>
+
+      <section class="panel" style="margin-top: 1.25rem">
+        <div class="panel-inner">
+          <div class="panel-title">
+            <h2>Reference Formulas</h2>
+            <span>Standard regular model</span>
+          </div>
+          <div class="equation-block">
+            <pre>
+Schrodinger equation:
+- (hbar^2 / 2m) psi''(x) - k / |x| psi(x) = E psi(x)
+
+Bound-state energies:
+E_n = - m k^2 / (2 hbar^2 n^2)
+    = - 13.605693 / n^2 eV
+
+Half-line eigenfunctions:
+psi_n(x) = N_n x exp(-x / (n a0)) L_(n-1)^1(2x / (n a0)),  x > 0
+
+Bohr radius:
+a0 = hbar^2 / (m k)</pre
+            >
+          </div>
+          <p class="footer-note">
+            The plotted curves are dimensionless visualizations scaled for comparison across
+            different states. They preserve node structure and tail behavior without attempting to
+            overlay incompatible physical units on a single chart.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <script is:inline>
+      const nSlider = document.querySelector('#n-slider');
+      const rangeSlider = document.querySelector('#range-slider');
+      const nOutput = document.querySelector('#n-output');
+      const rangeOutput = document.querySelector('#range-output');
+      const energyEv = document.querySelector('#energy-ev');
+      const energyHa = document.querySelector('#energy-ha');
+      const nodeCount = document.querySelector('#node-count');
+      const lengthScale = document.querySelector('#length-scale');
+      const waveEquation = document.querySelector('#wave-equation');
+      const plotCaption = document.querySelector('#plot-caption');
+      const leftLabel = document.querySelector('#left-label');
+      const rightLabel = document.querySelector('#right-label');
+      const wavePath = document.querySelector('#wave-path');
+      const probabilityPath = document.querySelector('#probability-path');
+      const ticks = document.querySelector('#ticks');
+      const waveToggle = document.querySelector('#wave-toggle');
+      const probabilityToggle = document.querySelector('#probability-toggle');
+      const domainRadios = [...document.querySelectorAll('input[name="domain"]')];
+
+      const HARTREE_TO_EV = 27.211386245988;
+      const H_GROUND_HARTREE = -0.5;
+
+      function associatedLaguerre(degree, alpha, x) {
+        if (degree === 0) return 1;
+        if (degree === 1) return alpha + 1 - x;
+
+        let lPrev = 1;
+        let lCurr = alpha + 1 - x;
+        for (let n = 1; n < degree; n += 1) {
+          const lNext = ((2 * n + 1 + alpha - x) * lCurr - (n + alpha) * lPrev) / (n + 1);
+          lPrev = lCurr;
+          lCurr = lNext;
+        }
+        return lCurr;
+      }
+
+      function halfLineWave(n, xScaled) {
+        if (xScaled < 0) return 0;
+        const laguerre = associatedLaguerre(n - 1, 1, (2 * xScaled) / n);
+        return xScaled * Math.exp(-xScaled / n) * laguerre;
+      }
+
+      function fullWave(n, xScaled, domain) {
+        if (domain === 'half') {
+          return halfLineWave(n, Math.max(0, xScaled));
+        }
+        if (xScaled === 0) return 0;
+        const sign = xScaled > 0 ? 1 : -1;
+        return sign * halfLineWave(n, Math.abs(xScaled));
+      }
+
+      function generateData(n, domain, xMax) {
+        const sampleCount = 520;
+        const xMin = domain === 'half' ? 0 : -xMax;
+        const points = [];
+        let maxWave = 0;
+        let maxProb = 0;
+
+        for (let i = 0; i < sampleCount; i += 1) {
+          const t = i / (sampleCount - 1);
+          const x = xMin + (xMax - xMin) * t;
+          const psi = fullWave(n, x, domain);
+          const probability = psi * psi;
+          maxWave = Math.max(maxWave, Math.abs(psi));
+          maxProb = Math.max(maxProb, probability);
+          points.push({ x, psi, probability });
+        }
+
+        return {
+          xMin,
+          xMax,
+          points: points.map((point) => ({
+            ...point,
+            psiScaled: maxWave > 0 ? point.psi / maxWave : 0,
+            probabilityScaled: maxProb > 0 ? point.probability / maxProb : 0,
+          })),
+        };
+      }
+
+      function pathFromPoints(points, valueKey, { width, height, padding, baseline, amplitude, positiveOnly }) {
+        const xSpan = points.at(-1).x - points[0].x || 1;
+        return points
+          .map((point, index) => {
+            const px = padding.left + ((point.x - points[0].x) / xSpan) * (width - padding.left - padding.right);
+            const py = positiveOnly
+              ? baseline - point[valueKey] * amplitude
+              : baseline - point[valueKey] * amplitude;
+            return `${index === 0 ? 'M' : 'L'}${px.toFixed(2)},${py.toFixed(2)}`;
+          })
+          .join(' ');
+      }
+
+      function buildTicks(xMin, xMax, width, height, padding) {
+        const tickCount = 6;
+        const pieces = [];
+        for (let i = 0; i <= tickCount; i += 1) {
+          const ratio = i / tickCount;
+          const x = padding.left + ratio * (width - padding.left - padding.right);
+          const value = xMin + ratio * (xMax - xMin);
+          pieces.push(
+            `<line x1="${x}" y1="${height - padding.bottom}" x2="${x}" y2="${height - padding.bottom + 8}" stroke="rgba(255,255,255,0.20)" stroke-width="1" />`,
+          );
+          pieces.push(
+            `<text x="${x}" y="${height - padding.bottom + 24}" fill="rgba(255,255,255,0.58)" font-size="12" text-anchor="middle">${value.toFixed(1)}</text>`,
+          );
+        }
+        return pieces.join('');
+      }
+
+      function render() {
+        const n = Number(nSlider.value);
+        const xMax = Number(rangeSlider.value);
+        const domain = domainRadios.find((radio) => radio.checked)?.value ?? 'half';
+        const data = generateData(n, domain, xMax);
+
+        const width = 900;
+        const height = 430;
+        const padding = { top: 30, right: 40, bottom: 46, left: 60 };
+        const baseline = domain === 'half' ? 322 : 215;
+        const waveAmplitude = domain === 'half' ? 180 : 150;
+        const probabilityBaseline = domain === 'half' ? 370 : 370;
+        const probabilityAmplitude = 130;
+
+        const waveD = pathFromPoints(data.points, 'psiScaled', {
+          width,
+          height,
+          padding,
+          baseline,
+          amplitude: waveAmplitude,
+          positiveOnly: false,
+        });
+
+        const probabilityD = pathFromPoints(data.points, 'probabilityScaled', {
+          width,
+          height,
+          padding,
+          baseline: probabilityBaseline,
+          amplitude: probabilityAmplitude,
+          positiveOnly: true,
+        });
+
+        wavePath.setAttribute('d', waveD);
+        probabilityPath.setAttribute('d', probabilityD);
+        wavePath.style.display = waveToggle.checked ? 'block' : 'none';
+        probabilityPath.style.display = probabilityToggle.checked ? 'block' : 'none';
+
+        ticks.innerHTML = buildTicks(data.xMin, data.xMax, width, height, padding);
+
+        nOutput.textContent = String(n);
+        rangeOutput.textContent = `${xMax} a0`;
+        leftLabel.textContent = domain === 'half' ? 'x = 0' : `x = ${data.xMin.toFixed(0)} a0`;
+        rightLabel.textContent = `x = ${data.xMax.toFixed(0)} a0`;
+        plotCaption.textContent =
+          domain === 'half' ? 'Half-line regular state' : 'Odd full-line extension of the regular state';
+
+        const hartree = H_GROUND_HARTREE / (n * n);
+        const ev = hartree * HARTREE_TO_EV;
+        energyEv.textContent = `${ev.toFixed(6)} eV`;
+        energyHa.textContent = `${hartree.toFixed(6)} Ha`;
+        nodeCount.textContent = String(n - 1);
+        lengthScale.textContent = `${n.toFixed(3)} a0`;
+        waveEquation.textContent =
+          `psi_${n}(x) proportional to x * exp(-x / (${n} a0)) * L_${n - 1}^1(2x / (${n} a0))`;
+      }
+
+      nSlider.addEventListener('input', render);
+      rangeSlider.addEventListener('input', render);
+      waveToggle.addEventListener('change', render);
+      probabilityToggle.addEventListener('change', render);
+      for (const radio of domainRadios) {
+        radio.addEventListener('change', render);
+      }
+
+      render();
+    </script>
+  </body>
+</html>

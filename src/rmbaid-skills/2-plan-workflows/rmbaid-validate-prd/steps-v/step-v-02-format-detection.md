@@ -60,11 +60,13 @@ Detect if PRD follows RMB_AID format and route appropriately - classify as RMB_A
 Load the complete PRD file and extract:
 
 **All Level 2 (##) headers:**
+
 - Scan through entire PRD document
 - Extract all ## section headers
 - List them in order
 
 **PRD frontmatter:**
+
 - Extract classification.domain if present
 - Extract classification.projectType if present
 - Note any other relevant metadata
@@ -81,6 +83,7 @@ Check if the PRD contains the following RMB_AID PRD core sections:
 6. **Non-Functional Requirements** (or: ## Non-Functional Requirements, ## NFRs, ## Quality Attributes)
 
 **Count matches:**
+
 - How many of these 6 core sections are present?
 - Which specific sections are present?
 - Which are missing?
@@ -90,15 +93,18 @@ Check if the PRD contains the following RMB_AID PRD core sections:
 Based on core section count, classify:
 
 **RMB_AID Standard:**
+
 - 5-6 core sections present
 - Follows RMB_AID PRD structure closely
 
 **RMB_AID Variant:**
+
 - 3-4 core sections present
 - Generally follows RMB_AID patterns but may have structural differences
 - Missing some sections but recognizable as RMB_AID-style
 
 **Non-Standard:**
+
 - Fewer than 3 core sections present
 - Does not follow RMB_AID PRD structure
 - May be completely custom format, legacy format, or from another framework
@@ -114,6 +120,7 @@ Append to validation report:
 [List all ## Level 2 headers found]
 
 **RMB_AID Core Sections Present:**
+
 - Executive Summary: [Present/Missing]
 - Success Criteria: [Present/Missing]
 - Product Scope: [Present/Missing]

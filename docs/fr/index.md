@@ -26,12 +26,12 @@ Installez RMB_AID et utilisez le skill[^3] `rmbaid-help` — il vous guidera ent
 
 Cette documentation est organisée en quatre sections selon ce que vous essayez de faire :
 
-| Section           | Objectif                                                                                                    |
-| ----------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Tutoriels**     | Orientés apprentissage. Guides étape par étape qui vous accompagnent dans la construction de quelque chose. Commencez ici si vous êtes nouveau. |
-| **Guides pratiques** | Orientés tâches. Guides pratiques pour résoudre des problèmes spécifiques. « Comment personnaliser un agent ? » se trouve ici.  |
-| **Explication**   | Orientés compréhension. Explications en profondeur des concepts et de l'architecture. À lire quand vous voulez savoir *pourquoi*.       |
-| **Référence**     | Orientés information. Spécifications techniques pour les agents, workflows et configuration.                   |
+| Section              | Objectif                                                                                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Tutoriels**        | Orientés apprentissage. Guides étape par étape qui vous accompagnent dans la construction de quelque chose. Commencez ici si vous êtes nouveau. |
+| **Guides pratiques** | Orientés tâches. Guides pratiques pour résoudre des problèmes spécifiques. « Comment personnaliser un agent ? » se trouve ici.                  |
+| **Explication**      | Orientés compréhension. Explications en profondeur des concepts et de l'architecture. À lire quand vous voulez savoir _pourquoi_.               |
+| **Référence**        | Orientés information. Spécifications techniques pour les agents, workflows et configuration.                                                    |
 
 ## Étendre et personnaliser
 
@@ -60,6 +60,7 @@ Obtenez de l'aide, partagez ce que vous construisez ou contribuez à RMB_AID :
 Prêt à vous lancer ? **[Commencez avec RMB_AID](./tutorials/getting-started.md)** et construisez votre premier projet.
 
 ---
+
 ## Glossaire
 
 [^1]: **Module** : composant autonome du système RMB_AID qui peut être installé et utilisé indépendamment, offrant des fonctionnalités spécifiques.

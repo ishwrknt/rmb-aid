@@ -1,5 +1,5 @@
 ---
-title: "Carte des Workflows"
+title: 'Carte des Workflows'
 description: Référence visuelle des phases et des résultats des workflows de la méthode RMB_AID
 sidebar:
   order: 1
@@ -23,37 +23,37 @@ Note finale importante : Chaque workflow ci-dessous peut être exécuté directe
 
 Explorez l’espace problème et validez les idées avant de vous engager dans la planification.
 
-| Workflow                                                                  | Objectif                                                                                 | Produit                   |
-|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------|---------------------------|
-| `rmbaid-brainstorming`                                                      | Brainstormez des idées de projet avec l'accompagnement guidé d'un coach de brainstorming | `brainstorming-report.md` |
+| Workflow                                                                        | Objectif                                                                                 | Produit                   |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------- |
+| `rmbaid-brainstorming`                                                          | Brainstormez des idées de projet avec l'accompagnement guidé d'un coach de brainstorming | `brainstorming-report.md` |
 | `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Validez les hypothèses de marché, techniques ou de domaine                               | Rapport de recherches     |
-| `rmbaid-create-product-brief`                                               | Capturez la vision stratégique                                                           | `product-brief.md`        |
+| `rmbaid-create-product-brief`                                                   | Capturez la vision stratégique                                                           | `product-brief.md`        |
 
 ## Phase 2 : Planification
 
 Définissez ce qu'il faut construire et pour qui.
 
-| Workflow                | Objectif                                                | Produit      |
-|-------------------------|---------------------------------------------------------|--------------|
-| `rmbaid-create-prd`       | Définissez les exigences (FRs/NFRs)[^1]                     | `PRD.md`[^2]     |
+| Workflow                  | Objectif                                                | Produit      |
+| ------------------------- | ------------------------------------------------------- | ------------ |
+| `rmbaid-create-prd`       | Définissez les exigences (FRs/NFRs)[^1]                 | `PRD.md`[^2] |
 | `rmbaid-create-ux-design` | Concevez l'expérience utilisateur (lorsque l'UX compte) | `ux-spec.md` |
 
 ## Phase 3 : Solutioning
 
 Décidez comment le construire et décomposez le travail en stories.
 
-| Workflow                              | Objectif                                          | Produit                      |
-|---------------------------------------|---------------------------------------------------|------------------------------|
-| `rmbaid-create-architecture`            | Rendez les décisions techniques explicites        | `architecture.md` avec ADRs[^3]  |
-| `rmbaid-create-epics-and-stories`       | Décomposez les exigences en travail implémentable | Fichiers d'epic avec stories |
-| `rmbaid-check-implementation-readiness` | Vérification avant implémentation                 | Décision Passe/Réserves/Échec  |
+| Workflow                                | Objectif                                          | Produit                         |
+| --------------------------------------- | ------------------------------------------------- | ------------------------------- |
+| `rmbaid-create-architecture`            | Rendez les décisions techniques explicites        | `architecture.md` avec ADRs[^3] |
+| `rmbaid-create-epics-and-stories`       | Décomposez les exigences en travail implémentable | Fichiers d'epic avec stories    |
+| `rmbaid-check-implementation-readiness` | Vérification avant implémentation                 | Décision Passe/Réserves/Échec   |
 
 ## Phase 4 : Implémentation
 
 Construisez, une story à la fois. Bientôt disponible : automatisation complète de la phase 4 !
 
-| Workflow               | Objectif                                                                            | Produit                          |
-|------------------------|-------------------------------------------------------------------------------------|----------------------------------|
+| Workflow                 | Objectif                                                                            | Produit                          |
+| ------------------------ | ----------------------------------------------------------------------------------- | -------------------------------- |
 | `rmbaid-sprint-planning` | Initialisez le suivi (une fois par projet pour séquencer le cycle de développement) | `sprint-status.yaml`             |
 | `rmbaid-create-story`    | Préparez la story suivante pour implémentation                                      | `story-[slug].md`                |
 | `rmbaid-dev-story`       | Implémentez la story                                                                | Code fonctionnel + tests         |
@@ -66,8 +66,8 @@ Construisez, une story à la fois. Bientôt disponible : automatisation complèt
 
 Sautez les phases 1-3 pour les travaux de faible envergure et bien compris.
 
-| Workflow         | Objectif                                                                            | Produit               |
-|------------------|-------------------------------------------------------------------------------------|-----------------------|
+| Workflow           | Objectif                                                                            | Produit            |
+| ------------------ | ----------------------------------------------------------------------------------- | ------------------ |
 | `rmbaid-quick-dev` | Flux rapide unifié — clarifie l'intention, planifie, implémente, révise et présente | `spec-*.md` + code |
 
 ## Gestion du Contexte
@@ -90,5 +90,7 @@ Créez `project-context.md` pour vous assurer que les agents IA suivent les règ
 ## Glossaire
 
 [^1]: FR / NFR (Functional / Non-Functional Requirement) : exigences décrivant respectivement **ce que le système doit faire** (fonctionnalités, comportements attendus) et **comment il doit le faire** (contraintes de performance, sécurité, fiabilité, ergonomie, etc.).
+
 [^2]: PRD (Product Requirements Document) : document de référence qui décrit les objectifs du produit, les besoins utilisateurs, les fonctionnalités attendues, les contraintes et les critères de succès, afin d’aligner les équipes sur ce qui doit être construit et pourquoi.
+
 [^3]: ADR (Architecture Decision Record) : document qui consigne une décision d’architecture, son contexte, les options envisagées, le choix retenu et ses conséquences, afin d’assurer la traçabilité et la compréhension des décisions techniques dans le temps.

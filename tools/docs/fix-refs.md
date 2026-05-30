@@ -17,11 +17,11 @@ Fix incorrect references to workflows, agents, and commands in RMB_AID documenta
 
 Before fixing references, determine who the document is for:
 
-| Audience | Indicators | Style |
-|----------|------------|-------|
-| **Newbies** | tutorials/, getting-started, installation/, "What You'll Learn" | Keep "workflow", include platform hints |
-| **Experienced** | reference/, explanation/ | Drop "workflow", no platform hints |
-| **How-To** | how-to/ | **Ask** — depends on the task |
+| Audience        | Indicators                                                      | Style                                   |
+| --------------- | --------------------------------------------------------------- | --------------------------------------- |
+| **Newbies**     | tutorials/, getting-started, installation/, "What You'll Learn" | Keep "workflow", include platform hints |
+| **Experienced** | reference/, explanation/                                        | Drop "workflow", no platform hints      |
+| **How-To**      | how-to/                                                         | **Ask** — depends on the task           |
 
 **How-To guides require judgment**: Don't assume experienced. Ask: "Does this task require prior RMB_AID knowledge?" Early-journey tasks (first PRD, first sprint) are newbie docs. Customization and advanced features are experienced.
 
@@ -33,23 +33,26 @@ This determines whether helper words like "workflow" and platform hints are help
 
 ### Always Wrong
 
-| Pattern | Example | Problem |
-|---------|---------|---------|
-| `*workflow` | `*prd` | Obsolete menu shortcut notation |
-| `/workflow` | `/workflow-init` | Platform-specific slash command |
+| Pattern        | Example                    | Problem                                        |
+| -------------- | -------------------------- | ---------------------------------------------- |
+| `*workflow`    | `*prd`                     | Obsolete menu shortcut notation                |
+| `/workflow`    | `/workflow-init`           | Platform-specific slash command                |
 | `rmbaid_bmm_*` | `rmbaid_bmm_workflow-init` | Internal slash command name, platform-specific |
 
 ### Correct Format
 
 Use backticks with plain workflow name:
+
 - **Wrong**: Run `/workflow-init`
 - **Wrong**: Run `*prd`
 
 **When to say "workflow"**:
+
 - **Newbie docs** (getting-started): "Run the `prd` workflow" — helps them learn what it is
 - **Other docs**: "Run `prd`" — they already know, so "workflow" is noise
 
 **Platform hint**: Only in newbie docs, and only on the **first** workflow mention:
+
 - First mention: Run the `help` workflow (`rmbaid-help` on most platforms)
 - Subsequent mentions: Run `prd` — no hint, no "workflow" needed after they've seen the pattern
 
@@ -57,20 +60,22 @@ In experienced docs, the hint is always noise — just use the workflow name.
 
 ### Workflow Name Changes
 
-| Old Name | New Name | Notes |
-|----------|----------|-------|
-| `workflow-init` | `rmbaid-help` | DEPRECATED - help system replaces initialization |
+| Old Name          | New Name      | Notes                                             |
+| ----------------- | ------------- | ------------------------------------------------- |
+| `workflow-init`   | `rmbaid-help` | DEPRECATED - help system replaces initialization  |
 | `workflow-status` | `rmbaid-help` | DEPRECATED - help system replaces status checking |
 
 ### The Help System
 
 The `rmbaid-help` workflow is the modern replacement for both `workflow-init` and `workflow-status`:
+
 - **Universal**: Works regardless of workflow state or module
 - **Contextual**: Infers completion from artifacts and conversation
 - **Adaptive**: Guides users through workflows based on phase ordering
 - **Anytime**: Can be run at any point, no pre-initialization needed
 
 Users can run `rmbaid-help` to get guidance on what to do next. It detects:
+
 - What workflows have been completed (by checking for output artifacts)
 - What module is active
 - What the next recommended/required step is

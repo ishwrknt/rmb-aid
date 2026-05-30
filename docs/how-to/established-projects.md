@@ -1,5 +1,5 @@
 ---
-title: "Established Projects"
+title: 'Established Projects'
 description: How to use RMB_AID on existing codebases
 sidebar:
   order: 6
@@ -10,10 +10,11 @@ Use RMB_AID effectively when working on existing projects and legacy codebases.
 This guide covers the essential workflow for onboarding to existing projects with RMB_AID.
 
 :::note[Prerequisites]
+
 - RMB_AID installed (`npx rmb-aid install`)
 - An existing codebase you want to work on
 - Access to an AI-powered IDE (Claude Code or Cursor)
-:::
+  :::
 
 ## Step 1: Clean Up Completed Planning Artifacts
 
@@ -36,6 +37,7 @@ rmbaid-generate-project-context
 ```
 
 This scans your codebase to identify:
+
 - Technology stack and versions
 - Code organization patterns
 - Naming conventions
@@ -79,10 +81,10 @@ RMB_AID-Help also **automatically runs at the end of every workflow**, providing
 
 You have two primary options depending on the scope of changes:
 
-| Scope                          | Recommended Approach                                                                                                          |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Scope                          | Recommended Approach                                                                                                                        |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Small updates or additions** | Run `rmbaid-quick-dev` to clarify intent, plan, implement, and review in a single workflow. The full four-phase RMB_AID is likely overkill. |
-| **Major changes or additions** | Start with the RMB_AID, applying as much or as little rigor as needed.                                                    |
+| **Major changes or additions** | Start with the RMB_AID, applying as much or as little rigor as needed.                                                                      |
 
 ### During PRD Creation
 

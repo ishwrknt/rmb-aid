@@ -1,5 +1,5 @@
 ---
-title: "Premiers pas"
+title: 'Premiers pas'
 description: Installer RMB_AID et construire votre premier projet
 ---
 
@@ -14,11 +14,12 @@ Construisez des logiciels plus rapidement en utilisant des workflows propulsés 
 - Utiliser efficacement les agents et les workflows
 
 :::note[Prérequis]
+
 - **Node.js 20+** — Requis pour l'installateur
 - **Git** — Recommandé pour le contrôle de version
 - **IDE IA** — Claude Code, Cursor, ou similaire
 - **Une idée de projet** — Même simple, elle fonctionne pour apprendre
-:::
+  :::
 
 :::tip[Le chemin le plus simple]
 **Installer** → `npx rmb-aid install`
@@ -50,6 +51,7 @@ rmbaid-help J'ai une idée de produit SaaS, je connais déjà toutes les fonctio
 ```
 
 RMB_AID-Help répondra avec :
+
 - Ce qui est recommandé pour votre situation
 - Quelle est la première tâche obligatoire
 - À quoi ressemble le reste du processus
@@ -66,22 +68,22 @@ Après avoir installé RMB_AID, invoquez immédiatement la skill `rmbaid-help`. 
 
 RMB_AID vous aide à construire des logiciels grâce à des workflows guidés avec des agents IA spécialisés. Le processus suit quatre phases :
 
-| Phase | Nom            | Ce qui se passe                                                |
-|-------|----------------|----------------------------------------------------------------|
-| 1     | Analyse        | Brainstorming, recherche, product brief *(optionnel)*          |
-| 2     | Planification  | Créer les exigences (PRD[^1] ou spécification technique)       |
-| 3     | Solutioning    | Concevoir l'architecture *(RMB_AID/Enterprise uniquement)* |
-| 4     | Implémentation | Construire epic[^2] par epic, story[^3] par story              |
+| Phase | Nom            | Ce qui se passe                                            |
+| ----- | -------------- | ---------------------------------------------------------- |
+| 1     | Analyse        | Brainstorming, recherche, product brief _(optionnel)_      |
+| 2     | Planification  | Créer les exigences (PRD[^1] ou spécification technique)   |
+| 3     | Solutioning    | Concevoir l'architecture _(RMB_AID/Enterprise uniquement)_ |
+| 4     | Implémentation | Construire epic[^2] par epic, story[^3] par story          |
 
 **[Ouvrir la carte des workflows](../reference/workflow-map.md)** pour explorer les phases, les workflows et la gestion du contexte.
 
 Selon la complexité de votre projet, RMB_AID propose trois voies de planification :
 
-| Voie             | Idéal pour                                                                   | Documents créés                        |
-|------------------|------------------------------------------------------------------------------|----------------------------------------|
-| **Quick Dev**    | Corrections de bugs, fonctionnalités simples, périmètre clair (1-15 stories) | Spécification technique uniquement     |
+| Voie                | Idéal pour                                                                   | Documents créés                        |
+| ------------------- | ---------------------------------------------------------------------------- | -------------------------------------- |
+| **Quick Dev**       | Corrections de bugs, fonctionnalités simples, périmètre clair (1-15 stories) | Spécification technique uniquement     |
 | **méthode RMB_AID** | Produits, plateformes, fonctionnalités complexes (10-50+ stories)            | PRD + Architecture + UX[^4]            |
-| **Enterprise**   | Conformité, systèmes multi-tenant[^5] (30+ stories)                          | PRD + Architecture + Security + DevOps |
+| **Enterprise**      | Conformité, systèmes multi-tenant[^5] (30+ stories)                          | PRD + Architecture + Security + DevOps |
 
 :::note
 Les comptes de stories sont indicatifs, pas des définitions. Choisissez votre voie en fonction des besoins de planification, pas du calcul des stories.
@@ -100,6 +102,7 @@ Si vous souhaitez la version préliminaire la plus récente au lieu du canal de 
 Lorsque vous êtes invité à sélectionner des modules, choisissez **méthode RMB_AID**.
 
 L'installateur crée deux dossiers :
+
 - `_rmbaid/` — agents, workflows, tâches et configuration
 - `_rmbaid-output/` — vide pour l'instant, mais c'est là que vos artefacts seront enregistrés
 
@@ -134,6 +137,7 @@ Créez-le manuellement dans `_rmbaid-output/project-context.md` ou générez-le 
 ### Phase 1 : Analyse (Optionnel)
 
 Tous les workflows de cette phase sont optionnels :
+
 - **brainstorming** (`rmbaid-brainstorming`) — Idéation guidée
 - **research** (`rmbaid-market-research` / `rmbaid-domain-research` / `rmbaid-technical-research`) — Recherche marché, domaine et technique
 - **create-product-brief** (`rmbaid-create-product-brief`) — Document de base recommandé
@@ -141,10 +145,12 @@ Tous les workflows de cette phase sont optionnels :
 ### Phase 2 : Planification (Requis)
 
 **Pour les voies RMB_AID et Enterprise :**
+
 1. Exécutez `rmbaid-create-prd` dans un nouveau chat
 2. Sortie : `PRD.md`
 
 **Pour la voie Quick Dev :**
+
 - Utilisez le workflow `rmbaid-quick-dev` (`rmbaid-quick-dev`) à la place du PRD, puis passez à l'implémentation
 
 :::note[Design UX (Optionnel)]
@@ -154,19 +160,21 @@ Si votre projet a une interface utilisateur, exécutez le workflow de design UX 
 ### Phase 3 : Solutioning (méthode RMB_AID/Enterprise)
 
 **Créer l'Architecture**
+
 1. Exécutez `rmbaid-create-architecture` dans un nouveau chat
 2. Sortie : Document d'architecture avec les décisions techniques
 
 **Créer les Epics et Stories**
 
 :::tip[Amélioration V6]
-Les epics et stories sont maintenant créés *après* l'architecture. Cela produit des stories de meilleure qualité car les décisions d'architecture (base de données, patterns d'API, pile technologique) affectent directement la façon dont le travail doit être décomposé.
+Les epics et stories sont maintenant créés _après_ l'architecture. Cela produit des stories de meilleure qualité car les décisions d'architecture (base de données, patterns d'API, pile technologique) affectent directement la façon dont le travail doit être décomposé.
 :::
 
 1. Exécutez `rmbaid-create-epics-and-stories` dans un nouveau chat
 2. Le workflow utilise à la fois le PRD et l'Architecture pour créer des stories techniquement éclairées
 
-**Vérification de préparation à l'implémentation** *(Hautement recommandé)*
+**Vérification de préparation à l'implémentation** _(Hautement recommandé)_
+
 1. Exécutez `rmbaid-check-implementation-readiness` dans un nouveau chat
 2. Valide la cohérence entre tous les documents de planification
 
@@ -182,11 +190,11 @@ Exécutez `rmbaid-sprint-planning` dans un nouveau chat. Cela crée `sprint-stat
 
 Pour chaque story, répétez ce cycle avec de nouveaux chats :
 
-| Étape | Workflow              | Commande               | Objectif                            |
-| ----- | --------------------- | --------------------- | ----------------------------------- |
-| 1     | `rmbaid-create-story`   | `rmbaid-create-story`   | Créer le fichier story depuis l'epic |
-| 2     | `rmbaid-dev-story`      | `rmbaid-dev-story`      | Implémenter la story                |
-| 3     | `rmbaid-code-review`    | `rmbaid-code-review`    | Validation de qualité *(recommandé)* |
+| Étape | Workflow              | Commande              | Objectif                             |
+| ----- | --------------------- | --------------------- | ------------------------------------ |
+| 1     | `rmbaid-create-story` | `rmbaid-create-story` | Créer le fichier story depuis l'epic |
+| 2     | `rmbaid-dev-story`    | `rmbaid-dev-story`    | Implémenter la story                 |
+| 3     | `rmbaid-code-review`  | `rmbaid-code-review`  | Validation de qualité _(recommandé)_ |
 
 Après avoir terminé toutes les stories d'un epic, exécutez `rmbaid-retrospective` dans un nouveau chat.
 
@@ -217,18 +225,18 @@ your-project/
 
 ## Référence rapide
 
-| Workflow                              | Commande                                    | Objectif                                         |
-| ------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
-| **`rmbaid-help`** ⭐                    | `rmbaid-help`                               | **Votre guide intelligent — posez n'importe quelle question !**      |
-| `rmbaid-create-prd`                     | `rmbaid-create-prd`                     | Créer le document d'exigences produit            |
-| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Créer le document d'architecture                     |
-| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`       | Créer le fichier de contexte projet                     |
-| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | Décomposer le PRD en epics                       |
-| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Valider la cohérence de planification                      |
-| `rmbaid-sprint-planning`               | `rmbaid-sprint-planning`                | Initialiser le suivi de sprint                      |
-| `rmbaid-create-story`                   | `rmbaid-create-story`                   | Créer un fichier story                             |
-| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | Implémenter une story                               |
-| `rmbaid-code-review`                    | `rmbaid-code-review`                    | Revoir le code implémenté                         |
+| Workflow                                | Commande                                | Objectif                                                        |
+| --------------------------------------- | --------------------------------------- | --------------------------------------------------------------- |
+| **`rmbaid-help`** ⭐                    | `rmbaid-help`                           | **Votre guide intelligent — posez n'importe quelle question !** |
+| `rmbaid-create-prd`                     | `rmbaid-create-prd`                     | Créer le document d'exigences produit                           |
+| `rmbaid-create-architecture`            | `rmbaid-create-architecture`            | Créer le document d'architecture                                |
+| `rmbaid-generate-project-context`       | `rmbaid-generate-project-context`       | Créer le fichier de contexte projet                             |
+| `rmbaid-create-epics-and-stories`       | `rmbaid-create-epics-and-stories`       | Décomposer le PRD en epics                                      |
+| `rmbaid-check-implementation-readiness` | `rmbaid-check-implementation-readiness` | Valider la cohérence de planification                           |
+| `rmbaid-sprint-planning`                | `rmbaid-sprint-planning`                | Initialiser le suivi de sprint                                  |
+| `rmbaid-create-story`                   | `rmbaid-create-story`                   | Créer un fichier story                                          |
+| `rmbaid-dev-story`                      | `rmbaid-dev-story`                      | Implémenter une story                                           |
+| `rmbaid-code-review`                    | `rmbaid-code-review`                    | Revoir le code implémenté                                       |
 
 ## Questions fréquentes
 
@@ -248,6 +256,7 @@ Pas strictement. Une fois que vous maîtrisez le flux, vous pouvez exécuter les
 
 :::tip[Premier arrêt : RMB_AID-Help]
 **Invoquez `rmbaid-help` à tout moment** — c'est le moyen le plus rapide de se débloquer. Posez n'importe quelle question :
+
 - « Que dois-je faire après l'installation ? »
 - « Je suis bloqué sur le workflow X »
 - « Quelles sont mes options pour Y ? »
@@ -262,18 +271,23 @@ RMB_AID-Help inspecte votre projet, détecte ce que vous avez accompli et vous d
 ## Points clés à retenir
 
 :::tip[Retenez ceci]
+
 - **Commencez par `rmbaid-help`** — Votre guide intelligent qui connaît votre projet et vos options
 - **Utilisez toujours de nouveaux chats** — Démarrez un nouveau chat pour chaque workflow
 - **La voie compte** — Quick Dev utilise `rmbaid-quick-dev` ; La méthode RMB_AID/Enterprise nécessitent PRD et architecture
 - **RMB_AID-Help s'exécute automatiquement** — Chaque workflow se termine par des conseils sur la prochaine étape
-:::
+  :::
 
 Prêt à commencer ? Installez RMB_AID, invoquez `rmbaid-help`, et laissez votre guide intelligent vous montrer le chemin.
 
 ## Glossaire
 
 [^1]: PRD (Product Requirements Document) : document de référence qui décrit les objectifs du produit, les besoins utilisateurs, les fonctionnalités attendues, les contraintes et les critères de succès, afin d'aligner les équipes sur ce qui doit être construit et pourquoi.
+
 [^2]: Epic : grand ensemble de fonctionnalités ou de travaux qui peut être décomposé en plusieurs user stories.
+
 [^3]: Story (User Story) : description courte et simple d'une fonctionnalité du point de vue de l'utilisateur ou du client. Elle représente une unité de travail implémentable en un court délai.
+
 [^4]: UX (User Experience) : expérience utilisateur, englobant l'ensemble des interactions et perceptions d'un utilisateur face à un produit. Le design UX vise à créer des interfaces intuitives, efficaces et agréables en tenant compte des besoins, comportements et contexte d'utilisation.
+
 [^5]: Multi-tenant : architecture logicielle où une seule instance de l'application sert plusieurs clients (tenants) tout en maintenant leurs données isolées et sécurisées les unes des autres.

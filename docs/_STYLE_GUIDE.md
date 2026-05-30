@@ -1,5 +1,5 @@
 ---
-title: "Documentation Style Guide"
+title: 'Documentation Style Guide'
 description: Project-specific documentation conventions based on Google style and Diataxis structure
 ---
 
@@ -53,19 +53,19 @@ Critical warnings only — data loss, security issues
 **Phases:**
 
 ```md
-| Phase | Name     | What Happens                                 |
-| ----- | -------- | -------------------------------------------- |
-| 1     | Analysis | Brainstorm, research *(optional)*            |
-| 2     | Planning | Requirements — PRD or spec *(required)* |
+| Phase | Name     | What Happens                            |
+| ----- | -------- | --------------------------------------- |
+| 1     | Analysis | Brainstorm, research _(optional)_       |
+| 2     | Planning | Requirements — PRD or spec _(required)_ |
 ```
 
 **Skills:**
 
 ```md
-| Skill        | Agent   | Purpose                              |
-| ------------ | ------- | ------------------------------------ |
+| Skill                  | Agent   | Purpose                              |
+| ---------------------- | ------- | ------------------------------------ |
 | `rmbaid-brainstorming` | Analyst | Brainstorm a new project             |
-| `rmbaid-create-prd`        | PM      | Create Product Requirements Document |
+| `rmbaid-create-prd`    | PM      | Create Product Requirements Document |
 ```
 
 ## Folder Structure Blocks

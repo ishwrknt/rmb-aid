@@ -9,14 +9,14 @@ RMB_AID provides two testing paths: a built-in QA workflow for fast test generat
 
 ## Which Should You Use?
 
-| Factor | Built-in QA | TEA Module |
-| --- | --- | --- |
-| **Best for** | Small-medium projects, quick coverage | Large projects, regulated or complex domains |
-| **Setup** | Nothing to install -- included in RMB_AID | Install separately via `npx rmb-aid install` |
-| **Approach** | Generate tests fast, iterate later | Plan first, then generate with traceability |
-| **Test types** | API and E2E tests | API, E2E, ATDD, NFR, and more |
-| **Strategy** | Happy path + critical edge cases | Risk-based prioritization (P0-P3) |
-| **Workflow count** | 1 (Automate) | 9 (design, ATDD, automate, review, trace, and others) |
+| Factor             | Built-in QA                               | TEA Module                                            |
+| ------------------ | ----------------------------------------- | ----------------------------------------------------- |
+| **Best for**       | Small-medium projects, quick coverage     | Large projects, regulated or complex domains          |
+| **Setup**          | Nothing to install -- included in RMB_AID | Install separately via `npx rmb-aid install`          |
+| **Approach**       | Generate tests fast, iterate later        | Plan first, then generate with traceability           |
+| **Test types**     | API and E2E tests                         | API, E2E, ATDD, NFR, and more                         |
+| **Strategy**       | Happy path + critical edge cases          | Risk-based prioritization (P0-P3)                     |
+| **Workflow count** | 1 (Automate)                              | 9 (design, ATDD, automate, review, trace, and others) |
 
 :::tip[Start with built-in QA]
 Most projects should start with the built-in QA workflow. If you later need test strategy, quality gates, or requirements traceability, install TEA alongside it.
@@ -71,17 +71,17 @@ TEA is a standalone module that provides an expert agent (Murat) and nine struct
 
 ### What TEA Provides
 
-| Workflow | Purpose |
-| --- | --- |
-| Test Design | Create a comprehensive test strategy tied to requirements |
-| ATDD | Acceptance-test-driven development with stakeholder criteria |
-| Automate | Generate tests with advanced patterns and utilities |
-| Test Review | Validate test quality and coverage against strategy |
-| Traceability | Map tests back to requirements for audit and compliance |
-| NFR Assessment | Evaluate non-functional requirements (performance, security) |
-| CI Setup | Configure test execution in continuous integration pipelines |
-| Framework Scaffolding | Set up test infrastructure and project structure |
-| Release Gate | Make data-driven go/no-go release decisions |
+| Workflow              | Purpose                                                      |
+| --------------------- | ------------------------------------------------------------ |
+| Test Design           | Create a comprehensive test strategy tied to requirements    |
+| ATDD                  | Acceptance-test-driven development with stakeholder criteria |
+| Automate              | Generate tests with advanced patterns and utilities          |
+| Test Review           | Validate test quality and coverage against strategy          |
+| Traceability          | Map tests back to requirements for audit and compliance      |
+| NFR Assessment        | Evaluate non-functional requirements (performance, security) |
+| CI Setup              | Configure test execution in continuous integration pipelines |
+| Framework Scaffolding | Set up test infrastructure and project structure             |
+| Release Gate          | Make data-driven go/no-go release decisions                  |
 
 TEA also supports P0-P3 risk-based prioritization and optional integrations with Playwright Utils and MCP tooling.
 

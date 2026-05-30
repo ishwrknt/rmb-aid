@@ -1,5 +1,5 @@
 ---
-title: "Cách tùy chỉnh RMB_AID"
+title: 'Cách tùy chỉnh RMB_AID'
 description: Tùy chỉnh agent, workflow và module trong khi vẫn giữ khả năng tương thích khi cập nhật
 sidebar:
   order: 7
@@ -15,9 +15,10 @@ Sử dụng các tệp `.customize.yaml` để điều chỉnh hành vi, persona
 - Bạn muốn agent luôn thực hiện một số hành động cụ thể mỗi khi khởi động
 
 :::note[Điều kiện tiên quyết]
+
 - RMB_AID đã được cài trong dự án của bạn (xem [Cách cài đặt RMB_AID](./install-rmbaid.md))
 - Trình soạn thảo văn bản để chỉnh sửa tệp YAML
-:::
+  :::
 
 :::caution[Giữ an toàn cho các tùy chỉnh của bạn]
 Luôn sử dụng các tệp `.customize.yaml` được mô tả trong tài liệu này thay vì sửa trực tiếp tệp agent. Trình cài đặt sẽ ghi đè các tệp agent khi cập nhật, nhưng vẫn giữ nguyên các thay đổi trong `.customize.yaml`.
@@ -41,14 +42,14 @@ _rmbaid/_config/agents/
 
 Mở tệp `.customize.yaml` của agent mà bạn muốn sửa. Mỗi phần đều là tùy chọn, chỉ tùy chỉnh những gì bạn cần.
 
-| Phần | Cách hoạt động | Mục đích |
-| --- | --- | --- |
-| `agent.metadata` | Thay thế | Ghi đè tên hiển thị của agent |
-| `persona` | Thay thế | Đặt vai trò, danh tính, phong cách và các nguyên tắc |
-| `memories` | Nối thêm | Thêm bối cảnh cố định mà agent luôn ghi nhớ |
-| `menu` | Nối thêm | Thêm mục menu tùy chỉnh cho workflow hoặc prompt |
-| `critical_actions` | Nối thêm | Định nghĩa hướng dẫn khởi động cho agent |
-| `prompts` | Nối thêm | Tạo các prompt tái sử dụng cho các hành động trong menu |
+| Phần               | Cách hoạt động | Mục đích                                                |
+| ------------------ | -------------- | ------------------------------------------------------- |
+| `agent.metadata`   | Thay thế       | Ghi đè tên hiển thị của agent                           |
+| `persona`          | Thay thế       | Đặt vai trò, danh tính, phong cách và các nguyên tắc    |
+| `memories`         | Nối thêm       | Thêm bối cảnh cố định mà agent luôn ghi nhớ             |
+| `menu`             | Nối thêm       | Thêm mục menu tùy chỉnh cho workflow hoặc prompt        |
+| `critical_actions` | Nối thêm       | Định nghĩa hướng dẫn khởi động cho agent                |
+| `prompts`          | Nối thêm       | Tạo các prompt tái sử dụng cho các hành động trong menu |
 
 Những phần được đánh dấu **Thay thế** sẽ ghi đè hoàn toàn cấu hình mặc định của agent. Những phần được đánh dấu **Nối thêm** sẽ bổ sung vào cấu hình hiện có.
 
@@ -136,10 +137,10 @@ npx rmb-aid install
 
 Trình cài đặt sẽ nhận diện bản cài đặt hiện có và đưa ra các lựa chọn sau:
 
-| Lựa chọn | Tác dụng |
-| --- | --- |
-| **Quick Update** | Cập nhật tất cả module lên phiên bản mới nhất và áp dụng các tùy chỉnh |
-| **Modify RMB_AID Installation** | Chạy lại quy trình cài đặt đầy đủ để thêm hoặc gỡ bỏ module |
+| Lựa chọn                        | Tác dụng                                                               |
+| ------------------------------- | ---------------------------------------------------------------------- |
+| **Quick Update**                | Cập nhật tất cả module lên phiên bản mới nhất và áp dụng các tùy chỉnh |
+| **Modify RMB_AID Installation** | Chạy lại quy trình cài đặt đầy đủ để thêm hoặc gỡ bỏ module            |
 
 Nếu chỉ thay đổi phần tùy chỉnh, **Quick Update** là lựa chọn nhanh nhất.
 

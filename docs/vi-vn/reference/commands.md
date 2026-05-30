@@ -11,10 +11,10 @@ Skills là các prompt dựng sẵn để nạp agent, chạy workflow hoặc th
 
 RMB_AID cung cấp hai cách để bắt đầu công việc, và chúng phục vụ những mục đích khác nhau.
 
-| Cơ chế | Cách gọi | Điều xảy ra |
-| --- | --- | --- |
-| **Skill** | Gõ tên skill, ví dụ `rmbaid-help`, trong IDE | Nạp trực tiếp agent, chạy workflow hoặc thực thi task |
-| **Trigger menu agent** | Nạp agent trước, sau đó gõ mã ngắn như `DS` | Agent diễn giải mã đó và bắt đầu workflow tương ứng trong khi vẫn giữ đúng persona |
+| Cơ chế                 | Cách gọi                                     | Điều xảy ra                                                                        |
+| ---------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Skill**              | Gõ tên skill, ví dụ `rmbaid-help`, trong IDE | Nạp trực tiếp agent, chạy workflow hoặc thực thi task                              |
+| **Trigger menu agent** | Nạp agent trước, sau đó gõ mã ngắn như `DS`  | Agent diễn giải mã đó và bắt đầu workflow tương ứng trong khi vẫn giữ đúng persona |
 
 Trigger trong menu agent yêu cầu bạn đang ở trong một phiên agent đang hoạt động. Dùng skill khi bạn đã biết mình muốn workflow nào. Dùng trigger khi bạn đang làm việc với một agent và muốn đổi tác vụ mà không rời khỏi cuộc hội thoại.
 
@@ -24,12 +24,12 @@ Khi bạn chạy `npx rmb-aid install`, trình cài đặt sẽ đọc manifest 
 
 Trình cài đặt dùng template cho từng loại skill:
 
-| Loại skill | File được tạo sẽ làm gì |
-| --- | --- |
+| Loại skill         | File được tạo sẽ làm gì                                                 |
+| ------------------ | ----------------------------------------------------------------------- |
 | **Agent launcher** | Nạp file persona của agent, kích hoạt menu của nó và giữ nguyên vai trò |
-| **Workflow skill** | Nạp cấu hình workflow và làm theo các bước |
-| **Task skill** | Nạp một file task độc lập và làm theo hướng dẫn |
-| **Tool skill** | Nạp một file tool độc lập và làm theo hướng dẫn |
+| **Workflow skill** | Nạp cấu hình workflow và làm theo các bước                              |
+| **Task skill**     | Nạp một file task độc lập và làm theo hướng dẫn                         |
+| **Tool skill**     | Nạp một file tool độc lập và làm theo hướng dẫn                         |
 
 :::note[Chạy lại trình cài đặt]
 Nếu bạn thêm hoặc bớt module, hãy chạy lại trình cài đặt. Nó sẽ tạo lại toàn bộ file skill khớp với tập module hiện tại.
@@ -39,12 +39,12 @@ Nếu bạn thêm hoặc bớt module, hãy chạy lại trình cài đặt. Nó
 
 Trình cài đặt sẽ ghi file skill vào một thư mục dành riêng cho IDE bên trong dự án. Đường dẫn chính xác phụ thuộc vào IDE bạn chọn khi cài.
 
-| IDE / CLI | Thư mục skill |
-| --- | --- |
-| Claude Code | `.claude/skills/` |
-| Cursor | `.cursor/skills/` |
-| Windsurf | `.windsurf/skills/` |
-| IDE khác | Xem output của trình cài đặt để biết đường dẫn đích |
+| IDE / CLI   | Thư mục skill                                       |
+| ----------- | --------------------------------------------------- |
+| Claude Code | `.claude/skills/`                                   |
+| Cursor      | `.cursor/skills/`                                   |
+| Windsurf    | `.windsurf/skills/`                                 |
+| IDE khác    | Xem output của trình cài đặt để biết đường dẫn đích |
 
 Mỗi skill là một thư mục chứa file `SKILL.md`. Ví dụ với Claude Code, cấu trúc sẽ như sau:
 
@@ -77,11 +77,11 @@ Các thư mục skill được tạo trong dự án chính là danh sách chuẩ
 
 Agent skills nạp một persona AI chuyên biệt với vai trò, phong cách giao tiếp và menu workflow xác định sẵn. Sau khi được nạp, agent sẽ giữ đúng vai trò và phản hồi qua các trigger trong menu.
 
-| Ví dụ skill | Agent | Vai trò |
-| --- | --- | --- |
-| `rmbaid-agent-dev` | Amelia (Developer) | Triển khai story với mức tuân thủ đặc tả nghiêm ngặt |
-| `rmbaid-pm` | John (Product Manager) | Tạo và kiểm tra PRD |
-| `rmbaid-architect` | Winston (Architect) | Thiết kế kiến trúc hệ thống |
+| Ví dụ skill        | Agent                  | Vai trò                                              |
+| ------------------ | ---------------------- | ---------------------------------------------------- |
+| `rmbaid-agent-dev` | Amelia (Developer)     | Triển khai story với mức tuân thủ đặc tả nghiêm ngặt |
+| `rmbaid-pm`        | John (Product Manager) | Tạo và kiểm tra PRD                                  |
+| `rmbaid-architect` | Winston (Architect)    | Thiết kế kiến trúc hệ thống                          |
 
 Xem [Agents](./agents.md) để biết danh sách đầy đủ các agent mặc định và trigger của chúng.
 
@@ -89,16 +89,16 @@ Xem [Agents](./agents.md) để biết danh sách đầy đủ các agent mặc 
 
 Workflow skills chạy một quy trình có cấu trúc, nhiều bước mà không cần nạp persona agent trước. Chúng nạp cấu hình workflow rồi thực hiện theo từng bước.
 
-| Ví dụ skill | Mục đích |
-| --- | --- |
-| `rmbaid-product-brief` | Tạo product brief — phiên discovery có hướng dẫn khi concept của bạn đã rõ |
-| `rmbaid-prfaq` | Bài kiểm tra Working Backwards PRFAQ để stress-test concept sản phẩm |
-| `rmbaid-create-prd` | Tạo Product Requirements Document |
-| `rmbaid-create-architecture` | Thiết kế kiến trúc hệ thống |
-| `rmbaid-create-epics-and-stories` | Tạo epics và stories |
-| `rmbaid-dev-story` | Triển khai một story |
-| `rmbaid-code-review` | Chạy code review |
-| `rmbaid-quick-dev` | Luồng nhanh hợp nhất — làm rõ yêu cầu, lập kế hoạch, triển khai, review và trình bày |
+| Ví dụ skill                       | Mục đích                                                                             |
+| --------------------------------- | ------------------------------------------------------------------------------------ |
+| `rmbaid-product-brief`            | Tạo product brief — phiên discovery có hướng dẫn khi concept của bạn đã rõ           |
+| `rmbaid-prfaq`                    | Bài kiểm tra Working Backwards PRFAQ để stress-test concept sản phẩm                 |
+| `rmbaid-create-prd`               | Tạo Product Requirements Document                                                    |
+| `rmbaid-create-architecture`      | Thiết kế kiến trúc hệ thống                                                          |
+| `rmbaid-create-epics-and-stories` | Tạo epics và stories                                                                 |
+| `rmbaid-dev-story`                | Triển khai một story                                                                 |
+| `rmbaid-code-review`              | Chạy code review                                                                     |
+| `rmbaid-quick-dev`                | Luồng nhanh hợp nhất — làm rõ yêu cầu, lập kế hoạch, triển khai, review và trình bày |
 
 Xem [Workflow Map](./workflow-map.md) để có tài liệu workflow đầy đủ theo từng phase.
 
@@ -111,11 +111,13 @@ Tasks và tools là các thao tác độc lập, không yêu cầu ngữ cảnh 
 `rmbaid-help` là giao diện chính để bạn khám phá nên làm gì tiếp theo. Nó kiểm tra dự án, hiểu truy vấn ngôn ngữ tự nhiên và đề xuất bước bắt buộc hoặc tùy chọn tiếp theo dựa trên các module đã cài.
 
 :::note[Ví dụ]
+
 ```text
 rmbaid-help
 rmbaid-help I have a SaaS idea and know all the features. Where do I start?
 rmbaid-help What are my options for UX design?
 ```
+
 :::
 
 **Các task và tool lõi khác**
