@@ -3,6 +3,7 @@
 # Role: Solution Packager + Metrics Logger
 
 # Philosophy: A solution that cannot be used, and cannot be measured, is not a
+
 # solution
 
 ## Identity
@@ -70,16 +71,16 @@ be present:
 
 ```json
 {
-  "task_id":             "phase-NN-epic-NN",
-  "timestamp":           "2026-05-30T07:00:00Z",
-  "agent":               "Karma",
-  "iterations":          1,
-  "auto_errors_caught":  0,
-  "satya_result":        "PASS",
-  "validation_method":   "unit-tests",
-  "loc_generated":       120,
-  "loc_manual":          0,
-  "time_seconds":        180
+  "task_id": "phase-NN-epic-NN",
+  "timestamp": "2026-05-30T07:00:00Z",
+  "agent": "Karma",
+  "iterations": 1,
+  "auto_errors_caught": 0,
+  "satya_result": "PASS",
+  "validation_method": "unit-tests",
+  "loc_generated": 120,
+  "loc_manual": 0,
+  "time_seconds": 180
 }
 ```
 
@@ -87,10 +88,10 @@ Optional fields (include when available):
 
 ```json
 {
-  "notes":       "Yukti fixed a null-pointer on retry 2",
-  "case_study":  "physics-tracker",
-  "phase":       "phase-01-core-tracking",
-  "epic_name":   "sensor-pipeline"
+  "notes": "Yukti fixed a null-pointer on retry 2",
+  "case_study": "physics-tracker",
+  "phase": "phase-01-core-tracking",
+  "epic_name": "sensor-pipeline"
 }
 ```
 

@@ -1,7 +1,7 @@
 {
   "name": "rmb-aid",
-  "version": "6.2.2",
-  "description": "SMART — Scientific Methodology for AI Research and Technology with specialized agents and workflows.",
+  "version": "6.2.3-smart.1",
+  "description": "SMART — Simulation Methodology based Agentic Research Tool with specialized agents and workflows.",
   "keywords": [
     "research",
     "methodology",
@@ -19,12 +19,12 @@
     "workflow"
   ],
   "homepage": "https://github.com/ishwrknt/rmb-aid#readme",
+  "bugs": {
+    "url": "https://github.com/ishwrknt/rmb-aid/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ishwrknt/rmb-aid.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ishwrknt/rmb-aid/issues"
   },
   "license": "MIT",
   "author": "Ishwar",
@@ -36,24 +36,26 @@
   "files": [
     "src",
     "tools",
+    "smart",
     "README.md",
     "LICENSE",
     "install.js"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "docs:build": "node tools/build-docs.mjs",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "install-framework": "node install.js",
     "lint": "eslint .",
-    "lint:md": "markdownlint-cli2",
-    "quality": "npm run format:check && npm run lint && npm run lint:md && npm run docs:build && npm run test:install && npm run test:refs && npm run test:rehype && npm run validate:refs && npm run validate:skills",
+    "lint:md": "markdownlint-cli2 README.md 'smart/*.md' src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md docs/how-to/release-smart.md",
+    "prepublishOnly": "npm run quality",
+    "quality": "npm run format:check && npm run lint && npm run lint:md && npm run docs:build && npm test && npm run validate:refs && npm run validate:skills",
+    "test": "npm run test:install && npm run test:refs && npm run test:rehype && npm run test:smart && npm run test:package",
     "test:install": "node test/test-installation-components.js",
+    "test:package": "node test/test-smart-package.js",
     "test:refs": "node test/test-file-refs-csv.js",
     "test:rehype": "node test/test-rehype-plugins.mjs",
+    "test:smart": "node test/smart-metrics/logger.test.js",
     "validate:refs": "node tools/validate-file-refs.js --strict",
     "validate:skills": "node tools/validate-skills.js --strict"
   },
@@ -63,11 +65,11 @@
     "@kayvan/markdown-tree-parser": "^1.6.1",
     "chalk": "^4.1.2",
     "commander": "^14.0.0",
-    "csv-parse": "^6.1.0",
+    "csv-parse": "^7.0.3",
     "fs-extra": "^11.3.0",
     "glob": "^11.0.3",
     "ignore": "^7.0.5",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.3.2",
     "picocolors": "^1.1.1",
     "semver": "^7.6.3",
     "xml2js": "^0.6.2",
@@ -96,5 +98,8 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

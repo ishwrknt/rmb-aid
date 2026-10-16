@@ -26,8 +26,8 @@ PROGRESS.md that apply.]
 
 ## Files Created by This Epic
 
-| File | Purpose |
-|---|---|
+| File               | Purpose        |
+| ------------------ | -------------- |
 | `path/to/file.ext` | [what it does] |
 
 ## Satya Validation Method

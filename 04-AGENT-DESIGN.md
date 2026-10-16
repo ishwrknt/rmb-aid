@@ -11,15 +11,15 @@ research agents already defined in `.rmbaid-core/agents/`.
 
 ## Agent Roster
 
-| Layer | Agent | Role | Input | Output |
-|---|---|---|---|---|
-| Perception | Drishti | Problem Analyst | User task (plain language) | Problem Definition Doc |
-| Planning | Bodhi | Knowledge Mapper | PDD | Knowledge Map |
-| Planning | Tarka | Sequencer | Knowledge Map | Execution Plan |
-| Execution | Karma | Builder | Plan + epic doc | Code / files |
-| Execution | Yukti | Debugger | Error + context | Fixed code |
-| Validation | Satya | Validator | Implementation + criteria | Validation Report |
-| Validation | Siddhi | Packager + Logger | Validation Report | Package + metrics entry |
+| Layer      | Agent   | Role              | Input                      | Output                  |
+| ---------- | ------- | ----------------- | -------------------------- | ----------------------- |
+| Perception | Drishti | Problem Analyst   | User task (plain language) | Problem Definition Doc  |
+| Planning   | Bodhi   | Knowledge Mapper  | PDD                        | Knowledge Map           |
+| Planning   | Tarka   | Sequencer         | Knowledge Map              | Execution Plan          |
+| Execution  | Karma   | Builder           | Plan + epic doc            | Code / files            |
+| Execution  | Yukti   | Debugger          | Error + context            | Fixed code              |
+| Validation | Satya   | Validator         | Implementation + criteria  | Validation Report       |
+| Validation | Siddhi  | Packager + Logger | Validation Report          | Package + metrics entry |
 
 ---
 
@@ -197,10 +197,10 @@ orchestrator to know which agent to invoke next.
 
 ## Failure Escalation Matrix
 
-| Failure | First route | Second route | User escalation |
-|---|---|---|---|
-| Code error (runtime) | Yukti | Karma re-run | After 5 retries |
-| Satya FAIL (logic) | Karma rework | Tarka re-plan | After 5 retries |
-| Satya FAIL (science) | Bodhi re-map | Tarka re-sequence | After 5 retries |
-| Ambiguous requirement | Infer + log | — | Only if fundamental |
-| Missing dependency | Infer platform | Install + log | Only if unavailable |
+| Failure               | First route    | Second route      | User escalation     |
+| --------------------- | -------------- | ----------------- | ------------------- |
+| Code error (runtime)  | Yukti          | Karma re-run      | After 5 retries     |
+| Satya FAIL (logic)    | Karma rework   | Tarka re-plan     | After 5 retries     |
+| Satya FAIL (science)  | Bodhi re-map   | Tarka re-sequence | After 5 retries     |
+| Ambiguous requirement | Infer + log    | —                 | Only if fundamental |
+| Missing dependency    | Infer platform | Install + log     | Only if unavailable |

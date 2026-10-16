@@ -21,7 +21,7 @@ automatically.
 
 ```
 Layer 1 — Perception  : Drishti  → Problem Definition Document
-Layer 2 — Planning    : Bodhi    → Knowledge Map
+Layer 2 — Planning    : Bodhi    → Phases and high-level goals
                         Tarka    → Sequenced Execution Plan
 Layer 3 — Execution   : Karma    → Code / Files
                         Yukti    → Debugged Code (on error)
@@ -69,6 +69,17 @@ Generate and display the execution plan. Include:
 End with: **"Approve this plan to begin? (yes / modify: [change])"**
 
 Wait for user response before proceeding.
+
+Approval must be explicit. Silence or an unclear response is not approval.
+After approval, proceed automatically within the agreed scope and update progress
+after each file. Follow the host tool's permissions and project instructions.
+These agents are roles coordinated by the coding assistant; do not claim separate
+agents were spawned unless the host actually ran them.
+
+On resume, verify the tracker belongs to the current task and records an approved
+plan before continuing. Inspect existing files and validation evidence. If all
+items are checked, report completion or plan the user's new task. Preserve an
+unreadable tracker and report the problem instead of overwriting it.
 
 ## Step 3 — Karma: Create Planning Files (auto, no interruption)
 
@@ -121,6 +132,10 @@ Verdict: PASS / PARTIAL / FAIL
 - FAIL → trigger Karma + Yukti retry loop
 - FAIL after 5 retries → report to user with full diagnostic
 
+PARTIAL or unavailable validation does not count as PASS. Use one shared budget
+of five retries per epic across execution and validation failures. Record the
+command, result, and evidence; never fabricate a successful test.
+
 ## Step 6 — Siddhi: Mark Done, Log Metrics (auto)
 
 After Satya passes, Siddhi:
@@ -145,17 +160,21 @@ After Satya passes, Siddhi:
 
 3. Prints: `✅ [epic] complete. Siddhi confirmed. Metrics logged.`
 
+Record measured values only. If a metric cannot be measured, explain what is
+missing and leave the epic pending rather than inventing numbers. Mark completion
+only after validation passes and the metrics entry has been written successfully.
+
 ## Decision Policy
 
 Never block on minor decisions:
 
-| Situation | Action |
-|---|---|
-| Language unclear | Infer from CWD files or task keywords |
-| File structure unclear | Follow SMART canonical structure (this doc) |
-| Validation method unclear | Default to unit-tests + structural |
-| Two valid approaches | Pick simpler, log decision in PROGRESS.md |
-| Task fundamentally unclear | Ask ONE concise question, then continue |
+| Situation                  | Action                                      |
+| -------------------------- | ------------------------------------------- |
+| Language unclear           | Infer from CWD files or task keywords       |
+| File structure unclear     | Follow SMART canonical structure (this doc) |
+| Validation method unclear  | Default to unit-tests + structural          |
+| Two valid approaches       | Pick simpler, log decision in PROGRESS.md   |
+| Task fundamentally unclear | Ask ONE concise question, then continue     |
 
 ## User Interruptions
 

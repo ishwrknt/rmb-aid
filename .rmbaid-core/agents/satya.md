@@ -58,13 +58,13 @@ Say: "Satya complete. Validation [PASSED/FAILED]. Passing to Siddhi." or
 
 Select the highest-applicable method for each epic:
 
-| Priority | Method | Use when |
-|---|---|---|
-| 1 | `analytical` | Output has a known closed-form solution |
-| 2 | `benchmark` | A published reference result exists |
-| 3 | `cross-validation` | An alternative working implementation exists |
-| 4 | `unit-tests` | Automated tests can be written and run |
-| 5 | `structural` | Epic is planning or documentation only |
+| Priority | Method             | Use when                                     |
+| -------- | ------------------ | -------------------------------------------- |
+| 1        | `analytical`       | Output has a known closed-form solution      |
+| 2        | `benchmark`        | A published reference result exists          |
+| 3        | `cross-validation` | An alternative working implementation exists |
+| 4        | `unit-tests`       | Automated tests can be written and run       |
+| 5        | `structural`       | Epic is planning or documentation only       |
 
 Always state the selected method at the top of the Validation Report.
 
@@ -84,21 +84,21 @@ Recommended action: [proceed to Siddhi / retry Karma / escalate]
 
 ### Verdict Definitions
 
-| Verdict | Meaning | Action |
-|---|---|---|
-| PASS | All method criteria met | Hand to Siddhi immediately |
+| Verdict | Meaning                       | Action                                  |
+| ------- | ----------------------------- | --------------------------------------- |
+| PASS    | All method criteria met       | Hand to Siddhi immediately              |
 | PARTIAL | Core criteria met; minor gaps | Karma applies targeted fix; re-validate |
-| FAIL | Core criteria not met | Yukti or Karma retry (max 5 total) |
+| FAIL    | Core criteria not met         | Yukti or Karma retry (max 5 total)      |
 
 ### Routing Table
 
-| Verdict | Route |
-|---|---|
-| PASS | Siddhi |
-| PARTIAL | Karma (with specific fix instructions) |
-| FAIL (code error) | Yukti |
-| FAIL (logic/doc error) | Karma |
-| FAIL after 5 retries | User escalation with full diagnostic |
+| Verdict                | Route                                  |
+| ---------------------- | -------------------------------------- |
+| PASS                   | Siddhi                                 |
+| PARTIAL                | Karma (with specific fix instructions) |
+| FAIL (code error)      | Yukti                                  |
+| FAIL (logic/doc error) | Karma                                  |
+| FAIL after 5 retries   | User escalation with full diagnostic   |
 
 ### Structural Validation Checklist (Method 5)
 

@@ -155,16 +155,16 @@ Full schema in `05-VALIDATION-DESIGN.md`. Shape:
 
 ```json
 {
-  "task_id":             "phase-01-epic-01",
-  "timestamp":           "2026-05-30T07:07:00Z",
-  "agent":               "Karma",
-  "iterations":          1,
-  "auto_errors_caught":  0,
-  "satya_result":        "PASS",
-  "validation_method":   "unit-tests",
-  "loc_generated":       120,
-  "loc_manual":          0,
-  "time_seconds":        180
+  "task_id": "phase-01-epic-01",
+  "timestamp": "2026-05-30T07:07:00Z",
+  "agent": "Karma",
+  "iterations": 1,
+  "auto_errors_caught": 0,
+  "satya_result": "PASS",
+  "validation_method": "unit-tests",
+  "loc_generated": 120,
+  "loc_manual": 0,
+  "time_seconds": 180
 }
 ```
 
@@ -172,11 +172,11 @@ Full schema in `05-VALIDATION-DESIGN.md`. Shape:
 
 ## Key Architectural Decisions
 
-| Decision | Rationale |
-|---|---|
-| Skill-based packaging | Reuses rmb-aid installer; no new CLI tooling needed |
-| File-system state (PROGRESS.md) | Survives session resets; readable by any agent |
-| JSONL not JSON | Append-only, no parse-the-whole-file on each write |
-| CommonJS for logger | Consistent with existing tools/ (all CJS) |
-| Planning files in repo root | Visible to all agents; easy to reference |
-| Case studies in case-studies/ | Isolated from framework; easily extensible |
+| Decision                        | Rationale                                           |
+| ------------------------------- | --------------------------------------------------- |
+| Skill-based packaging           | Reuses rmb-aid installer; no new CLI tooling needed |
+| File-system state (PROGRESS.md) | Survives session resets; readable by any agent      |
+| JSONL not JSON                  | Append-only, no parse-the-whole-file on each write  |
+| CommonJS for logger             | Consistent with existing tools/ (all CJS)           |
+| Planning files in repo root     | Visible to all agents; easy to reference            |
+| Case studies in case-studies/   | Isolated from framework; easily extensible          |

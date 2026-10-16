@@ -17,14 +17,14 @@ FR-10, FR-11, FR-12, FR-13
 
 ## Files to Create
 
-| File | Purpose |
-|---|---|
-| `light/LuxData.kt` | Data class — one measurement per frame |
-| `light/LuxAnalyzer.kt` | `ImageAnalysis.Analyzer` — computes avg luminance |
-| `graph/LuxOverlayView.kt` | Custom `View` — canvas line graph, last 5 s window |
-| `ui/light/LightViewModel.kt` | `StateFlow<List<LuxData>>` + windowed buffer |
-| `ui/light/LightFragment.kt` | CameraX preview + overlay; landscape constraint swap |
-| `export/CsvExporter.kt` (patch) | Add `writeLux()` for `List<LuxData>` |
+| File                            | Purpose                                              |
+| ------------------------------- | ---------------------------------------------------- |
+| `light/LuxData.kt`              | Data class — one measurement per frame               |
+| `light/LuxAnalyzer.kt`          | `ImageAnalysis.Analyzer` — computes avg luminance    |
+| `graph/LuxOverlayView.kt`       | Custom `View` — canvas line graph, last 5 s window   |
+| `ui/light/LightViewModel.kt`    | `StateFlow<List<LuxData>>` + windowed buffer         |
+| `ui/light/LightFragment.kt`     | CameraX preview + overlay; landscape constraint swap |
+| `export/CsvExporter.kt` (patch) | Add `writeLux()` for `List<LuxData>`                 |
 
 ## Implementation Notes
 

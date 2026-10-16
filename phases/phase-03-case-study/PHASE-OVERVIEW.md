@@ -8,11 +8,11 @@ case-specific smart_metrics.jsonl with 3 real entries.
 
 ## Epics
 
-| Epic | Deliverable | Status |
-|---|---|---|
-| 01 | Case study brief + PRD + architecture | ✅ |
-| 02 | Phase-01 overview + 3 epic docs | ✅ |
-| 03 | case-studies/physics-tracker/smart_metrics.jsonl | ✅ |
+| Epic | Deliverable                                      | Status |
+| ---- | ------------------------------------------------ | ------ |
+| 01   | Case study brief + PRD + architecture            | ✅     |
+| 02   | Phase-01 overview + 3 epic docs                  | ✅     |
+| 03   | case-studies/physics-tracker/smart_metrics.jsonl | ✅     |
 
 ## Satya Result: PASS
 

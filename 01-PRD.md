@@ -25,12 +25,12 @@ This PRD specifies the requirements to fill that gap.
 
 ## 2. Users
 
-| User | Goal |
-|---|---|
-| Researcher / PhD student | Autonomously build a simulation or analysis tool |
-| Android developer | Use SMART to plan and scaffold a new app |
-| rmb-aid installer | Install SMART pipeline as a skill via `npx rmb-aid` |
-| Agent orchestrator | Invoke SMART pipeline programmatically |
+| User                     | Goal                                                |
+| ------------------------ | --------------------------------------------------- |
+| Researcher / PhD student | Autonomously build a simulation or analysis tool    |
+| Android developer        | Use SMART to plan and scaffold a new app            |
+| rmb-aid installer        | Install SMART pipeline as a skill via `npx rmb-aid` |
+| Agent orchestrator       | Invoke SMART pipeline programmatically              |
 
 ---
 
@@ -99,27 +99,27 @@ This PRD specifies the requirements to fill that gap.
 
 ## 4. Non-Functional Requirements
 
-| ID | Requirement |
-|---|---|
-| NFR-01 | All new markdown passes `npm run lint:md` |
-| NFR-02 | Skill passes `npm run validate:skills --strict` |
+| ID     | Requirement                                       |
+| ------ | ------------------------------------------------- |
+| NFR-01 | All new markdown passes `npm run lint:md`         |
+| NFR-02 | Skill passes `npm run validate:skills --strict`   |
 | NFR-03 | Node.js module uses zero new runtime dependencies |
-| NFR-04 | All files use UTF-8, LF line endings |
-| NFR-05 | Conventional Commits for every git commit |
-| NFR-06 | `npm run quality` passes on HEAD before any push |
+| NFR-04 | All files use UTF-8, LF line endings              |
+| NFR-05 | Conventional Commits for every git commit         |
+| NFR-06 | `npm run quality` passes on HEAD before any push  |
 
 ---
 
 ## 5. Acceptance Tests
 
-| ID | Test | Expected |
-|---|---|---|
-| AT-01 | Run `npm run validate:skills` | 0 HIGH findings |
-| AT-02 | Run `npm run lint:md` | 0 errors |
-| AT-03 | Run `node test/smart-metrics/logger.test.js` | All pass |
+| ID    | Test                                          | Expected                     |
+| ----- | --------------------------------------------- | ---------------------------- |
+| AT-01 | Run `npm run validate:skills`                 | 0 HIGH findings              |
+| AT-02 | Run `npm run lint:md`                         | 0 errors                     |
+| AT-03 | Run `node test/smart-metrics/logger.test.js`  | All pass                     |
 | AT-04 | Check case-studies/physics-tracker/ structure | All 9 required files present |
-| AT-05 | Count lines in smart_metrics.jsonl | ≥3 valid JSONL entries |
-| AT-06 | Parse each JSONL line with JSON.parse() | No parse errors |
+| AT-05 | Count lines in smart_metrics.jsonl            | ≥3 valid JSONL entries       |
+| AT-06 | Parse each JSONL line with JSON.parse()       | No parse errors              |
 
 ---
 

@@ -920,40 +920,40 @@ class OfficialModules {
       if (this.simpleMode) {
         this.modulesToCustomize = new Set();
       } else {
-      scannedModules = await this.scanModuleSchemas(nonCoreModules);
-      const customizableModules = scannedModules.filter((m) => m.questionCount > 0);
+        scannedModules = await this.scanModuleSchemas(nonCoreModules);
+        const customizableModules = scannedModules.filter((m) => m.questionCount > 0);
 
-      if (customizableModules.length > 0) {
-        const configMode = await prompts.select({
-          message: 'Module configuration',
-          choices: [
-            { name: 'Express Setup', value: 'express', hint: 'accept all defaults (recommended)' },
-            { name: 'Customize', value: 'customize', hint: 'choose modules to configure' },
-          ],
-          default: 'express',
-        });
-
-        if (configMode === 'customize') {
-          const choices = customizableModules.map((m) => ({
-            name: `${m.displayName} (${m.questionCount} option${m.questionCount === 1 ? '' : 's'})`,
-            value: m.moduleName,
-            hint: m.hasFieldsWithoutDefaults ? 'has fields without defaults' : undefined,
-            checked: m.hasFieldsWithoutDefaults,
-          }));
-          const selected = await prompts.multiselect({
-            message: 'Select modules to customize:',
-            choices,
-            required: false,
+        if (customizableModules.length > 0) {
+          const configMode = await prompts.select({
+            message: 'Module configuration',
+            choices: [
+              { name: 'Express Setup', value: 'express', hint: 'accept all defaults (recommended)' },
+              { name: 'Customize', value: 'customize', hint: 'choose modules to configure' },
+            ],
+            default: 'express',
           });
-          this.modulesToCustomize = new Set(selected);
+
+          if (configMode === 'customize') {
+            const choices = customizableModules.map((m) => ({
+              name: `${m.displayName} (${m.questionCount} option${m.questionCount === 1 ? '' : 's'})`,
+              value: m.moduleName,
+              hint: m.hasFieldsWithoutDefaults ? 'has fields without defaults' : undefined,
+              checked: m.hasFieldsWithoutDefaults,
+            }));
+            const selected = await prompts.multiselect({
+              message: 'Select modules to customize:',
+              choices,
+              required: false,
+            });
+            this.modulesToCustomize = new Set(selected);
+          } else {
+            // Express mode: no modules to customize
+            this.modulesToCustomize = new Set();
+          }
         } else {
-          // Express mode: no modules to customize
+          // All non-core modules have zero config - no gateway needed
           this.modulesToCustomize = new Set();
         }
-      } else {
-        // All non-core modules have zero config - no gateway needed
-        this.modulesToCustomize = new Set();
-      }
       }
     }
 

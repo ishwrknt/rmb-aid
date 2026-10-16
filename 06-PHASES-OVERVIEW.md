@@ -17,10 +17,10 @@ the pipeline skill and its canonical documentation in place.
 
 ### Epics
 
-| Epic | Name | Key Deliverable |
-|---|---|---|
-| 01 | smart-pipeline-skill | `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` |
-| 02 | pipeline-runtime-docs | `smart/pipeline.md` + `smart/startup.md` |
+| Epic | Name                  | Key Deliverable                                    |
+| ---- | --------------------- | -------------------------------------------------- |
+| 01   | smart-pipeline-skill  | `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` |
+| 02   | pipeline-runtime-docs | `smart/pipeline.md` + `smart/startup.md`           |
 
 **Satya method:** structural (planning documents + skill validator)
 
@@ -38,11 +38,11 @@ study) and Phase 4 (metrics module) depend on.
 
 ### Epics
 
-| Epic | Name | Key Deliverable |
-|---|---|---|
-| 01 | satya-software-validation | Updated `.rmbaid-core/agents/satya.md` |
-| 02 | siddhi-metrics-logging | Updated `.rmbaid-core/agents/siddhi.md` |
-| 03 | templates | `smart-metrics-schema.md` + `epic-tmpl.md` |
+| Epic | Name                      | Key Deliverable                            |
+| ---- | ------------------------- | ------------------------------------------ |
+| 01   | satya-software-validation | Updated `.rmbaid-core/agents/satya.md`     |
+| 02   | siddhi-metrics-logging    | Updated `.rmbaid-core/agents/siddhi.md`    |
+| 03   | templates                 | `smart-metrics-schema.md` + `epic-tmpl.md` |
 
 **Satya method:** structural (doc completeness + consistency with 04-AGENT-DESIGN)
 
@@ -62,11 +62,11 @@ JSONL in its tests.
 
 ### Epics
 
-| Epic | Name | Key Deliverable |
-|---|---|---|
-| 01 | case-study-planning-docs | brief + PRD + architecture for physics-tracker |
-| 02 | phase-01-overview-and-epics | PHASE-OVERVIEW + 3 epic docs |
-| 03 | case-study-metrics | smart_metrics.jsonl with ≥3 valid entries |
+| Epic | Name                        | Key Deliverable                                |
+| ---- | --------------------------- | ---------------------------------------------- |
+| 01   | case-study-planning-docs    | brief + PRD + architecture for physics-tracker |
+| 02   | phase-01-overview-and-epics | PHASE-OVERVIEW + 3 epic docs                   |
+| 03   | case-study-metrics          | smart_metrics.jsonl with ≥3 valid entries      |
 
 **Satya method:** structural (PRD ↔ architecture consistency; JSONL parse check)
 
@@ -84,10 +84,10 @@ from Phase 3 (used in tests).
 
 ### Epics
 
-| Epic | Name | Key Deliverable |
-|---|---|---|
-| 01 | logger-module | `src/smart-metrics/logger.js` + `schema.js` |
-| 02 | logger-tests | `test/smart-metrics/logger.test.js` (all passing) |
+| Epic | Name          | Key Deliverable                                   |
+| ---- | ------------- | ------------------------------------------------- |
+| 01   | logger-module | `src/smart-metrics/logger.js` + `schema.js`       |
+| 02   | logger-tests  | `test/smart-metrics/logger.test.js` (all passing) |
 
 **Satya method:** unit-tests (AT-03 from 05-VALIDATION-DESIGN.md)
 
@@ -110,10 +110,10 @@ Quality Gate ──────────────────────�
 
 ## Total Deliverables Count
 
-| Category | Count |
-|---|---|
-| Planning docs | 8 |
-| New source files | 5 |
-| New markdown docs | 18 |
-| New test files | 1 |
-| Total files created | ~32 |
+| Category            | Count |
+| ------------------- | ----- |
+| Planning docs       | 8     |
+| New source files    | 5     |
+| New markdown docs   | 18    |
+| New test files      | 1     |
+| Total files created | ~32   |

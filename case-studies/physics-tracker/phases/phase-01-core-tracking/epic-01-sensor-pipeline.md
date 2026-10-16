@@ -16,13 +16,13 @@ FR-01, FR-02, FR-03, FR-04, FR-05
 
 ## Files to Create
 
-| File | Purpose |
-|---|---|
-| `sensor/SensorData.kt` | Immutable data class — one reading per sensor event |
-| `sensor/SensorRepository.kt` | `SensorManager` wrapper; emits `Flow<SensorData>` |
-| `sensor/CaptureService.kt` | `ForegroundService`; collects flow; buffers readings |
-| `ui/tracking/TrackingViewModel.kt` | Exposes `StateFlow<List<SensorData>>` to UI |
-| `ui/tracking/TrackingFragment.kt` | Start/stop controls; sample-rate dropdown |
+| File                               | Purpose                                              |
+| ---------------------------------- | ---------------------------------------------------- |
+| `sensor/SensorData.kt`             | Immutable data class — one reading per sensor event  |
+| `sensor/SensorRepository.kt`       | `SensorManager` wrapper; emits `Flow<SensorData>`    |
+| `sensor/CaptureService.kt`         | `ForegroundService`; collects flow; buffers readings |
+| `ui/tracking/TrackingViewModel.kt` | Exposes `StateFlow<List<SensorData>>` to UI          |
+| `ui/tracking/TrackingFragment.kt`  | Start/stop controls; sample-rate dropdown            |
 
 ## Implementation Notes
 

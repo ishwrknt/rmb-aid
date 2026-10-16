@@ -15,7 +15,10 @@ Use command-line flags to install RMB_AID non-interactively. This is useful for:
 - Quick installations with known configurations
 
 :::note[Prerequisites]
-Requires [Node.js](https://nodejs.org) v20+ and `npx` (included with npm).
+Requires [Node.js](https://nodejs.org) v22+ and npm.
+Until npm publication, replace `npx rmb-aid` in the examples below with
+`node tools/installer/rmbaid-cli.js` from your source checkout, or `smart`
+after installing the local archive. See [Release SMART](./release-smart.md).
 :::
 
 ## Available Flags
@@ -78,14 +81,14 @@ Run `npx rmb-aid install` interactively once to see the full current list of sup
 
 ## Installation Modes
 
-| Mode                  | Description                                      | Example                                                                        |
-| --------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------ |
-| Fully non-interactive | Provide all flags to skip all prompts            | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
-| Simple interactive    | Ask only the important questions and use defaults elsewhere | `npx rmb-aid install` |
-| Semi-interactive      | Provide some flags; RMB_AID prompts for the rest | `npx rmb-aid install --directory . --modules rmbaid`                           |
-| Advanced interactive  | Show the full interactive configuration flow     | `npx rmb-aid install --advanced`                                               |
-| Defaults only         | Accept all defaults with `-y`                    | `npx rmb-aid install --yes`                                                    |
-| Without tools         | Skip tool/IDE configuration                      | `npx rmb-aid install --modules rmbaid --tools none`                            |
+| Mode                  | Description                                                 | Example                                                                        |
+| --------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Fully non-interactive | Provide all flags to skip all prompts                       | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
+| Simple interactive    | Ask only the important questions and use defaults elsewhere | `npx rmb-aid install`                                                          |
+| Semi-interactive      | Provide some flags; RMB_AID prompts for the rest            | `npx rmb-aid install --directory . --modules rmbaid`                           |
+| Advanced interactive  | Show the full interactive configuration flow                | `npx rmb-aid install --advanced`                                               |
+| Defaults only         | Accept all defaults with `-y`                               | `npx rmb-aid install --yes`                                                    |
+| Without tools         | Skip tool/IDE configuration                                 | `npx rmb-aid install --modules rmbaid --tools none`                            |
 
 ## Examples
 

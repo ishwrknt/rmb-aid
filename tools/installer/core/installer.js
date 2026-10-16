@@ -1109,19 +1109,12 @@ class Installer {
     }
 
     // Next steps
-    lines.push(
-      '',
-      '  Next steps:',
-      `    Read our new Docs Site: ${color.dim('https://docs.rmb-aid.org/')}`,
-      `    Join our Discord: ${color.dim('https://discord.gg/gk8jAdXWmj')}`,
-      `    Star us on GitHub: ${color.dim('https://github.com/rmbaid-code-org/RMB_AID/')}`,
-      `    Subscribe on YouTube: ${color.dim('https://www.youtube.com/@RMB_AIDCode')}`,
-    );
+    lines.push('', '  Next steps:', `    Source and quick start: ${color.dim('https://github.com/ishwrknt/rmb-aid')}`);
     if (context.ides && context.ides.length > 0) {
-      lines.push(`    Invoke the ${color.cyan('rmbaid-help')} skill in your IDE Agent to get started`);
+      lines.push(`    Invoke ${color.cyan('rmbaid-smart-pipeline')} and describe your task to get started`);
     }
 
-    await prompts.note(lines.join('\n'), 'RMB_AID is ready to use!');
+    await prompts.note(lines.join('\n'), 'SMART is ready to use!');
   }
 
   /**

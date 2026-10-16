@@ -1,15 +1,20 @@
 ---
-title: 'How to Install RMB_AID'
-description: Step-by-step guide to installing RMB_AID in your project
+title: 'How to Install SMART'
+description: Step-by-step guide to installing SMART in your project
 sidebar:
   order: 1
 ---
 
-Use the `npx rmb-aid install` command to set up RMB_AID in your project with your choice of modules and AI tools.
+SMART is currently a GitHub preview release. From the source checkout, run
+`npm ci`, then `node tools/installer/rmbaid-cli.js install --directory /path/to/your/project`.
+Invoke `rmbaid-smart-pipeline` in your coding assistant to start.
 
-The published npm package name is `rmb-aid`. The `rmbaid` name is available as a CLI/bin alias, but for fresh installs through `npx`, use `rmb-aid`.
+The package name is `rmb-aid`, with `smart` and `rmbaid` executable aliases.
+The registry commands below apply after npm publication; they are not yet a
+verified public installation route. See [Release SMART](./release-smart.md).
 
 By default, the interactive installer now uses a simplified flow:
+
 - recommended modules are selected automatically
 - optional custom-content questions are skipped
 - module and core settings use defaults unless something important is missing
@@ -23,10 +28,11 @@ If you want to use a non interactive installer and provide all install options o
 - Update the existing RMB_AID Installation
 
 :::note[Prerequisites]
-- **Node.js** 20+ (required for the installer)
+
+- **Node.js** 22+ (required for the installer)
 - **Git** (recommended)
 - **AI tool** (Claude Code, Cursor, or similar)
-:::
+  :::
 
 ## Steps
 
@@ -38,6 +44,7 @@ npx rmb-aid install
 
 :::tip[Want the newest prerelease build?]
 Use the `next` dist-tag:
+
 ```bash
 npx rmb-aid@next install
 ```
@@ -47,9 +54,11 @@ This gets you newer changes earlier, with a higher chance of churn than the defa
 
 :::tip[Bleeding edge]
 To install the latest from the main branch (may be unstable):
+
 ```bash
 npx github:rmbaid-code-org/RMB_AID install
 ```
+
 :::
 
 ### 2. Choose Installation Location
@@ -110,11 +119,13 @@ your-project/
 Run `rmbaid-help` to verify everything works and see what to do next.
 
 **RMB_AID-Help is your intelligent guide** that will:
+
 - Confirm your installation is working
 - Show what's available based on your installed modules
 - Recommend your first step
 
 You can also ask it questions:
+
 ```
 rmbaid-help I just installed, what should I do first?
 rmbaid-help What are my options for a SaaS project?

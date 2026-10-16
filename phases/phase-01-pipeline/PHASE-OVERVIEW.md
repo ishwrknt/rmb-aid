@@ -7,10 +7,10 @@ canonical pipeline reference documentation.
 
 ## Epics
 
-| Epic | Deliverable | Status |
-|---|---|---|
-| 01 | `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` | ✅ |
-| 02 | `smart/pipeline.md` + `smart/startup.md` | ✅ |
+| Epic | Deliverable                                        | Status |
+| ---- | -------------------------------------------------- | ------ |
+| 01   | `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` | ✅     |
+| 02   | `smart/pipeline.md` + `smart/startup.md`           | ✅     |
 
 ## Satya Result: PASS
 

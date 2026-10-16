@@ -105,13 +105,13 @@ class UI {
         const hasQuickUpdate = choices.some((c) => c.value === 'quick-update');
         actionType = hasQuickUpdate ? 'quick-update' : choices[0].value;
         await prompts.log.info(`Non-interactive mode (--yes): defaulting to ${actionType}`);
-        } else if (simpleMode) {
-          actionType = choices[0].value;
-          await prompts.log.info(`Using default action: ${actionType}`);
-        } else {
-          actionType = await prompts.select({
-            message: 'How would you like to proceed?',
-            choices: choices,
+      } else if (simpleMode) {
+        actionType = choices[0].value;
+        await prompts.log.info(`Using default action: ${actionType}`);
+      } else {
+        actionType = await prompts.select({
+          message: 'How would you like to proceed?',
+          choices: choices,
           default: choices[0].value,
         });
       }
@@ -276,7 +276,18 @@ class UI {
           } else {
             await prompts.log.info('Non-interactive mode (--yes): no existing custom modules found');
           }
-        } else if (!simpleMode) {
+        } else if (simpleMode) {
+          // Simple mode: preserve existing custom modules without asking.
+          const cacheDir = path.join(rmbaidDir, '_config', 'custom');
+          if (await fs.pathExists(cacheDir)) {
+            const entries = await fs.readdir(cacheDir, { withFileTypes: true });
+            for (const entry of entries) {
+              if (entry.isDirectory()) {
+                customModuleResult.selectedCustomModules.push(entry.name);
+              }
+            }
+          }
+        } else {
           const changeCustomModules = await prompts.confirm({
             message: 'Modify custom modules, agents, or workflows?',
             default: false,
@@ -297,17 +308,6 @@ class UI {
                 if (entry.isDirectory()) {
                   customModuleResult.selectedCustomModules.push(entry.name);
                 }
-              }
-            }
-          }
-        } else {
-          // Simple mode: preserve existing custom modules without asking.
-          const cacheDir = path.join(rmbaidDir, '_config', 'custom');
-          if (await fs.pathExists(cacheDir)) {
-            const entries = await fs.readdir(cacheDir, { withFileTypes: true });
-            for (const entry of entries) {
-              if (entry.isDirectory()) {
-                customModuleResult.selectedCustomModules.push(entry.name);
               }
             }
           }
@@ -771,8 +771,7 @@ class UI {
         configCollector.collectedConfig.core = {
           user_name: coreConfig.user_name || safeUsername,
           communication_language: coreConfig.communication_language || existingConfig.communication_language || 'English',
-          document_output_language:
-            coreConfig.document_output_language || existingConfig.document_output_language || 'English',
+          document_output_language: coreConfig.document_output_language || existingConfig.document_output_language || 'English',
           output_folder: coreConfig.output_folder || existingConfig.output_folder || '_rmbaid-output',
         };
         await prompts.log.info('Using simple defaults for core configuration');

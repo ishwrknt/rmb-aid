@@ -1,6 +1,6 @@
 code: rmbaid
-name: "RMB_AID Agile-AI Driven-Development"
-description: "AI-driven agile development framework"
+name: "SMART Research and Software Delivery"
+description: "Plan, implement, validate, and resume work with the SMART pipeline"
 default_selected: true # This module will be selected by default for new installations
 
 # Variables from Core Config inserted:

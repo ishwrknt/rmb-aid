@@ -7,11 +7,11 @@ reusable templates for all future SMART epics and metrics entries.
 
 ## Epics
 
-| Epic | Deliverable | Status |
-|---|---|---|
-| 01 | `.rmbaid-core/agents/satya.md` enhanced | ✅ |
-| 02 | `.rmbaid-core/agents/siddhi.md` enhanced | ✅ |
-| 03 | `smart-metrics-schema.md` + `epic-tmpl.md` | ✅ |
+| Epic | Deliverable                                | Status |
+| ---- | ------------------------------------------ | ------ |
+| 01   | `.rmbaid-core/agents/satya.md` enhanced    | ✅     |
+| 02   | `.rmbaid-core/agents/siddhi.md` enhanced   | ✅     |
+| 03   | `smart-metrics-schema.md` + `epic-tmpl.md` | ✅     |
 
 ## Satya Result: PASS
 

@@ -74,12 +74,12 @@ If PROGRESS.md exists but cannot be parsed (malformed markdown):
 
 ## Session State Rules
 
-| Rule | Behaviour |
-|---|---|
-| Never re-create a completed file | Skip `[x]` items; go straight to first `[ ]` |
-| Never assume file contents | Always read files explicitly before using them |
-| Update PROGRESS.md atomically | Write the full file, not append individual lines |
-| Log every decision | Append to "Decisions Log" section immediately |
+| Rule                             | Behaviour                                        |
+| -------------------------------- | ------------------------------------------------ |
+| Never re-create a completed file | Skip `[x]` items; go straight to first `[ ]`     |
+| Never assume file contents       | Always read files explicitly before using them   |
+| Update PROGRESS.md atomically    | Write the full file, not append individual lines |
+| Log every decision               | Append to "Decisions Log" section immediately    |
 
 ---
 
@@ -101,6 +101,7 @@ decisions.
 
 ```markdown
 # SMART PROGRESS TRACKER
+
 Task: Build a Kotlin Android physics-tracker app
 Started: 2026-05-30T07:07:00Z
 Last Updated: 2026-05-30T09:30:00Z
