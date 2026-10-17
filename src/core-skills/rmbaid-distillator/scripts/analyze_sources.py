@@ -40,7 +40,7 @@ INCLUDE_EXTENSIONS = {".md", ".txt", ".yaml", ".yml", ".json"}
 # Directories to skip when scanning folders
 SKIP_DIRS = {
     "node_modules", ".git", "__pycache__", ".venv", "venv",
-    ".claude", "_rmbaid-output", ".cursor", ".vscode",
+    ".claude", "_rmbaid-output", "SMART-output", ".cursor", ".vscode",
 }
 
 # Approximate chars per token for estimation

@@ -35,12 +35,9 @@ class AgentCommandGenerator {
       agentRelPath = agentRelPath.replaceAll('\\', '/');
       // Remove _rmbaid/ prefix if present to get relative path from project root
       // Handle both absolute paths (/path/to/_rmbaid/...) and relative paths (_rmbaid/...)
-      if (agentRelPath.includes('_rmbaid/')) {
-        const parts = agentRelPath.split(/_rmbaid\//);
-        if (parts.length > 1) {
-          agentRelPath = parts.slice(1).join('/');
-        }
-      }
+      const folderPrefix = `${this.rmbaidFolderName}/`;
+      const folderIndex = agentRelPath.indexOf(folderPrefix);
+      if (folderIndex !== -1) agentRelPath = agentRelPath.slice(folderIndex + folderPrefix.length);
       artifacts.push({
         type: 'agent-launcher',
         name: agent.name,
@@ -79,8 +76,7 @@ class AgentCommandGenerator {
       .replaceAll('{{module}}', agent.module)
       .replaceAll('{{path}}', agentPathInModule)
       .replaceAll('{{description}}', agent.description || `${agent.name} agent`)
-      .replaceAll('_rmbaid', this.rmbaidFolderName)
-      .replaceAll('_rmbaid', '_rmbaid');
+      .replaceAll('_rmbaid', this.rmbaidFolderName);
   }
 
   /**

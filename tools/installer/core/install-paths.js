@@ -1,7 +1,7 @@
 const path = require('node:path');
 const fs = require('fs-extra');
 const { getProjectRoot } = require('../project-root');
-const { RMB_AID_FOLDER_NAME } = require('../ide/shared/path-utils');
+const { resolveInstallDirectory } = require('./install-layout');
 
 class InstallPaths {
   static async create(config) {
@@ -15,7 +15,7 @@ class InstallPaths {
     const projectRoot = path.resolve(config.directory);
     await ensureWritableDir(projectRoot, 'project root');
 
-    const rmbaidDir = path.join(projectRoot, RMB_AID_FOLDER_NAME);
+    const rmbaidDir = await resolveInstallDirectory(projectRoot);
     const isUpdate = await fs.pathExists(rmbaidDir);
 
     const configDir = path.join(rmbaidDir, '_config');

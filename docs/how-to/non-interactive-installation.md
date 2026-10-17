@@ -35,12 +35,12 @@ after installing the local archive. See [Release SMART](./release-smart.md).
 
 ### Core Configuration
 
-| Flag                                | Description                                     | Default          |
-| ----------------------------------- | ----------------------------------------------- | ---------------- |
-| `--user-name <name>`                | Name for agents to use                          | System username  |
-| `--communication-language <lang>`   | Agent communication language                    | English          |
-| `--document-output-language <lang>` | Document output language                        | English          |
-| `--output-folder <path>`            | Output folder path (see resolution rules below) | `_rmbaid-output` |
+| Flag                                | Description                                     | Default         |
+| ----------------------------------- | ----------------------------------------------- | --------------- |
+| `--user-name <name>`                | Name for agents to use                          | System username |
+| `--communication-language <lang>`   | Agent communication language                    | English         |
+| `--document-output-language <lang>` | Document output language                        | English         |
+| `--output-folder <path>`            | Output folder path (see resolution rules below) | `SMART-output`  |
 
 #### Output Folder Path Resolution
 
@@ -48,7 +48,7 @@ The value passed to `--output-folder` (or entered interactively) is resolved acc
 
 | Input type                   | Example                    | Resolved as                                                |
 | ---------------------------- | -------------------------- | ---------------------------------------------------------- |
-| Relative path (default)      | `_rmbaid-output`           | `<project-root>/_rmbaid-output`                            |
+| Relative path (default)      | `SMART-output`             | `<project-root>/SMART-output`                              |
 | Relative path with traversal | `../../shared-outputs`     | Normalized absolute path — e.g. `/Users/me/shared-outputs` |
 | Absolute path                | `/Users/me/shared-outputs` | Used as-is — project root is **not** prepended             |
 
@@ -105,7 +105,7 @@ npx rmb-aid install \
   --user-name "CI Bot" \
   --communication-language English \
   --document-output-language English \
-  --output-folder _rmbaid-output \
+  --output-folder SMART-output \
   --yes
 ```
 
@@ -140,7 +140,7 @@ npx rmb-aid install \
 
 - A fully configured `_rmbaid/` directory in your project
 - Agents and workflows configured for your selected modules and tools
-- A `_rmbaid-output/` folder for generated artifacts
+- A `SMART-output/` folder for generated artifacts
 
 ## Validation and Error Handling
 

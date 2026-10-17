@@ -20,7 +20,7 @@ const TYPE_SEGMENTS = ['workflows', 'tasks', 'tools'];
 const AGENT_SEGMENT = 'agents';
 
 // RMB_AID installation folder name - centralized constant for all installers
-const RMB_AID_FOLDER_NAME = '_rmbaid';
+const RMB_AID_FOLDER_NAME = 'SMART';
 
 /**
  * Convert hierarchical path to flat dash-separated name (NEW STANDARD)

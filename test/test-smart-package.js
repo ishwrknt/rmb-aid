@@ -23,6 +23,7 @@ try {
     'smart/pipeline.md',
     'smart/startup.md',
     'tools/installer/commands/prompt.js',
+    'tools/smart-install.sh',
   ]) {
     assert(files.has(required), `Missing packaged file: ${required}`);
   }
@@ -42,6 +43,12 @@ try {
   fs.mkdirSync(project);
   const args = [cli, 'install', '--directory', project, '--modules', 'rmbaid', '--tools', 'codex,windsurf', '--yes'];
   run(process.execPath, args, temp);
+  assert(fs.existsSync(path.join(project, 'SMART/_config/manifest.yaml')), 'Fresh installations must use SMART/');
+  assert(!fs.existsSync(path.join(project, '_rmbaid')), 'Fresh installations must not create _rmbaid/');
+  assert(fs.existsSync(path.join(project, 'SMART-output')), 'New output folders must use SMART-output/');
+  const installedHelp = fs.readFileSync(path.join(project, '.agents/skills/rmbaid-help/SKILL.md'), 'utf8');
+  assert(installedHelp.includes('{project-root}/SMART/'), 'Installed skills must reference SMART/');
+  assert(!installedHelp.includes('{project-root}/_rmbaid/'), 'Installed skills must not reference the legacy root');
   const installedSkill = path.join(project, '.agents/skills/rmbaid-smart-pipeline/SKILL.md');
   assert(fs.existsSync(installedSkill), 'SMART pipeline must be installed for Codex');
   assert(fs.readFileSync(installedSkill, 'utf8').includes('Approval must be explicit'));
@@ -51,6 +58,21 @@ try {
   fs.writeFileSync(progress, progressContent);
   run(process.execPath, args, temp);
   assert.equal(fs.readFileSync(progress, 'utf8'), progressContent, 'Reinstall must preserve user progress');
+  // Simulate the older directory layout, then exercise the full update path.
+  fs.renameSync(path.join(project, 'SMART'), path.join(project, '_rmbaid'));
+  const yaml = require('yaml');
+  for (const module of ['core', 'rmbaid']) {
+    const configFile = path.join(project, '_rmbaid', module, 'config.yaml');
+    const config = yaml.parse(fs.readFileSync(configFile, 'utf8'));
+    config.output_folder = '{project-root}/_rmbaid-output';
+    fs.writeFileSync(configFile, yaml.stringify(config));
+  }
+  fs.writeFileSync(path.join(project, '_rmbaid/user-note.txt'), 'Preserve legacy user content.');
+  run(process.execPath, args, temp);
+  assert(!fs.existsSync(path.join(project, 'SMART')), 'Legacy updates must not create a parallel SMART installation');
+  assert(fs.existsSync(path.join(project, '_rmbaid/user-note.txt')), 'Legacy user files must be preserved');
+  assert(yaml.parse(fs.readFileSync(path.join(project, '_rmbaid/core/config.yaml'), 'utf8')).output_folder.includes('_rmbaid-output'));
+  assert(fs.readFileSync(path.join(project, '.agents/skills/rmbaid-help/SKILL.md'), 'utf8').includes('{project-root}/_rmbaid/'));
   console.log('SMART package: required assets, offline CLI, clean install, and reinstall passed.');
 } finally {
   fs.rmSync(temp, { recursive: true, force: true });

@@ -1,6 +1,6 @@
 {
   "name": "rmb-aid",
-  "version": "6.2.3-smart.1",
+  "version": "6.2.3-smart.2",
   "description": "SMART — Simulation Methodology based Agentic Research Tool with specialized agents and workflows.",
   "keywords": [
     "research",
@@ -47,11 +47,13 @@
     "format:check": "prettier . --check",
     "install-framework": "node install.js",
     "lint": "eslint .",
-    "lint:md": "markdownlint-cli2 README.md 'smart/*.md' src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md docs/how-to/release-smart.md",
+    "lint:md": "markdownlint-cli2 README.md 'smart/*.md' src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md docs/how-to/release-smart.md docs/how-to/install-rmbaid.md",
     "prepublishOnly": "npm run quality",
     "quality": "npm run format:check && npm run lint && npm run lint:md && npm run docs:build && npm test && npm run validate:refs && npm run validate:skills",
-    "test": "npm run test:install && npm run test:refs && npm run test:rehype && npm run test:smart && npm run test:package",
+    "test": "npm run test:install && npm run test:refs && npm run test:rehype && npm run test:smart && npm run test:layout && npm run test:helper && npm run test:package",
+    "test:helper": "node test/test-smart-install-helper.js",
     "test:install": "node test/test-installation-components.js",
+    "test:layout": "node test/test-smart-layout.js",
     "test:package": "node test/test-smart-package.js",
     "test:refs": "node test/test-file-refs-csv.js",
     "test:rehype": "node test/test-rehype-plugins.mjs",

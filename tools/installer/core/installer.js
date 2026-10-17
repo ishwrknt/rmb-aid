@@ -11,6 +11,7 @@ const { ManifestGenerator } = require('./manifest-generator');
 const prompts = require('../prompts');
 const { RMB_AID_FOLDER_NAME } = require('../ide/shared/path-utils');
 const { InstallPaths } = require('./install-paths');
+const { resolveInstallDirectory } = require('./install-layout');
 const { ExternalModuleManager } = require('../modules/external-manager');
 
 const { ExistingInstall } = require('./existing-install');
@@ -39,6 +40,8 @@ class Installer {
     try {
       const config = Config.build(originalConfig);
       const paths = await InstallPaths.create(config);
+      this.rmbaidFolderName = path.basename(paths.rmbaidDir);
+      this.ideManager.setRmbaidFolderName(this.rmbaidFolderName);
       const officialModules = await OfficialModules.build(config, paths);
       const existingInstall = await ExistingInstall.detect(paths.rmbaidDir);
 
@@ -1093,7 +1096,7 @@ class Installer {
     }
 
     if ((context.ides || []).length === 0) {
-      lines.push(`  ${color.green('\u2713')}  No IDE selected ${color.dim('(installed in _rmbaid only)')}`);
+      lines.push(`  ${color.green('\u2713')}  No IDE selected ${color.dim(`(installed in ${this.rmbaidFolderName} only)`)}`);
     }
 
     // Context and warnings
@@ -1622,12 +1625,14 @@ class Installer {
 
   /**
    * Find the rmbaid installation directory in a project
-   * Always uses the standard _rmbaid folder name
+   * Prefer SMART for new projects and preserve recognized legacy installations.
    * @param {string} projectDir - Project directory
    * @returns {Promise<Object>} { rmbaidDir: string }
    */
   async findRmbaidDir(projectDir) {
-    const rmbaidDir = path.join(projectDir, RMB_AID_FOLDER_NAME);
+    const rmbaidDir = await resolveInstallDirectory(projectDir);
+    this.rmbaidFolderName = path.basename(rmbaidDir);
+    this.ideManager.setRmbaidFolderName(this.rmbaidFolderName);
     return { rmbaidDir };
   }
 
@@ -1678,7 +1683,7 @@ class Installer {
     }
 
     // Default fallback
-    return '_rmbaid-output';
+    return 'SMART-output';
   }
 
   /**

@@ -772,7 +772,7 @@ class UI {
           user_name: coreConfig.user_name || safeUsername,
           communication_language: coreConfig.communication_language || existingConfig.communication_language || 'English',
           document_output_language: coreConfig.document_output_language || existingConfig.document_output_language || 'English',
-          output_folder: coreConfig.output_folder || existingConfig.output_folder || '_rmbaid-output',
+          output_folder: coreConfig.output_folder || existingConfig.output_folder || 'SMART-output',
         };
         await prompts.log.info('Using simple defaults for core configuration');
       }
@@ -793,7 +793,7 @@ class UI {
           user_name: defaultUsername,
           communication_language: 'English',
           document_output_language: 'English',
-          output_folder: '_rmbaid-output',
+          output_folder: 'SMART-output',
         };
         await prompts.log.info(options.yes ? 'Using default configuration (--yes flag)' : 'Using simple defaults for core configuration');
       }

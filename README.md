@@ -6,20 +6,25 @@ SMART guides a coding assistant from a plain-language task through an approved
 plan, implementation, validation, and delivery. It tracks progress in
 `PROGRESS.md` and records measured results in `smart_metrics.jsonl`.
 
-## Install the SMART Preview
+## Install SMART
+
+For the complete terminal-to-chat setup and common error fixes, see the
+[installation and troubleshooting guide](docs/how-to/install-rmbaid.md).
+The Bash helper is `tools/smart-install.sh`; run it with `--help` to see its
+check, install, user-install, and project-setup modes.
+
+Install the GitHub preview, then configure your project:
+
+```bash
+npm install --global https://github.com/ishwrknt/rmb-aid/releases/download/v6.2.3-smart.2/rmb-aid-6.2.3-smart.2.tgz
+smart install --directory /path/to/your/project
+```
 
 Requires Node.js 22 or later, npm, and an agentic coding assistant.
 SMART supplies workflows and prompts; your coding assistant supplies the AI
 model, tool access, and any associated subscription or API usage.
 
-Install the tested GitHub release archive:
-
-```bash
-npm install --global https://github.com/ishwrknt/rmb-aid/releases/download/v6.2.3-smart.1/rmb-aid-6.2.3-smart.1.tgz
-smart install --directory /path/to/your/project
-```
-
-Or use the source checkout:
+From this repository, install dependencies and run the installer:
 
 ```bash
 npm ci
@@ -30,7 +35,7 @@ To test the packaged version, create an archive and install it locally:
 
 ```bash
 npm pack --pack-destination /tmp
-npm install --global /tmp/rmb-aid-6.2.3-smart.1.tgz
+npm install --global /tmp/rmb-aid-6.2.3-smart.2.tgz
 smart install --directory /path/to/your/project
 ```
 
@@ -52,6 +57,9 @@ smart install --directory . --modules rmbaid --tools codex --yes
 The package retains the compatibility name `rmb-aid` and the aliases
 `rmb-aid` and `rmbaid`. It has not yet been published to npm; do not use
 `npx smart`, which may resolve to an unrelated package.
+
+New source-build installations use `SMART/` and `SMART-output/`. Existing
+`_rmbaid/` installations remain recognized and retain their settings on update.
 
 ## Other Coding Tools
 
@@ -98,11 +106,10 @@ of user progress on reinstall.
 ## Releases
 
 See [release instructions](docs/how-to/release-smart.md) for the publishing
-procedure. Version `6.2.3-smart.1` is a GitHub preview release. Automated
-installation, metrics, documentation, and skill checks pass. A complete
-user task inside an external coding assistant has not yet been verified.
-Development-tool dependency advisories remain under review; this is not a
-stable-release claim.
+procedure. SMART is distributed as a GitHub preview. Automated installation,
+metrics, documentation, and skill checks run before uploading a preview.
+Full model-driven task delivery and remaining development-tool dependency
+advisories still need review before a stable release.
 
 ## License and Attribution
 

@@ -22,7 +22,7 @@ module.exports = {
     ['--user-name <name>', 'Name for agents to use (default: system username)'],
     ['--communication-language <lang>', 'Language for agent communication (default: English)'],
     ['--document-output-language <lang>', 'Language for document output (default: English)'],
-    ['--output-folder <path>', 'Output folder path relative to project root (default: _rmbaid-output)'],
+    ['--output-folder <path>', 'Output folder path relative to project root (default: SMART-output)'],
     ['--advanced', 'Show full interactive setup instead of using simple defaults where possible'],
     ['-y, --yes', 'Accept all defaults and skip prompts where possible'],
   ],

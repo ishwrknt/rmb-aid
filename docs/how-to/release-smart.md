@@ -29,7 +29,7 @@ the repository or chat. Verify your account with `npm whoami`, then publish
 the tested archive:
 
 ```bash
-npm publish /tmp/rmb-aid-6.2.3-smart.1.tgz --access public --tag next
+npm publish /tmp/rmb-aid-6.2.3-smart.2.tgz --access public --tag next
 ```
 
 For a stable release, use `--tag latest` after reviewing the preview. npm

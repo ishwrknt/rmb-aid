@@ -5,6 +5,7 @@ const prompts = require('../prompts');
 const { getProjectRoot, getSourcePath, getModulePath } = require('../project-root');
 const { CLIUtils } = require('../cli-utils');
 const { ExternalModuleManager } = require('./external-manager');
+const { rewriteInstalledFile } = require('../core/install-layout');
 
 class OfficialModules {
   constructor(options = {}) {
@@ -409,8 +410,9 @@ class OfficialModules {
         }
       }
 
-      // Copy the file with placeholder replacement
+      // Bind config paths to the actual installation root before IDE copies.
       await this.copyFile(sourceFile, targetFile);
+      await rewriteInstalledFile(targetFile, path.basename(path.dirname(targetPath)));
 
       // Track the file if callback provided
       if (fileTrackingCallback) {
