@@ -1,11 +1,11 @@
 ---
 title: 'FAQ Projets Existants'
-description: Questions courantes sur l'utilisation de la méthode RMB_AID sur des projets existants
+description: Questions courantes sur l'utilisation de la méthode SMART sur des projets existants
 sidebar:
   order: 8
 ---
 
-Réponses rapides aux questions courantes sur l'utilisation de la méthode RMB_AID (RMB_AID) sur des projets existants.
+Réponses rapides aux questions courantes sur l'utilisation de la méthode SMART (SMART) sur des projets existants.
 
 ## Questions
 
@@ -46,6 +46,6 @@ Quick Dev détecte vos conventions et demande : « Dois-je suivre ces convention
 - **Oui** → Maintenir la cohérence avec la base de code actuelle
 - **Non** → Établir de nouvelles normes (documenter pourquoi dans la spécification technique)
 
-RMB_AID respecte votre choix — il ne forcera pas la modernisation, mais la proposera.
+SMART respecte votre choix — il ne forcera pas la modernisation, mais la proposera.
 
-**Une question sans réponse ici ?** Veuillez [ouvrir un ticket](https://github.com/rmbaid-code-org/RMB_AID/issues) ou poser votre question sur [Discord](https://discord.gg/gk8jAdXWmj) afin que nous puissions l'ajouter !
+**Une question sans réponse ici ?** Veuillez [ouvrir un ticket](https://github.com/smart-code-org/SMART/issues) ou poser votre question sur [Discord](https://discord.gg/gk8jAdXWmj) afin que nous puissions l'ajouter !

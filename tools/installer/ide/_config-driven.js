@@ -4,12 +4,12 @@ const fs = require('fs-extra');
 const yaml = require('yaml');
 const prompts = require('../prompts');
 const csv = require('csv-parse/sync');
-const { RMB_AID_FOLDER_NAME } = require('./shared/path-utils');
+const { SMART_FOLDER_NAME } = require('./shared/path-utils');
 
 /**
  * Config-driven IDE setup handler
  *
- * This class provides a standardized way to install RMB_AID artifacts to IDEs
+ * This class provides a standardized way to install SMART artifacts to IDEs
  * based on configuration in platform-codes.yaml. It eliminates the need for
  * individual installer files for each IDE.
  *
@@ -25,7 +25,7 @@ class ConfigDrivenIdeSetup {
     this.preferred = platformConfig.preferred || false;
     this.platformConfig = platformConfig;
     this.installerConfig = platformConfig.installer || null;
-    this.rmbaidFolderName = RMB_AID_FOLDER_NAME;
+    this.rmbaidFolderName = SMART_FOLDER_NAME;
 
     // Set configDir from target_dir so detect() works
     this.configDir = this.installerConfig?.target_dir || null;
@@ -37,7 +37,7 @@ class ConfigDrivenIdeSetup {
 
   /**
    * Detect whether this IDE already has configuration in the project.
-   * Checks for rmbaid-prefixed entries in target_dir.
+   * Checks for smart-prefixed entries in target_dir.
    * @param {string} projectDir - Project directory
    * @returns {Promise<boolean>}
    */
@@ -48,7 +48,7 @@ class ConfigDrivenIdeSetup {
     if (await fs.pathExists(dir)) {
       try {
         const entries = await fs.readdir(dir);
-        return entries.some((e) => typeof e === 'string' && e.startsWith('rmbaid'));
+        return entries.some((e) => typeof e === 'string' && e.startsWith('smart'));
       } catch {
         return false;
       }
@@ -59,20 +59,20 @@ class ConfigDrivenIdeSetup {
   /**
    * Main setup method - called by IdeManager
    * @param {string} projectDir - Project directory
-   * @param {string} rmbaidDir - RMB_AID installation directory
+   * @param {string} rmbaidDir - SMART installation directory
    * @param {Object} options - Setup options
    * @returns {Promise<Object>} Setup result
    */
   async setup(projectDir, rmbaidDir, options = {}) {
-    // Check for RMB_AID files in ancestor directories that would cause duplicates
+    // Check for SMART files in ancestor directories that would cause duplicates
     if (this.installerConfig?.ancestor_conflict_check) {
       const conflict = await this.findAncestorConflict(projectDir);
       if (conflict) {
         await prompts.log.error(
-          `Found existing RMB_AID skills in ancestor installation: ${conflict}\n` +
+          `Found existing SMART skills in ancestor installation: ${conflict}\n` +
             `  ${this.name} inherits skills from parent directories, so this would cause duplicates.\n` +
-            `  Please remove the RMB_AID files from that directory first:\n` +
-            `    rm -rf "${conflict}"/rmbaid*`,
+            `  Please remove the SMART files from that directory first:\n` +
+            `    rm -rf "${conflict}"/smart*`,
         );
         return {
           success: false,
@@ -85,7 +85,7 @@ class ConfigDrivenIdeSetup {
 
     if (!options.silent) await prompts.log.info(`Setting up ${this.name}...`);
 
-    // Clean up any old RMB_AID installation first
+    // Clean up any old SMART installation first
     await this.cleanup(projectDir, options);
 
     if (!this.installerConfig) {
@@ -102,7 +102,7 @@ class ConfigDrivenIdeSetup {
   /**
    * Install to a single target directory
    * @param {string} projectDir - Project directory
-   * @param {string} rmbaidDir - RMB_AID installation directory
+   * @param {string} rmbaidDir - SMART installation directory
    * @param {Object} config - Installation configuration
    * @param {Object} options - Setup options
    * @returns {Promise<Object>} Installation result
@@ -128,7 +128,7 @@ class ConfigDrivenIdeSetup {
    * Copies the entire source directory as-is into the IDE skill directory.
    * The source SKILL.md is used directly — no frontmatter transformation or file generation.
    * @param {string} projectDir - Project directory
-   * @param {string} rmbaidDir - RMB_AID installation directory
+   * @param {string} rmbaidDir - SMART installation directory
    * @param {string} targetPath - Target skills directory
    * @param {Object} config - Installation configuration
    * @returns {Promise<number>} Count of skills installed
@@ -153,7 +153,7 @@ class ConfigDrivenIdeSetup {
       if (!canonicalId) continue;
 
       // Derive source directory from path column
-      // path is like "_rmbaid/rmbaid/workflows/rmbaid-quick-flow/rmbaid-quick-dev-new-preview/SKILL.md"
+      // path is like "_rmbaid/smart/workflows/smart-quick-flow/smart-quick-dev-new-preview/SKILL.md"
       // Strip rmbaidFolderName prefix and join with rmbaidDir, then get dirname
       const relativePath = record.path.startsWith(rmbaidPrefix) ? record.path.slice(rmbaidPrefix.length) : record.path;
       const sourceFile = path.join(rmbaidDir, relativePath);
@@ -229,17 +229,17 @@ class ConfigDrivenIdeSetup {
       }
     }
 
-    // Strip RMB_AID markers from copilot-instructions.md if present
+    // Strip SMART markers from copilot-instructions.md if present
     if (this.name === 'github-copilot') {
       await this.cleanupCopilotInstructions(projectDir, options);
     }
 
-    // Strip RMB_AID modes from .kilocodemodes if present
+    // Strip SMART modes from .kilocodemodes if present
     if (this.name === 'kilo') {
       await this.cleanupKiloModes(projectDir, options);
     }
 
-    // Strip RMB_AID entries from .rovodev/prompts.yml if present
+    // Strip SMART entries from .rovodev/prompts.yml if present
     if (this.name === 'rovo-dev') {
       await this.cleanupRovoDevPrompts(projectDir, options);
     }
@@ -260,7 +260,7 @@ class ConfigDrivenIdeSetup {
   }
 
   /**
-   * Warn about stale RMB_AID files in a global legacy directory (never auto-deletes)
+   * Warn about stale SMART files in a global legacy directory (never auto-deletes)
    * @param {string} legacyDir - Legacy directory path (may start with ~)
    * @param {Object} options - Options (silent, etc.)
    */
@@ -275,12 +275,10 @@ class ConfigDrivenIdeSetup {
       if (!(await fs.pathExists(expanded))) return;
 
       const entries = await fs.readdir(expanded);
-      const rmbaidFiles = entries.filter((e) => typeof e === 'string' && e.startsWith('rmbaid'));
+      const rmbaidFiles = entries.filter((e) => typeof e === 'string' && e.startsWith('smart'));
 
       if (rmbaidFiles.length > 0 && !options.silent) {
-        await prompts.log.warn(
-          `Found ${rmbaidFiles.length} stale RMB_AID file(s) in ${expanded}. Remove manually: rm ${expanded}/rmbaid-*`,
-        );
+        await prompts.log.warn(`Found ${rmbaidFiles.length} stale SMART file(s) in ${expanded}. Remove manually: rm ${expanded}/smart-*`);
       }
     } catch {
       // Errors reading global paths are silently ignored
@@ -299,7 +297,7 @@ class ConfigDrivenIdeSetup {
       return;
     }
 
-    // Remove all rmbaid* files
+    // Remove all smart* files
     let entries;
     try {
       entries = await fs.readdir(targetPath);
@@ -318,7 +316,7 @@ class ConfigDrivenIdeSetup {
       if (!entry || typeof entry !== 'string') {
         continue;
       }
-      if (entry.startsWith('rmbaid') && !entry.startsWith('rmbaid-os-')) {
+      if (entry.startsWith('smart') && !entry.startsWith('smart-os-')) {
         const entryPath = path.join(targetPath, entry);
         try {
           await fs.remove(entryPath);
@@ -330,7 +328,7 @@ class ConfigDrivenIdeSetup {
     }
 
     if (removedCount > 0 && !options.silent) {
-      await prompts.log.message(`  Cleaned ${removedCount} RMB_AID files from ${targetDir}`);
+      await prompts.log.message(`  Cleaned ${removedCount} SMART files from ${targetDir}`);
     }
 
     // Remove empty directory after cleanup
@@ -347,8 +345,8 @@ class ConfigDrivenIdeSetup {
   }
 
   /**
-   * Strip RMB_AID-owned content from .github/copilot-instructions.md.
-   * The old custom installer injected content between <!-- RMB_AID:START --> and <!-- RMB_AID:END --> markers.
+   * Strip SMART-owned content from .github/copilot-instructions.md.
+   * The old custom installer injected content between <!-- SMART:START --> and <!-- SMART:END --> markers.
    * Deletes the file if nothing remains. Restores .bak backup if one exists.
    */
   async cleanupCopilotInstructions(projectDir, options = {}) {
@@ -358,12 +356,12 @@ class ConfigDrivenIdeSetup {
 
     try {
       const content = await fs.readFile(filePath, 'utf8');
-      const startIdx = content.indexOf('<!-- RMB_AID:START -->');
-      const endIdx = content.indexOf('<!-- RMB_AID:END -->');
+      const startIdx = content.indexOf('<!-- SMART:START -->');
+      const endIdx = content.indexOf('<!-- SMART:END -->');
 
       if (startIdx === -1 || endIdx === -1 || endIdx <= startIdx) return;
 
-      const cleaned = content.slice(0, startIdx) + content.slice(endIdx + '<!-- RMB_AID:END -->'.length);
+      const cleaned = content.slice(0, startIdx) + content.slice(endIdx + '<!-- SMART:END -->'.length);
 
       if (cleaned.trim().length === 0) {
         await fs.remove(filePath);
@@ -378,16 +376,16 @@ class ConfigDrivenIdeSetup {
         if (await fs.pathExists(backupPath)) await fs.remove(backupPath);
       }
 
-      if (!options.silent) await prompts.log.message('  Cleaned RMB_AID markers from copilot-instructions.md');
+      if (!options.silent) await prompts.log.message('  Cleaned SMART markers from copilot-instructions.md');
     } catch {
-      if (!options.silent) await prompts.log.warn('  Warning: Could not clean RMB_AID markers from copilot-instructions.md');
+      if (!options.silent) await prompts.log.warn('  Warning: Could not clean SMART markers from copilot-instructions.md');
     }
   }
 
   /**
-   * Strip RMB_AID-owned modes from .kilocodemodes.
-   * The old custom kilo.js installer added modes with slug starting with 'rmbaid-'.
-   * Parses YAML, filters out RMB_AID modes, rewrites. Leaves file as-is on parse failure.
+   * Strip SMART-owned modes from .kilocodemodes.
+   * The old custom kilo.js installer added modes with slug starting with 'smart-'.
+   * Parses YAML, filters out SMART modes, rewrites. Leaves file as-is on parse failure.
    */
   async cleanupKiloModes(projectDir, options = {}) {
     const kiloModesPath = path.join(projectDir, '.kilocodemodes');
@@ -407,13 +405,13 @@ class ConfigDrivenIdeSetup {
     if (!Array.isArray(config.customModes)) return;
 
     const originalCount = config.customModes.length;
-    config.customModes = config.customModes.filter((mode) => mode && (!mode.slug || !mode.slug.startsWith('rmbaid-')));
+    config.customModes = config.customModes.filter((mode) => mode && (!mode.slug || !mode.slug.startsWith('smart-')));
     const removedCount = originalCount - config.customModes.length;
 
     if (removedCount > 0) {
       try {
         await fs.writeFile(kiloModesPath, yaml.stringify(config, { lineWidth: 0 }));
-        if (!options.silent) await prompts.log.message(`  Removed ${removedCount} RMB_AID modes from .kilocodemodes`);
+        if (!options.silent) await prompts.log.message(`  Removed ${removedCount} SMART modes from .kilocodemodes`);
       } catch {
         if (!options.silent) await prompts.log.warn('  Warning: Could not write .kilocodemodes during cleanup');
       }
@@ -421,9 +419,9 @@ class ConfigDrivenIdeSetup {
   }
 
   /**
-   * Strip RMB_AID-owned entries from .rovodev/prompts.yml.
+   * Strip SMART-owned entries from .rovodev/prompts.yml.
    * The old custom rovodev.js installer registered workflows in prompts.yml.
-   * Parses YAML, filters out entries with name starting with 'rmbaid-', rewrites.
+   * Parses YAML, filters out entries with name starting with 'smart-', rewrites.
    * Removes the file if no entries remain.
    */
   async cleanupRovoDevPrompts(projectDir, options = {}) {
@@ -444,7 +442,7 @@ class ConfigDrivenIdeSetup {
     if (!Array.isArray(config.prompts)) return;
 
     const originalCount = config.prompts.length;
-    config.prompts = config.prompts.filter((entry) => entry && (!entry.name || !entry.name.startsWith('rmbaid-')));
+    config.prompts = config.prompts.filter((entry) => entry && (!entry.name || !entry.name.startsWith('smart-')));
     const removedCount = originalCount - config.prompts.length;
 
     if (removedCount > 0) {
@@ -454,7 +452,7 @@ class ConfigDrivenIdeSetup {
         } else {
           await fs.writeFile(promptsPath, yaml.stringify(config, { lineWidth: 0 }));
         }
-        if (!options.silent) await prompts.log.message(`  Removed ${removedCount} RMB_AID entries from prompts.yml`);
+        if (!options.silent) await prompts.log.message(`  Removed ${removedCount} SMART entries from prompts.yml`);
       } catch {
         if (!options.silent) await prompts.log.warn('  Warning: Could not write prompts.yml during cleanup');
       }
@@ -462,7 +460,7 @@ class ConfigDrivenIdeSetup {
   }
 
   /**
-   * Check ancestor directories for existing RMB_AID files in the same target_dir.
+   * Check ancestor directories for existing SMART files in the same target_dir.
    * IDEs like Claude Code inherit commands from parent directories, so an existing
    * installation in an ancestor would cause duplicate commands.
    * @param {string} projectDir - Project directory being installed to
@@ -482,7 +480,7 @@ class ConfigDrivenIdeSetup {
         if (await fs.pathExists(candidatePath)) {
           const entries = await fs.readdir(candidatePath);
           const hasRmbaid = entries.some(
-            (e) => typeof e === 'string' && e.toLowerCase().startsWith('rmbaid') && !e.toLowerCase().startsWith('rmbaid-os-'),
+            (e) => typeof e === 'string' && e.toLowerCase().startsWith('smart') && !e.toLowerCase().startsWith('smart-os-'),
           );
           if (hasRmbaid) {
             return candidatePath;

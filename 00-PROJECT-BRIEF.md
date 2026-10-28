@@ -3,17 +3,17 @@
 ## Project Name
 
 SMART — Simulation Methodology based Agentic Research Tool
-(Agentic Coding Edition — built on rmb-aid v6.2.2)
+(Agentic Coding Edition — built on smart-agentic v6.2.2)
 
 ## One-Line Summary
 
-Extend the existing SMART/rmb-aid framework with a full agentic software-delivery
+Extend the existing SMART/smart-agentic framework with a full agentic software-delivery
 pipeline, a scientific validation layer (Satya + Siddhi), metrics logging
 (smart_metrics.jsonl), and a complete Android Physics Tracker case study.
 
 ## Background
 
-The rmb-aid repository already contains the SMART framework for scientific
+The smart-agentic repository already contains the SMART framework for scientific
 problem-solving: 7 Sanskrit-named agents (Drishti, Bodhi, Tarka, Karma, Yukti,
 Satya, Siddhi), workflows, and templates. However, this existing framework is
 optimised for single-session research problem-solving, not multi-phase agentic
@@ -26,9 +26,9 @@ runtime prompt specification provided, then applies it to a real case study.
 
 ### 1. SMART Agentic Coding Pipeline (new skill)
 
-An installable rmb-aid skill (`rmbaid-smart-pipeline`) that packages the SMART
+An installable smart-agentic skill (`smart-pipeline`) that packages the SMART
 runtime prompt as a structured, resumable, file-driven pipeline. Any user who
-installs rmb-aid can invoke this skill to run SMART on a software project.
+installs smart-agentic can invoke this skill to run SMART on a software project.
 
 Key features:
 

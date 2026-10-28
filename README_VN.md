@@ -1,36 +1,36 @@
-![RMB_AID](banner-rmb-aid.png)
+![SMART](banner-smart-agentic.png)
 
-[![Version](https://img.shields.io/npm/v/rmb-aid?color=blue&label=version)](https://www.npmjs.com/package/rmb-aid)
+[![Version](https://img.shields.io/npm/v/smart-agentic?color=blue&label=version)](https://www.npmjs.com/package/smart-agentic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)
 
 [English](README.md) | [简体中文](README_CN.md) | Tiếng Việt
 
-**Research Methodology Based AI Development** - một mô-đun khung phát triển hướng AI trong hệ sinh thái RMB_AID, có khả năng thích ứng theo quy mô từ sửa lỗi nhỏ đến các hệ thống doanh nghiệp.
+**Research Methodology Based AI Development** - một mô-đun khung phát triển hướng AI trong hệ sinh thái SMART, có khả năng thích ứng theo quy mô từ sửa lỗi nhỏ đến các hệ thống doanh nghiệp.
 
 **100% miễn phí và mã nguồn mở.** Không có tường phí. Không có nội dung bị khóa. Không có Discord giới hạn quyền truy cập. Chúng tôi tin vào việc trao quyền cho mọi người, không chỉ cho những ai có thể trả tiền để vào một cộng đồng hay khóa học khép kín.
 
-## Vì sao chọn RMB_AID?
+## Vì sao chọn SMART?
 
-Các công cụ AI truyền thống thường làm thay phần suy nghĩ của bạn và tạo ra kết quả ở mức trung bình. Các agent chuyên biệt và quy trình làm việc có hướng dẫn của RMB_AID hoạt động như những cộng tác viên chuyên gia, dẫn dắt bạn qua một quy trình có cấu trúc để khai mở tư duy tốt nhất của bạn cùng với AI.
+Các công cụ AI truyền thống thường làm thay phần suy nghĩ của bạn và tạo ra kết quả ở mức trung bình. Các agent chuyên biệt và quy trình làm việc có hướng dẫn của SMART hoạt động như những cộng tác viên chuyên gia, dẫn dắt bạn qua một quy trình có cấu trúc để khai mở tư duy tốt nhất của bạn cùng với AI.
 
-- **Trợ giúp AI thông minh** - Gọi skill `rmbaid-help` bất kỳ lúc nào để biết bước tiếp theo
+- **Trợ giúp AI thông minh** - Gọi skill `smart-help` bất kỳ lúc nào để biết bước tiếp theo
 - **Thích ứng theo quy mô và miền bài toán** - Tự động điều chỉnh độ sâu lập kế hoạch theo độ phức tạp của dự án
 - **Quy trình có cấu trúc** - Dựa trên các thực hành tốt nhất của agile xuyên suốt phân tích, lập kế hoạch, kiến trúc và triển khai
 - **Agent chuyên biệt** - Hơn 12 chuyên gia theo vai trò như PM, Architect, Developer, UX, Scrum Master và nhiều vai trò khác
 - **Party Mode** - Đưa nhiều persona agent vào cùng một phiên để cộng tác và thảo luận
 - **Vòng đời hoàn chỉnh** - Từ động não ý tưởng cho đến triển khai
 
-[Tìm hiểu thêm tại **docs.rmb-aid.org**](https://docs.rmb-aid.org/vi-vn/)
+[Tìm hiểu thêm tại **docs.smart-agentic.org**](https://docs.smart-agentic.org/vi-vn/)
 
 ---
 
-## 🚀 Điều gì tiếp theo cho RMB_AID?
+## 🚀 Điều gì tiếp theo cho SMART?
 
-**V6 đã có mặt và đây mới chỉ là khởi đầu!** RMB_AID đang phát triển rất nhanh với các cải tiến như đội agent đa nền tảng và tích hợp sub-agent, kiến trúc Skills, RMB_AID Builder v1, tự động hóa vòng lặp phát triển và nhiều thứ khác vẫn đang được xây dựng.
+**V6 đã có mặt và đây mới chỉ là khởi đầu!** SMART đang phát triển rất nhanh với các cải tiến như đội agent đa nền tảng và tích hợp sub-agent, kiến trúc Skills, SMART Builder v1, tự động hóa vòng lặp phát triển và nhiều thứ khác vẫn đang được xây dựng.
 
-**[📍 Xem lộ trình đầy đủ →](https://docs.rmb-aid.org/vi-vn/roadmap/)**
+**[📍 Xem lộ trình đầy đủ →](https://docs.smart-agentic.org/vi-vn/roadmap/)**
 
 ---
 
@@ -39,58 +39,58 @@ Các công cụ AI truyền thống thường làm thay phần suy nghĩ của b
 **Điều kiện tiên quyết**: [Node.js](https://nodejs.org) v20+
 
 ```bash
-npx rmb-aid install
+npx smart-agentic install
 ```
 
-> Muốn dùng bản prerelease mới nhất? Hãy dùng `npx rmb-aid@next install`. Hãy kỳ vọng mức độ biến động cao hơn bản cài đặt mặc định.
+> Muốn dùng bản prerelease mới nhất? Hãy dùng `npx smart-agentic@next install`. Hãy kỳ vọng mức độ biến động cao hơn bản cài đặt mặc định.
 
 Làm theo các lời nhắc của trình cài đặt, sau đó mở AI IDE của bạn như Claude Code hoặc Cursor trong thư mục dự án.
 
 **Cài đặt không tương tác** (cho CI/CD):
 
 ```bash
-npx rmb-aid install --directory /path/to/project --modules bmm --tools claude-code --yes
+npx smart-agentic install --directory /path/to/project --modules bmm --tools claude-code --yes
 ```
 
-[Xem toàn bộ tùy chọn cài đặt](https://docs.rmb-aid.org/vi-vn/how-to/non-interactive-installation/)
+[Xem toàn bộ tùy chọn cài đặt](https://docs.smart-agentic.org/vi-vn/how-to/non-interactive-installation/)
 
-> **Chưa chắc nên làm gì?** Hãy hỏi `rmbaid-help` - nó sẽ cho bạn biết chính xác bước nào tiếp theo và bước nào là tùy chọn. Bạn cũng có thể hỏi kiểu như `rmbaid-help Tôi vừa hoàn thành phần kiến trúc, tiếp theo tôi cần làm gì?`
+> **Chưa chắc nên làm gì?** Hãy hỏi `smart-help` - nó sẽ cho bạn biết chính xác bước nào tiếp theo và bước nào là tùy chọn. Bạn cũng có thể hỏi kiểu như `smart-help Tôi vừa hoàn thành phần kiến trúc, tiếp theo tôi cần làm gì?`
 
 ## Mô-đun
 
-RMB_AID có thể được mở rộng bằng các mô-đun chính thức cho những miền chuyên biệt. Chúng có sẵn trong lúc cài đặt hoặc bất kỳ lúc nào sau đó.
+SMART có thể được mở rộng bằng các mô-đun chính thức cho những miền chuyên biệt. Chúng có sẵn trong lúc cài đặt hoặc bất kỳ lúc nào sau đó.
 
-| Module                                                                                                                | Mục đích                                           |
-| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **[RMB_AID (BMM)](https://github.com/rmbaid-code-org/RMB_AID)**                                                       | Khung lõi với hơn 34 quy trình                     |
-| **[RMB_AID Builder (BMB)](https://github.com/rmbaid-code-org/rmbaid-builder)**                                        | Tạo agent và quy trình RMB_AID tùy chỉnh           |
-| **[Test Architect (TEA)](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)**                   | Chiến lược kiểm thử và tự động hóa dựa trên rủi ro |
-| **[Game Dev Studio (BMGD)](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)**                        | Quy trình phát triển game (Unity, Unreal, Godot)   |
-| **[Creative Intelligence Suite (CIS)](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)** | Đổi mới, động não ý tưởng, tư duy thiết kế         |
+| Module                                                                                                              | Mục đích                                           |
+| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **[SMART (BMM)](https://github.com/smart-code-org/SMART)**                                                          | Khung lõi với hơn 34 quy trình                     |
+| **[SMART Builder (BMB)](https://github.com/smart-code-org/smart-builder)**                                          | Tạo agent và quy trình SMART tùy chỉnh             |
+| **[Test Architect (TEA)](https://github.com/smart-code-org/smart-agentic-test-architecture-enterprise)**            | Chiến lược kiểm thử và tự động hóa dựa trên rủi ro |
+| **[Game Dev Studio (BMGD)](https://github.com/smart-code-org/smart-module-game-dev-studio)**                        | Quy trình phát triển game (Unity, Unreal, Godot)   |
+| **[Creative Intelligence Suite (CIS)](https://github.com/smart-code-org/smart-module-creative-intelligence-suite)** | Đổi mới, động não ý tưởng, tư duy thiết kế         |
 
 ## Tài liệu
 
-[Trang tài liệu RMB_AID](https://docs.rmb-aid.org/vi-vn/) - bài hướng dẫn, hướng dẫn tác vụ, giải thích khái niệm và tài liệu tham chiếu
+[Trang tài liệu SMART](https://docs.smart-agentic.org/vi-vn/) - bài hướng dẫn, hướng dẫn tác vụ, giải thích khái niệm và tài liệu tham chiếu
 
 **Liên kết nhanh:**
 
-- [Hướng dẫn bắt đầu](https://docs.rmb-aid.org/vi-vn/tutorials/getting-started/)
-- [Nâng cấp từ các phiên bản trước](https://docs.rmb-aid.org/vi-vn/how-to/upgrade-to-v6/)
-- [Tài liệu Test Architect](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)
+- [Hướng dẫn bắt đầu](https://docs.smart-agentic.org/vi-vn/tutorials/getting-started/)
+- [Nâng cấp từ các phiên bản trước](https://docs.smart-agentic.org/vi-vn/how-to/upgrade-to-v6/)
+- [Tài liệu Test Architect](https://smart-code-org.github.io/smart-agentic-test-architecture-enterprise/)
 
 ## Cộng đồng
 
 - [Discord](https://discord.gg/gk8jAdXWmj) - Nhận trợ giúp, chia sẻ ý tưởng, cộng tác
-- [Đăng ký trên YouTube](https://www.youtube.com/@RMB_AIDCode) - video hướng dẫn, lớp chuyên sâu và podcast (ra mắt tháng 2 năm 2025)
-- [GitHub Issues](https://github.com/rmbaid-code-org/RMB_AID/issues) - Báo lỗi và yêu cầu tính năng
-- [Discussions](https://github.com/rmbaid-code-org/RMB_AID/discussions) - Trao đổi cộng đồng
+- [Đăng ký trên YouTube](https://www.youtube.com/@SMARTCode) - video hướng dẫn, lớp chuyên sâu và podcast (ra mắt tháng 2 năm 2025)
+- [GitHub Issues](https://github.com/smart-code-org/SMART/issues) - Báo lỗi và yêu cầu tính năng
+- [Discussions](https://github.com/smart-code-org/SMART/discussions) - Trao đổi cộng đồng
 
-## Hỗ trợ RMB_AID
+## Hỗ trợ SMART
 
-RMB_AID miễn phí cho tất cả mọi người - và sẽ luôn như vậy. Nếu bạn muốn hỗ trợ quá trình phát triển:
+SMART miễn phí cho tất cả mọi người - và sẽ luôn như vậy. Nếu bạn muốn hỗ trợ quá trình phát triển:
 
 - ⭐ Hãy nhấn sao cho dự án ở góc trên bên phải của trang này
-- ☕ [Buy Me a Coffee](https://buymeacoffee.com/rmbaid) - Tiếp thêm năng lượng cho quá trình phát triển
+- ☕ [Buy Me a Coffee](https://buymeacoffee.com/smart) - Tiếp thêm năng lượng cho quá trình phát triển
 - 🏢 Tài trợ doanh nghiệp - Nhắn riêng trên Discord
 - 🎤 Diễn thuyết và truyền thông - Sẵn sàng cho hội nghị, podcast, phỏng vấn (BM trên Discord)
 
@@ -104,8 +104,8 @@ Giấy phép MIT - xem [LICENSE](LICENSE) để biết chi tiết.
 
 ---
 
-**RMB_AID** và **RMB_AID** là các nhãn hiệu của RMB_AID Code, LLC. Xem [TRADEMARK.md](TRADEMARK.md) để biết chi tiết.
+**SMART** và **SMART** là các nhãn hiệu của SMART Code, LLC. Xem [TRADEMARK.md](TRADEMARK.md) để biết chi tiết.
 
-[![Contributors](https://contrib.rocks/image?repo=rmbaid-code-org/RMB_AID)](https://github.com/rmbaid-code-org/RMB_AID/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=smart-code-org/SMART)](https://github.com/smart-code-org/SMART/graphs/contributors)
 
 Xem [CONTRIBUTORS.md](CONTRIBUTORS.md) để biết thông tin về những người đóng góp.

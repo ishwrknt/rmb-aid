@@ -2,8 +2,8 @@
  * Rehype plugin to prepend base path to absolute URLs
  *
  * Transforms:
- *   /img/foo.png → /RMB_AID/img/foo.png (when base is /RMB_AID/)
- *   /llms.txt → /RMB_AID/llms.txt
+ *   /img/foo.png → /SMART/img/foo.png (when base is /SMART/)
+ *   /llms.txt → /SMART/llms.txt
  *
  * Supported elements:
  *   - img[src], iframe[src], video[src], source[src], audio[src]
@@ -19,14 +19,14 @@ import { visit } from 'unist-util-visit';
  * Create a rehype plugin that prepends the base path to absolute URLs.
  *
  * @param {Object} options - Plugin options
- * @param {string} options.base - The base path to prepend (e.g., '/RMB_AID/')
+ * @param {string} options.base - The base path to prepend (e.g., '/SMART/')
  * @returns {function} A HAST tree transformer
  */
 export default function rehypeBasePaths(options = {}) {
   const base = options.base || '/';
 
   // Normalize base: ensure trailing slash so concatenation with path.slice(1) (no leading /)
-  // produces correct paths like /RMB_AID/img/foo.png.
+  // produces correct paths like /SMART/img/foo.png.
   // Note: rehype-markdown-links uses the opposite convention (strips trailing slash) because
   // it concatenates with paths that start with /.
   const normalizedBase = base === '/' ? '/' : base.endsWith('/') ? base : base + '/';

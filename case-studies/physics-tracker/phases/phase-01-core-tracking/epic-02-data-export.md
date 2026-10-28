@@ -16,13 +16,13 @@ FR-06, FR-07, FR-08, FR-09
 
 ## Files to Create
 
-| File | Purpose |
-|---|---|
-| `export/FileNamer.kt` | Generates `pt_[label]_[yyyyMMdd_HHmmss].csv` |
-| `export/CsvExporter.kt` | Writes header + data rows; returns `Uri` |
+| File                           | Purpose                                               |
+| ------------------------------ | ----------------------------------------------------- |
+| `export/FileNamer.kt`          | Generates `pt_[label]_[yyyyMMdd_HHmmss].csv`          |
+| `export/CsvExporter.kt`        | Writes header + data rows; returns `Uri`              |
 | `ui/export/ExportViewModel.kt` | Calls exporter on `IO` dispatcher; emits share intent |
-| `res/xml/file_paths.xml` | `FileProvider` path configuration |
-| `AndroidManifest.xml` (patch) | Register `FileProvider` authority |
+| `res/xml/file_paths.xml`       | `FileProvider` path configuration                     |
+| `AndroidManifest.xml` (patch)  | Register `FileProvider` authority                     |
 
 ## Implementation Notes
 

@@ -56,7 +56,7 @@ class ExternalModuleManager {
         subheader: moduleConfig.subheader,
         description: moduleConfig.description || '',
         defaultSelected: moduleConfig.defaultSelected === true,
-        type: moduleConfig.type || 'community', // rmbaid-org or community
+        type: moduleConfig.type || 'community', // smart-org or community
         npmPackage: moduleConfig.npmPackage || null, // Include npm package name
         isExternal: true,
       });
@@ -77,7 +77,7 @@ class ExternalModuleManager {
 
   /**
    * Get module info by key
-   * @param {string} key - The module key (e.g., 'rmbaid-creative-intelligence-suite')
+   * @param {string} key - The module key (e.g., 'smart-creative-intelligence-suite')
    * @returns {Object|null} Module info or null if not found
    */
   async getModuleByKey(key) {
@@ -98,7 +98,7 @@ class ExternalModuleManager {
       subheader: moduleConfig.subheader,
       description: moduleConfig.description || '',
       defaultSelected: moduleConfig.defaultSelected === true,
-      type: moduleConfig.type || 'community', // rmbaid-org or community
+      type: moduleConfig.type || 'community', // smart-org or community
       npmPackage: moduleConfig.npmPackage || null, // Include npm package name
       isExternal: true,
     };
@@ -139,7 +139,7 @@ class ExternalModuleManager {
    * @returns {string} Path to the external modules cache directory
    */
   getExternalCacheDir() {
-    const cacheDir = path.join(os.homedir(), '.rmbaid', 'cache', 'external-modules');
+    const cacheDir = path.join(os.homedir(), '.smart', 'cache', 'external-modules');
     return cacheDir;
   }
 

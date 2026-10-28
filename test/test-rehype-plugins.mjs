@@ -55,7 +55,7 @@ function assert(condition, testName, errorMessage = '') {
 const CONTENT_DIR = '/project/src/content/docs';
 const STD_FILE = { path: '/project/src/content/docs/guide/intro.md' };
 const STD_OPTS = { contentDir: CONTENT_DIR };
-const BASE = '/RMB_AID/';
+const BASE = '/SMART/';
 
 function transform(tree, file, options = {}) {
   const plugin = rehypeMarkdownLinks(options);
@@ -557,14 +557,14 @@ function runTests() {
 
   {
     const tree = makeAnchorTree('page.md');
-    transform(tree, STD_FILE, { ...STD_OPTS, base: '/RMB_AID/' });
-    assert(getHref(tree) === '/RMB_AID/guide/page/', 'Base /RMB_AID/ -> /RMB_AID/guide/page/', `Got ${getHref(tree)}`);
+    transform(tree, STD_FILE, { ...STD_OPTS, base: '/SMART/' });
+    assert(getHref(tree) === '/SMART/guide/page/', 'Base /SMART/ -> /SMART/guide/page/', `Got ${getHref(tree)}`);
   }
 
   {
     const tree = makeAnchorTree('page.md');
-    transform(tree, STD_FILE, { ...STD_OPTS, base: '/RMB_AID' });
-    assert(getHref(tree) === '/RMB_AID/guide/page/', 'Base /RMB_AID (no trailing slash) -> same result', `Got ${getHref(tree)}`);
+    transform(tree, STD_FILE, { ...STD_OPTS, base: '/SMART' });
+    assert(getHref(tree) === '/SMART/guide/page/', 'Base /SMART (no trailing slash) -> same result', `Got ${getHref(tree)}`);
   }
 
   {
@@ -588,7 +588,7 @@ function runTests() {
 
   {
     const tree = makeAnchorTree('page.md');
-    transform(tree, STD_FILE, { ...STD_OPTS, base: '/RMB_AID/' });
+    transform(tree, STD_FILE, { ...STD_OPTS, base: '/SMART/' });
     assert(!getHref(tree).includes('//'), 'No // in output for subpath base', `Got ${getHref(tree)}`);
   }
 
@@ -653,14 +653,14 @@ function runTests() {
 
   {
     const tree = makeAnchorTree('/page/');
-    transformBase(tree, { base: '/RMB_AID/' });
-    assert(getHref(tree) === '/RMB_AID/page/', 'Base /RMB_AID/ prefixes', `Got ${getHref(tree)}`);
+    transformBase(tree, { base: '/SMART/' });
+    assert(getHref(tree) === '/SMART/page/', 'Base /SMART/ prefixes', `Got ${getHref(tree)}`);
   }
 
   {
     const tree = makeAnchorTree('/page/');
-    transformBase(tree, { base: '/RMB_AID' });
-    assert(getHref(tree) === '/RMB_AID/page/', 'Base /RMB_AID normalizes (adds trailing slash)', `Got ${getHref(tree)}`);
+    transformBase(tree, { base: '/SMART' });
+    assert(getHref(tree) === '/SMART/page/', 'Base /SMART normalizes (adds trailing slash)', `Got ${getHref(tree)}`);
   }
 
   {
@@ -685,23 +685,19 @@ function runTests() {
   {
     const tree = makeAnchorTree('/page/');
     transformBase(tree, { base: BASE });
-    assert(getHref(tree) === '/RMB_AID/page/', 'a[href] prefixed', `Got ${getHref(tree)}`);
+    assert(getHref(tree) === '/SMART/page/', 'a[href] prefixed', `Got ${getHref(tree)}`);
   }
 
   {
     const tree = makeElementTree('img', { src: '/img/logo.png' });
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/img/logo.png', 'img[src] prefixed', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/img/logo.png', 'img[src] prefixed', `Got ${getSrc(tree)}`);
   }
 
   {
     const tree = makeElementTree('link', { href: '/styles/main.css' });
     transformBase(tree, { base: BASE });
-    assert(
-      tree.children[0].properties.href === '/RMB_AID/styles/main.css',
-      'link[href] prefixed',
-      `Got ${tree.children[0].properties.href}`,
-    );
+    assert(tree.children[0].properties.href === '/SMART/styles/main.css', 'link[href] prefixed', `Got ${tree.children[0].properties.href}`);
   }
 
   {
@@ -713,19 +709,19 @@ function runTests() {
   {
     const tree = makeElementTree('video', { src: '/media/intro.mp4' });
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/media/intro.mp4', 'video[src] prefixed', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/media/intro.mp4', 'video[src] prefixed', `Got ${getSrc(tree)}`);
   }
 
   {
     const tree = makeElementTree('audio', { src: '/media/clip.mp3' });
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/media/clip.mp3', 'audio[src] prefixed', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/media/clip.mp3', 'audio[src] prefixed', `Got ${getSrc(tree)}`);
   }
 
   {
     const tree = makeElementTree('iframe', { src: '/embed/widget' });
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/embed/widget', 'iframe[src] prefixed', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/embed/widget', 'iframe[src] prefixed', `Got ${getSrc(tree)}`);
   }
 
   {
@@ -741,7 +737,7 @@ function runTests() {
   {
     const tree = makeElementTree('source', { src: '/media/alt.mp4' });
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/media/alt.mp4', 'source[src] prefixed', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/media/alt.mp4', 'source[src] prefixed', `Got ${getSrc(tree)}`);
   }
 
   console.log('');
@@ -807,9 +803,9 @@ function runTests() {
   }
 
   {
-    const tree = makeAnchorTree('/RMB_AID/page/');
+    const tree = makeAnchorTree('/SMART/page/');
     transformBase(tree, { base: BASE });
-    assert(getHref(tree) === '/RMB_AID/page/', 'Already prefixed skipped', `Got ${getHref(tree)}`);
+    assert(getHref(tree) === '/SMART/page/', 'Already prefixed skipped', `Got ${getHref(tree)}`);
   }
 
   {
@@ -903,7 +899,7 @@ function runTests() {
       children: [{ type: 'raw', value: '<img src="/img/logo.png">' }],
     };
     transformBase(tree, { base: BASE });
-    assert(getRawValue(tree) === '<img src="/RMB_AID/img/logo.png">', 'Raw img src rewritten', `Got ${getRawValue(tree)}`);
+    assert(getRawValue(tree) === '<img src="/SMART/img/logo.png">', 'Raw img src rewritten', `Got ${getRawValue(tree)}`);
   }
 
   {
@@ -912,7 +908,7 @@ function runTests() {
       children: [{ type: 'raw', value: '<a href="/page/">link</a>' }],
     };
     transformBase(tree, { base: BASE });
-    assert(getRawValue(tree) === '<a href="/RMB_AID/page/">link</a>', 'Raw a href rewritten', `Got ${getRawValue(tree)}`);
+    assert(getRawValue(tree) === '<a href="/SMART/page/">link</a>', 'Raw a href rewritten', `Got ${getRawValue(tree)}`);
   }
 
   {
@@ -930,12 +926,12 @@ function runTests() {
       children: [
         {
           type: 'raw',
-          value: '<img src="/RMB_AID/img/logo.png">',
+          value: '<img src="/SMART/img/logo.png">',
         },
       ],
     };
     transformBase(tree, { base: BASE });
-    assert(getRawValue(tree) === '<img src="/RMB_AID/img/logo.png">', 'Raw already prefixed unchanged', `Got ${getRawValue(tree)}`);
+    assert(getRawValue(tree) === '<img src="/SMART/img/logo.png">', 'Raw already prefixed unchanged', `Got ${getRawValue(tree)}`);
   }
 
   {
@@ -950,7 +946,7 @@ function runTests() {
     };
     transformBase(tree, { base: BASE });
     assert(
-      getRawValue(tree) === '<a href="/RMB_AID/page/"><img src="/RMB_AID/img/logo.png"></a>',
+      getRawValue(tree) === '<a href="/SMART/page/"><img src="/SMART/img/logo.png"></a>',
       'Raw multiple attributes rewritten',
       `Got ${getRawValue(tree)}`,
     );
@@ -993,7 +989,7 @@ function runTests() {
     transform(tree, STD_FILE, { ...STD_OPTS, base: BASE });
     transformBase(tree, { base: BASE });
     const href = getHref(tree);
-    assert(href === '/RMB_AID/guide/sibling/', './sibling.md through both -> no double prefix', `Got ${href}`);
+    assert(href === '/SMART/guide/sibling/', './sibling.md through both -> no double prefix', `Got ${href}`);
   }
 
   {
@@ -1001,7 +997,7 @@ function runTests() {
     const tree = makeElementTree('img', { src: '/img/logo.png' });
     // markdown-links doesn't touch img elements, so just run base-paths
     transformBase(tree, { base: BASE });
-    assert(getSrc(tree) === '/RMB_AID/img/logo.png', 'img /img/logo.png -> only base-paths prefixes', `Got ${getSrc(tree)}`);
+    assert(getSrc(tree) === '/SMART/img/logo.png', 'img /img/logo.png -> only base-paths prefixes', `Got ${getSrc(tree)}`);
   }
 
   {
@@ -1017,7 +1013,7 @@ function runTests() {
     const tree = makeAnchorTree('/page/');
     transform(tree, STD_FILE, { ...STD_OPTS, base: BASE });
     transformBase(tree, { base: BASE });
-    assert(getHref(tree) === '/RMB_AID/page/', '/page/ (non-.md) -> only base-paths prefixes', `Got ${getHref(tree)}`);
+    assert(getHref(tree) === '/SMART/page/', '/page/ (non-.md) -> only base-paths prefixes', `Got ${getHref(tree)}`);
   }
 
   console.log('');

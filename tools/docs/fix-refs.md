@@ -1,6 +1,6 @@
 ---
 title: Fix Documentation References
-description: Corrects workflow, agent, and command references in RMB_AID documentation
+description: Corrects workflow, agent, and command references in SMART documentation
 ---
 
 # Fix Documentation References
@@ -11,7 +11,7 @@ Fix reference patterns ONLY. Do not modify links, formatting, structure, or othe
 
 ## Purpose
 
-Fix incorrect references to workflows, agents, and commands in RMB_AID documentation files.
+Fix incorrect references to workflows, agents, and commands in SMART documentation files.
 
 ## Step 1: Establish Target Audience
 
@@ -23,9 +23,9 @@ Before fixing references, determine who the document is for:
 | **Experienced** | reference/, explanation/                                        | Drop "workflow", no platform hints      |
 | **How-To**      | how-to/                                                         | **Ask** — depends on the task           |
 
-**How-To guides require judgment**: Don't assume experienced. Ask: "Does this task require prior RMB_AID knowledge?" Early-journey tasks (first PRD, first sprint) are newbie docs. Customization and advanced features are experienced.
+**How-To guides require judgment**: Don't assume experienced. Ask: "Does this task require prior SMART knowledge?" Early-journey tasks (first PRD, first sprint) are newbie docs. Customization and advanced features are experienced.
 
-**If unclear**: Ask the user "Who is the target audience for this document — new users learning RMB_AID, or experienced users who know the system?"
+**If unclear**: Ask the user "Who is the target audience for this document — new users learning SMART, or experienced users who know the system?"
 
 This determines whether helper words like "workflow" and platform hints are helpful context or just noise.
 
@@ -53,28 +53,28 @@ Use backticks with plain workflow name:
 
 **Platform hint**: Only in newbie docs, and only on the **first** workflow mention:
 
-- First mention: Run the `help` workflow (`rmbaid-help` on most platforms)
+- First mention: Run the `help` workflow (`smart-help` on most platforms)
 - Subsequent mentions: Run `prd` — no hint, no "workflow" needed after they've seen the pattern
 
 In experienced docs, the hint is always noise — just use the workflow name.
 
 ### Workflow Name Changes
 
-| Old Name          | New Name      | Notes                                             |
-| ----------------- | ------------- | ------------------------------------------------- |
-| `workflow-init`   | `rmbaid-help` | DEPRECATED - help system replaces initialization  |
-| `workflow-status` | `rmbaid-help` | DEPRECATED - help system replaces status checking |
+| Old Name          | New Name     | Notes                                             |
+| ----------------- | ------------ | ------------------------------------------------- |
+| `workflow-init`   | `smart-help` | DEPRECATED - help system replaces initialization  |
+| `workflow-status` | `smart-help` | DEPRECATED - help system replaces status checking |
 
 ### The Help System
 
-The `rmbaid-help` workflow is the modern replacement for both `workflow-init` and `workflow-status`:
+The `smart-help` workflow is the modern replacement for both `workflow-init` and `workflow-status`:
 
 - **Universal**: Works regardless of workflow state or module
 - **Contextual**: Infers completion from artifacts and conversation
 - **Adaptive**: Guides users through workflows based on phase ordering
 - **Anytime**: Can be run at any point, no pre-initialization needed
 
-Users can run `rmbaid-help` to get guidance on what to do next. It detects:
+Users can run `smart-help` to get guidance on what to do next. It detects:
 
 - What workflows have been completed (by checking for output artifacts)
 - What module is active

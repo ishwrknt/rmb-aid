@@ -1,0 +1,3 @@
+module,phase,name,code,sequence,workflow-file,command,required,agent,options,description,output-location,outputs,
+smart,anytime,Document Project,DP,,_rmbaid/smart/workflows/document-project/workflow.md,smart-smart-document-project,false,analyst,Create Mode,"Analyze project",project-knowledge,*,
+smart,1-analysis,Brainstorm Project,BP,10,_rmbaid/core/workflows/brainstorming/workflow.md,smart-brainstorming,false,analyst,data=template.md,"Brainstorming",planning_artifacts,"session",

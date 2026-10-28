@@ -3,14 +3,14 @@ const fs = require('fs-extra');
 const yaml = require('yaml');
 
 /**
- * Load rmbaid-skill-manifest.yaml from a directory.
+ * Load smart-skill-manifest.yaml from a directory.
  * Single-entry manifests (canonicalId at top level) apply to all files in the directory.
  * Multi-entry manifests are keyed by source filename.
- * @param {string} dirPath - Directory to check for rmbaid-skill-manifest.yaml
+ * @param {string} dirPath - Directory to check for smart-skill-manifest.yaml
  * @returns {Object|null} Parsed manifest or null
  */
 async function loadSkillManifest(dirPath) {
-  const manifestPath = path.join(dirPath, 'rmbaid-skill-manifest.yaml');
+  const manifestPath = path.join(dirPath, 'smart-skill-manifest.yaml');
   try {
     if (!(await fs.pathExists(manifestPath))) return null;
     const content = await fs.readFile(manifestPath, 'utf8');
@@ -19,7 +19,7 @@ async function loadSkillManifest(dirPath) {
     if (parsed.canonicalId || parsed.type) return { __single: parsed };
     return parsed;
   } catch (error) {
-    console.warn(`Warning: Failed to parse rmbaid-skill-manifest.yaml in ${dirPath}: ${error.message}`);
+    console.warn(`Warning: Failed to parse smart-skill-manifest.yaml in ${dirPath}: ${error.message}`);
     return null;
   }
 }

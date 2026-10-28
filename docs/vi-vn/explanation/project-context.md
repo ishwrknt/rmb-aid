@@ -23,23 +23,23 @@ Mỗi workflow triển khai đều tự động nạp `project-context.md` nếu
 
 **Được nạp bởi các workflow sau:**
 
-- `rmbaid-create-architecture` - tôn trọng ưu tiên kỹ thuật trong giai đoạn solutioning
-- `rmbaid-create-story` - đưa pattern của dự án vào quá trình tạo story
-- `rmbaid-dev-story` - định hướng các quyết định triển khai
-- `rmbaid-code-review` - đối chiếu với tiêu chuẩn của dự án
-- `rmbaid-quick-dev` - áp dụng pattern khi triển khai các spec
-- `rmbaid-sprint-planning`, `rmbaid-retrospective`, `rmbaid-correct-course` - cung cấp bối cảnh cấp dự án
+- `smart-create-architecture` - tôn trọng ưu tiên kỹ thuật trong giai đoạn solutioning
+- `smart-create-story` - đưa pattern của dự án vào quá trình tạo story
+- `smart-dev-story` - định hướng các quyết định triển khai
+- `smart-code-review` - đối chiếu với tiêu chuẩn của dự án
+- `smart-quick-dev` - áp dụng pattern khi triển khai các spec
+- `smart-sprint-planning`, `smart-retrospective`, `smart-correct-course` - cung cấp bối cảnh cấp dự án
 
 ## Khi nào nên tạo
 
 Tệp `project-context.md` hữu ích ở bất kỳ giai đoạn nào của dự án:
 
-| Tình huống                     | Khi nào nên tạo                                         | Mục đích                                               |
-| ------------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
-| **Dự án mới, trước kiến trúc** | Tạo thủ công, trước `rmbaid-create-architecture`        | Ghi lại ưu tiên kỹ thuật để architect tôn trọng        |
-| **Dự án mới, sau kiến trúc**   | Qua `rmbaid-generate-project-context` hoặc tạo thủ công | Ghi lại quyết định kiến trúc cho các agent triển khai  |
-| **Dự án hiện có**              | Qua `rmbaid-generate-project-context`                   | Khám phá pattern hiện có để agent theo đúng quy ước    |
-| **Dự án Quick Flow**           | Trước hoặc trong `rmbaid-quick-dev`                     | Đảm bảo triển khai nhanh vẫn tôn trọng pattern của bạn |
+| Tình huống                     | Khi nào nên tạo                                        | Mục đích                                               |
+| ------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| **Dự án mới, trước kiến trúc** | Tạo thủ công, trước `smart-create-architecture`        | Ghi lại ưu tiên kỹ thuật để architect tôn trọng        |
+| **Dự án mới, sau kiến trúc**   | Qua `smart-generate-project-context` hoặc tạo thủ công | Ghi lại quyết định kiến trúc cho các agent triển khai  |
+| **Dự án hiện có**              | Qua `smart-generate-project-context`                   | Khám phá pattern hiện có để agent theo đúng quy ước    |
+| **Dự án Quick Flow**           | Trước hoặc trong `smart-quick-dev`                     | Đảm bảo triển khai nhanh vẫn tôn trọng pattern của bạn |
 
 :::tip[Khuyến nghị]
 Với dự án mới, hãy tạo thủ công trước giai đoạn kiến trúc nếu bạn có ưu tiên kỹ thuật rõ ràng. Nếu không, hãy tạo nó sau kiến trúc để ghi lại các quyết định đã được đưa ra.
@@ -113,20 +113,20 @@ Sửa tệp để thêm stack công nghệ và quy tắc triển khai. Workflow 
 
 ### Tạo sau khi hoàn thành kiến trúc
 
-Chạy workflow `rmbaid-generate-project-context` sau khi bạn hoàn tất kiến trúc:
+Chạy workflow `smart-generate-project-context` sau khi bạn hoàn tất kiến trúc:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Nó sẽ quét tài liệu kiến trúc và tệp dự án để tạo tệp context ghi lại các quyết định đã được đưa ra.
 
 ### Tạo cho dự án hiện có
 
-Với dự án hiện có, chạy `rmbaid-generate-project-context` để khám phá pattern sẵn có:
+Với dự án hiện có, chạy `smart-generate-project-context` để khám phá pattern sẵn có:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Workflow sẽ phân tích codebase để nhận diện quy ước, sau đó tạo tệp context cho bạn xem lại và tinh chỉnh.
@@ -157,7 +157,7 @@ Tệp `project-context.md` là tài liệu sống. Hãy cập nhật khi:
 - Pattern tiến hóa trong quá trình triển khai
 - Bạn nhận ra lỗ hổng qua hành vi của agent
 
-Bạn có thể sửa thủ công bất kỳ lúc nào, hoặc chạy lại `rmbaid-generate-project-context` để cập nhật sau các thay đổi lớn.
+Bạn có thể sửa thủ công bất kỳ lúc nào, hoặc chạy lại `smart-generate-project-context` để cập nhật sau các thay đổi lớn.
 
 :::note[Vị trí tệp]
 Vị trí mặc định là `_rmbaid-output/project-context.md`. Các workflow tìm tệp ở đó, đồng thời cũng kiểm tra `**/project-context.md` ở bất kỳ đâu trong dự án.

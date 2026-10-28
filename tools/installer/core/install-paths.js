@@ -1,12 +1,12 @@
 const path = require('node:path');
 const fs = require('fs-extra');
 const { getProjectRoot } = require('../project-root');
-const { RMB_AID_FOLDER_NAME } = require('../ide/shared/path-utils');
+const { resolveInstallDirectory } = require('./install-layout');
 
 class InstallPaths {
   static async create(config) {
     const srcDir = getProjectRoot();
-    await assertReadableDir(srcDir, 'RMB_AID source root');
+    await assertReadableDir(srcDir, 'SMART source root');
 
     const pkgPath = path.join(srcDir, 'package.json');
     await assertReadableFile(pkgPath, 'package.json');
@@ -15,7 +15,7 @@ class InstallPaths {
     const projectRoot = path.resolve(config.directory);
     await ensureWritableDir(projectRoot, 'project root');
 
-    const rmbaidDir = path.join(projectRoot, RMB_AID_FOLDER_NAME);
+    const rmbaidDir = await resolveInstallDirectory(projectRoot);
     const isUpdate = await fs.pathExists(rmbaidDir);
 
     const configDir = path.join(rmbaidDir, '_config');
@@ -24,7 +24,7 @@ class InstallPaths {
     const coreDir = path.join(rmbaidDir, 'core');
 
     for (const [dir, label] of [
-      [rmbaidDir, 'rmbaid directory'],
+      [rmbaidDir, 'smart directory'],
       [configDir, 'config directory'],
       [agentsDir, 'agents config directory'],
       [customCacheDir, 'custom modules cache'],
@@ -61,7 +61,7 @@ class InstallPaths {
     return path.join(this.configDir, 'files-manifest.csv');
   }
   helpCatalog() {
-    return path.join(this.configDir, 'rmbaid-help.csv');
+    return path.join(this.configDir, 'smart-help.csv');
   }
   moduleDir(name) {
     return path.join(this.rmbaidDir, name);

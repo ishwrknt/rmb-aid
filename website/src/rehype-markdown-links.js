@@ -17,7 +17,7 @@ import path from 'node:path';
 
 /**
  * @param {Object} options
- * @param {string} options.base - Site base path (e.g., '/RMB_AID/')
+ * @param {string} options.base - Site base path (e.g., '/SMART/')
  * @param {string} [options.contentDir] - Absolute path to content root; auto-detected if omitted
  */
 export default function rehypeMarkdownLinks(options = {}) {
@@ -107,8 +107,8 @@ export function detectContentDir(filePath) {
       return segments.slice(0, i + 1).join(path.sep);
     }
   }
-  // Also check for a standalone 'docs' directory (RMB_AID project structure)
-  // Path format: .../rmbaid/docs/file.mdx or .../rmbaid/website/...
+  // Also check for a standalone 'docs' directory (SMART project structure)
+  // Path format: .../smart/docs/file.mdx or .../smart/website/...
   for (let i = segments.length - 1; i >= 0; i--) {
     if (segments[i] === 'docs') {
       // Found docs directory - use its parent as the content root

@@ -52,12 +52,12 @@ solutioning 的本质不是“多写一份文档”，而是把高冲突风险�
 
 ## 什么时候需要 solutioning
 
-| 流程            | 需要 solutioning？ |
-| --------------- | ------------------ |
-| Quick Flow      | 否 - 完全跳过      |
-| RMB_AID Simple  | 可选               |
-| RMB_AID Complex | 是                 |
-| Enterprise      | 是                 |
+| 流程          | 需要 solutioning？ |
+| ------------- | ------------------ |
+| Quick Flow    | 否 - 完全跳过      |
+| SMART Simple  | 可选               |
+| SMART Complex | 是                 |
+| Enterprise    | 是                 |
 
 :::tip[经验法则]
 只要需求会拆成多个 `epic`，并且可能由不同智能体并行实现，就应该做 solutioning。

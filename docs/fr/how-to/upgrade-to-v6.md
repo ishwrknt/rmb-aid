@@ -1,42 +1,42 @@
 ---
 title: 'Comment passer à la v6'
-description: Migrer de RMB_AID v4 vers v6
+description: Migrer de SMART v4 vers v6
 sidebar:
   order: 3
 ---
 
-Utilisez l'installateur RMB_AID pour passer de la v4 à la v6, qui inclut une détection automatique des installations existantes et une assistance à la migration.
+Utilisez l'installateur SMART pour passer de la v4 à la v6, qui inclut une détection automatique des installations existantes et une assistance à la migration.
 
 ## Quand utiliser ce guide
 
-- Vous avez RMB_AID v4 installé (dossier `.rmb-aid`)
+- Vous avez SMART v4 installé (dossier `.smart-agentic`)
 - Vous souhaitez migrer vers la nouvelle architecture v6
 - Vous avez des artefacts de planification existants à préserver
 
 :::note[Prérequis]
 
 - Node.js 20+
-- Installation RMB_AID v4 existante
+- Installation SMART v4 existante
   :::
 
 ## Étapes
 
 ### 1. Lancer l'installateur
 
-Suivez les [Instructions d'installation](./install-rmbaid.md).
+Suivez les [Instructions d'installation](./install-smart.md).
 
 ### 2. Gérer l'installation existante
 
 Quand v4 est détecté, vous pouvez :
 
-- Autoriser l'installateur à sauvegarder et supprimer `.rmb-aid`
+- Autoriser l'installateur à sauvegarder et supprimer `.smart-agentic`
 - Quitter et gérer le nettoyage manuellement
 
-Si vous avez nommé votre dossier de méthode rmbaid autrement, vous devrez supprimer le dossier vous-même manuellement.
+Si vous avez nommé votre dossier de méthode smart autrement, vous devrez supprimer le dossier vous-même manuellement.
 
 ### 3. Nettoyer les skills IDE
 
-Supprimez manuellement les commandes/skills IDE v4 existants - par exemple si vous avez Claude Code, recherchez tous les dossiers imbriqués qui commencent par rmbaid et supprimez-les :
+Supprimez manuellement les commandes/skills IDE v4 existants - par exemple si vous avez Claude Code, recherchez tous les dossiers imbriqués qui commencent par smart et supprimez-les :
 
 - `.claude/commands/`
 
@@ -62,7 +62,7 @@ Si vous avez des stories[^3] créées ou implémentées :
 
 1. Terminez l'installation v6
 2. Placez `epics.md` ou `epics/epic*.md`[^2] dans `_rmbaid-output/planning-artifacts/`
-3. Lancez le workflow `rmbaid-sprint-planning`[^4]
+3. Lancez le workflow `smart-sprint-planning`[^4]
 4. Indiquez quels epics/stories sont déjà terminés
 
 ## Ce que vous obtenez
@@ -75,30 +75,30 @@ votre-projet/
 │   ├── _config/         # Vos personnalisations
 │   │   └── agents/      # Fichiers de personnalisation des agents
 │   ├── core/            # Framework core universel
-│   ├── rmbaid/             # Module RMB_AID
-│   ├── bmb/             # RMB_AID Builder
+│   ├── smart/             # Module SMART
+│   ├── bmb/             # SMART Builder
 │   └── cis/             # Creative Intelligence Suite
 └── _rmbaid-output/        # Dossier de sortie (était le dossier doc en v4)
 ```
 
 ## Migration des modules
 
-| Module v4                       | Statut v6                                         |
-| ------------------------------- | ------------------------------------------------- |
-| `.rmbaid-2d-phaser-game-dev`    | Intégré dans le Module BMGD                       |
-| `.rmbaid-2d-unity-game-dev`     | Intégré dans le Module BMGD                       |
-| `.rmbaid-godot-game-dev`        | Intégré dans le Module BMGD                       |
-| `.rmbaid-infrastructure-devops` | Déprécié - nouvel agent DevOps bientôt disponible |
-| `.rmbaid-creative-writing`      | Non adapté - nouveau module v6 bientôt disponible |
+| Module v4                      | Statut v6                                         |
+| ------------------------------ | ------------------------------------------------- |
+| `.smart-2d-phaser-game-dev`    | Intégré dans le Module BMGD                       |
+| `.smart-2d-unity-game-dev`     | Intégré dans le Module BMGD                       |
+| `.smart-godot-game-dev`        | Intégré dans le Module BMGD                       |
+| `.smart-infrastructure-devops` | Déprécié - nouvel agent DevOps bientôt disponible |
+| `.smart-creative-writing`      | Non adapté - nouveau module v6 bientôt disponible |
 
 ## Changements clés
 
-| Concept       | v4                                              | v6                                         |
-| ------------- | ----------------------------------------------- | ------------------------------------------ |
-| **Core**      | `_rmbaid-core` était en fait la méthode RMB_AID | `_rmbaid/core/` est le framework universel |
-| **Method**    | `_rmbaid-method`                                | `_rmbaid/rmbaid/`                          |
-| **Config**    | Fichiers modifiés directement                   | `config.yaml` par module                   |
-| **Documents** | Division ou non division requise                | Entièrement flexible, scan automatique     |
+| Concept       | v4                                           | v6                                         |
+| ------------- | -------------------------------------------- | ------------------------------------------ |
+| **Core**      | `_smart-core` était en fait la méthode SMART | `_rmbaid/core/` est le framework universel |
+| **Method**    | `_smart-method`                              | `_rmbaid/smart/`                           |
+| **Config**    | Fichiers modifiés directement                | `config.yaml` par module                   |
+| **Documents** | Division ou non division requise             | Entièrement flexible, scan automatique     |
 
 ## Glossaire
 

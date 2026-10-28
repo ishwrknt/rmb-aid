@@ -5,21 +5,21 @@ sidebar:
   order: 5
 ---
 
-RMB_AID 有两条测试路径：
+SMART 有两条测试路径：
 
 - **内置 QA workflow**：快速生成可运行测试
 - **TEA（可选模块）**：企业级测试策略与治理能力
 
 ## 该选内置 QA 还是 TEA？
 
-| 维度          | 内置 QA                      | TEA 模块                     |
-| ------------- | ---------------------------- | ---------------------------- |
-| 最适合        | 中小项目、快速补覆盖         | 大型项目、受监管或复杂业务   |
-| 安装成本      | 无需额外安装（RMB_AID 内置） | 需通过安装器单独选择         |
-| 方法          | 先生成测试，再迭代           | 先定义策略，再执行并追溯     |
-| 测试类型      | API + E2E                    | API、E2E、ATDD、NFR 等       |
-| 风险策略      | 快乐路径 + 关键边界          | P0-P3 风险优先级             |
-| workflow 数量 | 1（Automate）                | 9（设计/自动化/审查/追溯等） |
+| 维度          | 内置 QA                    | TEA 模块                     |
+| ------------- | -------------------------- | ---------------------------- |
+| 最适合        | 中小项目、快速补覆盖       | 大型项目、受监管或复杂业务   |
+| 安装成本      | 无需额外安装（SMART 内置） | 需通过安装器单独选择         |
+| 方法          | 先生成测试，再迭代         | 先定义策略，再执行并追溯     |
+| 测试类型      | API + E2E                  | API、E2E、ATDD、NFR 等       |
+| 风险策略      | 快乐路径 + 关键边界        | P0-P3 风险优先级             |
+| workflow 数量 | 1（Automate）              | 9（设计/自动化/审查/追溯等） |
 
 :::tip[默认建议]
 大多数项目先用内置 QA workflow。只有当你需要质量门控、合规追溯或系统化测试治理时，再引入 TEA。
@@ -27,12 +27,12 @@ RMB_AID 有两条测试路径：
 
 ## 内置 QA Workflow
 
-内置 QA workflow（`rmbaid-qa-generate-e2e-tests`）是 RMB_AID 模块的一部分，通过 Developer 智能体调用。目标是用你现有测试栈快速落地测试，不要求额外配置。
+内置 QA workflow（`smart-qa-generate-e2e-tests`）是 SMART 模块的一部分，通过 Developer 智能体调用。目标是用你现有测试栈快速落地测试，不要求额外配置。
 
 **触发方式：**
 
 - 菜单触发器：`QA`（通过 Developer 智能体）
-- skill：`rmbaid-qa-generate-e2e-tests`
+- skill：`smart-qa-generate-e2e-tests`
 
 ### QA Workflow 会做什么
 
@@ -52,7 +52,7 @@ QA Automate 流程通常包含 5 步：
 - 避免硬编码等待/休眠
 
 :::note[范围边界]
-QA workflow 只负责”生成测试”。如需实现质量评审与故事验收，请配合代码审查 workflow（`CR` / `rmbaid-code-review`）。
+QA workflow 只负责”生成测试”。如需实现质量评审与故事验收，请配合代码审查 workflow（`CR` / `smart-code-review`）。
 :::
 
 ### 何时用内置 QA
@@ -67,10 +67,10 @@ TEA 提供专家测试 agent（Murat）与 9 个结构化 workflow，覆盖策�
 
 **外部资源（英文）：**
 
-- 文档: [TEA Module Docs](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)
-- npm: [`rmb-aid-test-architecture-enterprise`](https://www.npmjs.com/package/rmb-aid-test-architecture-enterprise)
+- 文档: [TEA Module Docs](https://smart-code-org.github.io/smart-agentic-test-architecture-enterprise/)
+- npm: [`smart-agentic-test-architecture-enterprise`](https://www.npmjs.com/package/smart-agentic-test-architecture-enterprise)
 
-**安装：** `npx rmb-aid install` 后选择 TEA 模块。
+**安装：** `npx smart-agentic install` 后选择 TEA 模块。
 
 ### TEA 的 9 个 workflow
 
@@ -95,11 +95,11 @@ TEA 提供专家测试 agent（Murat）与 9 个结构化 workflow，覆盖策�
 
 ## 测试放在流程的哪个位置
 
-按 RMB_AID workflow-map，测试位于阶段 4（实施）：
+按 SMART workflow-map，测试位于阶段 4（实施）：
 
-1. epic 内逐个 story：开发（`DS` / `rmbaid-dev-story`）+ 代码审查（`CR` / `rmbaid-code-review`）
+1. epic 内逐个 story：开发（`DS` / `smart-dev-story`）+ 代码审查（`CR` / `smart-code-review`）
 2. epic 完成后：用 `QA`（通过 Developer 智能体）或 TEA 的 Automate 统一生成/补齐测试
-3. 最后执行复盘（`rmbaid-retrospective`）
+3. 最后执行复盘（`smart-retrospective`）
 
 内置 QA workflow 主要依据代码直接生成测试；TEA 可结合上游规划产物（如 PRD、architecture）实现更强追溯。
 

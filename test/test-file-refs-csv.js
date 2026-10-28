@@ -54,11 +54,11 @@ function loadFixture(relativePath) {
 console.log(`\n${colors.cyan}CSV File Reference Extraction Tests${colors.reset}\n`);
 console.log(`${colors.cyan}Valid fixtures${colors.reset}`);
 
-test('rmbaid-style.csv: extracts workflow-file refs with trailing commas', () => {
-  const { fullPath, content } = loadFixture('valid/rmbaid-style.csv');
+test('smart-style.csv: extracts workflow-file refs with trailing commas', () => {
+  const { fullPath, content } = loadFixture('valid/smart-style.csv');
   const refs = extractCsvRefs(fullPath, content);
   assert(refs.length === 2, `Expected 2 refs, got ${refs.length}`);
-  assert(refs[0].raw === '_rmbaid/rmbaid/workflows/document-project/workflow.md', `Wrong raw[0]: ${refs[0].raw}`);
+  assert(refs[0].raw === '_rmbaid/smart/workflows/document-project/workflow.md', `Wrong raw[0]: ${refs[0].raw}`);
   assert(refs[1].raw === '_rmbaid/core/workflows/brainstorming/workflow.md', `Wrong raw[1]: ${refs[1].raw}`);
   assert(refs[0].type === 'project-root', `Wrong type: ${refs[0].type}`);
   assert(refs[0].line === 2, `Wrong line for row 0: ${refs[0].line}`);
@@ -71,7 +71,7 @@ test('core-style.csv: extracts refs from core module-help format', () => {
   const refs = extractCsvRefs(fullPath, content);
   assert(refs.length === 2, `Expected 2 refs, got ${refs.length}`);
   assert(refs[0].raw === '_rmbaid/core/workflows/brainstorming/workflow.md', `Wrong raw[0]: ${refs[0].raw}`);
-  assert(refs[1].raw === '_rmbaid/core/workflows/rmbaid-party-mode/workflow.md', `Wrong raw[1]: ${refs[1].raw}`);
+  assert(refs[1].raw === '_rmbaid/core/workflows/smart-party-mode/workflow.md', `Wrong raw[1]: ${refs[1].raw}`);
 });
 
 test('minimal.csv: extracts refs from minimal 3-column CSV', () => {

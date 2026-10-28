@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Utilisez **Quick Dev** pour les corrections de bugs, les refactorisations ou les petites modifications ciblées qui ne nécessitent pas la méthode RMB_AID complète.
+Utilisez **Quick Dev** pour les corrections de bugs, les refactorisations ou les petites modifications ciblées qui ne nécessitent pas la méthode SMART complète.
 
 ## Quand Utiliser Cette Approche
 
@@ -16,7 +16,7 @@ Utilisez **Quick Dev** pour les corrections de bugs, les refactorisations ou les
 
 :::note[Prérequis]
 
-- Méthode RMB_AID installée (`npx rmb-aid install`)
+- Méthode SMART installée (`npx smart-agentic install`)
 - Un IDE IA (Claude Code, Cursor, ou similaire)
   :::
 
@@ -86,13 +86,13 @@ Consultez ce fichier après une exécution — c'est votre backlog[^1] de choses
 
 ## Quand Passer à une Planification Formelle
 
-Envisagez d'utiliser la méthode RMB_AID complète lorsque :
+Envisagez d'utiliser la méthode SMART complète lorsque :
 
 - La modification affecte plusieurs systèmes ou nécessite des mises à jour coordonnées dans de nombreux fichiers
 - Vous n'êtes pas sûr de la portée et avez besoin d'une découverte des exigences d'abord
 - Vous avez besoin de documentation ou de décisions architecturales enregistrées pour l'équipe
 
-Voir [Quick Dev](../explanation/quick-dev.md) pour plus d'informations sur la façon dont Quick Dev s'intègre dans la méthode RMB_AID.
+Voir [Quick Dev](../explanation/quick-dev.md) pour plus d'informations sur la façon dont Quick Dev s'intègre dans la méthode SMART.
 
 ## Glossaire
 

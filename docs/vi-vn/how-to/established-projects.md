@@ -1,24 +1,24 @@
 ---
 title: 'Dự án đã tồn tại'
-description: Cách sử dụng RMB_AID trên các codebase hiện có
+description: Cách sử dụng SMART trên các codebase hiện có
 sidebar:
   order: 6
 ---
 
-Sử dụng RMB_AID hiệu quả khi làm việc với các dự án hiện có và codebase legacy.
+Sử dụng SMART hiệu quả khi làm việc với các dự án hiện có và codebase legacy.
 
-Tài liệu này mô tả workflow cốt lõi để on-board vào các dự án đã tồn tại bằng RMB_AID.
+Tài liệu này mô tả workflow cốt lõi để on-board vào các dự án đã tồn tại bằng SMART.
 
 :::note[Điều kiện tiên quyết]
 
-- Đã cài RMB_AID (`npx rmb-aid install`)
+- Đã cài SMART (`npx smart-agentic install`)
 - Một codebase hiện có mà bạn muốn làm việc cùng
 - Quyền truy cập vào một IDE tích hợp AI (Claude Code hoặc Cursor)
   :::
 
 ## Bước 1: Dọn dẹp các tài liệu lập kế hoạch đã hoàn tất
 
-Nếu bạn đã hoàn thành toàn bộ epic và story trong PRD theo quy trình RMB_AID, hãy dọn dẹp những tệp đó. Bạn có thể lưu trữ, xóa đi, hoặc dựa vào lịch sử phiên bản nếu cần. Không nên giữ các tệp này trong:
+Nếu bạn đã hoàn thành toàn bộ epic và story trong PRD theo quy trình SMART, hãy dọn dẹp những tệp đó. Bạn có thể lưu trữ, xóa đi, hoặc dựa vào lịch sử phiên bản nếu cần. Không nên giữ các tệp này trong:
 
 - `docs/`
 - `_rmbaid-output/planning-artifacts/`
@@ -33,7 +33,7 @@ Hãy tạo `project-context.md` để ghi lại các pattern và quy ước tron
 Chạy workflow tạo project context:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Workflow này sẽ quét codebase để nhận diện:
@@ -57,34 +57,34 @@ Thư mục `docs/` của bạn nên chứa tài liệu ngắn gọn, có tổ ch
 - Kiến trúc
 - Bất kỳ thông tin dự án nào khác có liên quan
 
-Với các dự án phức tạp, hãy cân nhắc dùng workflow `rmbaid-document-project`. Nó có các biến thể lúc chạy có thể quét toàn bộ dự án và tài liệu hóa trạng thái thực tế hiện tại của hệ thống.
+Với các dự án phức tạp, hãy cân nhắc dùng workflow `smart-document-project`. Nó có các biến thể lúc chạy có thể quét toàn bộ dự án và tài liệu hóa trạng thái thực tế hiện tại của hệ thống.
 
 ## Bước 4: Nhờ trợ giúp
 
-### RMB_AID-Help: Điểm bắt đầu của bạn
+### SMART-Help: Điểm bắt đầu của bạn
 
-**Hãy chạy `rmbaid-help` bất cứ lúc nào bạn không chắc cần làm gì tiếp theo.** Công cụ hướng dẫn thông minh này:
+**Hãy chạy `smart-help` bất cứ lúc nào bạn không chắc cần làm gì tiếp theo.** Công cụ hướng dẫn thông minh này:
 
 - Kiểm tra dự án để xem những gì đã được hoàn thành
 - Đưa ra tùy chọn dựa trên các module bạn đã cài
 - Hiểu các câu hỏi bằng ngôn ngữ tự nhiên
 
 ```text
-rmbaid-help Tôi có một ứng dụng Rails đã tồn tại, tôi nên bắt đầu từ đâu?
-rmbaid-help Điểm khác nhau giữa quick-flow và full method là gì?
-rmbaid-help Cho tôi xem những workflow đang có
+smart-help Tôi có một ứng dụng Rails đã tồn tại, tôi nên bắt đầu từ đâu?
+smart-help Điểm khác nhau giữa quick-flow và full method là gì?
+smart-help Cho tôi xem những workflow đang có
 ```
 
-RMB_AID-Help cũng **tự động chạy ở cuối mỗi workflow**, đưa ra hướng dẫn rõ ràng về việc cần làm tiếp theo.
+SMART-Help cũng **tự động chạy ở cuối mỗi workflow**, đưa ra hướng dẫn rõ ràng về việc cần làm tiếp theo.
 
 ### Chọn cách tiếp cận
 
 Bạn có hai lựa chọn chính, tùy thuộc vào phạm vi thay đổi:
 
-| Phạm vi                       | Cách tiếp cận được khuyến nghị                                                                                                                                  |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cập nhật hoặc bổ sung nhỏ** | Chạy `rmbaid-quick-dev` để làm rõ ý định, lập kế hoạch, triển khai và review trong một workflow duy nhất. Quy trình RMB_AID đầy đủ có thể là quá mức cần thiết. |
-| **Thay đổi hoặc bổ sung lớn** | Bắt đầu với RMB_AID, áp dụng mức độ chặt chẽ phù hợp với nhu cầu của bạn.                                                                                       |
+| Phạm vi                       | Cách tiếp cận được khuyến nghị                                                                                                                               |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Cập nhật hoặc bổ sung nhỏ** | Chạy `smart-quick-dev` để làm rõ ý định, lập kế hoạch, triển khai và review trong một workflow duy nhất. Quy trình SMART đầy đủ có thể là quá mức cần thiết. |
+| **Thay đổi hoặc bổ sung lớn** | Bắt đầu với SMART, áp dụng mức độ chặt chẽ phù hợp với nhu cầu của bạn.                                                                                      |
 
 ### Khi tạo PRD
 

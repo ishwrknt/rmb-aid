@@ -62,10 +62,10 @@ Avertissements critiques uniquement — perte de données, problèmes de sécuri
 **Skills :**
 
 ```md
-| Skill                  | Agent    | Objectif                              |
-| ---------------------- | -------- | ------------------------------------- |
-| `rmbaid-brainstorming` | Analyste | Brainstorming pour un nouveau projet  |
-| `rmbaid-create-prd`    | PM       | Créer un document d'exigences produit |
+| Skill                 | Agent    | Objectif                              |
+| --------------------- | -------- | ------------------------------------- |
+| `smart-brainstorming` | Analyste | Brainstorming pour un nouveau projet  |
+| `smart-create-prd`    | PM       | Créer un document d'exigences produit |
 ```
 
 ## Blocs de structure de dossiers
@@ -75,7 +75,7 @@ Avertissements critiques uniquement — perte de données, problèmes de sécuri
 ````md
 ```
 votre-projet/
-├── _rmbaid/                                   # Configuration RMB_AID
+├── _rmbaid/                                   # Configuration SMART
 ├── _rmbaid-output/
 │   ├── planning-artifacts/
 │   │   └── PRD.md                           # Votre document d'exigences
@@ -325,7 +325,7 @@ Starlight génère la navigation "Sur cette page" à droite à partir des titres
 Ajouter un contexte en italique au début de la définition pour les termes à portée limitée :
 
 - `*Quick Dev uniquement.*`
-- `*méthode RMB_AID/Enterprise.*`
+- `*méthode SMART/Enterprise.*`
 - `*Phase N.*`
 - `*BMGD.*`
 - `*Projets établis.*`
@@ -349,11 +349,11 @@ Ajouter un contexte en italique au début de la définition pour les termes à p
 
 ### Ai-je toujours besoin d'architecture ?
 
-Uniquement pour les parcours méthode RMB_AID et Enterprise. Quick Dev passe directement à l'implémentation.
+Uniquement pour les parcours méthode SMART et Enterprise. Quick Dev passe directement à l'implémentation.
 
 ### Puis-je modifier mon plan plus tard ?
 
-Oui. Utilisez `rmbaid-correct-course` pour gérer les changements de portée.
+Oui. Utilisez `smart-correct-course` pour gérer les changements de portée.
 
 **Une question sans réponse ici ?** [Ouvrez une issue](...) ou posez votre question sur [Discord](...).
 ```

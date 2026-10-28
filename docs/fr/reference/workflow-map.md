@@ -1,19 +1,19 @@
 ---
 title: 'Carte des Workflows'
-description: Référence visuelle des phases et des résultats des workflows de la méthode RMB_AID
+description: Référence visuelle des phases et des résultats des workflows de la méthode SMART
 sidebar:
   order: 1
 ---
 
-La méthode RMB_AID (RMB_AID) est un module de l'écosystème RMB_AID, conçu pour suivre les meilleures pratiques de l'ingénierie du contexte et de la planification. Les agents IA fonctionnent de manière optimale avec un contexte clair et structuré. Le système RMB_AID construit ce contexte progressivement à travers 4 phases distinctes — chaque phase, et plusieurs workflows optionnels au sein de chaque phase, produisent des documents qui alimentent la phase suivante, afin que les agents sachent toujours quoi construire et pourquoi.
+La méthode SMART (SMART) est un module de l'écosystème SMART, conçu pour suivre les meilleures pratiques de l'ingénierie du contexte et de la planification. Les agents IA fonctionnent de manière optimale avec un contexte clair et structuré. Le système SMART construit ce contexte progressivement à travers 4 phases distinctes — chaque phase, et plusieurs workflows optionnels au sein de chaque phase, produisent des documents qui alimentent la phase suivante, afin que les agents sachent toujours quoi construire et pourquoi.
 
 La logique et les concepts proviennent des méthodologies agiles qui ont été utilisées avec succès dans l'industrie comme cadre mental de référence.
 
-Si à tout moment vous ne savez pas quoi faire, le skill `rmbaid-help` vous aidera à rester sur la bonne voie ou à savoir quoi faire ensuite. Vous pouvez toujours vous référer à cette page également — mais `rmbaid-help` est entièrement interactif et beaucoup plus rapide si vous avez déjà installé la méthode RMB_AID. De plus, si vous utilisez différents modules qui ont étendu la méthode RMB_AID ou ajouté d'autres modules complémentaires non extensifs — `rmbaid-help` évolue pour connaître tout ce qui est disponible et vous donner les meilleurs conseils du moment.
+Si à tout moment vous ne savez pas quoi faire, le skill `smart-help` vous aidera à rester sur la bonne voie ou à savoir quoi faire ensuite. Vous pouvez toujours vous référer à cette page également — mais `smart-help` est entièrement interactif et beaucoup plus rapide si vous avez déjà installé la méthode SMART. De plus, si vous utilisez différents modules qui ont étendu la méthode SMART ou ajouté d'autres modules complémentaires non extensifs — `smart-help` évolue pour connaître tout ce qui est disponible et vous donner les meilleurs conseils du moment.
 
 Note finale importante : Chaque workflow ci-dessous peut être exécuté directement avec l'outil de votre choix via un skill ou en chargeant d'abord un agent et en utilisant l'entrée du menu des agents.
 
-<iframe src="/workflow-map-diagram-fr.html" title="Diagramme de la carte des workflows de la méthode RMB_AID" width="100%" height="100%" style="border-radius: 8px; border: 1px solid #334155; min-height: 900px;"></iframe>
+<iframe src="/workflow-map-diagram-fr.html" title="Diagramme de la carte des workflows de la méthode SMART" width="100%" height="100%" style="border-radius: 8px; border: 1px solid #334155; min-height: 900px;"></iframe>
 
 <p style="font-size: 0.8rem; text-align: right; margin-top: -0.5rem; margin-bottom: 1rem;">
   <a href="/workflow-map-diagram-fr.html" target="_blank" rel="noopener noreferrer">Ouvrir le diagramme dans un nouvel onglet ↗</a>
@@ -23,52 +23,52 @@ Note finale importante : Chaque workflow ci-dessous peut être exécuté directe
 
 Explorez l’espace problème et validez les idées avant de vous engager dans la planification.
 
-| Workflow                                                                        | Objectif                                                                                 | Produit                   |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------- |
-| `rmbaid-brainstorming`                                                          | Brainstormez des idées de projet avec l'accompagnement guidé d'un coach de brainstorming | `brainstorming-report.md` |
-| `rmbaid-domain-research`, `rmbaid-market-research`, `rmbaid-technical-research` | Validez les hypothèses de marché, techniques ou de domaine                               | Rapport de recherches     |
-| `rmbaid-create-product-brief`                                                   | Capturez la vision stratégique                                                           | `product-brief.md`        |
+| Workflow                                                                     | Objectif                                                                                 | Produit                   |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------- |
+| `smart-brainstorming`                                                        | Brainstormez des idées de projet avec l'accompagnement guidé d'un coach de brainstorming | `brainstorming-report.md` |
+| `smart-domain-research`, `smart-market-research`, `smart-technical-research` | Validez les hypothèses de marché, techniques ou de domaine                               | Rapport de recherches     |
+| `smart-create-product-brief`                                                 | Capturez la vision stratégique                                                           | `product-brief.md`        |
 
 ## Phase 2 : Planification
 
 Définissez ce qu'il faut construire et pour qui.
 
-| Workflow                  | Objectif                                                | Produit      |
-| ------------------------- | ------------------------------------------------------- | ------------ |
-| `rmbaid-create-prd`       | Définissez les exigences (FRs/NFRs)[^1]                 | `PRD.md`[^2] |
-| `rmbaid-create-ux-design` | Concevez l'expérience utilisateur (lorsque l'UX compte) | `ux-spec.md` |
+| Workflow                 | Objectif                                                | Produit      |
+| ------------------------ | ------------------------------------------------------- | ------------ |
+| `smart-create-prd`       | Définissez les exigences (FRs/NFRs)[^1]                 | `PRD.md`[^2] |
+| `smart-create-ux-design` | Concevez l'expérience utilisateur (lorsque l'UX compte) | `ux-spec.md` |
 
 ## Phase 3 : Solutioning
 
 Décidez comment le construire et décomposez le travail en stories.
 
-| Workflow                                | Objectif                                          | Produit                         |
-| --------------------------------------- | ------------------------------------------------- | ------------------------------- |
-| `rmbaid-create-architecture`            | Rendez les décisions techniques explicites        | `architecture.md` avec ADRs[^3] |
-| `rmbaid-create-epics-and-stories`       | Décomposez les exigences en travail implémentable | Fichiers d'epic avec stories    |
-| `rmbaid-check-implementation-readiness` | Vérification avant implémentation                 | Décision Passe/Réserves/Échec   |
+| Workflow                               | Objectif                                          | Produit                         |
+| -------------------------------------- | ------------------------------------------------- | ------------------------------- |
+| `smart-create-architecture`            | Rendez les décisions techniques explicites        | `architecture.md` avec ADRs[^3] |
+| `smart-create-epics-and-stories`       | Décomposez les exigences en travail implémentable | Fichiers d'epic avec stories    |
+| `smart-check-implementation-readiness` | Vérification avant implémentation                 | Décision Passe/Réserves/Échec   |
 
 ## Phase 4 : Implémentation
 
 Construisez, une story à la fois. Bientôt disponible : automatisation complète de la phase 4 !
 
-| Workflow                 | Objectif                                                                            | Produit                          |
-| ------------------------ | ----------------------------------------------------------------------------------- | -------------------------------- |
-| `rmbaid-sprint-planning` | Initialisez le suivi (une fois par projet pour séquencer le cycle de développement) | `sprint-status.yaml`             |
-| `rmbaid-create-story`    | Préparez la story suivante pour implémentation                                      | `story-[slug].md`                |
-| `rmbaid-dev-story`       | Implémentez la story                                                                | Code fonctionnel + tests         |
-| `rmbaid-code-review`     | Validez la qualité de l'implémentation                                              | Approuvé ou changements demandés |
-| `rmbaid-correct-course`  | Gérez les changements significatifs en cours de sprint                              | Plan mis à jour ou réorientation |
-| `rmbaid-sprint-status`   | Suivez la progression du sprint et le statut des stories                            | Mise à jour du statut du sprint  |
-| `rmbaid-retrospective`   | Revue après complétion d'un epic                                                    | Leçons apprises                  |
+| Workflow                | Objectif                                                                            | Produit                          |
+| ----------------------- | ----------------------------------------------------------------------------------- | -------------------------------- |
+| `smart-sprint-planning` | Initialisez le suivi (une fois par projet pour séquencer le cycle de développement) | `sprint-status.yaml`             |
+| `smart-create-story`    | Préparez la story suivante pour implémentation                                      | `story-[slug].md`                |
+| `smart-dev-story`       | Implémentez la story                                                                | Code fonctionnel + tests         |
+| `smart-code-review`     | Validez la qualité de l'implémentation                                              | Approuvé ou changements demandés |
+| `smart-correct-course`  | Gérez les changements significatifs en cours de sprint                              | Plan mis à jour ou réorientation |
+| `smart-sprint-status`   | Suivez la progression du sprint et le statut des stories                            | Mise à jour du statut du sprint  |
+| `smart-retrospective`   | Revue après complétion d'un epic                                                    | Leçons apprises                  |
 
 ## Quick Dev (Parcours Parallèle)
 
 Sautez les phases 1-3 pour les travaux de faible envergure et bien compris.
 
-| Workflow           | Objectif                                                                            | Produit            |
-| ------------------ | ----------------------------------------------------------------------------------- | ------------------ |
-| `rmbaid-quick-dev` | Flux rapide unifié — clarifie l'intention, planifie, implémente, révise et présente | `spec-*.md` + code |
+| Workflow          | Objectif                                                                            | Produit            |
+| ----------------- | ----------------------------------------------------------------------------------- | ------------------ |
+| `smart-quick-dev` | Flux rapide unifié — clarifie l'intention, planifie, implémente, révise et présente | `spec-*.md` + code |
 
 ## Gestion du Contexte
 
@@ -83,7 +83,7 @@ Créez `project-context.md` pour vous assurer que les agents IA suivent les règ
 **Comment le créer :**
 
 - **Manuellement** — Créez `_rmbaid-output/project-context.md` avec votre pile technologique et vos règles d'implémentation
-- **Générez-le** — Exécutez `rmbaid-generate-project-context` pour l'auto-générer à partir de votre architecture ou de votre codebase
+- **Générez-le** — Exécutez `smart-generate-project-context` pour l'auto-générer à partir de votre architecture ou de votre codebase
 
 [**En savoir plus sur project-context.md**](../explanation/project-context.md)
 

@@ -13,7 +13,7 @@ format that Satya must output for every epic.
 
 ## Changes
 
-- Enhance `.rmbaid-core/agents/satya.md` (in-place, preserve original)
+- Enhance `.smart-core/agents/satya.md` (in-place, preserve original)
 - Add software validation method priority list
 - Add validation report format section
 - Add routing table (PASS/PARTIAL/FAIL → which agent)

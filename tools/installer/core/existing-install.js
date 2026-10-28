@@ -4,7 +4,7 @@ const yaml = require('yaml');
 const { Manifest } = require('./manifest');
 
 /**
- * Immutable snapshot of an existing RMB_AID installation.
+ * Immutable snapshot of an existing SMART installation.
  * Pure query object — no filesystem operations after construction.
  */
 class ExistingInstall {
@@ -40,8 +40,8 @@ class ExistingInstall {
   }
 
   /**
-   * Scan a rmbaid directory and return an immutable snapshot of what's installed.
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * Scan a smart directory and return an immutable snapshot of what's installed.
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Promise<ExistingInstall>}
    */
   static async detect(rmbaidDir) {

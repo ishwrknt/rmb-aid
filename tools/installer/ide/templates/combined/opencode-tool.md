@@ -2,7 +2,7 @@
 description: '{{description}}'
 ---
 
-Execute the RMB_AID '{{name}}' tool.
+Execute the SMART '{{name}}' tool.
 
 TOOL INSTRUCTIONS:
 

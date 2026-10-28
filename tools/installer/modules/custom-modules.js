@@ -25,7 +25,7 @@ class CustomModules {
   /**
    * Install a custom module from its source path.
    * @param {string} moduleName - Module identifier
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    * @param {Function} fileTrackingCallback - Optional callback to track installed files
    * @param {Object} options - Install options
    * @param {Object} options.moduleConfig - Pre-collected module configuration
@@ -201,7 +201,7 @@ class CustomModules {
    * Precedence: manifest-backed paths, explicit sources override them, then cached modules.
    * @param {Object} config - Quick update configuration
    * @param {Object} existingInstall - Existing installation snapshot
-   * @param {string} rmbaidDir - RMB_AID directory
+   * @param {string} rmbaidDir - SMART directory
    * @param {Object} externalModuleManager - External module manager
    * @returns {Promise<Map<string, Object>>} Map of custom module ID to source info
    */
@@ -216,7 +216,7 @@ class CustomModules {
 
         let sourcePath = customModule.sourcePath;
         if (sourcePath && sourcePath.startsWith('_config')) {
-          // Paths are relative to RMB_AID dir, but we want absolute paths for install
+          // Paths are relative to SMART dir, but we want absolute paths for install
           sourcePath = path.join(rmbaidDir, sourcePath);
         } else if (!sourcePath && customModule.relativePath) {
           // Fall back to relativePath

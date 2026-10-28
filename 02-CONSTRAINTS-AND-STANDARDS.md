@@ -14,9 +14,9 @@
 
 - `.github/workflows/` — CI configuration is out of scope
 - `node_modules/` — no manual edits
-- Existing agent definitions in `.rmbaid-core/agents/` MUST be updated in place,
+- Existing agent definitions in `.smart-core/agents/` MUST be updated in place,
   not replaced — preserve original structure, only add to it
-- Existing skills in `src/core-skills/` and `src/rmbaid-skills/` — do not modify
+- Existing skills in `src/core-skills/` and `src/smart-skills/` — do not modify
   existing skills
 
 ---
@@ -40,22 +40,22 @@ All markdown files MUST comply with `.markdownlint-cli2.yaml`:
 Every new skill directory MUST satisfy all 14 deterministic rules
 checked by `npm run validate:skills`:
 
-| Rule | Requirement |
-|---|---|
-| SKILL-01 | SKILL.md exists in the skill directory |
-| SKILL-02 | SKILL.md frontmatter has `name` field |
-| SKILL-03 | SKILL.md frontmatter has `description` field |
-| SKILL-04 | name is lowercase, hyphens only, no forbidden substrings |
-| SKILL-05 | name matches the directory basename |
+| Rule     | Requirement                                                |
+| -------- | ---------------------------------------------------------- |
+| SKILL-01 | SKILL.md exists in the skill directory                     |
+| SKILL-02 | SKILL.md frontmatter has `name` field                      |
+| SKILL-03 | SKILL.md frontmatter has `description` field               |
+| SKILL-04 | name is lowercase, hyphens only, no forbidden substrings   |
+| SKILL-05 | name matches the directory basename                        |
 | SKILL-06 | description ≥ 50 chars, starts with "Use when" or "Use if" |
-| SKILL-07 | SKILL.md has body content after frontmatter |
-| WF-01 | workflow.md frontmatter has no `name` field |
-| WF-02 | workflow.md frontmatter has no `description` field |
-| PATH-02 | No `installed_path` variable in any file |
-| STEP-01 | Step filenames follow `NN-name.md` format |
-| STEP-06 | Step frontmatter has no `name` or `description` |
-| STEP-07 | Step count is between 2 and 10 |
-| SEQ-02 | No time estimates in any step |
+| SKILL-07 | SKILL.md has body content after frontmatter                |
+| WF-01    | workflow.md frontmatter has no `name` field                |
+| WF-02    | workflow.md frontmatter has no `description` field         |
+| PATH-02  | No `installed_path` variable in any file                   |
+| STEP-01  | Step filenames follow `NN-name.md` format                  |
+| STEP-06  | Step frontmatter has no `name` or `description`            |
+| STEP-07  | Step count is between 2 and 10                             |
+| SEQ-02   | No time estimates in any step                              |
 
 ---
 
@@ -97,7 +97,7 @@ smart_metrics.jsonl entries MUST be:
 
 - All case study documents MUST be self-consistent (PRD goals ↔ architecture)
 - Case study lives under `case-studies/physics-tracker/`
-- No references to files outside `case-studies/` except standard rmb-aid paths
+- No references to files outside `case-studies/` except standard smart-agentic paths
 - Platform: Kotlin / Android (minSdk 26, targetSdk 34)
 
 ---

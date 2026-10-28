@@ -1,5 +1,14 @@
 # Renamed Command Registry
 
+## SMART Calls
+
+`smart`, `@smart`, `/smart`: invoke the `rmbaid-smart-pipeline` skill for
+sequential coordination. Named calls select one agent directly:
+`@drishti`, `@bodhi`, `@tarka` (also `@tarak`), `@yukti`, `@karma`, `@satya`,
+`@siddhi`. Bare names and slash forms are also accepted, case-insensitively.
+Read `./smart-personas.md` for their roles. These names take precedence over
+compatibility personas below.
+
 ## Operating Modes
 
 | Command       | Aliases     | Purpose                                                              | Underlying Skill       | Output Shape                                       |

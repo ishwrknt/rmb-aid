@@ -1,40 +1,40 @@
 ---
 title: Core Tools
-description: Reference for all built-in tasks and workflows available in every RMB_AID installation without additional modules.
+description: Reference for all built-in tasks and workflows available in every SMART installation without additional modules.
 sidebar:
   order: 2
 ---
 
-Every RMB_AID installation includes a set of core skills that can be used in conjunction with any anything you are doing — standalone tasks and workflows that work across all projects, all modules, and all phases. These are always available regardless of which optional modules you install.
+Every SMART installation includes a set of core skills that can be used in conjunction with any anything you are doing — standalone tasks and workflows that work across all projects, all modules, and all phases. These are always available regardless of which optional modules you install.
 
 :::tip[Quick Path]
-Run any core tool by typing its skill name (e.g., `rmbaid-help`) in your IDE. No agent session required.
+Run any core tool by typing its skill name (e.g., `smart-help`) in your IDE. No agent session required.
 :::
 
 ## Overview
 
-| Tool                                                                      | Type     | Purpose                                                     |
-| ------------------------------------------------------------------------- | -------- | ----------------------------------------------------------- |
-| [`rmbaid-help`](#rmbaid-help)                                             | Task     | Get context-aware guidance on what to do next               |
-| [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | Facilitate interactive brainstorming sessions               |
-| [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | Orchestrate multi-agent group discussions                   |
-| [`rmbaid-distillator`](#rmbaid-distillator)                               | Task     | Lossless LLM-optimized compression of documents             |
-| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation)             | Task     | Push LLM output through iterative refinement methods        |
-| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Task     | Cynical review that finds what's missing and what's wrong   |
-| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter)       | Task     | Exhaustive branching-path analysis for unhandled edge cases |
-| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose)         | Task     | Clinical copy-editing for communication clarity             |
-| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Task     | Structural editing — cuts, merges, and reorganization       |
-| [`rmbaid-shard-doc`](#rmbaid-shard-doc)                                   | Task     | Split large markdown files into organized sections          |
-| [`rmbaid-index-docs`](#rmbaid-index-docs)                                 | Task     | Generate or update an index of all docs in a folder         |
+| Tool                                                                    | Type     | Purpose                                                     |
+| ----------------------------------------------------------------------- | -------- | ----------------------------------------------------------- |
+| [`smart-help`](#smart-help)                                             | Task     | Get context-aware guidance on what to do next               |
+| [`smart-brainstorming`](#smart-brainstorming)                           | Workflow | Facilitate interactive brainstorming sessions               |
+| [`smart-party-mode`](#smart-party-mode)                                 | Workflow | Orchestrate multi-agent group discussions                   |
+| [`smart-distillator`](#smart-distillator)                               | Task     | Lossless LLM-optimized compression of documents             |
+| [`smart-advanced-elicitation`](#smart-advanced-elicitation)             | Task     | Push LLM output through iterative refinement methods        |
+| [`smart-review-adversarial-general`](#smart-review-adversarial-general) | Task     | Cynical review that finds what's missing and what's wrong   |
+| [`smart-review-edge-case-hunter`](#smart-review-edge-case-hunter)       | Task     | Exhaustive branching-path analysis for unhandled edge cases |
+| [`smart-editorial-review-prose`](#smart-editorial-review-prose)         | Task     | Clinical copy-editing for communication clarity             |
+| [`smart-editorial-review-structure`](#smart-editorial-review-structure) | Task     | Structural editing — cuts, merges, and reorganization       |
+| [`smart-shard-doc`](#smart-shard-doc)                                   | Task     | Split large markdown files into organized sections          |
+| [`smart-index-docs`](#smart-index-docs)                                 | Task     | Generate or update an index of all docs in a folder         |
 
-## rmbaid-help
+## smart-help
 
 **Your intelligent guide to what comes next.** — Inspects your project state, detects what's been done, and recommends the next required or optional step.
 
 **Use it when:**
 
 - You finished a workflow and want to know what's next
-- You're new to RMB_AID and need orientation
+- You're new to SMART and need orientation
 - You're stuck and want context-aware advice
 - You installed new modules and want to see what's available
 
@@ -45,11 +45,11 @@ Run any core tool by typing its skill name (e.g., `rmbaid-help`) in your IDE. No
 3. Recommends next steps in priority order — required steps first, then optional
 4. Presents each recommendation with the skill command and a brief description
 
-**Input:** Optional query in natural language (e.g., `rmbaid-help I have a SaaS idea, where do I start?`)
+**Input:** Optional query in natural language (e.g., `smart-help I have a SaaS idea, where do I start?`)
 
 **Output:** Prioritized list of recommended next steps with skill commands
 
-## rmbaid-brainstorming
+## smart-brainstorming
 
 **Generate diverse ideas through interactive creative techniques.** — A facilitated brainstorming session that loads proven ideation methods from a technique library and guides you toward 100+ ideas before organizing.
 
@@ -75,9 +75,9 @@ Run any core tool by typing its skill name (e.g., `rmbaid-help`) in your IDE. No
 The magic happens in ideas 50–100. The workflow encourages generating 100+ ideas before organization.
 :::
 
-## rmbaid-party-mode
+## smart-party-mode
 
-**Orchestrate multi-agent group discussions.** — Loads all installed RMB_AID agents and facilitates a natural conversation where each agent contributes from their unique expertise and personality.
+**Orchestrate multi-agent group discussions.** — Loads all installed SMART agents and facilitates a natural conversation where each agent contributes from their unique expertise and personality.
 
 **Use it when:**
 
@@ -97,7 +97,7 @@ The magic happens in ideas 50–100. The workflow encourages generating 100+ ide
 
 **Output:** Real-time multi-agent conversation with maintained agent personalities
 
-## rmbaid-distillator
+## smart-distillator
 
 **Lossless LLM-optimized compression of source documents.** — Produces dense, token-efficient distillates that preserve all information for downstream LLM consumption. Verifiable through round-trip reconstruction.
 
@@ -124,7 +124,7 @@ The magic happens in ideas 50–100. The workflow encourages generating 100+ ide
 
 **Output:** Distillate markdown file(s) with compression ratio report (e.g., "3.2:1")
 
-## rmbaid-advanced-elicitation
+## smart-advanced-elicitation
 
 **Push LLM output through iterative refinement methods.** — Selects from a library of elicitation techniques to systematically improve content through multiple passes.
 
@@ -146,7 +146,7 @@ The magic happens in ideas 50–100. The workflow encourages generating 100+ ide
 
 **Output:** Enhanced version of the content with improvements applied
 
-## rmbaid-review-adversarial-general
+## smart-review-adversarial-general
 
 **Cynical review that assumes problems exist and searches for them.** — Takes a skeptical, jaded reviewer perspective with zero patience for sloppy work. Looks for what's missing, not just what's wrong.
 
@@ -170,7 +170,7 @@ The magic happens in ideas 50–100. The workflow encourages generating 100+ ide
 
 **Output:** Markdown list of 10+ findings with descriptions
 
-## rmbaid-review-edge-case-hunter
+## smart-review-edge-case-hunter
 
 **Walk every branching path and boundary condition, report only unhandled cases.** — Pure path-tracing methodology that mechanically derives edge classes. Orthogonal to adversarial review — method-driven, not attitude-driven.
 
@@ -195,10 +195,10 @@ The magic happens in ideas 50–100. The workflow encourages generating 100+ ide
 **Output:** JSON array of findings, each with `location`, `trigger_condition`, `guard_snippet`, and `potential_consequence`
 
 :::note[Complementary Reviews]
-Run both `rmbaid-review-adversarial-general` and `rmbaid-review-edge-case-hunter` together for orthogonal coverage. The adversarial review catches quality and completeness issues; the edge case hunter catches unhandled paths.
+Run both `smart-review-adversarial-general` and `smart-review-edge-case-hunter` together for orthogonal coverage. The adversarial review catches quality and completeness issues; the edge case hunter catches unhandled paths.
 :::
 
-## rmbaid-editorial-review-prose
+## smart-editorial-review-prose
 
 **Clinical copy-editing focused on communication clarity.** — Reviews text for issues that impede comprehension. Applies Microsoft Writing Style Guide baseline. Preserves author voice.
 
@@ -223,7 +223,7 @@ Run both `rmbaid-review-adversarial-general` and `rmbaid-review-edge-case-hunter
 
 **Output:** Three-column markdown table: Original Text | Revised Text | Changes
 
-## rmbaid-editorial-review-structure
+## smart-editorial-review-structure
 
 **Structural editing — proposes cuts, merges, moves, and condensing.** — Reviews document organization and proposes substantive changes to improve clarity and flow before copy editing.
 
@@ -250,7 +250,7 @@ Run both `rmbaid-review-adversarial-general` and `rmbaid-review-edge-case-hunter
 
 **Output:** Document summary, prioritized recommendation list, and estimated reduction
 
-## rmbaid-shard-doc
+## smart-shard-doc
 
 **Split large markdown files into organized section files.** — Uses level-2 headers as split points to create a folder of self-contained section files with an index.
 
@@ -271,7 +271,7 @@ Run both `rmbaid-review-adversarial-general` and `rmbaid-review-edge-case-hunter
 
 **Output:** Folder with `index.md` and `01-{section}.md`, `02-{section}.md`, etc.
 
-## rmbaid-index-docs
+## smart-index-docs
 
 **Generate or update an index of all documents in a folder.** — Scans a directory, reads each file to understand its purpose, and produces an organized `index.md` with links and descriptions.
 

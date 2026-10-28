@@ -1,33 +1,33 @@
 ---
 title: '核心工具'
-description: 每个 RMB_AID 安装默认可用的任务与 workflow 参考。
+description: 每个 SMART 安装默认可用的任务与 workflow 参考。
 sidebar:
   order: 2
 ---
 
-核心工具是跨模块可复用的一组通用能力：不依赖特定业务项目，也不要求先进入某个智能体角色。只要安装了 RMB_AID，你就可以直接调用它们。
+核心工具是跨模块可复用的一组通用能力：不依赖特定业务项目，也不要求先进入某个智能体角色。只要安装了 SMART，你就可以直接调用它们。
 
 :::tip[快速入口]
-在 IDE 中直接输入工具 skill 名（例如 `rmbaid-help`）即可调用，无需先加载智能体。
+在 IDE 中直接输入工具 skill 名（例如 `smart-help`）即可调用，无需先加载智能体。
 :::
 
 ## 概览
 
-| 工具                                                                      | 类型     | 主要用途                        |
-| ------------------------------------------------------------------------- | -------- | ------------------------------- |
-| [`rmbaid-help`](#rmbaid-help)                                             | Task     | 基于项目上下文推荐下一步        |
-| [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | 引导式头脑风暴与想法扩展        |
-| [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | 多智能体协作讨论                |
-| [`rmbaid-distillator`](#rmbaid-distillator)                               | Task     | 无损压缩文档，提升 LLM 消费效率 |
-| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation)             | Task     | 通过多轮技法增强 LLM 输出       |
-| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Task     | 对抗式问题发现审查              |
-| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter)       | Task     | 边界与分支路径穷举审查          |
-| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose)         | Task     | 文案可读性与表达清晰度审查      |
-| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Task     | 文档结构裁剪、合并与重组建议    |
-| [`rmbaid-shard-doc`](#rmbaid-shard-doc)                                   | Task     | 将大文档拆分为章节文件          |
-| [`rmbaid-index-docs`](#rmbaid-index-docs)                                 | Task     | 为目录生成/更新文档索引         |
+| 工具                                                                    | 类型     | 主要用途                        |
+| ----------------------------------------------------------------------- | -------- | ------------------------------- |
+| [`smart-help`](#smart-help)                                             | Task     | 基于项目上下文推荐下一步        |
+| [`smart-brainstorming`](#smart-brainstorming)                           | Workflow | 引导式头脑风暴与想法扩展        |
+| [`smart-party-mode`](#smart-party-mode)                                 | Workflow | 多智能体协作讨论                |
+| [`smart-distillator`](#smart-distillator)                               | Task     | 无损压缩文档，提升 LLM 消费效率 |
+| [`smart-advanced-elicitation`](#smart-advanced-elicitation)             | Task     | 通过多轮技法增强 LLM 输出       |
+| [`smart-review-adversarial-general`](#smart-review-adversarial-general) | Task     | 对抗式问题发现审查              |
+| [`smart-review-edge-case-hunter`](#smart-review-edge-case-hunter)       | Task     | 边界与分支路径穷举审查          |
+| [`smart-editorial-review-prose`](#smart-editorial-review-prose)         | Task     | 文案可读性与表达清晰度审查      |
+| [`smart-editorial-review-structure`](#smart-editorial-review-structure) | Task     | 文档结构裁剪、合并与重组建议    |
+| [`smart-shard-doc`](#smart-shard-doc)                                   | Task     | 将大文档拆分为章节文件          |
+| [`smart-index-docs`](#smart-index-docs)                                 | Task     | 为目录生成/更新文档索引         |
 
-## rmbaid-help
+## smart-help
 
 **定位：** 你的默认导航入口，告诉你“下一步该做什么”。
 
@@ -43,10 +43,10 @@ sidebar:
 2. 检测已安装模块及其可用 workflow
 3. 按优先级输出“必需步骤 + 可选步骤”
 
-**输入：** 可选自然语言问题（如 `rmbaid-help 我该先做 PRD 还是 architecture？`）  
+**输入：** 可选自然语言问题（如 `smart-help 我该先做 PRD 还是 architecture？`）  
 **输出：** 带 skill 名称的下一步建议列表
 
-## rmbaid-brainstorming
+## smart-brainstorming
 
 **定位：** 用结构化创意技法快速扩展想法池。
 
@@ -66,7 +66,7 @@ sidebar:
 **输入：** 主题或问题陈述（可附上下文文件）  
 **输出：** `brainstorming-session-{date}.md`
 
-## rmbaid-party-mode
+## smart-party-mode
 
 **定位：** 让多个智能体围绕同一议题协作讨论。
 
@@ -86,7 +86,7 @@ sidebar:
 **输入：** 讨论主题（可指定希望参与的角色）  
 **输出：** 多智能体实时对话过程
 
-## rmbaid-distillator
+## smart-distillator
 
 **定位：** 在不丢失信息前提下压缩文档，降低 token 成本。
 
@@ -112,7 +112,7 @@ sidebar:
 
 **输出：** 精馏文档 + 压缩比报告
 
-## rmbaid-advanced-elicitation
+## smart-advanced-elicitation
 
 **定位：** 对已有 LLM 输出做第二轮深挖与改写强化。
 
@@ -132,7 +132,7 @@ sidebar:
 **输入：** 待增强内容片段  
 **输出：** 增强后的内容版本
 
-## rmbaid-review-adversarial-general
+## smart-review-adversarial-general
 
 **定位：** 假设问题存在，主动寻找遗漏与风险。
 
@@ -151,7 +151,7 @@ sidebar:
 **输入：** `content`（必填），`also_consider`（可选）  
 **输出：** 结构化问题清单
 
-## rmbaid-review-edge-case-hunter
+## smart-review-edge-case-hunter
 
 **定位：** 穷举分支路径与边界条件，只报告未覆盖情况。
 
@@ -171,7 +171,7 @@ sidebar:
 **输入：** `content`（必填），`also_consider`（可选）  
 **输出：** JSON 发现列表（含触发条件与潜在后果）
 
-## rmbaid-editorial-review-prose
+## smart-editorial-review-prose
 
 **定位：** 聚焦表达清晰度的文案审查，不替你改写个人风格。
 
@@ -190,7 +190,7 @@ sidebar:
 **输入：** `content`（必填），`style_guide`（可选），`reader_type`（可选）  
 **输出：** 三列表（原文 / 修改后 / 说明）
 
-## rmbaid-editorial-review-structure
+## smart-editorial-review-structure
 
 **定位：** 处理文档结构问题：裁剪、合并、重排、精简。
 
@@ -209,7 +209,7 @@ sidebar:
 **输入：** `content`（必填），`purpose`/`target_audience`/`reader_type`/`length_target`（可选）  
 **输出：** 结构建议清单 + 预计缩减量
 
-## rmbaid-shard-doc
+## smart-shard-doc
 
 **定位：** 把超大 Markdown 文档拆成可维护章节。
 
@@ -229,7 +229,7 @@ sidebar:
 **输入：** 源文件路径（可选目标目录）  
 **输出：** 分片目录（含 `index.md`）
 
-## rmbaid-index-docs
+## smart-index-docs
 
 **定位：** 为目录自动生成可导航文档索引。
 

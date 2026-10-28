@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-Use the `rmbaid-shard-doc` tool if you need to split large markdown files into smaller, organized files for better context management.
+Use the `smart-shard-doc` tool if you need to split large markdown files into smaller, organized files for better context management.
 
 :::caution[Deprecated]
 This is no longer recommended, and soon with updated workflows and most major LLMs and tools supporting subprocesses this will be unnecessary.
@@ -41,7 +41,7 @@ _rmbaid-output/planning-artifacts/
 ### 1. Run the Shard-Doc Tool
 
 ```bash
-/rmbaid-shard-doc
+/smart-shard-doc
 ```
 
 ### 2. Follow the Interactive Process
@@ -62,7 +62,7 @@ Agent: Sharding PRD.md...
 
 ## How Workflow Discovery Works
 
-RMB_AID workflows use a **dual discovery system**:
+SMART workflows use a **dual discovery system**:
 
 1. **Try whole document first** - Look for `document-name.md`
 2. **Check for sharded version** - Look for `document-name/index.md`
@@ -70,7 +70,7 @@ RMB_AID workflows use a **dual discovery system**:
 
 ## Workflow Support
 
-All RMB_AID workflows support both formats:
+All SMART workflows support both formats:
 
 - Whole documents
 - Sharded documents

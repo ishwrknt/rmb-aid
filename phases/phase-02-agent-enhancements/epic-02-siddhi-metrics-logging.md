@@ -6,12 +6,12 @@ Status: DONE
 
 ## Goal
 
-Extend `.rmbaid-core/agents/siddhi.md` to make smart_metrics.jsonl logging
+Extend `.smart-core/agents/siddhi.md` to make smart_metrics.jsonl logging
 a mandatory, non-skippable step after every Satya PASS verdict.
 
 ## Deliverable
 
-`.rmbaid-core/agents/siddhi.md` — enhanced in-place.
+`.smart-core/agents/siddhi.md` — enhanced in-place.
 
 ## Satya Validation Method
 

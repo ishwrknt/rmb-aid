@@ -1,11 +1,11 @@
 ---
 title: 'Established Projects FAQ'
-description: Common questions about using RMB_AID on established projects
+description: Common questions about using SMART on established projects
 sidebar:
   order: 8
 ---
 
-Quick answers to common questions about working on established projects with the RMB_AID (RMB_AID).
+Quick answers to common questions about working on established projects with the SMART (SMART).
 
 ## Questions
 
@@ -46,6 +46,6 @@ Quick Flow detects your conventions and asks: "Should I follow these existing co
 - **Yes** → Maintain consistency with current codebase
 - **No** → Establish new standards (document why in spec)
 
-RMB_AID respects your choice — it won't force modernization, but it will offer it.
+SMART respects your choice — it won't force modernization, but it will offer it.
 
-**Have a question not answered here?** Please [open an issue](https://github.com/rmbaid-code-org/RMB_AID/issues) or ask in [Discord](https://discord.gg/gk8jAdXWmj) so we can add it!
+**Have a question not answered here?** Please [open an issue](https://github.com/smart-code-org/SMART/issues) or ask in [Discord](https://discord.gg/gk8jAdXWmj) so we can add it!

@@ -72,7 +72,7 @@ class ManifestGenerator {
     // Store modules list (all modules including preserved ones)
     const preservedModules = options.preservedModules || [];
 
-    // Scan the rmbaid directory to find all actually installed modules
+    // Scan the smart directory to find all actually installed modules
     const installedModules = await this.scanInstalledModules(rmbaidDir);
 
     // Since custom modules are now installed the same way as regular modules,
@@ -83,7 +83,7 @@ class ManifestGenerator {
     this.updatedModules = allModules; // Include ALL modules (including custom) for scanning
 
     this.rmbaidDir = rmbaidDir;
-    this.rmbaidFolderName = path.basename(rmbaidDir); // Get the actual folder name (e.g., '_rmbaid' or 'rmbaid')
+    this.rmbaidFolderName = path.basename(rmbaidDir); // Get the actual folder name (e.g., '_rmbaid' or 'smart')
     this.allInstalledFiles = installedFiles;
 
     if (!Object.prototype.hasOwnProperty.call(options, 'ides')) {
@@ -133,7 +133,7 @@ class ManifestGenerator {
   async collectSkills() {
     this.skills = [];
     this.skillClaimedDirs = new Set();
-    const debug = process.env.RMB_AID_DEBUG_MANIFEST === 'true';
+    const debug = process.env.SMART_DEBUG_MANIFEST === 'true';
 
     for (const moduleName of this.updatedModules) {
       const modulePath = path.join(this.rmbaidDir, moduleName);
@@ -171,7 +171,7 @@ class ManifestGenerator {
           // only warn for non-agent SKILL.md directories.
           if (manifest && manifest.__single && manifest.__single.canonicalId && artifactType !== 'agent') {
             console.warn(
-              `Warning: Native entrypoint manifest at ${dir}/rmbaid-skill-manifest.yaml contains canonicalId — this field is ignored for SKILL.md directories (directory name is the canonical ID)`,
+              `Warning: Native entrypoint manifest at ${dir}/smart-skill-manifest.yaml contains canonicalId — this field is ignored for SKILL.md directories (directory name is the canonical ID)`,
             );
           }
           const canonicalId = dirName;
@@ -272,7 +272,7 @@ class ManifestGenerator {
    */
   async collectAgents(selectedModules) {
     this.agents = [];
-    const debug = process.env.RMB_AID_DEBUG_MANIFEST === 'true';
+    const debug = process.env.SMART_DEBUG_MANIFEST === 'true';
 
     // Walk each module's full directory tree looking for type:agent manifests
     for (const moduleName of this.updatedModules) {
@@ -283,7 +283,7 @@ class ManifestGenerator {
       this.agents.push(...moduleAgents);
     }
 
-    // Get standalone agents from rmbaid/agents/ directory
+    // Get standalone agents from smart/agents/ directory
     const standaloneAgentsDir = path.join(this.rmbaidDir, 'agents');
     if (await fs.pathExists(standaloneAgentsDir)) {
       const standaloneAgents = await this.getAgentsFromDirRecursive(standaloneAgentsDir, 'standalone', '', debug);
@@ -297,7 +297,7 @@ class ManifestGenerator {
 
   /**
    * Recursively walk a directory tree collecting agents.
-   * Discovers agents via directory with rmbaid-skill-manifest.yaml containing type: agent
+   * Discovers agents via directory with smart-skill-manifest.yaml containing type: agent
    *
    * @param {string} dirPath - Current directory being scanned
    * @param {string} moduleName - Module this directory belongs to
@@ -647,8 +647,8 @@ class ManifestGenerator {
   }
 
   /**
-   * Scan the rmbaid directory to find all installed modules
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * Scan the smart directory to find all installed modules
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Array} List of module names
    */
   async scanInstalledModules(rmbaidDir) {

@@ -1,11 +1,11 @@
 ---
 title: Cài đặt không tương tác
-description: Cài đặt RMB_AID bằng các cờ dòng lệnh cho pipeline CI/CD và triển khai tự động
+description: Cài đặt SMART bằng các cờ dòng lệnh cho pipeline CI/CD và triển khai tự động
 sidebar:
   order: 2
 ---
 
-Sử dụng các cờ dòng lệnh để cài đặt RMB_AID mà không cần tương tác. Cách này hữu ích cho:
+Sử dụng các cờ dòng lệnh để cài đặt SMART mà không cần tương tác. Cách này hữu ích cho:
 
 ## Khi nào nên dùng
 
@@ -25,7 +25,7 @@ Yêu cầu [Node.js](https://nodejs.org) v20+ và `npx` (đi kèm với npm).
 | Cờ                         | Mô tả                                                                                  | Ví dụ                                            |
 | -------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | `--directory <path>`       | Thư mục cài đặt                                                                        | `--directory ~/projects/myapp`                   |
-| `--modules <modules>`      | Danh sách ID module, cách nhau bởi dấu phẩy                                            | `--modules rmbaid,bmb`                           |
+| `--modules <modules>`      | Danh sách ID module, cách nhau bởi dấu phẩy                                            | `--modules smart,bmb`                            |
 | `--tools <tools>`          | Danh sách ID công cụ/IDE, cách nhau bởi dấu phẩy (dùng `none` để bỏ qua)               | `--tools claude-code,cursor` hoặc `--tools none` |
 | `--custom-content <paths>` | Danh sách đường dẫn đến module tùy chỉnh, cách nhau bởi dấu phẩy                       | `--custom-content ~/my-module,~/another-module`  |
 | `--action <type>`          | Hành động cho bản cài đặt hiện có: `install` (mặc định), `update`, hoặc `quick-update` | `--action quick-update`                          |
@@ -62,10 +62,10 @@ Giá trị truyền vào `--output-folder` (hoặc nhập ở chế độ tươn
 
 Những ID module có thể dùng với cờ `--modules`:
 
-- `rmbaid` - RMB_AID Master
-- `bmb` - RMB_AID Builder
+- `smart` - SMART Master
+- `bmb` - SMART Builder
 
-Kiểm tra [RMB_AID registry](https://github.com/rmbaid-code-org) để xem các module ngoài được hỗ trợ.
+Kiểm tra [SMART registry](https://github.com/smart-code-org) để xem các module ngoài được hỗ trợ.
 
 ## ID công cụ/IDE
 
@@ -73,16 +73,16 @@ Những ID công cụ có thể dùng với cờ `--tools`:
 
 **Khuyến dùng:** `claude-code`, `cursor`
 
-Chạy `npx rmb-aid install` một lần ở chế độ tương tác để xem danh sách đầy đủ hiện tại của các công cụ được hỗ trợ, hoặc xem [cấu hình platform codes](https://github.com/rmbaid-code-org/RMB_AID/blob/main/tools/installer/ide/platform-codes.yaml).
+Chạy `npx smart-agentic install` một lần ở chế độ tương tác để xem danh sách đầy đủ hiện tại của các công cụ được hỗ trợ, hoặc xem [cấu hình platform codes](https://github.com/smart-code-org/SMART/blob/main/tools/installer/ide/platform-codes.yaml).
 
 ## Các chế độ cài đặt
 
-| Chế độ                    | Mô tả                                             | Ví dụ                                                                          |
-| ------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Hoàn toàn không tương tác | Cung cấp đầy đủ cờ để bỏ qua tất cả prompt        | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
-| Bán tương tác             | Cung cấp một số cờ, RMB_AID hỏi thêm phần còn lại | `npx rmb-aid install --directory . --modules rmbaid`                           |
-| Chỉ dùng mặc định         | Chấp nhận tất cả giá trị mặc định với `-y`        | `npx rmb-aid install --yes`                                                    |
-| Không cấu hình công cụ    | Bỏ qua cấu hình công cụ/IDE                       | `npx rmb-aid install --modules rmbaid --tools none`                            |
+| Chế độ                    | Mô tả                                           | Ví dụ                                                                               |
+| ------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Hoàn toàn không tương tác | Cung cấp đầy đủ cờ để bỏ qua tất cả prompt      | `npx smart-agentic install --directory . --modules smart --tools claude-code --yes` |
+| Bán tương tác             | Cung cấp một số cờ, SMART hỏi thêm phần còn lại | `npx smart-agentic install --directory . --modules smart`                           |
+| Chỉ dùng mặc định         | Chấp nhận tất cả giá trị mặc định với `-y`      | `npx smart-agentic install --yes`                                                   |
+| Không cấu hình công cụ    | Bỏ qua cấu hình công cụ/IDE                     | `npx smart-agentic install --modules smart --tools none`                            |
 
 ## Ví dụ
 
@@ -90,11 +90,11 @@ Chạy `npx rmb-aid install` một lần ở chế độ tương tác để xem 
 
 ```bash
 #!/bin/bash
-# install-rmbaid.sh
+# install-smart.sh
 
-npx rmb-aid install \
+npx smart-agentic install \
   --directory "${GITHUB_WORKSPACE}" \
-  --modules rmbaid \
+  --modules smart \
   --tools claude-code \
   --user-name "CI Bot" \
   --communication-language English \
@@ -106,16 +106,16 @@ npx rmb-aid install \
 ### Cập nhật bản cài đặt hiện có
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action update \
-  --modules rmbaid,bmb,custom-module
+  --modules smart,bmb,custom-module
 ```
 
 ### Quick Update (giữ nguyên cài đặt)
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action quick-update
 ```
@@ -123,9 +123,9 @@ npx rmb-aid install \
 ### Cài đặt với nội dung tùy chỉnh
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
-  --modules rmbaid \
+  --modules smart \
   --custom-content ~/my-custom-module,~/another-module \
   --tools claude-code
 ```
@@ -138,7 +138,7 @@ npx rmb-aid install \
 
 ## Kiểm tra và xử lý lỗi
 
-RMB_AID sẽ kiểm tra tất cả các cờ được cung cấp:
+SMART sẽ kiểm tra tất cả các cờ được cung cấp:
 
 - **Directory** - Phải là đường dẫn hợp lệ và có quyền ghi
 - **Modules** - Cảnh báo nếu ID module không hợp lệ (nhưng không thất bại)
@@ -183,5 +183,5 @@ Giá trị không hợp lệ sẽ dẫn đến một trong các trường hợp 
 - Có trường `code` trong tệp `module.yaml`
 
 :::note[Vẫn bị mắc?]
-Chạy với `--debug` để xem output chi tiết, thử chế độ interactive để cô lập vấn đề, hoặc báo cáo tại <https://github.com/rmbaid-code-org/RMB_AID/issues>.
+Chạy với `--debug` để xem output chi tiết, thử chế độ interactive để cô lập vấn đề, hoặc báo cáo tại <https://github.com/smart-code-org/SMART/issues>.
 :::

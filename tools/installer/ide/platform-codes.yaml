@@ -1,4 +1,4 @@
-# RMB_AID Platform Codes Configuration
+# SMART Platform Codes Configuration
 #
 # Each platform entry has:
 #   name: Display name shown to users
@@ -7,7 +7,7 @@
 #   installer:
 #     target_dir: Directory where skill directories are installed
 #     legacy_targets: (optional) Old target dirs to clean up on reinstall
-#     ancestor_conflict_check: (optional) Refuse install when ancestor dir has RMB_AID files
+#     ancestor_conflict_check: (optional) Refuse install when ancestor dir has SMART files
 
 platforms:
   antigravity:

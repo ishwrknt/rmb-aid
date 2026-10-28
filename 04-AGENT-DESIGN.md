@@ -5,21 +5,21 @@
 The SMART Agentic Coding Framework uses 7 agents across 4 layers. Each agent
 has a defined identity, input, output, and handoff protocol. This document
 specifies the agentic coding adaptations layered on top of the base SMART
-research agents already defined in `.rmbaid-core/agents/`.
+research agents already defined in `.smart-core/agents/`.
 
 ---
 
 ## Agent Roster
 
-| Layer | Agent | Role | Input | Output |
-|---|---|---|---|---|
-| Perception | Drishti | Problem Analyst | User task (plain language) | Problem Definition Doc |
-| Planning | Bodhi | Knowledge Mapper | PDD | Knowledge Map |
-| Planning | Tarka | Sequencer | Knowledge Map | Execution Plan |
-| Execution | Karma | Builder | Plan + epic doc | Code / files |
-| Execution | Yukti | Debugger | Error + context | Fixed code |
-| Validation | Satya | Validator | Implementation + criteria | Validation Report |
-| Validation | Siddhi | Packager + Logger | Validation Report | Package + metrics entry |
+| Layer      | Agent   | Role              | Input                      | Output                  |
+| ---------- | ------- | ----------------- | -------------------------- | ----------------------- |
+| Perception | Drishti | Problem Analyst   | User task (plain language) | Problem Definition Doc  |
+| Planning   | Bodhi   | Knowledge Mapper  | PDD                        | Knowledge Map           |
+| Planning   | Tarka   | Sequencer         | Knowledge Map              | Execution Plan          |
+| Execution  | Karma   | Builder           | Plan + epic doc            | Code / files            |
+| Execution  | Yukti   | Debugger          | Error + context            | Fixed code              |
+| Validation | Satya   | Validator         | Implementation + criteria  | Validation Report       |
+| Validation | Siddhi  | Packager + Logger | Validation Report          | Package + metrics entry |
 
 ---
 
@@ -122,7 +122,7 @@ For each epic, Karma:
 
 **Philosophy:** Truth cannot be claimed, it must be demonstrated.
 
-**Base behaviour:** inherited from `.rmbaid-core/agents/satya.md`
+**Base behaviour:** inherited from `.smart-core/agents/satya.md`
 
 **Software-Development Enhancements:**
 
@@ -164,7 +164,7 @@ Recommended action: [proceed / retry Karma / retry Yukti / escalate]
 **Philosophy:** A solution that cannot be used, and cannot be measured, is not
 a solution.
 
-**Base behaviour:** inherited from `.rmbaid-core/agents/siddhi.md`
+**Base behaviour:** inherited from `.smart-core/agents/siddhi.md`
 
 **Software-Development Enhancements:**
 
@@ -197,10 +197,10 @@ orchestrator to know which agent to invoke next.
 
 ## Failure Escalation Matrix
 
-| Failure | First route | Second route | User escalation |
-|---|---|---|---|
-| Code error (runtime) | Yukti | Karma re-run | After 5 retries |
-| Satya FAIL (logic) | Karma rework | Tarka re-plan | After 5 retries |
-| Satya FAIL (science) | Bodhi re-map | Tarka re-sequence | After 5 retries |
-| Ambiguous requirement | Infer + log | — | Only if fundamental |
-| Missing dependency | Infer platform | Install + log | Only if unavailable |
+| Failure               | First route    | Second route      | User escalation     |
+| --------------------- | -------------- | ----------------- | ------------------- |
+| Code error (runtime)  | Yukti          | Karma re-run      | After 5 retries     |
+| Satya FAIL (logic)    | Karma rework   | Tarka re-plan     | After 5 retries     |
+| Satya FAIL (science)  | Bodhi re-map   | Tarka re-sequence | After 5 retries     |
+| Ambiguous requirement | Infer + log    | —                 | Only if fundamental |
+| Missing dependency    | Infer platform | Install + log     | Only if unavailable |

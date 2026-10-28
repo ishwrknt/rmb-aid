@@ -9,7 +9,7 @@ Mở khóa sự sáng tạo của bạn thông qua quá trình khám phá có h�
 
 ## Động não ý tưởng là gì?
 
-Chạy `rmbaid-brainstorming` và bạn sẽ có một người điều phối sáng tạo giúp rút ý tưởng từ chính bạn - không phải phát sinh thay bạn. AI đóng vai trò huấn luyện viên và người dẫn đường, sử dụng các kỹ thuật đã được kiểm chứng để tạo điều kiện cho những ý tưởng tốt nhất của bạn xuất hiện.
+Chạy `smart-brainstorming` và bạn sẽ có một người điều phối sáng tạo giúp rút ý tưởng từ chính bạn - không phải phát sinh thay bạn. AI đóng vai trò huấn luyện viên và người dẫn đường, sử dụng các kỹ thuật đã được kiểm chứng để tạo điều kiện cho những ý tưởng tốt nhất của bạn xuất hiện.
 
 **Phù hợp cho:**
 

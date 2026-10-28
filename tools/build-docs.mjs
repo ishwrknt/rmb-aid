@@ -1,5 +1,5 @@
 /**
- * RMB_AID Documentation Build Pipeline
+ * SMART Documentation Build Pipeline
  *
  * Consolidates docs from multiple sources, generates LLM-friendly files,
  * and builds the Astro+Starlight site.
@@ -23,7 +23,7 @@ import { translatedLocales } from '../website/src/lib/locales.mjs';
 const PROJECT_ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const BUILD_DIR = path.join(PROJECT_ROOT, 'build');
 
-const REPO_URL = 'https://github.com/rmbaid-code-org/RMB_AID';
+const REPO_URL = 'https://github.com/smart-code-org/SMART';
 
 // DO NOT CHANGE THESE VALUES!
 // llms-full.txt is consumed by AI agents as context. Most LLMs have ~200k token limits.
@@ -45,7 +45,7 @@ const LLM_EXCLUDE_PATTERNS = [
 // =============================================================================
 // Main Entry Point
 /**
- * Orchestrates the full RMB_AID documentation build pipeline.
+ * Orchestrates the full SMART documentation build pipeline.
  *
  * Executes the high-level build steps in sequence: prints headers and paths, validates internal
  * documentation links, cleans the build directory, generates artifacts from the `docs/` folder,
@@ -60,7 +60,7 @@ async function main() {
   }
 
   console.log();
-  printBanner('RMB_AID Documentation Build Pipeline');
+  printBanner('SMART Documentation Build Pipeline');
   console.log();
   console.log(`Project root: ${PROJECT_ROOT}`);
   console.log(`Build directory: ${BUILD_DIR}`);
@@ -146,7 +146,7 @@ function generateLlmsTxt(outputDir) {
 
   const siteUrl = getSiteUrl();
   const content = [
-    '# RMB_AID Method Documentation',
+    '# SMART Method Documentation',
     '',
     '> AI-driven agile development with specialized agents and workflows that scale from bug fixes to enterprise platforms.',
     '',
@@ -156,8 +156,8 @@ function generateLlmsTxt(outputDir) {
     '',
     '## Quick Start',
     '',
-    `- **[Getting Started](${siteUrl}/tutorials/getting-started/)** - Tutorial: install and learn how RMB_AID works`,
-    `- **[Installation](${siteUrl}/how-to/install-rmbaid/)** - How to install RMB_AID`,
+    `- **[Getting Started](${siteUrl}/tutorials/getting-started/)** - Tutorial: install and learn how SMART works`,
+    `- **[Installation](${siteUrl}/how-to/install-smart/)** - How to install SMART`,
     '',
     '## Core Concepts',
     '',
@@ -167,7 +167,7 @@ function generateLlmsTxt(outputDir) {
     '',
     '## Modules',
     '',
-    `- **[Official Modules](${siteUrl}/reference/modules/)** - RMB_AID, BMB, BMGD, and more`,
+    `- **[Official Modules](${siteUrl}/reference/modules/)** - SMART, BMB, BMGD, and more`,
     '',
     '---',
     '',
@@ -196,7 +196,7 @@ function generateLlmsFullTxt(docsDir, outputDir) {
   const files = getAllMarkdownFiles(docsDir).sort(compareLlmDocs);
 
   const output = [
-    '# RMB_AID Method Documentation (Full)',
+    '# SMART Method Documentation (Full)',
     '',
     '> Complete documentation for AI consumption',
     `> Generated: ${date}`,

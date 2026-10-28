@@ -1,11 +1,11 @@
 ---
 title: Installation non-interactive
-description: Installer RMB_AID en utilisant des options de ligne de commande pour les pipelines CI/CD et les déploiements automatisés
+description: Installer SMART en utilisant des options de ligne de commande pour les pipelines CI/CD et les déploiements automatisés
 sidebar:
   order: 2
 ---
 
-Utilisez les options de ligne de commande pour installer RMB_AID de manière non-interactive. Cela est utile pour :
+Utilisez les options de ligne de commande pour installer SMART de manière non-interactive. Cela est utile pour :
 
 ## Quand utiliser cette méthode
 
@@ -25,7 +25,7 @@ Nécessite [Node.js](https://nodejs.org) v20+ et `npx` (inclus avec npm).
 | Option                       | Description                                                                                    | Exemple                                         |
 | ---------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | `--directory <chemin>`       | Répertoire d'installation                                                                      | `--directory ~/projects/myapp`                  |
-| `--modules <modules>`        | IDs de modules séparés par des virgules                                                        | `--modules rmbaid,bmb`                          |
+| `--modules <modules>`        | IDs de modules séparés par des virgules                                                        | `--modules smart,bmb`                           |
 | `--tools <outils>`           | IDs d'outils/IDE séparés par des virgules (utilisez `none` pour ignorer)                       | `--tools claude-code,cursor` ou `--tools none`  |
 | `--custom-content <chemins>` | Chemins vers des modules personnalisés séparés par des virgules                                | `--custom-content ~/my-module,~/another-module` |
 | `--action <type>`            | Action pour les installations existantes : `install` (par défaut), `update`, ou `quick-update` | `--action quick-update`                         |
@@ -62,10 +62,10 @@ Le chemin résolu est ce que les agents et les workflows vont utiliser lors de l
 
 IDs de modules disponibles pour l’option `--modules` :
 
-- `rmbaid` — méthode RMB_AID Master
-- `bmb` — RMB_AID Builder
+- `smart` — méthode SMART Master
+- `bmb` — SMART Builder
 
-Consultez le [registre RMB_AID](https://github.com/rmbaid-code-org) pour les modules externes disponibles.
+Consultez le [registre SMART](https://github.com/smart-code-org) pour les modules externes disponibles.
 
 ## IDs d'outils/IDE
 
@@ -73,16 +73,16 @@ IDs d'outils disponibles pour l’option `--tools` :
 
 **Recommandés :** `claude-code`, `cursor`
 
-Exécutez `npx rmb-aid install` de manière interactive une fois pour voir la liste complète actuelle des outils pris en charge, ou consultez la [configuration des codes de la plateforme](https://github.com/rmbaid-code-org/RMB_AID/blob/main/tools/installer/ide/platform-codes.yaml).
+Exécutez `npx smart-agentic install` de manière interactive une fois pour voir la liste complète actuelle des outils pris en charge, ou consultez la [configuration des codes de la plateforme](https://github.com/smart-code-org/SMART/blob/main/tools/installer/ide/platform-codes.yaml).
 
 ## Modes d'installation
 
-| Mode                             | Description                                                | Exemple                                                                        |
-| -------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Entièrement non-interactif       | Fournir toutes les options pour ignorer toutes les invites | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
-| Semi-interactif                  | Fournir certains options ; RMB_AID demande les autres      | `npx rmb-aid install --directory . --modules rmbaid`                           |
-| Paramètres par défaut uniquement | Accepter tous les paramètres par défaut avec `-y`          | `npx rmb-aid install --yes`                                                    |
-| Sans outils                      | Ignorer la configuration des outils/IDE                    | `npx rmb-aid install --modules rmbaid --tools none`                            |
+| Mode                             | Description                                                | Exemple                                                                             |
+| -------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Entièrement non-interactif       | Fournir toutes les options pour ignorer toutes les invites | `npx smart-agentic install --directory . --modules smart --tools claude-code --yes` |
+| Semi-interactif                  | Fournir certains options ; SMART demande les autres        | `npx smart-agentic install --directory . --modules smart`                           |
+| Paramètres par défaut uniquement | Accepter tous les paramètres par défaut avec `-y`          | `npx smart-agentic install --yes`                                                   |
+| Sans outils                      | Ignorer la configuration des outils/IDE                    | `npx smart-agentic install --modules smart --tools none`                            |
 
 ## Exemples
 
@@ -90,11 +90,11 @@ Exécutez `npx rmb-aid install` de manière interactive une fois pour voir la li
 
 ```bash
 #!/bin/bash
-# install-rmbaid.sh
+# install-smart.sh
 
-npx rmb-aid install \
+npx smart-agentic install \
   --directory "${GITHUB_WORKSPACE}" \
-  --modules rmbaid \
+  --modules smart \
   --tools claude-code \
   --user-name "CI Bot" \
   --communication-language Français \
@@ -106,16 +106,16 @@ npx rmb-aid install \
 ### Mettre à jour une installation existante
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action update \
-  --modules rmbaid,bmb,custom-module
+  --modules smart,bmb,custom-module
 ```
 
 ### Mise à jour rapide (conserver les paramètres)
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action quick-update
 ```
@@ -123,9 +123,9 @@ npx rmb-aid install \
 ### Installation avec du contenu personnalisé
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
-  --modules rmbaid \
+  --modules smart \
   --custom-content ~/my-custom-module,~/another-module \
   --tools claude-code
 ```
@@ -138,7 +138,7 @@ npx rmb-aid install \
 
 ## Validation et gestion des erreurs
 
-RMB_AID valide toutes les options fournis :
+SMART valide toutes les options fournis :
 
 - **Directory** — Doit être un chemin valide avec des permissions d'écriture
 - **Modules** — Avertit des IDs de modules invalides (mais n'échoue pas)
@@ -183,5 +183,5 @@ Assurez-vous que chaque chemin de contenu personnalisé :
 - Possède un champ `code` dans `module.yaml`
 
 :::note[Toujours bloqué ?]
-Exécutez avec `--debug` pour une sortie détaillée, essayez le mode interactif pour isoler le problème, ou signalez-le à <https://github.com/rmbaid-code-org/RMB_AID/issues>.
+Exécutez avec `--debug` pour une sortie détaillée, essayez le mode interactif pour isoler le problème, ou signalez-le à <https://github.com/smart-code-org/SMART/issues>.
 :::

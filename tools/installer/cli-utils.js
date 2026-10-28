@@ -16,27 +16,15 @@ const CLIUtils = {
   },
 
   /**
-   * Display RMB_AID logo and version using @clack intro + box
+   * Display SMART logo and version using @clack intro + box
    */
   async displayLogo() {
     const version = this.getVersion();
     const color = await prompts.getColor();
 
-    // ASCII art logo
-    const logo = [
-      '    ██████╗ ███╗   ███╗ █████╗ ██████╗ ™',
-      '    ██╔══██╗████╗ ████║██╔══██╗██╔══██╗',
-      '    ██████╔╝██╔████╔██║███████║██║  ██║',
-      '    ██╔══██╗██║╚██╔╝██║██╔══██║██║  ██║',
-      '    ██████╔╝██║ ╚═╝ ██║██║  ██║██████╔╝',
-      '    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝',
-    ]
-      .map((line) => color.yellow(line))
-      .join('\n');
+    const tagline = 'Simulation Methodology based Agentic Research Tool';
 
-    const tagline = '    Build More, Architect Dreams';
-
-    await prompts.box(`${logo}\n${tagline}`, `v${version}`, {
+    await prompts.box(`SMART\n${tagline}`, `v${version}`, {
       contentAlign: 'center',
       rounded: true,
       formatBorder: color.blue,

@@ -1,40 +1,40 @@
 ---
 title: Outils Principaux
-description: Référence pour toutes les tâches et tous les workflows intégrés disponibles dans chaque installation RMB_AID sans modules supplémentaires.
+description: Référence pour toutes les tâches et tous les workflows intégrés disponibles dans chaque installation SMART sans modules supplémentaires.
 sidebar:
   order: 2
 ---
 
-Chaque installation RMB_AID comprend un ensemble de compétences principales qui peuvent être utilisées conjointement avec tout ce que vous faites — des tâches et des workflows autonomes qui fonctionnent dans tous les projets, tous les modules et toutes les phases. Ceux-ci sont toujours disponibles, quels que soient les modules optionnels que vous installez.
+Chaque installation SMART comprend un ensemble de compétences principales qui peuvent être utilisées conjointement avec tout ce que vous faites — des tâches et des workflows autonomes qui fonctionnent dans tous les projets, tous les modules et toutes les phases. Ceux-ci sont toujours disponibles, quels que soient les modules optionnels que vous installez.
 
 :::tip[Raccourci Rapide]
-Exécutez n'importe quel outil principal en tapant son nom de compétence (par ex., `rmbaid-help`) dans votre IDE. Aucune session d'agent requise.
+Exécutez n'importe quel outil principal en tapant son nom de compétence (par ex., `smart-help`) dans votre IDE. Aucune session d'agent requise.
 :::
 
 ## Vue d'ensemble
 
-| Outil                                                                     | Type     | Objectif                                                                     |
-| ------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| [`rmbaid-help`](#rmbaid-help)                                             | Tâche    | Obtenir des conseils contextuels sur la prochaine étape                      |
-| [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | Faciliter des sessions de brainstorming interactives                         |
-| [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | Orchestrer des discussions de groupe multi-agents                            |
-| [`rmbaid-distillator`](#rmbaid-distillator)                               | Tâche    | Compression sans perte optimisée pour LLM de documents                       |
-| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation)             | Tâche    | Pousser la sortie LLM à travers des méthodes de raffinement itératives       |
-| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Tâche    | Revue cynique qui trouve ce qui manque et ce qui ne va pas                   |
-| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter)       | Tâche    | Analyse exhaustive des chemins de branchement pour les cas limites non gérés |
-| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose)         | Tâche    | Révision de copie clinique pour la clarté de communication                   |
-| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Tâche    | Édition structurelle — coupes, fusions et réorganisation                     |
-| [`rmbaid-shard-doc`](#rmbaid-shard-doc)                                   | Tâche    | Diviser les fichiers markdown volumineux en sections organisées              |
-| [`rmbaid-index-docs`](#rmbaid-index-docs)                                 | Tâche    | Générer ou mettre à jour un index de tous les documents dans un dossier      |
+| Outil                                                                   | Type     | Objectif                                                                     |
+| ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| [`smart-help`](#smart-help)                                             | Tâche    | Obtenir des conseils contextuels sur la prochaine étape                      |
+| [`smart-brainstorming`](#smart-brainstorming)                           | Workflow | Faciliter des sessions de brainstorming interactives                         |
+| [`smart-party-mode`](#smart-party-mode)                                 | Workflow | Orchestrer des discussions de groupe multi-agents                            |
+| [`smart-distillator`](#smart-distillator)                               | Tâche    | Compression sans perte optimisée pour LLM de documents                       |
+| [`smart-advanced-elicitation`](#smart-advanced-elicitation)             | Tâche    | Pousser la sortie LLM à travers des méthodes de raffinement itératives       |
+| [`smart-review-adversarial-general`](#smart-review-adversarial-general) | Tâche    | Revue cynique qui trouve ce qui manque et ce qui ne va pas                   |
+| [`smart-review-edge-case-hunter`](#smart-review-edge-case-hunter)       | Tâche    | Analyse exhaustive des chemins de branchement pour les cas limites non gérés |
+| [`smart-editorial-review-prose`](#smart-editorial-review-prose)         | Tâche    | Révision de copie clinique pour la clarté de communication                   |
+| [`smart-editorial-review-structure`](#smart-editorial-review-structure) | Tâche    | Édition structurelle — coupes, fusions et réorganisation                     |
+| [`smart-shard-doc`](#smart-shard-doc)                                   | Tâche    | Diviser les fichiers markdown volumineux en sections organisées              |
+| [`smart-index-docs`](#smart-index-docs)                                 | Tâche    | Générer ou mettre à jour un index de tous les documents dans un dossier      |
 
-## rmbaid-help
+## smart-help
 
 **Votre guide intelligent pour la suite.** — Inspecte l'état de votre projet, détecte ce qui a été fait et recommande la prochaine étape requise ou facultative.
 
 **Utilisez-le quand :**
 
 - Vous avez terminé un workflow et voulez savoir ce qui suit
-- Vous êtes nouveau sur RMB_AID et avez besoin d'orientation
+- Vous êtes nouveau sur SMART et avez besoin d'orientation
 - Vous êtes bloqué et voulez des conseils contextuels
 - Vous avez installé de nouveaux modules et voulez voir ce qui est disponible
 
@@ -45,11 +45,11 @@ Exécutez n'importe quel outil principal en tapant son nom de compétence (par e
 3. Recommande les prochaines étapes par ordre de priorité — étapes requises d'abord, puis facultatives
 4. Présente chaque recommandation avec la commande de compétence et une brève description
 
-**Entrée :** Requête optionnelle en langage naturel (par ex., `rmbaid-help J'ai une idée de SaaS, par où commencer ?`)
+**Entrée :** Requête optionnelle en langage naturel (par ex., `smart-help J'ai une idée de SaaS, par où commencer ?`)
 
 **Sortie :** Liste priorisée des prochaines étapes recommandées avec les commandes de compétence
 
-## rmbaid-brainstorming
+## smart-brainstorming
 
 **Génère des idées diverses à travers des techniques créatives interactives.** — Une session de brainstorming facilitée qui charge des méthodes d'idéation éprouvées depuis une bibliothèque de techniques et vous guide vers plus de 100 idées avant organisation.
 
@@ -75,9 +75,9 @@ Exécutez n'importe quel outil principal en tapant son nom de compétence (par e
 La magie se produit dans les idées 50–100. Le workflow encourage la génération de plus de 100 idées avant organisation.
 :::
 
-## rmbaid-party-mode
+## smart-party-mode
 
-**Orchestre des discussions de groupe multi-agents.** — Charge tous les agents RMB_AID installés et facilite une conversation naturelle où chaque agent contribue depuis son expertise et personnalité uniques.
+**Orchestre des discussions de groupe multi-agents.** — Charge tous les agents SMART installés et facilite une conversation naturelle où chaque agent contribue depuis son expertise et personnalité uniques.
 
 **Utilisez-le quand :**
 
@@ -97,7 +97,7 @@ La magie se produit dans les idées 50–100. Le workflow encourage la générat
 
 **Sortie :** Conversation multi-agents en temps réel avec des personnalités d'agents maintenues
 
-## rmbaid-distillator
+## smart-distillator
 
 **Compression sans perte optimisée pour LLM de documents sources.** — Produit des distillats denses et efficaces en tokens qui préservent toute l'information pour la consommation par des LLM en aval. Vérifiable par reconstruction aller-retour.
 
@@ -124,7 +124,7 @@ La magie se produit dans les idées 50–100. Le workflow encourage la générat
 
 **Sortie :** Fichier(s) markdown distillé(s) avec rapport de ratio de compression (par ex., "3.2:1")
 
-## rmbaid-advanced-elicitation
+## smart-advanced-elicitation
 
 **Passer la sortie du LLM à travers des méthodes de raffinement itératives.** — Sélectionne depuis une bibliothèque de techniques d'élicitation pour améliorer systématiquement le contenu à travers multiples passages.
 
@@ -146,7 +146,7 @@ La magie se produit dans les idées 50–100. Le workflow encourage la générat
 
 **Sortie :** Version améliorée du contenu avec les améliorations appliquées
 
-## rmbaid-review-adversarial-general
+## smart-review-adversarial-general
 
 **Revue contradictoire qui suppose que des problèmes existent et les recherche.** — Adopte une perspective de réviseur sceptique et blasé avec zéro tolérance pour le travail bâclé. Cherche ce qui manque, pas seulement ce qui ne va pas.
 
@@ -170,7 +170,7 @@ La magie se produit dans les idées 50–100. Le workflow encourage la générat
 
 **Sortie :** Liste markdown de plus de 10 constatations avec descriptions
 
-## rmbaid-review-edge-case-hunter
+## smart-review-edge-case-hunter
 
 **Parcours tous les chemins de branchement et les conditions limites, ne rapporte que les cas non gérés.** — Méthodologie pure de traçage de chemin[^1] qui dérive mécaniquement les classes de cas limites. Orthogonale à la revue contradictoire — centrée sur la méthode, pas sur l'attitude.
 
@@ -195,10 +195,10 @@ La magie se produit dans les idées 50–100. Le workflow encourage la générat
 **Sortie :** Tableau JSON des résultats, chacun avec `location`, `trigger_condition`, `guard_snippet` et `potential_consequence`
 
 :::note[Revue Complémentaire]
-Exécutez à la fois `rmbaid-review-adversarial-general` et `rmbaid-review-edge-case-hunter` pour une couverture orthogonale. La revue contradictoire détecte les problèmes de qualité et de complétude ; le chasseur de cas limites détecte les chemins non gérés.
+Exécutez à la fois `smart-review-adversarial-general` et `smart-review-edge-case-hunter` pour une couverture orthogonale. La revue contradictoire détecte les problèmes de qualité et de complétude ; le chasseur de cas limites détecte les chemins non gérés.
 :::
 
-## rmbaid-editorial-review-prose
+## smart-editorial-review-prose
 
 **Relecture éditoriale clinique centrée sur la clarté de communication.** — Analyse le texte pour détecter les problèmes qui nuisent à la compréhension. Applique le Microsoft Writing Style Guide baseline. Préserve la voix de l’auteur.
 
@@ -223,7 +223,7 @@ Exécutez à la fois `rmbaid-review-adversarial-general` et `rmbaid-review-edge-
 
 **Sortie :** Tableau Markdown en trois colonnes : Texte original | Texte révisé | Modifications
 
-## rmbaid-editorial-review-structure
+## smart-editorial-review-structure
 
 **Édition structurelle — propose des coupes, fusions, déplacements et condensations.** — Révise l'organisation du document et propose des changements substantiels pour améliorer la clarté et le flux avant la révision de copie.
 
@@ -250,7 +250,7 @@ Exécutez à la fois `rmbaid-review-adversarial-general` et `rmbaid-review-edge-
 
 **Sortie :** Résumé du document, liste de recommandations priorisées et réduction estimée
 
-## rmbaid-shard-doc
+## smart-shard-doc
 
 **Diviser les fichiers markdown volumineux en fichiers de sections organisés.** — Utilise les en-têtes de niveau 2 comme points de division pour créer un dossier de fichiers de sections autonomes avec un index.
 
@@ -271,7 +271,7 @@ Exécutez à la fois `rmbaid-review-adversarial-general` et `rmbaid-review-edge-
 
 **Sortie :** Dossier avec `index.md` et `01-{section}.md`, `02-{section}.md`, etc.
 
-## rmbaid-index-docs
+## smart-index-docs
 
 **Générer ou mettre à jour un index de tous les documents dans un dossier.** — Analyse un répertoire, lit chaque fichier pour comprendre son objectif et produit un `index.md` organisé avec liens et descriptions.
 

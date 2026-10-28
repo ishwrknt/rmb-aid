@@ -9,7 +9,7 @@ Libérez votre créativité grâce à une exploration guidée.
 
 ## Qu'est-ce que le Brainstorming ?
 
-Lancez `rmbaid-brainstorming` et vous obtenez un facilitateur créatif qui fait émerger vos idées - pas qui les génère pour vous. L'IA agit comme coach et guide, utilisant des techniques éprouvées pour créer les conditions où votre meilleure réflexion émerge.
+Lancez `smart-brainstorming` et vous obtenez un facilitateur créatif qui fait émerger vos idées - pas qui les génère pour vous. L'IA agit comme coach et guide, utilisant des techniques éprouvées pour créer les conditions où votre meilleure réflexion émerge.
 
 **Idéal pour :**
 

@@ -1,24 +1,24 @@
 ---
 title: 'Established Projects'
-description: How to use RMB_AID on existing codebases
+description: How to use SMART on existing codebases
 sidebar:
   order: 6
 ---
 
-Use RMB_AID effectively when working on existing projects and legacy codebases.
+Use SMART effectively when working on existing projects and legacy codebases.
 
-This guide covers the essential workflow for onboarding to existing projects with RMB_AID.
+This guide covers the essential workflow for onboarding to existing projects with SMART.
 
 :::note[Prerequisites]
 
-- RMB_AID installed (`npx rmb-aid install`)
+- SMART installed (`npx smart-agentic install`)
 - An existing codebase you want to work on
 - Access to an AI-powered IDE (Claude Code or Cursor)
   :::
 
 ## Step 1: Clean Up Completed Planning Artifacts
 
-If you have completed all PRD epics and stories through the RMB_AID process, clean up those files. Archive them, delete them, or rely on version history if needed. Do not keep these files in:
+If you have completed all PRD epics and stories through the SMART process, clean up those files. Archive them, delete them, or rely on version history if needed. Do not keep these files in:
 
 - `docs/`
 - `_rmbaid-output/planning-artifacts/`
@@ -33,7 +33,7 @@ Generate `project-context.md` to capture your existing codebase patterns and con
 Run the generate project context workflow:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 This scans your codebase to identify:
@@ -57,34 +57,34 @@ Your `docs/` folder should contain succinct, well-organized documentation that a
 - Architecture
 - Any other relevant project information
 
-For complex projects, consider using the `rmbaid-document-project` workflow. It offers runtime variants that will scan your entire project and document its actual current state.
+For complex projects, consider using the `smart-document-project` workflow. It offers runtime variants that will scan your entire project and document its actual current state.
 
 ## Step 3: Get Help
 
-### RMB_AID-Help: Your Starting Point
+### SMART-Help: Your Starting Point
 
-**Run `rmbaid-help` anytime you're unsure what to do next.** This intelligent guide:
+**Run `smart-help` anytime you're unsure what to do next.** This intelligent guide:
 
 - Inspects your project to see what's already been done
 - Shows options based on your installed modules
 - Understands natural language queries
 
 ```
-rmbaid-help I have an existing Rails app, where should I start?
-rmbaid-help What's the difference between quick-flow and full method?
-rmbaid-help Show me what workflows are available
+smart-help I have an existing Rails app, where should I start?
+smart-help What's the difference between quick-flow and full method?
+smart-help Show me what workflows are available
 ```
 
-RMB_AID-Help also **automatically runs at the end of every workflow**, providing clear guidance on exactly what to do next.
+SMART-Help also **automatically runs at the end of every workflow**, providing clear guidance on exactly what to do next.
 
 ### Choosing Your Approach
 
 You have two primary options depending on the scope of changes:
 
-| Scope                          | Recommended Approach                                                                                                                        |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Small updates or additions** | Run `rmbaid-quick-dev` to clarify intent, plan, implement, and review in a single workflow. The full four-phase RMB_AID is likely overkill. |
-| **Major changes or additions** | Start with the RMB_AID, applying as much or as little rigor as needed.                                                                      |
+| Scope                          | Recommended Approach                                                                                                                     |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Small updates or additions** | Run `smart-quick-dev` to clarify intent, plan, implement, and review in a single workflow. The full four-phase SMART is likely overkill. |
+| **Major changes or additions** | Start with the SMART, applying as much or as little rigor as needed.                                                                     |
 
 ### During PRD Creation
 

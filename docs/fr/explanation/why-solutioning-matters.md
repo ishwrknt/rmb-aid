@@ -52,12 +52,12 @@ Cela évite :
 
 ## Quand le Solutioning est Requis
 
-| Parcours                 | Solutioning Requis ?        |
-| ------------------------ | --------------------------- |
-| Quick Dev                | Non - l’ignore complètement |
-| Méthode RMB_AID Simple   | Optionnel                   |
-| Méthode RMB_AID Complexe | Oui                         |
-| Enterprise               | Oui                         |
+| Parcours               | Solutioning Requis ?        |
+| ---------------------- | --------------------------- |
+| Quick Dev              | Non - l’ignore complètement |
+| Méthode SMART Simple   | Optionnel                   |
+| Méthode SMART Complexe | Oui                         |
+| Enterprise             | Oui                         |
 
 :::tip[Règle Générale]
 Si vous avez plusieurs epics qui pourraient être implémentés par différents agents, vous avez besoin de solutioning.

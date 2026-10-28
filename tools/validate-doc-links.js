@@ -105,8 +105,8 @@ function extractAnchors(content) {
 
 /**
  * Resolve a site-relative link to a file path
- * /docs/how-to/installation/install-rmbaid.md -> docs/how-to/installation/install-rmbaid.md
- * /how-to/installation/install-rmbaid/ -> docs/how-to/installation/install-rmbaid.md or .../index.md
+ * /docs/how-to/installation/install-smart.md -> docs/how-to/installation/install-smart.md
+ * /how-to/installation/install-smart/ -> docs/how-to/installation/install-smart.md or .../index.md
  */
 function resolveLink(siteRelativePath, sourceFile) {
   // Strip anchor and query

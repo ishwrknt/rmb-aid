@@ -10,27 +10,27 @@ sections_completed: ['project_focus', 'technology_stack', 'critical_rules', 'cur
 ## Project Focus
 
 - SMART is the active project identity and user-facing brand.
-- Preserve compatibility where useful, including existing `rmbaid`, `rmb-aid`, and `_rmbaid` package, command, and folder names during the transition.
-- Prefer SMART branding in user-facing docs and installer output over older BMAD or RMB_AID naming.
+- Preserve compatibility where useful, including existing `smart`, `smart-agentic`, and `_rmbaid` package, command, and folder names during the transition.
+- Prefer SMART branding in user-facing docs and installer output over older BMAD or SMART naming.
 - The framework keeps the BMAD-style workflow structure, with SMART acting as the reasoning layer on top.
 
 ## Technology Stack & Key Paths
 
 - Runtime: Node.js 22+
 - Package manager: npm
-- CLI entrypoint: `tools/installer/rmbaid-cli.js`
+- CLI entrypoint: `tools/installer/smart-cli.js`
 - Install command handler: `tools/installer/commands/install.js`
 - Installer UI flow: `tools/installer/ui.js`
 - Module config collection: `tools/installer/modules/official-modules.js`
-- Core reasoning prompt: `.rmbaid-core/rmbaid-core.md`
+- Core reasoning prompt: `.smart-core/smart-core.md`
 - Primary docs: `README.md`, `docs/how-to/`, `docs/reference/`, `docs/tutorials/`
 - Localized docs: `docs/fr/`, `docs/vi-vn/`, `README_VN.md`
 
 ## Critical Implementation Rules
 
-- Prefer `npx rmb-aid install` as the primary documented install command.
-- The published npm package name is `rmb-aid`.
-- Treat `rmbaid` as a CLI/bin alias, not the primary public `npx` package name.
+- Prefer `npx smart-agentic install` as the primary documented install command.
+- The published npm package name is `smart-agentic`.
+- Treat `smart` as a CLI/bin alias, not the primary public `npx` package name.
 - Default installer UX should be simple:
 - Use recommended modules automatically.
 - Skip optional custom-content prompts unless explicitly requested.
@@ -48,14 +48,14 @@ sections_completed: ['project_focus', 'technology_stack', 'critical_rules', 'cur
 - Zeigler simulation pipeline
 - scientific-method hypothesis requirement
 - systems-theory abstraction
-- Main installer/docs command surface has been shifted to `rmbaid`.
+- Main installer/docs command surface has been shifted to `smart`.
 - Installer behavior was simplified so plain interactive install asks fewer questions by default.
-- Full interactive configuration remains available through `npx rmb-aid install --advanced`.
+- Full interactive configuration remains available through `npx smart-agentic install --advanced`.
 
 ## Verification Notes
 
 - Syntax checks completed for:
-- `tools/installer/rmbaid-cli.js`
+- `tools/installer/smart-cli.js`
 - `tools/installer/commands/install.js`
 - `tools/installer/commands/uninstall.js`
 - `tools/installer/ui.js`

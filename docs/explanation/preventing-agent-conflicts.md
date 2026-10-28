@@ -119,5 +119,5 @@ Common decisions that prevent conflicts:
 - Document decisions that cross epic boundaries
 - Focus on conflict-prone areas
 - Update architecture as you learn
-- Use `rmbaid-correct-course` for significant changes
+- Use `smart-correct-course` for significant changes
   :::

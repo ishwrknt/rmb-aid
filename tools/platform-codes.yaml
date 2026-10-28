@@ -1,5 +1,5 @@
-# RMB_AID Platform Codes Configuration
-# Central configuration for all platform/IDE codes used in the RMB_AID system
+# SMART Platform Codes Configuration
+# Central configuration for all platform/IDE codes used in the SMART system
 #
 # This file defines the standardized platform codes that are used throughout
 # the installation system to identify different platforms (IDEs, tools, etc.)

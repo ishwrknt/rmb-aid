@@ -50,7 +50,7 @@ function assert(condition, testName, errorMessage = '') {
 }
 
 async function createTestRmbaidFixture() {
-  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-fixture-'));
+  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-fixture-'));
   const fixtureDir = path.join(fixtureRoot, '_rmbaid');
   await fs.ensureDir(fixtureDir);
 
@@ -60,19 +60,19 @@ async function createTestRmbaidFixture() {
     path.join(fixtureDir, '_config', 'skill-manifest.csv'),
     [
       'canonicalId,name,description,module,path,install_to_rmbaid',
-      '"rmbaid-master","rmbaid-master","Minimal test agent fixture","core","_rmbaid/core/rmbaid-master/SKILL.md","true"',
+      '"smart-master","smart-master","Minimal test agent fixture","core","_rmbaid/core/smart-master/SKILL.md","true"',
       '',
     ].join('\n'),
   );
 
   // Minimal SKILL.md for the skill entry
-  const skillDir = path.join(fixtureDir, 'core', 'rmbaid-master');
+  const skillDir = path.join(fixtureDir, 'core', 'smart-master');
   await fs.ensureDir(skillDir);
   await fs.writeFile(
     path.join(skillDir, 'SKILL.md'),
     [
       '---',
-      'name: rmbaid-master',
+      'name: smart-master',
       'description: Minimal test agent fixture',
       '---',
       '',
@@ -86,7 +86,7 @@ async function createTestRmbaidFixture() {
 }
 
 async function createSkillCollisionFixture() {
-  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-skill-collision-'));
+  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-skill-collision-'));
   const fixtureDir = path.join(fixtureRoot, '_rmbaid');
   const configDir = path.join(fixtureDir, '_config');
   await fs.ensureDir(configDir);
@@ -95,7 +95,7 @@ async function createSkillCollisionFixture() {
     path.join(configDir, 'agent-manifest.csv'),
     [
       'name,displayName,title,icon,capabilities,role,identity,communicationStyle,principles,module,path,canonicalId',
-      '"rmbaid-master","RMB_AID Master","","","","","","","","core","_rmbaid/core/agents/rmbaid-master.md","rmbaid-master"',
+      '"smart-master","SMART Master","","","","","","","","core","_rmbaid/core/agents/smart-master.md","smart-master"',
       '',
     ].join('\n'),
   );
@@ -104,38 +104,32 @@ async function createSkillCollisionFixture() {
     path.join(configDir, 'skill-manifest.csv'),
     [
       'canonicalId,name,description,module,path,install_to_rmbaid',
-      '"rmbaid-help","rmbaid-help","Native help skill","core","_rmbaid/core/tasks/rmbaid-help/SKILL.md","true"',
+      '"smart-help","smart-help","Native help skill","core","_rmbaid/core/tasks/smart-help/SKILL.md","true"',
       '',
     ].join('\n'),
   );
 
-  const skillDir = path.join(fixtureDir, 'core', 'tasks', 'rmbaid-help');
+  const skillDir = path.join(fixtureDir, 'core', 'tasks', 'smart-help');
   await fs.ensureDir(skillDir);
   await fs.writeFile(
     path.join(skillDir, 'SKILL.md'),
-    ['---', 'name: rmbaid-help', 'description: Native help skill', '---', '', 'Use this skill directly.'].join('\n'),
+    ['---', 'name: smart-help', 'description: Native help skill', '---', '', 'Use this skill directly.'].join('\n'),
   );
 
   const agentDir = path.join(fixtureDir, 'core', 'agents');
   await fs.ensureDir(agentDir);
   await fs.writeFile(
-    path.join(agentDir, 'rmbaid-master.md'),
-    [
-      '---',
-      'name: RMB_AID Master',
-      'description: Master agent',
-      '---',
-      '',
-      '<agent name="RMB_AID Master" title="Master">',
-      '</agent>',
-    ].join('\n'),
+    path.join(agentDir, 'smart-master.md'),
+    ['---', 'name: SMART Master', 'description: Master agent', '---', '', '<agent name="SMART Master" title="Master">', '</agent>'].join(
+      '\n',
+    ),
   );
 
   return { root: fixtureRoot, rmbaidDir: fixtureDir };
 }
 
 async function createCustomModuleManifestFixture() {
-  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-custom-manifest-'));
+  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-custom-manifest-'));
   const rmbaidDir = path.join(fixtureRoot, '_rmbaid');
   const configDir = path.join(rmbaidDir, '_config');
   const moduleSourceDir = path.join(fixtureRoot, 'test-module-source');
@@ -211,23 +205,23 @@ async function runTests() {
       'Windsurf installer cleans legacy workflow output',
     );
 
-    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-windsurf-test-'));
+    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-windsurf-test-'));
     const installedRmbaidDir = await createTestRmbaidFixture();
-    const legacyDir = path.join(tempProjectDir, '.windsurf', 'workflows', 'rmbaid-legacy-dir');
+    const legacyDir = path.join(tempProjectDir, '.windsurf', 'workflows', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir);
-    await fs.writeFile(path.join(tempProjectDir, '.windsurf', 'workflows', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir, '.windsurf', 'workflows', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir, 'SKILL.md'), 'legacy\n');
 
     const ideManager = new IdeManager();
     await ideManager.ensureInitialized();
     const result = await ideManager.setup('windsurf', tempProjectDir, installedRmbaidDir, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result.success === true, 'Windsurf setup succeeds against temp project');
 
-    const skillFile = path.join(tempProjectDir, '.windsurf', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile = path.join(tempProjectDir, '.windsurf', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile), 'Windsurf install writes SKILL.md directory output');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir, '.windsurf', 'workflows'))), 'Windsurf setup removes legacy workflows dir');
@@ -257,23 +251,23 @@ async function runTests() {
       'Kiro installer cleans legacy steering output',
     );
 
-    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-kiro-test-'));
+    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-kiro-test-'));
     const installedRmbaidDir = await createTestRmbaidFixture();
-    const legacyDir = path.join(tempProjectDir, '.kiro', 'steering', 'rmbaid-legacy-dir');
+    const legacyDir = path.join(tempProjectDir, '.kiro', 'steering', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir);
-    await fs.writeFile(path.join(tempProjectDir, '.kiro', 'steering', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir, '.kiro', 'steering', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir, 'SKILL.md'), 'legacy\n');
 
     const ideManager = new IdeManager();
     await ideManager.ensureInitialized();
     const result = await ideManager.setup('kiro', tempProjectDir, installedRmbaidDir, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result.success === true, 'Kiro setup succeeds against temp project');
 
-    const skillFile = path.join(tempProjectDir, '.kiro', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile = path.join(tempProjectDir, '.kiro', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile), 'Kiro install writes SKILL.md directory output');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir, '.kiro', 'steering'))), 'Kiro setup removes legacy steering dir');
@@ -303,23 +297,23 @@ async function runTests() {
       'Antigravity installer cleans legacy workflow output',
     );
 
-    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-antigravity-test-'));
+    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-antigravity-test-'));
     const installedRmbaidDir = await createTestRmbaidFixture();
-    const legacyDir = path.join(tempProjectDir, '.agent', 'workflows', 'rmbaid-legacy-dir');
+    const legacyDir = path.join(tempProjectDir, '.agent', 'workflows', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir);
-    await fs.writeFile(path.join(tempProjectDir, '.agent', 'workflows', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir, '.agent', 'workflows', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir, 'SKILL.md'), 'legacy\n');
 
     const ideManager = new IdeManager();
     await ideManager.ensureInitialized();
     const result = await ideManager.setup('antigravity', tempProjectDir, installedRmbaidDir, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result.success === true, 'Antigravity setup succeeds against temp project');
 
-    const skillFile = path.join(tempProjectDir, '.agent', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile = path.join(tempProjectDir, '.agent', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile), 'Antigravity install writes SKILL.md directory output');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir, '.agent', 'workflows'))), 'Antigravity setup removes legacy workflows dir');
@@ -354,23 +348,23 @@ async function runTests() {
       'Auggie installer does not enable ancestor conflict checks without verified inheritance',
     );
 
-    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-auggie-test-'));
+    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-auggie-test-'));
     const installedRmbaidDir = await createTestRmbaidFixture();
-    const legacyDir = path.join(tempProjectDir, '.augment', 'commands', 'rmbaid-legacy-dir');
+    const legacyDir = path.join(tempProjectDir, '.augment', 'commands', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir);
-    await fs.writeFile(path.join(tempProjectDir, '.augment', 'commands', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir, '.augment', 'commands', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir, 'SKILL.md'), 'legacy\n');
 
     const ideManager = new IdeManager();
     await ideManager.ensureInitialized();
     const result = await ideManager.setup('auggie', tempProjectDir, installedRmbaidDir, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result.success === true, 'Auggie setup succeeds against temp project');
 
-    const skillFile = path.join(tempProjectDir, '.augment', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile = path.join(tempProjectDir, '.augment', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile), 'Auggie install writes SKILL.md directory output');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir, '.augment', 'commands'))), 'Auggie setup removes legacy commands dir');
@@ -403,13 +397,13 @@ async function runTests() {
       'OpenCode installer cleans split legacy agent and command output',
     );
 
-    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-opencode-test-'));
+    const tempProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-opencode-test-'));
     const installedRmbaidDir = await createTestRmbaidFixture();
     const legacyDirs = [
-      path.join(tempProjectDir, '.opencode', 'agents', 'rmbaid-legacy-agent'),
-      path.join(tempProjectDir, '.opencode', 'commands', 'rmbaid-legacy-command'),
-      path.join(tempProjectDir, '.opencode', 'agent', 'rmbaid-legacy-agent-singular'),
-      path.join(tempProjectDir, '.opencode', 'command', 'rmbaid-legacy-command-singular'),
+      path.join(tempProjectDir, '.opencode', 'agents', 'smart-legacy-agent'),
+      path.join(tempProjectDir, '.opencode', 'commands', 'smart-legacy-command'),
+      path.join(tempProjectDir, '.opencode', 'agent', 'smart-legacy-agent-singular'),
+      path.join(tempProjectDir, '.opencode', 'command', 'smart-legacy-command-singular'),
     ];
 
     for (const legacyDir of legacyDirs) {
@@ -422,12 +416,12 @@ async function runTests() {
     await ideManager.ensureInitialized();
     const result = await ideManager.setup('opencode', tempProjectDir, installedRmbaidDir, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result.success === true, 'OpenCode setup succeeds against temp project');
 
-    const skillFile = path.join(tempProjectDir, '.opencode', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile = path.join(tempProjectDir, '.opencode', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile), 'OpenCode install writes SKILL.md directory output');
 
     for (const legacyDir of ['agents', 'commands', 'agent', 'command']) {
@@ -462,28 +456,28 @@ async function runTests() {
       'Claude Code installer cleans legacy command output',
     );
 
-    const tempProjectDir9 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-claude-code-test-'));
+    const tempProjectDir9 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-claude-code-test-'));
     const installedRmbaidDir9 = await createTestRmbaidFixture();
     const legacyDir9 = path.join(tempProjectDir9, '.claude', 'commands');
     await fs.ensureDir(legacyDir9);
-    await fs.writeFile(path.join(legacyDir9, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir9, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager9 = new IdeManager();
     await ideManager9.ensureInitialized();
     const result9 = await ideManager9.setup('claude-code', tempProjectDir9, installedRmbaidDir9, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result9.success === true, 'Claude Code setup succeeds against temp project');
 
-    const skillFile9 = path.join(tempProjectDir9, '.claude', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile9 = path.join(tempProjectDir9, '.claude', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile9), 'Claude Code install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent9 = await fs.readFile(skillFile9, 'utf8');
     const nameMatch9 = skillContent9.match(/^name:\s*(.+)$/m);
-    assert(nameMatch9 && nameMatch9[1].trim() === 'rmbaid-master', 'Claude Code skill name frontmatter matches directory name exactly');
+    assert(nameMatch9 && nameMatch9[1].trim() === 'smart-master', 'Claude Code skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(legacyDir9)), 'Claude Code setup removes legacy commands dir');
 
@@ -514,28 +508,28 @@ async function runTests() {
       'Codex installer cleans legacy prompt output',
     );
 
-    const tempProjectDir11 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-codex-test-'));
+    const tempProjectDir11 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-codex-test-'));
     const installedRmbaidDir11 = await createTestRmbaidFixture();
     const legacyDir11 = path.join(tempProjectDir11, '.codex', 'prompts');
     await fs.ensureDir(legacyDir11);
-    await fs.writeFile(path.join(legacyDir11, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir11, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager11 = new IdeManager();
     await ideManager11.ensureInitialized();
     const result11 = await ideManager11.setup('codex', tempProjectDir11, installedRmbaidDir11, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result11.success === true, 'Codex setup succeeds against temp project');
 
-    const skillFile11 = path.join(tempProjectDir11, '.agents', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile11 = path.join(tempProjectDir11, '.agents', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile11), 'Codex install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent11 = await fs.readFile(skillFile11, 'utf8');
     const nameMatch11 = skillContent11.match(/^name:\s*(.+)$/m);
-    assert(nameMatch11 && nameMatch11[1].trim() === 'rmbaid-master', 'Codex skill name frontmatter matches directory name exactly');
+    assert(nameMatch11 && nameMatch11[1].trim() === 'smart-master', 'Codex skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(legacyDir11)), 'Codex setup removes legacy prompts dir');
 
@@ -568,28 +562,28 @@ async function runTests() {
 
     assert(!cursorInstaller?.ancestor_conflict_check, 'Cursor installer does not enable ancestor conflict checks');
 
-    const tempProjectDir13c = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-cursor-test-'));
+    const tempProjectDir13c = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-cursor-test-'));
     const installedRmbaidDir13c = await createTestRmbaidFixture();
     const legacyDir13c = path.join(tempProjectDir13c, '.cursor', 'commands');
     await fs.ensureDir(legacyDir13c);
-    await fs.writeFile(path.join(legacyDir13c, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir13c, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager13c = new IdeManager();
     await ideManager13c.ensureInitialized();
     const result13c = await ideManager13c.setup('cursor', tempProjectDir13c, installedRmbaidDir13c, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result13c.success === true, 'Cursor setup succeeds against temp project');
 
-    const skillFile13c = path.join(tempProjectDir13c, '.cursor', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile13c = path.join(tempProjectDir13c, '.cursor', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile13c), 'Cursor install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent13c = await fs.readFile(skillFile13c, 'utf8');
     const nameMatch13c = skillContent13c.match(/^name:\s*(.+)$/m);
-    assert(nameMatch13c && nameMatch13c[1].trim() === 'rmbaid-master', 'Cursor skill name frontmatter matches directory name exactly');
+    assert(nameMatch13c && nameMatch13c[1].trim() === 'smart-master', 'Cursor skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(legacyDir13c)), 'Cursor setup removes legacy commands dir');
 
@@ -618,30 +612,30 @@ async function runTests() {
       'Roo installer cleans legacy command output',
     );
 
-    const tempProjectDir13 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-roo-test-'));
+    const tempProjectDir13 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-roo-test-'));
     const installedRmbaidDir13 = await createTestRmbaidFixture();
-    const legacyDir13 = path.join(tempProjectDir13, '.roo', 'commands', 'rmbaid-legacy-dir');
+    const legacyDir13 = path.join(tempProjectDir13, '.roo', 'commands', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir13);
-    await fs.writeFile(path.join(tempProjectDir13, '.roo', 'commands', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir13, '.roo', 'commands', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir13, 'SKILL.md'), 'legacy\n');
 
     const ideManager13 = new IdeManager();
     await ideManager13.ensureInitialized();
     const result13 = await ideManager13.setup('roo', tempProjectDir13, installedRmbaidDir13, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result13.success === true, 'Roo setup succeeds against temp project');
 
-    const skillFile13 = path.join(tempProjectDir13, '.roo', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile13 = path.join(tempProjectDir13, '.roo', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile13), 'Roo install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name (Roo constraint: lowercase alphanumeric + hyphens)
     const skillContent13 = await fs.readFile(skillFile13, 'utf8');
     const nameMatch13 = skillContent13.match(/^name:\s*(.+)$/m);
     assert(
-      nameMatch13 && nameMatch13[1].trim() === 'rmbaid-master',
+      nameMatch13 && nameMatch13[1].trim() === 'smart-master',
       'Roo skill name frontmatter matches directory name exactly (lowercase alphanumeric + hyphens)',
     );
 
@@ -650,7 +644,7 @@ async function runTests() {
     // Reinstall/upgrade: run setup again over existing skills output
     const result13b = await ideManager13.setup('roo', tempProjectDir13, installedRmbaidDir13, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result13b.success === true, 'Roo reinstall/upgrade succeeds over existing skills');
@@ -692,7 +686,7 @@ async function runTests() {
       'GitHub Copilot installer cleans legacy prompts output',
     );
 
-    const tempProjectDir17 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-copilot-test-'));
+    const tempProjectDir17 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-copilot-test-'));
     const installedRmbaidDir17 = await createTestRmbaidFixture();
 
     // Create legacy .github/agents/ and .github/prompts/ files
@@ -700,45 +694,42 @@ async function runTests() {
     const legacyPromptsDir17 = path.join(tempProjectDir17, '.github', 'prompts');
     await fs.ensureDir(legacyAgentsDir17);
     await fs.ensureDir(legacyPromptsDir17);
-    await fs.writeFile(path.join(legacyAgentsDir17, 'rmbaid-legacy.agent.md'), 'legacy agent\n');
-    await fs.writeFile(path.join(legacyPromptsDir17, 'rmbaid-legacy.prompt.md'), 'legacy prompt\n');
+    await fs.writeFile(path.join(legacyAgentsDir17, 'smart-legacy.agent.md'), 'legacy agent\n');
+    await fs.writeFile(path.join(legacyPromptsDir17, 'smart-legacy.prompt.md'), 'legacy prompt\n');
 
-    // Create legacy copilot-instructions.md with RMB_AID markers
+    // Create legacy copilot-instructions.md with SMART markers
     const copilotInstructionsPath17 = path.join(tempProjectDir17, '.github', 'copilot-instructions.md');
     await fs.writeFile(
       copilotInstructionsPath17,
-      'User content before\n<!-- RMB_AID:START -->\nRMB_AID generated content\n<!-- RMB_AID:END -->\nUser content after\n',
+      'User content before\n<!-- SMART:START -->\nSMART generated content\n<!-- SMART:END -->\nUser content after\n',
     );
 
     const ideManager17 = new IdeManager();
     await ideManager17.ensureInitialized();
     const result17 = await ideManager17.setup('github-copilot', tempProjectDir17, installedRmbaidDir17, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result17.success === true, 'GitHub Copilot setup succeeds against temp project');
 
-    const skillFile17 = path.join(tempProjectDir17, '.github', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile17 = path.join(tempProjectDir17, '.github', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile17), 'GitHub Copilot install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent17 = await fs.readFile(skillFile17, 'utf8');
     const nameMatch17 = skillContent17.match(/^name:\s*(.+)$/m);
-    assert(
-      nameMatch17 && nameMatch17[1].trim() === 'rmbaid-master',
-      'GitHub Copilot skill name frontmatter matches directory name exactly',
-    );
+    assert(nameMatch17 && nameMatch17[1].trim() === 'smart-master', 'GitHub Copilot skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(legacyAgentsDir17)), 'GitHub Copilot setup removes legacy agents dir');
 
     assert(!(await fs.pathExists(legacyPromptsDir17)), 'GitHub Copilot setup removes legacy prompts dir');
 
-    // Verify copilot-instructions.md RMB_AID markers were stripped but user content preserved
+    // Verify copilot-instructions.md SMART markers were stripped but user content preserved
     const cleanedInstructions17 = await fs.readFile(copilotInstructionsPath17, 'utf8');
     assert(
-      !cleanedInstructions17.includes('RMB_AID:START') && !cleanedInstructions17.includes('RMB_AID generated content'),
-      'GitHub Copilot setup strips RMB_AID markers from copilot-instructions.md',
+      !cleanedInstructions17.includes('SMART:START') && !cleanedInstructions17.includes('SMART generated content'),
+      'GitHub Copilot setup strips SMART markers from copilot-instructions.md',
     );
     assert(
       cleanedInstructions17.includes('User content before') && cleanedInstructions17.includes('User content after'),
@@ -770,36 +761,36 @@ async function runTests() {
       'Cline installer cleans legacy workflow output',
     );
 
-    const tempProjectDir18 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-cline-test-'));
+    const tempProjectDir18 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-cline-test-'));
     const installedRmbaidDir18 = await createTestRmbaidFixture();
-    const legacyDir18 = path.join(tempProjectDir18, '.clinerules', 'workflows', 'rmbaid-legacy-dir');
+    const legacyDir18 = path.join(tempProjectDir18, '.clinerules', 'workflows', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir18);
-    await fs.writeFile(path.join(tempProjectDir18, '.clinerules', 'workflows', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir18, '.clinerules', 'workflows', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir18, 'SKILL.md'), 'legacy\n');
 
     const ideManager18 = new IdeManager();
     await ideManager18.ensureInitialized();
     const result18 = await ideManager18.setup('cline', tempProjectDir18, installedRmbaidDir18, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result18.success === true, 'Cline setup succeeds against temp project');
 
-    const skillFile18 = path.join(tempProjectDir18, '.cline', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile18 = path.join(tempProjectDir18, '.cline', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile18), 'Cline install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent18 = await fs.readFile(skillFile18, 'utf8');
     const nameMatch18 = skillContent18.match(/^name:\s*(.+)$/m);
-    assert(nameMatch18 && nameMatch18[1].trim() === 'rmbaid-master', 'Cline skill name frontmatter matches directory name exactly');
+    assert(nameMatch18 && nameMatch18[1].trim() === 'smart-master', 'Cline skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir18, '.clinerules', 'workflows'))), 'Cline setup removes legacy workflows dir');
 
     // Reinstall/upgrade: run setup again over existing skills output
     const result18b = await ideManager18.setup('cline', tempProjectDir18, installedRmbaidDir18, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result18b.success === true, 'Cline reinstall/upgrade succeeds over existing skills');
@@ -830,34 +821,34 @@ async function runTests() {
       'CodeBuddy installer cleans legacy command output',
     );
 
-    const tempProjectDir19 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-codebuddy-test-'));
+    const tempProjectDir19 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-codebuddy-test-'));
     const installedRmbaidDir19 = await createTestRmbaidFixture();
-    const legacyDir19 = path.join(tempProjectDir19, '.codebuddy', 'commands', 'rmbaid-legacy-dir');
+    const legacyDir19 = path.join(tempProjectDir19, '.codebuddy', 'commands', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir19);
-    await fs.writeFile(path.join(tempProjectDir19, '.codebuddy', 'commands', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir19, '.codebuddy', 'commands', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir19, 'SKILL.md'), 'legacy\n');
 
     const ideManager19 = new IdeManager();
     await ideManager19.ensureInitialized();
     const result19 = await ideManager19.setup('codebuddy', tempProjectDir19, installedRmbaidDir19, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result19.success === true, 'CodeBuddy setup succeeds against temp project');
 
-    const skillFile19 = path.join(tempProjectDir19, '.codebuddy', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile19 = path.join(tempProjectDir19, '.codebuddy', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile19), 'CodeBuddy install writes SKILL.md directory output');
 
     const skillContent19 = await fs.readFile(skillFile19, 'utf8');
     const nameMatch19 = skillContent19.match(/^name:\s*(.+)$/m);
-    assert(nameMatch19 && nameMatch19[1].trim() === 'rmbaid-master', 'CodeBuddy skill name frontmatter matches directory name exactly');
+    assert(nameMatch19 && nameMatch19[1].trim() === 'smart-master', 'CodeBuddy skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir19, '.codebuddy', 'commands'))), 'CodeBuddy setup removes legacy commands dir');
 
     const result19b = await ideManager19.setup('codebuddy', tempProjectDir19, installedRmbaidDir19, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result19b.success === true, 'CodeBuddy reinstall/upgrade succeeds over existing skills');
@@ -888,34 +879,34 @@ async function runTests() {
       'Crush installer cleans legacy command output',
     );
 
-    const tempProjectDir20 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-crush-test-'));
+    const tempProjectDir20 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-crush-test-'));
     const installedRmbaidDir20 = await createTestRmbaidFixture();
-    const legacyDir20 = path.join(tempProjectDir20, '.crush', 'commands', 'rmbaid-legacy-dir');
+    const legacyDir20 = path.join(tempProjectDir20, '.crush', 'commands', 'smart-legacy-dir');
     await fs.ensureDir(legacyDir20);
-    await fs.writeFile(path.join(tempProjectDir20, '.crush', 'commands', 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(tempProjectDir20, '.crush', 'commands', 'smart-legacy.md'), 'legacy\n');
     await fs.writeFile(path.join(legacyDir20, 'SKILL.md'), 'legacy\n');
 
     const ideManager20 = new IdeManager();
     await ideManager20.ensureInitialized();
     const result20 = await ideManager20.setup('crush', tempProjectDir20, installedRmbaidDir20, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result20.success === true, 'Crush setup succeeds against temp project');
 
-    const skillFile20 = path.join(tempProjectDir20, '.crush', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile20 = path.join(tempProjectDir20, '.crush', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile20), 'Crush install writes SKILL.md directory output');
 
     const skillContent20 = await fs.readFile(skillFile20, 'utf8');
     const nameMatch20 = skillContent20.match(/^name:\s*(.+)$/m);
-    assert(nameMatch20 && nameMatch20[1].trim() === 'rmbaid-master', 'Crush skill name frontmatter matches directory name exactly');
+    assert(nameMatch20 && nameMatch20[1].trim() === 'smart-master', 'Crush skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir20, '.crush', 'commands'))), 'Crush setup removes legacy commands dir');
 
     const result20b = await ideManager20.setup('crush', tempProjectDir20, installedRmbaidDir20, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result20b.success === true, 'Crush reinstall/upgrade succeeds over existing skills');
@@ -946,33 +937,33 @@ async function runTests() {
       'Trae installer cleans legacy rules output',
     );
 
-    const tempProjectDir21 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-trae-test-'));
+    const tempProjectDir21 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-trae-test-'));
     const installedRmbaidDir21 = await createTestRmbaidFixture();
     const legacyDir21 = path.join(tempProjectDir21, '.trae', 'rules');
     await fs.ensureDir(legacyDir21);
-    await fs.writeFile(path.join(legacyDir21, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir21, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager21 = new IdeManager();
     await ideManager21.ensureInitialized();
     const result21 = await ideManager21.setup('trae', tempProjectDir21, installedRmbaidDir21, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result21.success === true, 'Trae setup succeeds against temp project');
 
-    const skillFile21 = path.join(tempProjectDir21, '.trae', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile21 = path.join(tempProjectDir21, '.trae', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile21), 'Trae install writes SKILL.md directory output');
 
     const skillContent21 = await fs.readFile(skillFile21, 'utf8');
     const nameMatch21 = skillContent21.match(/^name:\s*(.+)$/m);
-    assert(nameMatch21 && nameMatch21[1].trim() === 'rmbaid-master', 'Trae skill name frontmatter matches directory name exactly');
+    assert(nameMatch21 && nameMatch21[1].trim() === 'smart-master', 'Trae skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir21, '.trae', 'rules'))), 'Trae setup removes legacy rules dir');
 
     const result21b = await ideManager21.setup('trae', tempProjectDir21, installedRmbaidDir21, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result21b.success === true, 'Trae reinstall/upgrade succeeds over existing skills');
@@ -1015,33 +1006,33 @@ async function runTests() {
       'KiloCoder appears in IDE selection',
     );
 
-    const tempProjectDir22 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-kilo-test-'));
+    const tempProjectDir22 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-kilo-test-'));
     const installedRmbaidDir22 = await createTestRmbaidFixture();
 
     // Pre-populate legacy Kilo artifacts that should be cleaned up
     const legacyDir22 = path.join(tempProjectDir22, '.kilocode', 'workflows');
     await fs.ensureDir(legacyDir22);
-    await fs.writeFile(path.join(legacyDir22, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir22, 'smart-legacy.md'), 'legacy\n');
 
     const result22 = await ideManager22.setup('kilo', tempProjectDir22, installedRmbaidDir22, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result22.success === true, 'KiloCoder setup succeeds against temp project');
 
-    const skillFile22 = path.join(tempProjectDir22, '.kilocode', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile22 = path.join(tempProjectDir22, '.kilocode', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile22), 'KiloCoder install writes SKILL.md directory output');
 
     const skillContent22 = await fs.readFile(skillFile22, 'utf8');
     const nameMatch22 = skillContent22.match(/^name:\s*(.+)$/m);
-    assert(nameMatch22 && nameMatch22[1].trim() === 'rmbaid-master', 'KiloCoder skill name frontmatter matches directory name exactly');
+    assert(nameMatch22 && nameMatch22[1].trim() === 'smart-master', 'KiloCoder skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir22, '.kilocode', 'workflows'))), 'KiloCoder setup removes legacy workflows dir');
 
     const result22b = await ideManager22.setup('kilo', tempProjectDir22, installedRmbaidDir22, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result22b.success === true, 'KiloCoder reinstall/upgrade succeeds over existing skills');
@@ -1072,33 +1063,33 @@ async function runTests() {
       'Gemini installer cleans legacy commands output',
     );
 
-    const tempProjectDir23 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-gemini-test-'));
+    const tempProjectDir23 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-gemini-test-'));
     const installedRmbaidDir23 = await createTestRmbaidFixture();
     const legacyDir23 = path.join(tempProjectDir23, '.gemini', 'commands');
     await fs.ensureDir(legacyDir23);
-    await fs.writeFile(path.join(legacyDir23, 'rmbaid-legacy.toml'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir23, 'smart-legacy.toml'), 'legacy\n');
 
     const ideManager23 = new IdeManager();
     await ideManager23.ensureInitialized();
     const result23 = await ideManager23.setup('gemini', tempProjectDir23, installedRmbaidDir23, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result23.success === true, 'Gemini setup succeeds against temp project');
 
-    const skillFile23 = path.join(tempProjectDir23, '.gemini', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile23 = path.join(tempProjectDir23, '.gemini', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile23), 'Gemini install writes SKILL.md directory output');
 
     const skillContent23 = await fs.readFile(skillFile23, 'utf8');
     const nameMatch23 = skillContent23.match(/^name:\s*(.+)$/m);
-    assert(nameMatch23 && nameMatch23[1].trim() === 'rmbaid-master', 'Gemini skill name frontmatter matches directory name exactly');
+    assert(nameMatch23 && nameMatch23[1].trim() === 'smart-master', 'Gemini skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir23, '.gemini', 'commands'))), 'Gemini setup removes legacy commands dir');
 
     const result23b = await ideManager23.setup('gemini', tempProjectDir23, installedRmbaidDir23, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result23b.success === true, 'Gemini reinstall/upgrade succeeds over existing skills');
@@ -1128,28 +1119,28 @@ async function runTests() {
       'iFlow installer cleans legacy commands output',
     );
 
-    const tempProjectDir24 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-iflow-test-'));
+    const tempProjectDir24 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-iflow-test-'));
     const installedRmbaidDir24 = await createTestRmbaidFixture();
     const legacyDir24 = path.join(tempProjectDir24, '.iflow', 'commands');
     await fs.ensureDir(legacyDir24);
-    await fs.writeFile(path.join(legacyDir24, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir24, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager24 = new IdeManager();
     await ideManager24.ensureInitialized();
     const result24 = await ideManager24.setup('iflow', tempProjectDir24, installedRmbaidDir24, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result24.success === true, 'iFlow setup succeeds against temp project');
 
-    const skillFile24 = path.join(tempProjectDir24, '.iflow', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile24 = path.join(tempProjectDir24, '.iflow', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile24), 'iFlow install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent24 = await fs.readFile(skillFile24, 'utf8');
     const nameMatch24 = skillContent24.match(/^name:\s*(.+)$/m);
-    assert(nameMatch24 && nameMatch24[1].trim() === 'rmbaid-master', 'iFlow skill name frontmatter matches directory name exactly');
+    assert(nameMatch24 && nameMatch24[1].trim() === 'smart-master', 'iFlow skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir24, '.iflow', 'commands'))), 'iFlow setup removes legacy commands dir');
 
@@ -1177,28 +1168,28 @@ async function runTests() {
       'QwenCoder installer cleans legacy commands output',
     );
 
-    const tempProjectDir25 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-qwen-test-'));
+    const tempProjectDir25 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-qwen-test-'));
     const installedRmbaidDir25 = await createTestRmbaidFixture();
     const legacyDir25 = path.join(tempProjectDir25, '.qwen', 'commands');
     await fs.ensureDir(legacyDir25);
-    await fs.writeFile(path.join(legacyDir25, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir25, 'smart-legacy.md'), 'legacy\n');
 
     const ideManager25 = new IdeManager();
     await ideManager25.ensureInitialized();
     const result25 = await ideManager25.setup('qwen', tempProjectDir25, installedRmbaidDir25, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result25.success === true, 'QwenCoder setup succeeds against temp project');
 
-    const skillFile25 = path.join(tempProjectDir25, '.qwen', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile25 = path.join(tempProjectDir25, '.qwen', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile25), 'QwenCoder install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent25 = await fs.readFile(skillFile25, 'utf8');
     const nameMatch25 = skillContent25.match(/^name:\s*(.+)$/m);
-    assert(nameMatch25 && nameMatch25[1].trim() === 'rmbaid-master', 'QwenCoder skill name frontmatter matches directory name exactly');
+    assert(nameMatch25 && nameMatch25[1].trim() === 'smart-master', 'QwenCoder skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir25, '.qwen', 'commands'))), 'QwenCoder setup removes legacy commands dir');
 
@@ -1226,18 +1217,18 @@ async function runTests() {
       'Rovo Dev installer cleans legacy workflows output',
     );
 
-    const tempProjectDir26 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-rovodev-test-'));
+    const tempProjectDir26 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-rovodev-test-'));
     const installedRmbaidDir26 = await createTestRmbaidFixture();
     const legacyDir26 = path.join(tempProjectDir26, '.rovodev', 'workflows');
     await fs.ensureDir(legacyDir26);
-    await fs.writeFile(path.join(legacyDir26, 'rmbaid-legacy.md'), 'legacy\n');
+    await fs.writeFile(path.join(legacyDir26, 'smart-legacy.md'), 'legacy\n');
 
-    // Create a prompts.yml with RMB_AID entries and a user entry
+    // Create a prompts.yml with SMART entries and a user entry
     const yaml26 = require('yaml');
     const promptsPath26 = path.join(tempProjectDir26, '.rovodev', 'prompts.yml');
     const promptsContent26 = yaml26.stringify({
       prompts: [
-        { name: 'rmbaid-rmbaid-create-prd', description: 'RMB_AID workflow', content_file: 'workflows/rmbaid-rmbaid-create-prd.md' },
+        { name: 'smart-smart-create-prd', description: 'SMART workflow', content_file: 'workflows/smart-smart-create-prd.md' },
         { name: 'my-custom-prompt', description: 'User prompt', content_file: 'custom.md' },
       ],
     });
@@ -1247,28 +1238,28 @@ async function runTests() {
     await ideManager26.ensureInitialized();
     const result26 = await ideManager26.setup('rovo-dev', tempProjectDir26, installedRmbaidDir26, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result26.success === true, 'Rovo Dev setup succeeds against temp project');
 
-    const skillFile26 = path.join(tempProjectDir26, '.rovodev', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile26 = path.join(tempProjectDir26, '.rovodev', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile26), 'Rovo Dev install writes SKILL.md directory output');
 
     // Verify name frontmatter matches directory name
     const skillContent26 = await fs.readFile(skillFile26, 'utf8');
     const nameMatch26 = skillContent26.match(/^name:\s*(.+)$/m);
-    assert(nameMatch26 && nameMatch26[1].trim() === 'rmbaid-master', 'Rovo Dev skill name frontmatter matches directory name exactly');
+    assert(nameMatch26 && nameMatch26[1].trim() === 'smart-master', 'Rovo Dev skill name frontmatter matches directory name exactly');
 
     assert(!(await fs.pathExists(path.join(tempProjectDir26, '.rovodev', 'workflows'))), 'Rovo Dev setup removes legacy workflows dir');
 
-    // Verify prompts.yml cleanup: RMB_AID entries removed, user entry preserved
+    // Verify prompts.yml cleanup: SMART entries removed, user entry preserved
     const cleanedPrompts26 = yaml26.parse(await fs.readFile(promptsPath26, 'utf8'));
     assert(
       Array.isArray(cleanedPrompts26.prompts) && cleanedPrompts26.prompts.length === 1,
-      'Rovo Dev cleanup removes RMB_AID entries from prompts.yml',
+      'Rovo Dev cleanup removes SMART entries from prompts.yml',
     );
-    assert(cleanedPrompts26.prompts[0].name === 'my-custom-prompt', 'Rovo Dev cleanup preserves non-RMB_AID entries in prompts.yml');
+    assert(cleanedPrompts26.prompts[0].name === 'my-custom-prompt', 'Rovo Dev cleanup preserves non-SMART entries in prompts.yml');
 
     await fs.remove(tempProjectDir26);
     await fs.remove(path.dirname(installedRmbaidDir26));
@@ -1279,35 +1270,35 @@ async function runTests() {
   console.log('');
 
   // ============================================================
-  // Suite 27: Cleanup preserves rmbaid-os-* skills
+  // Suite 27: Cleanup preserves smart-os-* skills
   // ============================================================
-  console.log(`${colors.yellow}Test Suite 27: Cleanup preserves rmbaid-os-* skills${colors.reset}\n`);
+  console.log(`${colors.yellow}Test Suite 27: Cleanup preserves smart-os-* skills${colors.reset}\n`);
 
   try {
-    const tempProjectDir27 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-os-preserve-test-'));
+    const tempProjectDir27 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-os-preserve-test-'));
     const installedRmbaidDir27 = await createTestRmbaidFixture();
 
-    // Pre-populate .claude/skills with rmbaid-os-* skills (version-controlled repo skills)
-    const osSkillDir27 = path.join(tempProjectDir27, '.claude', 'skills', 'rmbaid-os-review-pr');
+    // Pre-populate .claude/skills with smart-os-* skills (version-controlled repo skills)
+    const osSkillDir27 = path.join(tempProjectDir27, '.claude', 'skills', 'smart-os-review-pr');
     await fs.ensureDir(osSkillDir27);
     await fs.writeFile(
       path.join(osSkillDir27, 'SKILL.md'),
-      '---\nname: rmbaid-os-review-pr\ndescription: Review PRs\n---\nOS skill content\n',
+      '---\nname: smart-os-review-pr\ndescription: Review PRs\n---\nOS skill content\n',
     );
 
-    const osSkillDir27b = path.join(tempProjectDir27, '.claude', 'skills', 'rmbaid-os-release-module');
+    const osSkillDir27b = path.join(tempProjectDir27, '.claude', 'skills', 'smart-os-release-module');
     await fs.ensureDir(osSkillDir27b);
     await fs.writeFile(
       path.join(osSkillDir27b, 'SKILL.md'),
-      '---\nname: rmbaid-os-release-module\ndescription: Release module\n---\nOS skill content\n',
+      '---\nname: smart-os-release-module\ndescription: Release module\n---\nOS skill content\n',
     );
 
-    // Also add a regular rmbaid skill that SHOULD be cleaned up
-    const regularSkillDir27 = path.join(tempProjectDir27, '.claude', 'skills', 'rmbaid-architect');
+    // Also add a regular smart skill that SHOULD be cleaned up
+    const regularSkillDir27 = path.join(tempProjectDir27, '.claude', 'skills', 'smart-architect');
     await fs.ensureDir(regularSkillDir27);
     await fs.writeFile(
       path.join(regularSkillDir27, 'SKILL.md'),
-      '---\nname: rmbaid-architect\ndescription: Architect\n---\nOld skill content\n',
+      '---\nname: smart-architect\ndescription: Architect\n---\nOld skill content\n',
     );
 
     // Run Claude Code setup (which triggers cleanup then install)
@@ -1315,30 +1306,30 @@ async function runTests() {
     await ideManager27.ensureInitialized();
     const result27 = await ideManager27.setup('claude-code', tempProjectDir27, installedRmbaidDir27, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
-    assert(result27.success === true, 'Claude Code setup succeeds with rmbaid-os-* skills present');
+    assert(result27.success === true, 'Claude Code setup succeeds with smart-os-* skills present');
 
-    // rmbaid-os-* skills must survive
-    assert(await fs.pathExists(osSkillDir27), 'Cleanup preserves rmbaid-os-review-pr skill');
-    assert(await fs.pathExists(osSkillDir27b), 'Cleanup preserves rmbaid-os-release-module skill');
+    // smart-os-* skills must survive
+    assert(await fs.pathExists(osSkillDir27), 'Cleanup preserves smart-os-review-pr skill');
+    assert(await fs.pathExists(osSkillDir27b), 'Cleanup preserves smart-os-release-module skill');
 
-    // rmbaid-os skill content must be untouched
+    // smart-os skill content must be untouched
     const osContent27 = await fs.readFile(path.join(osSkillDir27, 'SKILL.md'), 'utf8');
-    assert(osContent27.includes('OS skill content'), 'rmbaid-os-review-pr skill content is unchanged');
+    assert(osContent27.includes('OS skill content'), 'smart-os-review-pr skill content is unchanged');
 
-    // Regular rmbaid skill should have been replaced by fresh install
-    const newSkillFile27 = path.join(tempProjectDir27, '.claude', 'skills', 'rmbaid-master', 'SKILL.md');
-    assert(await fs.pathExists(newSkillFile27), 'Fresh rmbaid skills are installed alongside preserved rmbaid-os-* skills');
+    // Regular smart skill should have been replaced by fresh install
+    const newSkillFile27 = path.join(tempProjectDir27, '.claude', 'skills', 'smart-master', 'SKILL.md');
+    assert(await fs.pathExists(newSkillFile27), 'Fresh smart skills are installed alongside preserved smart-os-* skills');
 
-    // Stale non-rmbaid-os skill must have been removed by cleanup
-    assert(!(await fs.pathExists(regularSkillDir27)), 'Cleanup removes stale non-rmbaid-os skills');
+    // Stale non-smart-os skill must have been removed by cleanup
+    assert(!(await fs.pathExists(regularSkillDir27)), 'Cleanup removes stale non-smart-os skills');
 
     await fs.remove(tempProjectDir27);
     await fs.remove(path.dirname(installedRmbaidDir27));
   } catch (error) {
-    assert(false, 'rmbaid-os-* skill preservation test succeeds', error.message);
+    assert(false, 'smart-os-* skill preservation test succeeds', error.message);
   }
 
   console.log('');
@@ -1357,7 +1348,7 @@ async function runTests() {
 
     assert(piInstaller?.target_dir === '.pi/skills', 'Pi target_dir uses native skills path');
 
-    tempProjectDir28 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-pi-test-'));
+    tempProjectDir28 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-pi-test-'));
     installedRmbaidDir28 = await createTestRmbaidFixture();
 
     const ideManager28 = new IdeManager();
@@ -1376,7 +1367,7 @@ async function runTests() {
 
     const result28 = await ideManager28.setup('pi', tempProjectDir28, installedRmbaidDir28, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result28.success === true, 'Pi setup succeeds against temp project');
@@ -1385,7 +1376,7 @@ async function runTests() {
     const detectedAfter28 = await ideManager28.detectInstalledIdes(tempProjectDir28);
     assert(detectedAfter28.includes('pi'), 'Pi is detected after install');
 
-    const skillFile28 = path.join(tempProjectDir28, '.pi', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile28 = path.join(tempProjectDir28, '.pi', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile28), 'Pi install writes SKILL.md directory output');
 
     // Parse YAML frontmatter between --- markers
@@ -1398,7 +1389,7 @@ async function runTests() {
 
     // Verify name in frontmatter matches directory name
     const fmName28 = frontmatter28.match(/^name:\s*(.+)$/m);
-    assert(fmName28 && fmName28[1].trim() === 'rmbaid-master', 'Pi skill name frontmatter matches directory name exactly');
+    assert(fmName28 && fmName28[1].trim() === 'smart-master', 'Pi skill name frontmatter matches directory name exactly');
 
     // Verify description exists and is non-empty
     const fmDesc28 = frontmatter28.match(/^description:\s*(.+)$/m);
@@ -1418,7 +1409,7 @@ async function runTests() {
     // Reinstall/upgrade: run setup again over existing output
     const result28b = await ideManager28.setup('pi', tempProjectDir28, installedRmbaidDir28, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
     assert(result28b.success === true, 'Pi reinstall/upgrade succeeds over existing skills');
     assert(await fs.pathExists(skillFile28), 'Pi reinstall preserves SKILL.md output');
@@ -1438,7 +1429,7 @@ async function runTests() {
 
   let tempFixture29;
   try {
-    tempFixture29 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-skill-scanner-'));
+    tempFixture29 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-skill-scanner-'));
 
     // Create _config dir (required by manifest generator)
     await fs.ensureDir(path.join(tempFixture29, '_config'));
@@ -1455,7 +1446,7 @@ async function runTests() {
     // --- Regular workflow dir: core/workflows/regular-wf/ (type: workflow) ---
     const wfDir29 = path.join(tempFixture29, 'core', 'workflows', 'regular-wf');
     await fs.ensureDir(wfDir29);
-    await fs.writeFile(path.join(wfDir29, 'rmbaid-skill-manifest.yaml'), 'type: workflow\ncanonicalId: regular-wf\n');
+    await fs.writeFile(path.join(wfDir29, 'smart-skill-manifest.yaml'), 'type: workflow\ncanonicalId: regular-wf\n');
     await fs.writeFile(
       path.join(wfDir29, 'workflow.md'),
       '---\nname: Regular Workflow\ndescription: A regular workflow not a skill\n---\n\nWorkflow body\n',
@@ -1479,13 +1470,13 @@ async function runTests() {
     );
     await fs.writeFile(path.join(taskSkillDir29, 'workflow.md'), '# Task Skill\n\nSkill in tasks\n');
 
-    // --- Native agent entrypoint inside agents/: core/agents/rmbaid-tea/ ---
-    const nativeAgentDir29 = path.join(tempFixture29, 'core', 'agents', 'rmbaid-tea');
+    // --- Native agent entrypoint inside agents/: core/agents/smart-tea/ ---
+    const nativeAgentDir29 = path.join(tempFixture29, 'core', 'agents', 'smart-tea');
     await fs.ensureDir(nativeAgentDir29);
-    await fs.writeFile(path.join(nativeAgentDir29, 'rmbaid-skill-manifest.yaml'), 'type: agent\ncanonicalId: rmbaid-tea\n');
+    await fs.writeFile(path.join(nativeAgentDir29, 'smart-skill-manifest.yaml'), 'type: agent\ncanonicalId: smart-tea\n');
     await fs.writeFile(
       path.join(nativeAgentDir29, 'SKILL.md'),
-      '---\nname: rmbaid-tea\ndescription: Native agent entrypoint\n---\n\nPresent a capability menu.\n',
+      '---\nname: smart-tea\ndescription: Native agent entrypoint\n---\n\nPresent a capability menu.\n',
     );
 
     // Minimal agent so core module is detected
@@ -1511,13 +1502,13 @@ async function runTests() {
 
     // Native agent entrypoint should be installed as a verbatim skill and also
     // remain visible to the agent manifest pipeline.
-    const nativeAgentEntry29 = generator29.skills.find((s) => s.canonicalId === 'rmbaid-tea');
+    const nativeAgentEntry29 = generator29.skills.find((s) => s.canonicalId === 'smart-tea');
     assert(nativeAgentEntry29 !== undefined, 'Native type:agent SKILL.md dir appears in skills[]');
     assert(
-      nativeAgentEntry29 && nativeAgentEntry29.path.includes('agents/rmbaid-tea/SKILL.md'),
+      nativeAgentEntry29 && nativeAgentEntry29.path.includes('agents/smart-tea/SKILL.md'),
       'Native type:agent SKILL.md path points to the agent directory entrypoint',
     );
-    const nativeAgentManifest29 = generator29.agents.find((a) => a.name === 'rmbaid-tea');
+    const nativeAgentManifest29 = generator29.agents.find((a) => a.name === 'smart-tea');
     assert(nativeAgentManifest29 !== undefined, 'Native type:agent SKILL.md dir appears in agents[] for agent metadata');
 
     // Regular type:workflow should NOT appear in skills[]
@@ -1542,11 +1533,11 @@ async function runTests() {
 
     // Test scanInstalledModules recognizes native-agent-only modules too
     const agentOnlyModDir29 = path.join(tempFixture29, 'agent-only-mod');
-    await fs.ensureDir(path.join(agentOnlyModDir29, 'deep', 'nested', 'rmbaid-tea'));
-    await fs.writeFile(path.join(agentOnlyModDir29, 'deep', 'nested', 'rmbaid-tea', 'rmbaid-skill-manifest.yaml'), 'type: agent\n');
+    await fs.ensureDir(path.join(agentOnlyModDir29, 'deep', 'nested', 'smart-tea'));
+    await fs.writeFile(path.join(agentOnlyModDir29, 'deep', 'nested', 'smart-tea', 'smart-skill-manifest.yaml'), 'type: agent\n');
     await fs.writeFile(
-      path.join(agentOnlyModDir29, 'deep', 'nested', 'rmbaid-tea', 'SKILL.md'),
-      '---\nname: rmbaid-tea\ndescription: desc\n---\n\nAgent menu.\n',
+      path.join(agentOnlyModDir29, 'deep', 'nested', 'smart-tea', 'SKILL.md'),
+      '---\nname: smart-tea\ndescription: desc\n---\n\nAgent menu.\n',
     );
 
     const rescannedModules29 = await generator29.scanInstalledModules(tempFixture29);
@@ -1554,14 +1545,14 @@ async function runTests() {
 
     // Test scanInstalledModules recognizes multi-entry manifests keyed under SKILL.md
     const multiEntryModDir29 = path.join(tempFixture29, 'multi-entry-mod');
-    await fs.ensureDir(path.join(multiEntryModDir29, 'deep', 'nested', 'rmbaid-tea'));
+    await fs.ensureDir(path.join(multiEntryModDir29, 'deep', 'nested', 'smart-tea'));
     await fs.writeFile(
-      path.join(multiEntryModDir29, 'deep', 'nested', 'rmbaid-tea', 'rmbaid-skill-manifest.yaml'),
-      'SKILL.md:\n  type: agent\n  canonicalId: rmbaid-tea\n',
+      path.join(multiEntryModDir29, 'deep', 'nested', 'smart-tea', 'smart-skill-manifest.yaml'),
+      'SKILL.md:\n  type: agent\n  canonicalId: smart-tea\n',
     );
     await fs.writeFile(
-      path.join(multiEntryModDir29, 'deep', 'nested', 'rmbaid-tea', 'SKILL.md'),
-      '---\nname: rmbaid-tea\ndescription: desc\n---\n\nAgent menu.\n',
+      path.join(multiEntryModDir29, 'deep', 'nested', 'smart-tea', 'SKILL.md'),
+      '---\nname: smart-tea\ndescription: desc\n---\n\nAgent menu.\n',
     );
 
     const rescannedModules29b = await generator29.scanInstalledModules(tempFixture29);
@@ -1569,7 +1560,7 @@ async function runTests() {
 
     // skill-manifest.csv should include the native agent entrypoint
     const skillManifestCsv29 = await fs.readFile(path.join(tempFixture29, '_config', 'skill-manifest.csv'), 'utf8');
-    assert(skillManifestCsv29.includes('rmbaid-tea'), 'skill-manifest.csv includes native type:agent SKILL.md entrypoint');
+    assert(skillManifestCsv29.includes('smart-tea'), 'skill-manifest.csv includes native type:agent SKILL.md entrypoint');
   } catch (error) {
     assert(false, 'Unified skill scanner test succeeds', error.message);
   } finally {
@@ -1585,7 +1576,7 @@ async function runTests() {
 
   let tempFixture30;
   try {
-    tempFixture30 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-test-30-'));
+    tempFixture30 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-test-30-'));
 
     const generator30 = new ManifestGenerator();
     generator30.rmbaidFolderName = '_rmbaid';
@@ -1657,7 +1648,7 @@ async function runTests() {
     clearCache();
     const collisionFixture = await createSkillCollisionFixture();
     collisionFixtureRoot = collisionFixture.root;
-    collisionProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-antigravity-test-'));
+    collisionProjectDir = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-antigravity-test-'));
 
     const ideManager = new IdeManager();
     await ideManager.ensureInitialized();
@@ -1671,7 +1662,7 @@ async function runTests() {
     assert(result.handlerResult.results.skillDirectories === 1, 'Result exposes unique skill directory count');
     assert(result.handlerResult.results.skills === 1, 'Result retains verbatim skill count');
     assert(
-      await fs.pathExists(path.join(collisionProjectDir, '.agent', 'skills', 'rmbaid-help', 'SKILL.md')),
+      await fs.pathExists(path.join(collisionProjectDir, '.agent', 'skills', 'smart-help', 'SKILL.md')),
       'Skill directory is created from skill-manifest',
     );
   } catch (error) {
@@ -1697,7 +1688,7 @@ async function runTests() {
 
     assert(onaInstaller?.target_dir === '.ona/skills', 'Ona target_dir uses native skills path');
 
-    tempProjectDir32 = await fs.mkdtemp(path.join(os.tmpdir(), 'rmbaid-ona-test-'));
+    tempProjectDir32 = await fs.mkdtemp(path.join(os.tmpdir(), 'smart-ona-test-'));
     installedRmbaidDir32 = await createTestRmbaidFixture();
 
     const ideManager32 = new IdeManager();
@@ -1716,7 +1707,7 @@ async function runTests() {
 
     const result32 = await ideManager32.setup('ona', tempProjectDir32, installedRmbaidDir32, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
 
     assert(result32.success === true, 'Ona setup succeeds against temp project');
@@ -1725,10 +1716,10 @@ async function runTests() {
     const detectedAfter32 = await ideManager32.detectInstalledIdes(tempProjectDir32);
     assert(detectedAfter32.includes('ona'), 'Ona is detected after install');
 
-    const skillFile32 = path.join(tempProjectDir32, '.ona', 'skills', 'rmbaid-master', 'SKILL.md');
+    const skillFile32 = path.join(tempProjectDir32, '.ona', 'skills', 'smart-master', 'SKILL.md');
     assert(await fs.pathExists(skillFile32), 'Ona install writes SKILL.md directory output');
 
-    const workflowFile32 = path.join(tempProjectDir32, '.ona', 'skills', 'rmbaid-master', 'workflow.md');
+    const workflowFile32 = path.join(tempProjectDir32, '.ona', 'skills', 'smart-master', 'workflow.md');
     assert(await fs.pathExists(workflowFile32), 'Ona install copies non-SKILL.md files (workflow.md) verbatim');
 
     // Parse YAML frontmatter between --- markers
@@ -1741,7 +1732,7 @@ async function runTests() {
 
     // Verify name in frontmatter matches directory name
     const fmName32 = frontmatter32.match(/^name:\s*(.+)$/m);
-    assert(fmName32 && fmName32[1].trim() === 'rmbaid-master', 'Ona skill name frontmatter matches directory name exactly');
+    assert(fmName32 && fmName32[1].trim() === 'smart-master', 'Ona skill name frontmatter matches directory name exactly');
 
     // Verify description exists and is non-empty
     const fmDesc32 = frontmatter32.match(/^description:\s*(.+)$/m);
@@ -1761,7 +1752,7 @@ async function runTests() {
     // Reinstall/upgrade: run setup again over existing output
     const result32b = await ideManager32.setup('ona', tempProjectDir32, installedRmbaidDir32, {
       silent: true,
-      selectedModules: ['rmbaid'],
+      selectedModules: ['smart'],
     });
     assert(result32b.success === true, 'Ona reinstall/upgrade succeeds over existing skills');
     assert(await fs.pathExists(skillFile32), 'Ona reinstall preserves SKILL.md output');

@@ -1,7 +1,7 @@
 /**
  * File Reference Validator
  *
- * Validates cross-file references in RMB_AID source files (agents, workflows, tasks, steps).
+ * Validates cross-file references in SMART source files (agents, workflows, tasks, steps).
  * Catches broken file paths, missing referenced files, and absolute path leaks.
  *
  * What it checks:
@@ -48,7 +48,7 @@ const SKIP_DIRS = new Set(['node_modules', '.git']);
 const PROJECT_ROOT_REF = /\{project-root\}\/_rmbaid\/([^\s'"<>})\]`]+)/g;
 
 // Pattern: {_rmbaid}/ shorthand references
-const RMB_AID_SHORTHAND_REF = /\{_rmbaid\}\/([^\s'"<>})\]`]+)/g;
+const SMART_SHORTHAND_REF = /\{_rmbaid\}\/([^\s'"<>})\]`]+)/g;
 
 // Pattern: exec="..." attributes
 const EXEC_ATTR = /exec="([^"]+)"/g;
@@ -156,8 +156,8 @@ function mapInstalledToSource(refPath) {
   // Skip install-only paths (generated at install time, not in source)
   if (isInstallOnly(cleaned)) return null;
 
-  // core/, rmbaid/, and utility/ are directly under src/
-  if (cleaned.startsWith('core/') || cleaned.startsWith('rmbaid/') || cleaned.startsWith('utility/')) {
+  // core/, smart/, and utility/ are directly under src/
+  if (cleaned.startsWith('core/') || cleaned.startsWith('smart/') || cleaned.startsWith('utility/')) {
     return path.join(SRC_DIR, cleaned);
   }
 
@@ -272,7 +272,7 @@ function extractMarkdownRefs(filePath, content) {
   runPattern(PROJECT_ROOT_REF, 'project-root');
 
   // {_rmbaid}/ shorthand
-  runPattern(RMB_AID_SHORTHAND_REF, 'project-root');
+  runPattern(SMART_SHORTHAND_REF, 'project-root');
 
   // exec="..." attributes
   runPattern(EXEC_ATTR, 'exec-attr');

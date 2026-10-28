@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-Sử dụng công cụ `rmbaid-shard-doc` nếu bạn cần tách các tệp markdown lớn thành nhiều tệp nhỏ có tổ chức để quản lý context tốt hơn.
+Sử dụng công cụ `smart-shard-doc` nếu bạn cần tách các tệp markdown lớn thành nhiều tệp nhỏ có tổ chức để quản lý context tốt hơn.
 
 :::caution[Đã ngừng khuyến nghị]
 Đây không còn là cách được khuyến nghị, và trong thời gian tới khi workflow được cập nhật và đa số LLM/công cụ lớn hỗ trợ subprocesses, việc này sẽ không còn cần thiết.
@@ -41,7 +41,7 @@ _rmbaid-output/planning-artifacts/
 ### 1. Chạy công cụ Shard-Doc
 
 ```bash
-/rmbaid-shard-doc
+/smart-shard-doc
 ```
 
 ### 2. Làm theo quy trình tương tác
@@ -62,7 +62,7 @@ Agent: Đang chia nhỏ PRD.md...
 
 ## Cơ chế workflow tìm tài liệu
 
-Workflow của RMB_AID dùng **hệ thống phát hiện kép**:
+Workflow của SMART dùng **hệ thống phát hiện kép**:
 
 1. **Thử tài liệu nguyên khối trước** - Tìm `document-name.md`
 2. **Kiểm tra bản đã chia nhỏ** - Tìm `document-name/index.md`
@@ -70,7 +70,7 @@ Workflow của RMB_AID dùng **hệ thống phát hiện kép**:
 
 ## Hỗ trợ trong workflow
 
-Tất cả workflow RMB_AID đều hỗ trợ cả hai định dạng:
+Tất cả workflow SMART đều hỗ trợ cả hai định dạng:
 
 - Tài liệu nguyên khối
 - Tài liệu đã chia nhỏ

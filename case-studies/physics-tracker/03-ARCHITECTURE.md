@@ -43,12 +43,12 @@ app/
 
 ## Key Dependencies
 
-| Library | Version | Purpose |
-|---|---|---|
-| CameraX | 1.3.x | Camera preview + ImageAnalysis |
-| Kotlin Coroutines | 1.7.x | Async sensor stream |
-| Lifecycle ViewModel | 2.7.x | MVVM state holders |
-| Navigation Component | 2.7.x | Fragment navigation |
+| Library              | Version | Purpose                        |
+| -------------------- | ------- | ------------------------------ |
+| CameraX              | 1.3.x   | Camera preview + ImageAnalysis |
+| Kotlin Coroutines    | 1.7.x   | Async sensor stream            |
+| Lifecycle ViewModel  | 2.7.x   | MVVM state holders             |
+| Navigation Component | 2.7.x   | Fragment navigation            |
 
 ---
 
@@ -121,18 +121,18 @@ Android Share Sheet (ACTION_SEND)
 
 ## FR Coverage
 
-| Requirement | Covered by |
-|---|---|
-| FR-01 Accelerometer | `SensorRepository` + `CaptureService` |
-| FR-02 Gyroscope | `SensorRepository` (dual sensor registration) |
-| FR-03 Timestamps | `SensorData.timestamp` (ns → ms conversion) |
-| FR-04 Background | `CaptureService` (ForegroundService) |
-| FR-05 Sample rate UI | `TrackingFragment` spinner → `SensorRepository` delay |
-| FR-06 CSV format | `CsvExporter.write()` column order |
-| FR-07 Metadata header | `CsvExporter.writeHeader()` |
-| FR-08 Share sheet | `ExportViewModel` + `FileProvider` |
-| FR-09 File naming | `FileNamer.generate(label)` |
-| FR-10 Lux sampling | `LuxAnalyzer.analyze()` |
-| FR-11 Overlay graph | `LuxOverlayView` on top of preview |
-| FR-12 Landscape graph | Constraint layout switch in `LightFragment` |
-| FR-13 Light CSV | `CsvExporter.writeLux()` |
+| Requirement           | Covered by                                            |
+| --------------------- | ----------------------------------------------------- |
+| FR-01 Accelerometer   | `SensorRepository` + `CaptureService`                 |
+| FR-02 Gyroscope       | `SensorRepository` (dual sensor registration)         |
+| FR-03 Timestamps      | `SensorData.timestamp` (ns → ms conversion)           |
+| FR-04 Background      | `CaptureService` (ForegroundService)                  |
+| FR-05 Sample rate UI  | `TrackingFragment` spinner → `SensorRepository` delay |
+| FR-06 CSV format      | `CsvExporter.write()` column order                    |
+| FR-07 Metadata header | `CsvExporter.writeHeader()`                           |
+| FR-08 Share sheet     | `ExportViewModel` + `FileProvider`                    |
+| FR-09 File naming     | `FileNamer.generate(label)`                           |
+| FR-10 Lux sampling    | `LuxAnalyzer.analyze()`                               |
+| FR-11 Overlay graph   | `LuxOverlayView` on top of preview                    |
+| FR-12 Landscape graph | Constraint layout switch in `LightFragment`           |
+| FR-13 Light CSV       | `CsvExporter.writeLux()`                              |

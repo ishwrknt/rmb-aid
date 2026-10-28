@@ -1,3 +1,3 @@
 module,phase,name,workflow-file,description
-rmbaid,anytime,Document,,Analyze project
-rmbaid,1-analysis,Brainstorm,,Brainstorm ideas
+smart,anytime,Document,,Analyze project
+smart,1-analysis,Brainstorm,,Brainstorm ideas

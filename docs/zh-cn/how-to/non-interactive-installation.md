@@ -1,11 +1,11 @@
 ---
 title: '非交互式安装'
-description: 使用命令行参数安装 RMB_AID，适用于 CI/CD 流水线和自动化部署
+description: 使用命令行参数安装 SMART，适用于 CI/CD 流水线和自动化部署
 sidebar:
   order: 2
 ---
 
-使用命令行参数（flags）以非交互方式安装 RMB_AID。适用于以下场景：
+使用命令行参数（flags）以非交互方式安装 SMART。适用于以下场景：
 
 ## 使用场景
 
@@ -25,7 +25,7 @@ sidebar:
 | 参数                       | 描述                                                            | 示例                                            |
 | -------------------------- | --------------------------------------------------------------- | ----------------------------------------------- |
 | `--directory <path>`       | 安装目录                                                        | `--directory ~/projects/myapp`                  |
-| `--modules <modules>`      | 逗号分隔的模块 ID                                               | `--modules rmbaid,bmb`                          |
+| `--modules <modules>`      | 逗号分隔的模块 ID                                               | `--modules smart,bmb`                           |
 | `--tools <tools>`          | 逗号分隔的工具/IDE ID（使用 `none` 跳过）                       | `--tools claude-code,cursor` 或 `--tools none`  |
 | `--custom-content <paths>` | 逗号分隔的自定义模块路径                                        | `--custom-content ~/my-module,~/another-module` |
 | `--action <type>`          | 对现有安装的操作：`install`（默认）、`update` 或 `quick-update` | `--action quick-update`                         |
@@ -50,10 +50,10 @@ sidebar:
 
 `--modules` 参数可用的模块 ID：
 
-- `rmbaid` — RMB_AID Master
-- `bmb` — RMB_AID Builder
+- `smart` — SMART Master
+- `bmb` — SMART Builder
 
-查看 [RMB_AID 注册表](https://github.com/rmbaid-code-org) 获取可用的外部模块。
+查看 [SMART 注册表](https://github.com/smart-code-org) 获取可用的外部模块。
 
 ## 工具/IDE ID
 
@@ -61,16 +61,16 @@ sidebar:
 
 **推荐：** `claude-code`、`cursor`
 
-运行一次 `npx rmb-aid install` 交互式安装以查看完整的当前支持工具列表，或查看 [平台代码配置](https://github.com/rmbaid-code-org/RMB_AID/blob/main/tools/installer/ide/platform-codes.yaml)。
+运行一次 `npx smart-agentic install` 交互式安装以查看完整的当前支持工具列表，或查看 [平台代码配置](https://github.com/smart-code-org/SMART/blob/main/tools/installer/ide/platform-codes.yaml)。
 
 ## 安装模式
 
-| 模式         | 描述                               | 示例                                                                           |
-| ------------ | ---------------------------------- | ------------------------------------------------------------------------------ |
-| 完全非交互式 | 提供所有参数以跳过所有提示         | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
-| 半交互式     | 提供部分参数；RMB_AID 提示其余部分 | `npx rmb-aid install --directory . --modules rmbaid`                           |
-| 仅使用默认值 | 使用 `-y` 接受所有默认值           | `npx rmb-aid install --yes`                                                    |
-| 不包含工具   | 跳过工具/IDE 配置                  | `npx rmb-aid install --modules rmbaid --tools none`                            |
+| 模式         | 描述                             | 示例                                                                                |
+| ------------ | -------------------------------- | ----------------------------------------------------------------------------------- |
+| 完全非交互式 | 提供所有参数以跳过所有提示       | `npx smart-agentic install --directory . --modules smart --tools claude-code --yes` |
+| 半交互式     | 提供部分参数；SMART 提示其余部分 | `npx smart-agentic install --directory . --modules smart`                           |
+| 仅使用默认值 | 使用 `-y` 接受所有默认值         | `npx smart-agentic install --yes`                                                   |
+| 不包含工具   | 跳过工具/IDE 配置                | `npx smart-agentic install --modules smart --tools none`                            |
 
 ## 示例
 
@@ -78,11 +78,11 @@ sidebar:
 
 ```bash
 #!/bin/bash
-# install-rmbaid.sh
+# install-smart.sh
 
-npx rmb-aid install \
+npx smart-agentic install \
   --directory "${GITHUB_WORKSPACE}" \
-  --modules rmbaid \
+  --modules smart \
   --tools claude-code \
   --user-name "CI Bot" \
   --communication-language English \
@@ -94,16 +94,16 @@ npx rmb-aid install \
 ### 更新现有安装
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action update \
-  --modules rmbaid,bmb,custom-module
+  --modules smart,bmb,custom-module
 ```
 
 ### 快速更新（保留设置）
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action quick-update
 ```
@@ -111,9 +111,9 @@ npx rmb-aid install \
 ### 使用自定义内容安装
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
-  --modules rmbaid \
+  --modules smart \
   --custom-content ~/my-custom-module,~/another-module \
   --tools claude-code
 ```
@@ -126,7 +126,7 @@ npx rmb-aid install \
 
 ## 参数校验与错误处理
 
-RMB_AID 会验证你提供的所有参数：
+SMART 会验证你提供的所有参数：
 
 - **目录** — 必须是具有写入权限的有效路径
 - **模块** — 对无效的模块 ID 发出警告（但不会失败）
@@ -170,5 +170,5 @@ RMB_AID 会验证你提供的所有参数：
 - 在 `module.yaml` 中有 `code` 字段
 
 :::note[仍然卡住了？]
-使用 `--debug` 获取详细输出，尝试交互模式定位问题，或在 <https://github.com/rmbaid-code-org/RMB_AID/issues> 提交反馈。
+使用 `--debug` 获取详细输出，尝试交互模式定位问题，或在 <https://github.com/smart-code-org/SMART/issues> 提交反馈。
 :::

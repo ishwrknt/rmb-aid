@@ -7,7 +7,7 @@ const prompts = require('../prompts');
 class Manifest {
   /**
    * Create a new manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {Object} data - Manifest data
    * @param {Array} installedFiles - List of installed files (no longer used, files tracked in files-manifest.csv)
    */
@@ -18,15 +18,15 @@ class Manifest {
     // Ensure _config directory exists
     await fs.ensureDir(path.dirname(manifestPath));
 
-    // Get the RMB_AID version from package.json
+    // Get the SMART version from package.json
     const rmbaidVersion = data.version || require(path.join(process.cwd(), 'package.json')).version;
 
     // Convert module list to new detailed format
     const moduleDetails = [];
     if (data.modules && Array.isArray(data.modules)) {
       for (const moduleName of data.modules) {
-        // Core and RMB_AID modules use the RMB_AID version
-        const moduleVersion = moduleName === 'core' || moduleName === 'rmbaid' ? rmbaidVersion : null;
+        // Core and SMART modules use the SMART version
+        const moduleVersion = moduleName === 'core' || moduleName === 'smart' ? rmbaidVersion : null;
         const now = data.installDate || new Date().toISOString();
 
         moduleDetails.push({
@@ -34,7 +34,7 @@ class Manifest {
           version: moduleVersion,
           installDate: now,
           lastUpdated: now,
-          source: moduleName === 'core' || moduleName === 'rmbaid' ? 'built-in' : 'unknown',
+          source: moduleName === 'core' || moduleName === 'smart' ? 'built-in' : 'unknown',
         });
       }
     }
@@ -68,7 +68,7 @@ class Manifest {
 
   /**
    * Read existing manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Object|null} Manifest data or null if not found
    */
   async read(rmbaidDir) {
@@ -110,7 +110,7 @@ class Manifest {
 
   /**
    * Update existing manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {Object} updates - Fields to update
    * @param {Array} installedFiles - Updated list of installed files
    */
@@ -219,7 +219,7 @@ class Manifest {
 
   /**
    * Read raw manifest data without flattening
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Object|null} Raw manifest data or null if not found
    */
   async _readRaw(rmbaidDir) {
@@ -262,7 +262,7 @@ class Manifest {
   /**
    * Add a module to the manifest with optional version info
    * If module already exists, update its version info
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleName - Module name to add
    * @param {Object} options - Optional version info
    */
@@ -309,7 +309,7 @@ class Manifest {
 
   /**
    * Remove a module from the manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleName - Module name to remove
    */
   async removeModule(rmbaidDir, moduleName) {
@@ -327,7 +327,7 @@ class Manifest {
 
   /**
    * Update a single module's version info
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleName - Module name
    * @param {Object} versionInfo - Version info to update
    */
@@ -350,7 +350,7 @@ class Manifest {
 
   /**
    * Get version info for a specific module
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleName - Module name
    * @returns {Object|null} Module version info or null
    */
@@ -365,7 +365,7 @@ class Manifest {
 
   /**
    * Get all modules with their version info
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Array} Array of module info objects
    */
   async getAllModuleVersions(rmbaidDir) {
@@ -379,7 +379,7 @@ class Manifest {
 
   /**
    * Write raw manifest data to file
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {Object} manifestData - Raw manifest data to write
    */
   async _writeRaw(rmbaidDir, manifestData) {
@@ -402,7 +402,7 @@ class Manifest {
 
   /**
    * Add an IDE configuration to the manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} ideName - IDE name to add
    */
   async addIde(rmbaidDir, ideName) {
@@ -438,7 +438,7 @@ class Manifest {
   /**
    * Parse installed files to extract metadata
    * @param {Array} installedFiles - List of installed file paths
-   * @param {string} rmbaidDir - Path to rmbaid directory for relative paths
+   * @param {string} rmbaidDir - Path to smart directory for relative paths
    * @returns {Array} Array of file metadata objects
    */
   async parseInstalledFiles(installedFiles, rmbaidDir) {
@@ -446,8 +446,8 @@ class Manifest {
 
     for (const filePath of installedFiles) {
       const fileExt = path.extname(filePath).toLowerCase();
-      // Make path relative to parent of rmbaid directory, starting with 'rmbaid/'
-      const relativePath = 'rmbaid' + filePath.replace(rmbaidDir, '').replaceAll('\\', '/');
+      // Make path relative to parent of smart directory, starting with 'smart/'
+      const relativePath = 'smart' + filePath.replace(rmbaidDir, '').replaceAll('\\', '/');
 
       // Calculate file hash
       const hash = await this.calculateFileHash(filePath);
@@ -497,7 +497,7 @@ class Manifest {
    * Extract XML node attributes from MD file content
    * @param {string} content - File content
    * @param {string} filePath - File path for context
-   * @param {string} relativePath - Relative path starting with 'rmbaid/'
+   * @param {string} relativePath - Relative path starting with 'smart/'
    * @returns {Object|null} Extracted metadata or null
    */
   extractXmlNodeAttributes(content, filePath, relativePath) {
@@ -543,7 +543,7 @@ class Manifest {
 
     // Header section
     csv.push(
-      '# RMB_AID Manifest',
+      '# SMART Manifest',
       `# Generated: ${timestamp}`,
       '',
       '## Installation Info',
@@ -785,7 +785,7 @@ class Manifest {
   }
   /**
    * Add a custom module to the manifest with its source path
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {Object} customModule - Custom module info
    */
   async addCustomModule(rmbaidDir, customModule) {
@@ -813,7 +813,7 @@ class Manifest {
 
   /**
    * Remove a custom module from the manifest
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleId - Module ID to remove
    */
   async removeCustomModule(rmbaidDir, moduleId) {
@@ -832,7 +832,7 @@ class Manifest {
   /**
    * Get module version info from source
    * @param {string} moduleName - Module name/code
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @param {string} moduleSourcePath - Optional source path for custom modules
    * @returns {Object} Version info object with version, source, npmPackage, repoUrl
    */
@@ -840,8 +840,8 @@ class Manifest {
     const os = require('node:os');
     const yaml = require('yaml');
 
-    // Built-in modules use RMB_AID version (only core and rmbaid are in RMB_AID repo)
-    if (['core', 'rmbaid'].includes(moduleName)) {
+    // Built-in modules use SMART version (only core and smart are in SMART repo)
+    if (['core', 'smart'].includes(moduleName)) {
       const rmbaidVersion = require(path.join(getProjectRoot(), 'package.json')).version;
       return {
         version: rmbaidVersion,
@@ -871,7 +871,7 @@ class Manifest {
 
       // If npm didn't work, try reading from cached repo's package.json
       if (!version) {
-        const cacheDir = path.join(os.homedir(), '.rmbaid', 'cache', 'external-modules', moduleName);
+        const cacheDir = path.join(os.homedir(), '.smart', 'cache', 'external-modules', moduleName);
         const packageJsonPath = path.join(cacheDir, 'package.json');
 
         if (await fs.pathExists(packageJsonPath)) {
@@ -964,7 +964,7 @@ class Manifest {
 
   /**
    * Check for available updates for installed modules
-   * @param {string} rmbaidDir - Path to rmbaid directory
+   * @param {string} rmbaidDir - Path to smart directory
    * @returns {Array} Array of update info objects
    */
   async checkForUpdates(rmbaidDir) {

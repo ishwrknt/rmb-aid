@@ -9,7 +9,7 @@ const yaml = require('yaml');
 const chalk = require('chalk');
 
 /**
- * Find RMB_AID directory in project
+ * Find SMART directory in project
  */
 function findRmbaidDir(projectDir = process.cwd()) {
   const possibleNames = ['_rmbaid'];
@@ -87,13 +87,13 @@ async function migrate(directory) {
   const rmbaidDir = findRmbaidDir(projectRoot);
 
   if (!rmbaidDir) {
-    console.error(chalk.red('✗ No RMB_AID installation found in directory'));
+    console.error(chalk.red('✗ No SMART installation found in directory'));
     process.exit(1);
   }
 
-  console.log(chalk.blue.bold('🔄 RMB_AID Custom Module Path Migration'));
+  console.log(chalk.blue.bold('🔄 SMART Custom Module Path Migration'));
   console.log(chalk.dim(`Project: ${projectRoot}`));
-  console.log(chalk.dim(`RMB_AID Directory: ${rmbaidDir}`));
+  console.log(chalk.dim(`SMART Directory: ${rmbaidDir}`));
 
   const manifestPath = path.join(rmbaidDir, '_config', 'manifest.yaml');
 

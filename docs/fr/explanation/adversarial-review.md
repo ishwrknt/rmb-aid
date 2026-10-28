@@ -26,7 +26,7 @@ Les revues normales souffrent du biais de confirmation[^1]. Il parcourt le trava
 
 ## Où Elle Est Utilisée
 
-La revue contradictoire apparaît dans tous les workflows RMB_AID - revue de code, vérifications de préparation à l'implémentation, validation de spécifications, et d'autres. Parfois c'est une étape obligatoire, parfois optionnelle (comme l'élicitation avancée ou le mode party). Le pattern s'adapte à n'importe quel artefact nécessitant un examen.
+La revue contradictoire apparaît dans tous les workflows SMART - revue de code, vérifications de préparation à l'implémentation, validation de spécifications, et d'autres. Parfois c'est une étape obligatoire, parfois optionnelle (comme l'élicitation avancée ou le mode party). Le pattern s'adapte à n'importe quel artefact nécessitant un examen.
 
 ## Filtrage Humain Requis
 

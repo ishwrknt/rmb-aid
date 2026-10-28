@@ -23,23 +23,23 @@ Every implementation workflow automatically loads `project-context.md` if it exi
 
 **Loaded by these workflows:**
 
-- `rmbaid-create-architecture` — respects technical preferences during solutioning
-- `rmbaid-create-story` — informs story creation with project patterns
-- `rmbaid-dev-story` — guides implementation decisions
-- `rmbaid-code-review` — validates against project standards
-- `rmbaid-quick-dev` — applies patterns when implementing specs
-- `rmbaid-sprint-planning`, `rmbaid-retrospective`, `rmbaid-correct-course` — provides project-wide context
+- `smart-create-architecture` — respects technical preferences during solutioning
+- `smart-create-story` — informs story creation with project patterns
+- `smart-dev-story` — guides implementation decisions
+- `smart-code-review` — validates against project standards
+- `smart-quick-dev` — applies patterns when implementing specs
+- `smart-sprint-planning`, `smart-retrospective`, `smart-correct-course` — provides project-wide context
 
 ## When to Create It
 
 The `project-context.md` file is useful at any stage of a project:
 
-| Scenario                             | When to Create                                    | Purpose                                                             |
-| ------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------------- |
-| **New project, before architecture** | Manually, before `rmbaid-create-architecture`     | Document your technical preferences so the architect respects them  |
-| **New project, after architecture**  | Via `rmbaid-generate-project-context` or manually | Capture architecture decisions for implementation agents            |
-| **Existing project**                 | Via `rmbaid-generate-project-context`             | Discover existing patterns so agents follow established conventions |
-| **Quick Flow project**               | Before or during `rmbaid-quick-dev`               | Ensure quick implementation respects your patterns                  |
+| Scenario                             | When to Create                                   | Purpose                                                             |
+| ------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------- |
+| **New project, before architecture** | Manually, before `smart-create-architecture`     | Document your technical preferences so the architect respects them  |
+| **New project, after architecture**  | Via `smart-generate-project-context` or manually | Capture architecture decisions for implementation agents            |
+| **Existing project**                 | Via `smart-generate-project-context`             | Discover existing patterns so agents follow established conventions |
+| **Quick Flow project**               | Before or during `smart-quick-dev`               | Ensure quick implementation respects your patterns                  |
 
 :::tip[Recommended]
 For new projects, create it manually before architecture if you have strong technical preferences. Otherwise, generate it after architecture to capture those decisions.
@@ -113,20 +113,20 @@ Edit it with your technology stack and implementation rules. The architect and i
 
 ### Generate After Architecture
 
-Run the `rmbaid-generate-project-context` workflow after completing your architecture:
+Run the `smart-generate-project-context` workflow after completing your architecture:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 This scans your architecture document and project files to generate a context file capturing the decisions made.
 
 ### Generate for Existing Projects
 
-For existing projects, run `rmbaid-generate-project-context` to discover existing patterns:
+For existing projects, run `smart-generate-project-context` to discover existing patterns:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 The workflow analyzes your codebase to identify conventions, then generates a context file you can review and refine.
@@ -157,7 +157,7 @@ The `project-context.md` file is a living document. Update it when:
 - Patterns evolve during implementation
 - You identify gaps from agent behavior
 
-You can edit it manually at any time, or re-run `rmbaid-generate-project-context` to update it after significant changes.
+You can edit it manually at any time, or re-run `smart-generate-project-context` to update it after significant changes.
 
 :::note[File Location]
 The default location is `_rmbaid-output/project-context.md`. Workflows search for it there, and also check `**/project-context.md` anywhere in your project.

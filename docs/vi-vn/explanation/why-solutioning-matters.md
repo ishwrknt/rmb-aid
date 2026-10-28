@@ -52,12 +52,12 @@ Bằng cách tài liệu hóa rõ ràng các quyết định kỹ thuật, tất
 
 ## Khi nào solutioning là bắt buộc
 
-| Track            | Có cần solutioning không? |
-| ---------------- | ------------------------- |
-| Quick Flow       | Không - bỏ qua hoàn toàn  |
-| RMB_AID đơn giản | Tùy chọn                  |
-| RMB_AID phức tạp | Có                        |
-| Enterprise       | Có                        |
+| Track          | Có cần solutioning không? |
+| -------------- | ------------------------- |
+| Quick Flow     | Không - bỏ qua hoàn toàn  |
+| SMART đơn giản | Tùy chọn                  |
+| SMART phức tạp | Có                        |
+| Enterprise     | Có                        |
 
 :::tip[Quy tắc ngón tay cái]
 Nếu bạn có nhiều epic có thể được các agent khác nhau triển khai, bạn cần solutioning.

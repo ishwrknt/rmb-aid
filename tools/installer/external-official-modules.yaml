@@ -1,53 +1,53 @@
-# This file allows these modules under rmbaid-code-org to also be installed with the rmbaid method installer, while
+# This file allows these modules under smart-code-org to also be installed with the smart method installer, while
 # allowing us to keep the source of these projects in separate repos.
 
 modules:
-  rmbaid-builder:
-    url: https://github.com/rmbaid-code-org/rmbaid-builder
+  smart-builder:
+    url: https://github.com/smart-code-org/smart-builder
     module-definition: skills/module.yaml
     code: bmb
-    name: "RMB_AID Builder"
+    name: "SMART Builder"
     description: "Agent and Builder"
     defaultSelected: false
-    type: rmbaid-org
-    npmPackage: rmbaid-builder
+    type: smart-org
+    npmPackage: smart-builder
 
-  rmbaid-creative-intelligence-suite:
-    url: https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite
+  smart-creative-intelligence-suite:
+    url: https://github.com/smart-code-org/smart-module-creative-intelligence-suite
     module-definition: src/module.yaml
     code: cis
-    name: "RMB_AID Creative Intelligence Suite"
+    name: "SMART Creative Intelligence Suite"
     description: "Creative tools for writing, brainstorming, and more"
     defaultSelected: false
-    type: rmbaid-org
-    npmPackage: rmbaid-creative-intelligence-suite
+    type: smart-org
+    npmPackage: smart-creative-intelligence-suite
 
-  rmbaid-game-dev-studio:
-    url: https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio.git
+  smart-game-dev-studio:
+    url: https://github.com/smart-code-org/smart-module-game-dev-studio.git
     module-definition: src/module.yaml
     code: gds
-    name: "RMB_AID Game Dev Studio"
+    name: "SMART Game Dev Studio"
     description: "Game development agents and workflows"
     defaultSelected: false
-    type: rmbaid-org
-    npmPackage: rmbaid-game-dev-studio
+    type: smart-org
+    npmPackage: smart-game-dev-studio
 
-  rmb-aid-test-architecture-enterprise:
-    url: https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise
+  smart-agentic-test-architecture-enterprise:
+    url: https://github.com/smart-code-org/smart-agentic-test-architecture-enterprise
     module-definition: src/module.yaml
     code: tea
     name: "Test Architect"
     description: "Master Test Architect for quality strategy, test automation, and release gates"
     defaultSelected: false
-    type: rmbaid-org
-    npmPackage: rmb-aid-test-architecture-enterprise
+    type: smart-org
+    npmPackage: smart-agentic-test-architecture-enterprise
 
   whiteport-design-studio:
-    url: https://github.com/rmbaid-code-org/rmb-aid-wds-expansion
+    url: https://github.com/smart-code-org/smart-agentic-wds-expansion
     module-definition: src/module.yaml
     code: wds
     name: "Whiteport Design Studio (For UX Professionals)"
     description: "Whiteport Design Studio (For UX Professionals)"
     defaultSelected: false
     type: community
-    npmPackage: rmb-aid-wds-expansion
+    npmPackage: smart-agentic-wds-expansion

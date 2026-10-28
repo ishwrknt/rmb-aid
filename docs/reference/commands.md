@@ -1,26 +1,26 @@
 ---
 title: Skills
-description: Reference for RMB_AID skills — what they are, how they work, and where to find them.
+description: Reference for SMART skills — what they are, how they work, and where to find them.
 sidebar:
   order: 3
 ---
 
-Skills are pre-built prompts that load agents, run workflows, or execute tasks inside your IDE. The RMB_AID installer generates them from your installed modules at install time. If you later add, remove, or change modules, re-run the installer to keep skills in sync (see [Troubleshooting](#troubleshooting)).
+Skills are pre-built prompts that load agents, run workflows, or execute tasks inside your IDE. The SMART installer generates them from your installed modules at install time. If you later add, remove, or change modules, re-run the installer to keep skills in sync (see [Troubleshooting](#troubleshooting)).
 
 ## Skills vs. Agent Menu Triggers
 
-RMB_AID offers two ways to start work, and they serve different purposes.
+SMART offers two ways to start work, and they serve different purposes.
 
 | Mechanism              | How you invoke it                                       | What happens                                                                              |
 | ---------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| **Skill**              | Type the skill name (e.g. `rmbaid-help`) in your IDE    | Directly loads an agent, runs a workflow, or executes a task                              |
+| **Skill**              | Type the skill name (e.g. `smart-help`) in your IDE     | Directly loads an agent, runs a workflow, or executes a task                              |
 | **Agent menu trigger** | Load an agent first, then type a short code (e.g. `DS`) | The agent interprets the code and starts the matching workflow while staying in character |
 
 Agent menu triggers require an active agent session. Use skills when you know which workflow you want. Use triggers when you are already working with an agent and want to switch tasks without leaving the conversation.
 
 ## How Skills Are Generated
 
-When you run `npx rmb-aid install`, the installer reads the manifests for every selected module and writes one skill per agent, workflow, task, and tool. Each skill is a directory containing a `SKILL.md` file that instructs the AI to load the corresponding source file and follow its instructions.
+When you run `npx smart-agentic install`, the installer reads the manifests for every selected module and writes one skill per agent, workflow, task, and tool. Each skill is a directory containing a `SKILL.md` file that instructs the AI to load the corresponding source file and follow its instructions.
 
 The installer uses templates for each skill type:
 
@@ -50,22 +50,22 @@ Each skill is a directory containing a `SKILL.md` file. For example, a Claude Co
 
 ```text
 .claude/skills/
-├── rmbaid-help/
+├── smart-help/
 │   └── SKILL.md
-├── rmbaid-create-prd/
+├── smart-create-prd/
 │   └── SKILL.md
-├── rmbaid-agent-dev/
+├── smart-agent-dev/
 │   └── SKILL.md
 └── ...
 ```
 
-The directory name determines the skill name in your IDE. For example, the directory `rmbaid-agent-dev/` registers the skill `rmbaid-agent-dev`.
+The directory name determines the skill name in your IDE. For example, the directory `smart-agent-dev/` registers the skill `smart-agent-dev`.
 
 ## How to Discover Your Skills
 
 Type the skill name in your IDE to invoke it. Some platforms require you to enable skills in settings before they appear.
 
-Run `rmbaid-help` for context-aware guidance on your next step.
+Run `smart-help` for context-aware guidance on your next step.
 
 :::tip[Quick discovery]
 The generated skill directories in your project are the canonical list. Open them in your file explorer to see every skill with its description.
@@ -77,11 +77,11 @@ The generated skill directories in your project are the canonical list. Open the
 
 Agent skills load a specialized AI persona with a defined role, communication style, and menu of workflows. Once loaded, the agent stays in character and responds to menu triggers.
 
-| Example skill      | Agent                  | Role                                              |
-| ------------------ | ---------------------- | ------------------------------------------------- |
-| `rmbaid-agent-dev` | Amelia (Developer)     | Implements stories with strict adherence to specs |
-| `rmbaid-pm`        | John (Product Manager) | Creates and validates PRDs                        |
-| `rmbaid-architect` | Winston (Architect)    | Designs system architecture                       |
+| Example skill     | Agent                  | Role                                              |
+| ----------------- | ---------------------- | ------------------------------------------------- |
+| `smart-agent-dev` | Amelia (Developer)     | Implements stories with strict adherence to specs |
+| `smart-pm`        | John (Product Manager) | Creates and validates PRDs                        |
+| `smart-architect` | Winston (Architect)    | Designs system architecture                       |
 
 See [Agents](./agents.md) for the full list of default agents and their triggers.
 
@@ -89,16 +89,16 @@ See [Agents](./agents.md) for the full list of default agents and their triggers
 
 Workflow skills run a structured, multi-step process without loading an agent persona first. They load a workflow configuration and follow its steps.
 
-| Example skill                     | Purpose                                                               |
-| --------------------------------- | --------------------------------------------------------------------- |
-| `rmbaid-product-brief`            | Create a product brief — guided discovery when your concept is clear  |
-| `rmbaid-prfaq`                    | Working Backwards PRFAQ challenge to stress-test your product concept |
-| `rmbaid-create-prd`               | Create a Product Requirements Document                                |
-| `rmbaid-create-architecture`      | Design system architecture                                            |
-| `rmbaid-create-epics-and-stories` | Create epics and stories                                              |
-| `rmbaid-dev-story`                | Implement a story                                                     |
-| `rmbaid-code-review`              | Run a code review                                                     |
-| `rmbaid-quick-dev`                | Unified quick flow — clarify intent, plan, implement, review, present |
+| Example skill                    | Purpose                                                               |
+| -------------------------------- | --------------------------------------------------------------------- |
+| `smart-product-brief`            | Create a product brief — guided discovery when your concept is clear  |
+| `smart-prfaq`                    | Working Backwards PRFAQ challenge to stress-test your product concept |
+| `smart-create-prd`               | Create a Product Requirements Document                                |
+| `smart-create-architecture`      | Design system architecture                                            |
+| `smart-create-epics-and-stories` | Create epics and stories                                              |
+| `smart-dev-story`                | Implement a story                                                     |
+| `smart-code-review`              | Run a code review                                                     |
+| `smart-quick-dev`                | Unified quick flow — clarify intent, plan, implement, review, present |
 
 See [Workflow Map](./workflow-map.md) for the complete workflow reference organized by phase.
 
@@ -106,16 +106,16 @@ See [Workflow Map](./workflow-map.md) for the complete workflow reference organi
 
 Tasks and tools are standalone operations that do not require an agent or workflow context.
 
-**RMB_AID-Help: Your Intelligent Guide**
+**SMART-Help: Your Intelligent Guide**
 
-`rmbaid-help` is your primary interface for discovering what to do next. It inspects your project, understands natural language queries, and recommends the next required or optional step based on your installed modules.
+`smart-help` is your primary interface for discovering what to do next. It inspects your project, understands natural language queries, and recommends the next required or optional step based on your installed modules.
 
 :::note[Example]
 
 ```
-rmbaid-help
-rmbaid-help I have a SaaS idea and know all the features. Where do I start?
-rmbaid-help What are my options for UX design?
+smart-help
+smart-help I have a SaaS idea and know all the features. Where do I start?
+smart-help What are my options for UX design?
 ```
 
 :::
@@ -126,12 +126,12 @@ The core module includes 11 built-in tools — reviews, compression, brainstormi
 
 ## Naming Convention
 
-All skills use the `rmbaid-` prefix followed by a descriptive name (e.g., `rmbaid-agent-dev`, `rmbaid-create-prd`, `rmbaid-help`). See [Modules](./modules.md) for available modules.
+All skills use the `smart-` prefix followed by a descriptive name (e.g., `smart-agent-dev`, `smart-create-prd`, `smart-help`). See [Modules](./modules.md) for available modules.
 
 ## Troubleshooting
 
 **Skills not appearing after install.** Some platforms require skills to be explicitly enabled in settings. Check your IDE's documentation or ask your AI assistant how to enable skills. You may also need to restart your IDE or reload the window.
 
-**Expected skills are missing.** The installer only generates skills for modules you selected. Run `npx rmb-aid install` again and verify your module selection. Check that the skill files exist in the expected directory.
+**Expected skills are missing.** The installer only generates skills for modules you selected. Run `npx smart-agentic install` again and verify your module selection. Check that the skill files exist in the expected directory.
 
 **Skills from a removed module still appear.** The installer does not delete old skill files automatically. Remove the stale directories from your IDE's skills directory, or delete the entire skills directory and re-run the installer for a clean set.

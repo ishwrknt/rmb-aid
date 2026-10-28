@@ -1,56 +1,130 @@
-# SMART — Scientific Methodology for AI Research and Technology
+# SMART
 
-> Apply scientific rigor to arrive at working computational solutions.
-> Not just "what to build" — but "how to think about it first."
+**Simulation Methodology based Agentic Research Tool**
 
-## Install
+SMART guides a coding assistant from a plain-language task through an approved
+plan, implementation, validation, and delivery. It tracks progress in
+`PROGRESS.md` and records measured results in `smart_metrics.jsonl`.
+
+## Install SMART
+
+For the complete terminal-to-chat setup and common error fixes, see the
+[installation and troubleshooting guide](docs/how-to/install-smart.md).
+The Bash helper is `tools/smart-install.sh`; run it with `--help` to see its
+check, install, user-install, and project-setup modes.
+
+After this release is published to npm, install the preview and configure your project:
 
 ```bash
-npx rmb-aid install
+npm install --global smart-agentic@next
+smart install --directory /path/to/your/project
 ```
 
-The published npm package name remains `rmb-aid` during the compatibility transition.
-Follow the prompts to select your AI platform.
+Requires Node.js 22 or later, npm, and an agentic coding assistant.
+SMART supplies workflows and prompts; your coding assistant supplies the AI
+model, tool access, and any associated subscription or API usage.
 
-## The Seven Agents
+From this repository, install dependencies and run the installer:
 
-| Agent       | Sanskrit Meaning   | Role                                  |
-| ----------- | ------------------ | ------------------------------------- |
-| **Drishti** | Vision             | Problem framing via GPS state-space   |
-| **Bodhi**   | Awakened Knowledge | Map existing knowledge & tools        |
-| **Tarka**   | Logic & Inference  | Form falsifiable hypothesis           |
-| **Yukti**   | Right Method       | Select algorithm & computational plan |
-| **Karma**   | Action             | Implement clean, documented solution  |
-| **Satya**   | Truth              | Validate results against criteria     |
-| **Siddhi**  | Accomplishment     | Package final deliverable             |
-
-## The Pipeline
-
-```text
-Problem → Drishti → Bodhi → Tarka → Yukti → Karma → Satya → Siddhi → Solution
+```bash
+npm ci
+node tools/installer/smart-cli.js install --directory /path/to/your/project
 ```
 
-## Theoretical Foundation
+To test the packaged version, create an archive and install it locally:
 
-1. **GPS Theory** (Newell & Simon) — State-space problem representation
-2. **Model-Based Reasoning** — Model first, solve second
-3. **Zeigler M&S** — Formal simulation pipeline
-4. **Scientific Method** — Hypothesis-driven validation
-5. **Systems Theory** — Multi-domain abstraction
+```bash
+npm pack --pack-destination /tmp
+npm install --global /tmp/smart-agentic-6.2.3-smart.2.tgz
+smart install --directory /path/to/your/project
+```
 
-## Supported Platforms
+Select your coding tool. In its agent chat, invoke
+`smart-pipeline` and describe your task:
 
-- Claude Code
-- Cursor
-- Windsurf
-- GitHub Codex
-- GitHub Copilot
-- Cline (VS Code)
+> Build a physics tracker Android app that records acceleration and exports CSV.
 
-## License
+SMART shows a plan and waits for approval. After approval it creates planning
+documents, implements each epic, validates the result, and saves progress.
+Invoke the same skill to resume the approved task in a later session.
 
-MIT — Free to use, modify, and distribute.
+For unattended setup with Codex:
 
-## Author
+```bash
+smart install --directory . --modules smart --tools codex --yes
+```
 
-Ishwar — SMART Project
+The npm package is `smart-agentic`; its command is `smart`. This renamed
+release is being prepared for publication. Do not use
+`npx smart`, which may resolve to an unrelated package.
+
+New source-build installations use `SMART/` and `SMART-output/`. Existing
+`_rmbaid/` installations remain recognized and retain their settings on update.
+
+## Other Coding Tools
+
+Print the self-contained runtime prompt:
+
+```bash
+smart prompt
+```
+
+Load the output as instructions in Aider or another coding assistant.
+This command works offline and does not change your project.
+Installation integrations are available for Codex, Windsurf, Claude Code,
+Cursor, GitHub Copilot, and other tools supported by the installer.
+
+## Seven Roles, Four Layers
+
+| Layer                | Role    | Responsibility                                 |
+| -------------------- | ------- | ---------------------------------------------- |
+| Perception           | Drishti | Understand the task, requirements, and domain  |
+| Planning             | Bodhi   | Decompose the task into phases and goals       |
+| Planning             | Tarka   | Form a hypothesis and define success criteria  |
+| Execution            | Karma   | Implement the planned software                 |
+| Planning / Execution | Yukti   | Plan methods and diagnose failures             |
+| Validation           | Satya   | Check scientific and technical correctness     |
+| Validation           | Siddhi  | Confirm completion and record measured metrics |
+
+These are coordinated roles in your coding assistant, not seven independent
+model services. Validation uses analytical solutions, benchmarks, cross-checks,
+or automated tests as appropriate. An epic cannot be marked complete with
+failed or unavailable validation. Five unsuccessful retries require user input.
+
+## Develop Locally
+
+```bash
+npm ci
+npm run quality
+node tools/installer/smart-cli.js install
+```
+
+The quality suite includes metrics tests and a packed-archive smoke test:
+offline prompt output, installation into a fresh project, and preservation
+of user progress on reinstall.
+
+## Releases
+
+See [release instructions](docs/how-to/release-smart.md) for the publishing
+procedure. The renamed npm release is awaiting publication. Automated installation,
+metrics, documentation, and skill checks run before uploading a preview.
+Full model-driven task delivery and remaining development-tool dependency
+advisories still need review before a stable release.
+
+## License and Attribution
+
+MIT. SMART is developed by Ishwar and builds on the BMAD-derived workflow and
+installer code in this repository. See [LICENSE](LICENSE).
+
+## Naming and Upgrades
+
+The npm package is `smart-agentic`, the terminal command is `smart`, and
+the delivery skill is `smart-pipeline`. Skills use the `smart-` prefix;
+the built-in delivery module is `smart`. Source skills live in
+`src/smart-skills/`, and the CLI entrypoint is `tools/installer/smart-cli.js`.
+The GitHub repository URL remains `ishwrknt/rmb-aid`.
+
+Existing installed `rmbaid-*` skills are older copies. Run the new installer
+with `--modules smart` and reload your assistant to discover `smart-*` skills.
+Legacy `_rmbaid/` directories remain recognized. Review older installed skills
+before removing them; the rename does not delete user customizations.

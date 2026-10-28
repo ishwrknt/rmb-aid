@@ -148,7 +148,7 @@ module.exports = {
       if (!removeOutputFolder) summary.push(`User artifacts preserved in ${outputFolder}/`);
 
       await prompts.note(summary.join('\n'), 'Summary');
-      await prompts.outro('To reinstall, run: npx rmb-aid install');
+      await prompts.outro('To reinstall, run: npx smart-agentic install');
 
       process.exit(0);
     } catch (error) {

@@ -1,4 +1,4 @@
-# Contributing to RMB_AID
+# Contributing to SMART
 
 Thank you for considering contributing! We believe in **Human Amplification, Not Replacement** — bringing out the best thinking in both humans and AI through guided collaboration.
 
@@ -8,20 +8,20 @@ Thank you for considering contributing! We believe in **Human Amplification, Not
 
 ## Our Philosophy
 
-RMB_AID strengthens human-AI collaboration through specialized agents and guided workflows. Every contribution should answer: **"Does this make humans and AI better together?"**
+SMART strengthens human-AI collaboration through specialized agents and guided workflows. Every contribution should answer: **"Does this make humans and AI better together?"**
 
 **✅ What we welcome:**
 
 - Enhanced collaboration patterns and workflows
 - Improved agent personas and prompts
-- Domain-specific modules leveraging RMB_AID Core
+- Domain-specific modules leveraging SMART Core
 - Better planning and context continuity
 
 **❌ What doesn't fit:**
 
 - Purely automated solutions that sideline humans
 - Complexity that creates barriers to adoption
-- Features that fragment RMB_AID Core's foundation
+- Features that fragment SMART Core's foundation
 
 ---
 
@@ -33,27 +33,27 @@ RMB_AID strengthens human-AI collaboration through specialized agents and guided
 
 1. **Search existing issues** — Use the GitHub issue search to check if your bug or feature has already been reported
 2. **Search closed issues** — Your issue may have been fixed or addressed previously
-3. **Check discussions** — Some conversations happen in [GitHub Discussions](https://github.com/rmbaid-code-org/RMB_AID/discussions)
+3. **Check discussions** — Some conversations happen in [GitHub Discussions](https://github.com/smart-code-org/SMART/discussions)
 
 ### Bug Reports
 
-After searching, if the bug is unreported, use the [bug report template](https://github.com/rmbaid-code-org/RMB_AID/issues/new?template=bug_report.md) and include:
+After searching, if the bug is unreported, use the [bug report template](https://github.com/smart-code-org/SMART/issues/new?template=bug_report.md) and include:
 
 - Clear description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
-- Your environment (model, IDE, RMB_AID version)
+- Your environment (model, IDE, SMART version)
 - Screenshots or error messages if applicable
 
 ### Feature Requests
 
-After searching, use the [feature request template](https://github.com/rmbaid-code-org/RMB_AID/issues/new?template=feature_request.md) and explain:
+After searching, use the [feature request template](https://github.com/smart-code-org/SMART/issues/new?template=feature_request.md) and explain:
 
 - What the feature is
-- Why it would benefit the RMB_AID community
+- Why it would benefit the SMART community
 - How it strengthens human-AI collaboration
 
-**For community modules**, review [TRADEMARK.md](TRADEMARK.md) for proper naming conventions (e.g., "My Module (RMB_AID Community Module)").
+**For community modules**, review [TRADEMARK.md](TRADEMARK.md) for proper naming conventions (e.g., "My Module (SMART Community Module)").
 
 ---
 
@@ -88,7 +88,7 @@ If your change exceeds 800 lines, break it into smaller PRs that can be reviewed
 ### New to Pull Requests?
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/rmb-aid.git`
+2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/smart-agentic.git`
 3. **Create a branch**: `git checkout -b fix/description` or `git checkout -b feature/description`
 4. **Make changes** — keep them focused
 5. **Commit**: `git commit -m "fix: correct typo in README"`
@@ -151,7 +151,7 @@ Keep messages under 72 characters. Each commit = one logical change.
 - Keep dev agents lean — focus on coding context, not documentation
 - Web/planning agents can be larger with complex tasks
 - Everything is natural language (markdown) — no code in core framework
-- Use RMB_AID modules for domain-specific features
+- Use SMART modules for domain-specific features
 - Validate file references: `npm run validate:refs`
 
 ### File-Pattern-to-Validator Mapping
@@ -167,8 +167,8 @@ Keep messages under 72 characters. Each commit = one logical change.
 ## Need Help?
 
 - 💬 **Discord**: [Join the community](https://discord.gg/gk8jAdXWmj)
-- 🐛 **Bugs**: Use the [bug report template](https://github.com/rmbaid-code-org/RMB_AID/issues/new?template=bug_report.md)
-- 💡 **Features**: Use the [feature request template](https://github.com/rmbaid-code-org/RMB_AID/issues/new?template=feature_request.md)
+- 🐛 **Bugs**: Use the [bug report template](https://github.com/smart-code-org/SMART/issues/new?template=bug_report.md)
+- 💡 **Features**: Use the [feature request template](https://github.com/smart-code-org/SMART/issues/new?template=feature_request.md)
 
 ---
 

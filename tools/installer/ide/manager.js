@@ -1,4 +1,4 @@
-const { RMB_AID_FOLDER_NAME } = require('./shared/path-utils');
+const { SMART_FOLDER_NAME } = require('./shared/path-utils');
 const prompts = require('../prompts');
 
 /**
@@ -12,12 +12,12 @@ class IdeManager {
   constructor() {
     this.handlers = new Map();
     this._initialized = false;
-    this.rmbaidFolderName = RMB_AID_FOLDER_NAME; // Default, can be overridden
+    this.rmbaidFolderName = SMART_FOLDER_NAME; // Default, can be overridden
   }
 
   /**
-   * Set the rmbaid folder name for all IDE handlers
-   * @param {string} rmbaidFolderName - The rmbaid folder name
+   * Set the smart folder name for all IDE handlers
+   * @param {string} rmbaidFolderName - The smart folder name
    */
   setRmbaidFolderName(rmbaidFolderName) {
     this.rmbaidFolderName = rmbaidFolderName;
@@ -126,7 +126,7 @@ class IdeManager {
    * Setup IDE configuration
    * @param {string} ideName - Name of the IDE
    * @param {string} projectDir - Project directory
-   * @param {string} rmbaidDir - RMB_AID installation directory
+   * @param {string} rmbaidDir - SMART installation directory
    * @param {Object} options - Setup options
    */
   async setup(ideName, projectDir, rmbaidDir, options = {}) {

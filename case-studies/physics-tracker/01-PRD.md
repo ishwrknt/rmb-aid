@@ -16,11 +16,11 @@ devices, or don't support the light-analysis workflow required for optics labs.
 
 ## 2. Users
 
-| User | Goal |
-|---|---|
+| User            | Goal                                                   |
+| --------------- | ------------------------------------------------------ |
 | Physics student | Record and export a sensor run during a lab experiment |
-| Lab instructor | Review exported CSV files for marking |
-| SMART agent | Build and validate each feature epic autonomously |
+| Lab instructor  | Review exported CSV files for marking                  |
+| SMART agent     | Build and validate each feature epic autonomously      |
 
 ---
 
@@ -115,25 +115,25 @@ timestamp_ms,relative_lux,frame_number
 
 ## 6. Non-Functional Requirements
 
-| ID | Requirement |
-|---|---|
+| ID     | Requirement                                                |
+| ------ | ---------------------------------------------------------- |
 | NFR-01 | Sensor pipeline must not drop readings at 50 Hz on API 26+ |
-| NFR-02 | UI must remain responsive during background capture |
-| NFR-03 | App must not crash on orientation change during capture |
+| NFR-02 | UI must remain responsive during background capture        |
+| NFR-03 | App must not crash on orientation change during capture    |
 | NFR-04 | CSV export must complete in < 2 s for runs up to 5 minutes |
-| NFR-05 | Light analysis overlay must update at ≥ 24 fps |
+| NFR-05 | Light analysis overlay must update at ≥ 24 fps             |
 
 ---
 
 ## 7. Acceptance Tests
 
-| ID | Test | Expected |
-|---|---|---|
-| AT-01 | Start 50 Hz capture for 60 s; count rows in CSV | ≥ 2 900 rows |
-| AT-02 | Export CSV; open in Python/pandas; parse all columns | No parse errors |
-| AT-03 | Rotate device during capture; resume | No crash; data continues |
-| AT-04 | Cover camera in light-analysis mode | Lux drops monotonically |
-| AT-05 | Background capture; lock screen; unlock after 30 s | Data gap < 50 ms |
+| ID    | Test                                                 | Expected                 |
+| ----- | ---------------------------------------------------- | ------------------------ |
+| AT-01 | Start 50 Hz capture for 60 s; count rows in CSV      | ≥ 2 900 rows             |
+| AT-02 | Export CSV; open in Python/pandas; parse all columns | No parse errors          |
+| AT-03 | Rotate device during capture; resume                 | No crash; data continues |
+| AT-04 | Cover camera in light-analysis mode                  | Lux drops monotonically  |
+| AT-05 | Background capture; lock screen; unlock after 30 s   | Data gap < 50 ms         |
 
 ---
 

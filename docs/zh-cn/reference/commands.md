@@ -1,17 +1,17 @@
 ---
 title: '技能（Skills）'
-description: RMB_AID 技能参考：它们是什么、如何生成以及如何调用。
+description: SMART 技能参考：它们是什么、如何生成以及如何调用。
 sidebar:
   order: 3
 ---
 
-每次运行 `npx rmb-aid install`，RMB_AID 会基于你选择的模块生成一组 **skills**。你可以直接输入 skill 名称调用 workflow、任务、工具或智能体角色。
+每次运行 `npx smart-agentic install`，SMART 会基于你选择的模块生成一组 **skills**。你可以直接输入 skill 名称调用 workflow、任务、工具或智能体角色。
 
 ## Skills 与菜单触发器的区别
 
 | 机制                 | 调用方式                                | 适用场景                     |
 | -------------------- | --------------------------------------- | ---------------------------- |
-| **Skill**            | 直接输入 skill 名（如 `rmbaid-help`）   | 你已明确要运行哪个功能       |
+| **Skill**            | 直接输入 skill 名（如 `smart-help`）    | 你已明确要运行哪个功能       |
 | **智能体菜单触发器** | 先加载智能体，再输入短触发码（如 `DS`） | 你在智能体会话内连续切换任务 |
 
 菜单触发器依赖“已激活的智能体会话”；skill 可独立运行。
@@ -44,25 +44,25 @@ sidebar:
 
 ```text
 .claude/skills/
-├── rmbaid-help/
+├── smart-help/
 │   └── SKILL.md
-├── rmbaid-create-prd/
+├── smart-create-prd/
 │   └── SKILL.md
-├── rmbaid-agent-dev/
+├── smart-agent-dev/
 │   └── SKILL.md
 └── ...
 ```
 
-skill 目录名就是调用名，例如 `rmbaid-agent-dev/` 对应 skill `rmbaid-agent-dev`。
+skill 目录名就是调用名，例如 `smart-agent-dev/` 对应 skill `smart-agent-dev`。
 
 ## 如何发现可用 skills
 
-- 在 IDE 中直接输入 `rmbaid-` 前缀查看补全候选
-- 运行 `rmbaid-help` 获取基于当前项目状态的下一步建议
+- 在 IDE 中直接输入 `smart-` 前缀查看补全候选
+- 运行 `smart-help` 获取基于当前项目状态的下一步建议
 - 打开 skills 目录查看完整清单（这是最权威来源）
 
 :::tip[快速定位]
-不确定该跑哪个 workflow 时，先执行 `rmbaid-help`，通常比人工翻文档更快。
+不确定该跑哪个 workflow 时，先执行 `smart-help`，通常比人工翻文档更快。
 :::
 
 ## Skill 分类与示例
@@ -71,11 +71,11 @@ skill 目录名就是调用名，例如 `rmbaid-agent-dev/` 对应 skill `rmbaid
 
 加载一个角色化智能体，并保持其 persona 与菜单上下文。
 
-| 示例 skill         | 角色                    | 用途               |
-| ------------------ | ----------------------- | ------------------ |
-| `rmbaid-agent-dev` | Developer（Amelia）     | 按规范实现 story   |
-| `rmbaid-pm`        | Product Manager（John） | 创建与校验 PRD     |
-| `rmbaid-architect` | Architect（Winston）    | 架构设计与约束定义 |
+| 示例 skill        | 角色                    | 用途               |
+| ----------------- | ----------------------- | ------------------ |
+| `smart-agent-dev` | Developer（Amelia）     | 按规范实现 story   |
+| `smart-pm`        | Product Manager（John） | 创建与校验 PRD     |
+| `smart-architect` | Architect（Winston）    | 架构设计与约束定义 |
 
 完整列表见 [智能体参考](./agents.md)。
 
@@ -83,14 +83,14 @@ skill 目录名就是调用名，例如 `rmbaid-agent-dev/` 对应 skill `rmbaid
 
 无需先加载 agent，直接运行结构化流程。
 
-| 示例 skill                        | 用途                                 |
-| --------------------------------- | ------------------------------------ |
-| `rmbaid-create-prd`               | 创建 PRD                             |
-| `rmbaid-create-architecture`      | 创建架构方案                         |
-| `rmbaid-create-epics-and-stories` | 拆分 epics/stories                   |
-| `rmbaid-dev-story`                | 实现指定 story                       |
-| `rmbaid-code-review`              | 代码评审                             |
-| `rmbaid-quick-dev`                | 快速流程（澄清→规划→实现→审查→呈现） |
+| 示例 skill                       | 用途                                 |
+| -------------------------------- | ------------------------------------ |
+| `smart-create-prd`               | 创建 PRD                             |
+| `smart-create-architecture`      | 创建架构方案                         |
+| `smart-create-epics-and-stories` | 拆分 epics/stories                   |
+| `smart-dev-story`                | 实现指定 story                       |
+| `smart-code-review`              | 代码评审                             |
+| `smart-quick-dev`                | 快速流程（澄清→规划→实现→审查→呈现） |
 
 按阶段查看见 [工作流地图](./workflow-map.md)。
 
@@ -98,13 +98,13 @@ skill 目录名就是调用名，例如 `rmbaid-agent-dev/` 对应 skill `rmbaid
 
 独立任务，不依赖特定智能体上下文。
 
-**`rmbaid-help`** 是最常用入口：它会读取项目状态并给出“下一步建议 + 对应 skill”。
+**`smart-help`** 是最常用入口：它会读取项目状态并给出“下一步建议 + 对应 skill”。
 
 更多核心任务和工具见 [核心工具参考](./core-tools.md)。
 
 ## 命名规则
 
-所有技能统一以 `rmbaid-` 开头，后接语义化名称（如 `rmbaid-agent-dev`、`rmbaid-create-prd`、`rmbaid-help`）。
+所有技能统一以 `smart-` 开头，后接语义化名称（如 `smart-agent-dev`、`smart-create-prd`、`smart-help`）。
 
 ## 故障排查
 

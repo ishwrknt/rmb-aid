@@ -10,11 +10,11 @@ sensor pipeline, data export, and light analysis.
 
 ## Epics
 
-| Epic | Name | Key Module | Status |
-|---|---|---|---|
-| 01 | sensor-pipeline | `SensorRepository` + `CaptureService` | planned |
-| 02 | data-export | `CsvExporter` + `FileNamer` | planned |
-| 03 | light-analysis | `LuxAnalyzer` + `LuxOverlayView` | planned |
+| Epic | Name            | Key Module                            | Status  |
+| ---- | --------------- | ------------------------------------- | ------- |
+| 01   | sensor-pipeline | `SensorRepository` + `CaptureService` | planned |
+| 02   | data-export     | `CsvExporter` + `FileNamer`           | planned |
+| 03   | light-analysis  | `LuxAnalyzer` + `LuxOverlayView`      | planned |
 
 ## Entry Criteria
 

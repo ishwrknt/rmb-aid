@@ -1,11 +1,11 @@
 ---
 title: Non-Interactive Installation
-description: Install RMB_AID using command-line flags for CI/CD pipelines and automated deployments
+description: Install SMART using command-line flags for CI/CD pipelines and automated deployments
 sidebar:
   order: 2
 ---
 
-Use command-line flags to install RMB_AID non-interactively. This is useful for:
+Use command-line flags to install SMART non-interactively. This is useful for:
 
 ## When to Use This
 
@@ -15,7 +15,10 @@ Use command-line flags to install RMB_AID non-interactively. This is useful for:
 - Quick installations with known configurations
 
 :::note[Prerequisites]
-Requires [Node.js](https://nodejs.org) v20+ and `npx` (included with npm).
+Requires [Node.js](https://nodejs.org) v22+ and npm.
+Until npm publication, replace `npx smart-agentic` in the examples below with
+`node tools/installer/smart-cli.js` from your source checkout, or `smart`
+after installing the local archive. See [Release SMART](./release-smart.md).
 :::
 
 ## Available Flags
@@ -25,19 +28,19 @@ Requires [Node.js](https://nodejs.org) v20+ and `npx` (included with npm).
 | Flag                       | Description                                                                         | Example                                         |
 | -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------- |
 | `--directory <path>`       | Installation directory                                                              | `--directory ~/projects/myapp`                  |
-| `--modules <modules>`      | Comma-separated module IDs                                                          | `--modules rmbaid,bmb`                          |
+| `--modules <modules>`      | Comma-separated module IDs                                                          | `--modules smart,bmb`                           |
 | `--tools <tools>`          | Comma-separated tool/IDE IDs (use `none` to skip)                                   | `--tools claude-code,cursor` or `--tools none`  |
 | `--custom-content <paths>` | Comma-separated paths to custom modules                                             | `--custom-content ~/my-module,~/another-module` |
 | `--action <type>`          | Action for existing installations: `install` (default), `update`, or `quick-update` | `--action quick-update`                         |
 
 ### Core Configuration
 
-| Flag                                | Description                                     | Default          |
-| ----------------------------------- | ----------------------------------------------- | ---------------- |
-| `--user-name <name>`                | Name for agents to use                          | System username  |
-| `--communication-language <lang>`   | Agent communication language                    | English          |
-| `--document-output-language <lang>` | Document output language                        | English          |
-| `--output-folder <path>`            | Output folder path (see resolution rules below) | `_rmbaid-output` |
+| Flag                                | Description                                     | Default         |
+| ----------------------------------- | ----------------------------------------------- | --------------- |
+| `--user-name <name>`                | Name for agents to use                          | System username |
+| `--communication-language <lang>`   | Agent communication language                    | English         |
+| `--document-output-language <lang>` | Document output language                        | English         |
+| `--output-folder <path>`            | Output folder path (see resolution rules below) | `SMART-output`  |
 
 #### Output Folder Path Resolution
 
@@ -45,7 +48,7 @@ The value passed to `--output-folder` (or entered interactively) is resolved acc
 
 | Input type                   | Example                    | Resolved as                                                |
 | ---------------------------- | -------------------------- | ---------------------------------------------------------- |
-| Relative path (default)      | `_rmbaid-output`           | `<project-root>/_rmbaid-output`                            |
+| Relative path (default)      | `SMART-output`             | `<project-root>/SMART-output`                              |
 | Relative path with traversal | `../../shared-outputs`     | Normalized absolute path — e.g. `/Users/me/shared-outputs` |
 | Absolute path                | `/Users/me/shared-outputs` | Used as-is — project root is **not** prepended             |
 
@@ -63,10 +66,10 @@ The resolved path is what agents and workflows use at runtime when writing outpu
 
 Available module IDs for the `--modules` flag:
 
-- `rmbaid` — RMB_AID Master
-- `bmb` — RMB_AID Builder
+- `smart` — SMART Master
+- `bmb` — SMART Builder
 
-Check the [RMB_AID registry](https://github.com/rmbaid-code-org) for available external modules.
+Check the [SMART registry](https://github.com/smart-code-org) for available external modules.
 
 ## Tool/IDE IDs
 
@@ -74,18 +77,18 @@ Available tool IDs for the `--tools` flag:
 
 **Preferred:** `claude-code`, `cursor`
 
-Run `npx rmb-aid install` interactively once to see the full current list of supported tools, or check the [platform codes configuration](https://github.com/rmbaid-code-org/RMB_AID/blob/main/tools/installer/ide/platform-codes.yaml).
+Run `npx smart-agentic install` interactively once to see the full current list of supported tools, or check the [platform codes configuration](https://github.com/smart-code-org/SMART/blob/main/tools/installer/ide/platform-codes.yaml).
 
 ## Installation Modes
 
-| Mode                  | Description                                      | Example                                                                        |
-| --------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------ |
-| Fully non-interactive | Provide all flags to skip all prompts            | `npx rmb-aid install --directory . --modules rmbaid --tools claude-code --yes` |
-| Simple interactive    | Ask only the important questions and use defaults elsewhere | `npx rmb-aid install` |
-| Semi-interactive      | Provide some flags; RMB_AID prompts for the rest | `npx rmb-aid install --directory . --modules rmbaid`                           |
-| Advanced interactive  | Show the full interactive configuration flow     | `npx rmb-aid install --advanced`                                               |
-| Defaults only         | Accept all defaults with `-y`                    | `npx rmb-aid install --yes`                                                    |
-| Without tools         | Skip tool/IDE configuration                      | `npx rmb-aid install --modules rmbaid --tools none`                            |
+| Mode                  | Description                                                 | Example                                                                             |
+| --------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Fully non-interactive | Provide all flags to skip all prompts                       | `npx smart-agentic install --directory . --modules smart --tools claude-code --yes` |
+| Simple interactive    | Ask only the important questions and use defaults elsewhere | `npx smart-agentic install`                                                         |
+| Semi-interactive      | Provide some flags; SMART prompts for the rest              | `npx smart-agentic install --directory . --modules smart`                           |
+| Advanced interactive  | Show the full interactive configuration flow                | `npx smart-agentic install --advanced`                                              |
+| Defaults only         | Accept all defaults with `-y`                               | `npx smart-agentic install --yes`                                                   |
+| Without tools         | Skip tool/IDE configuration                                 | `npx smart-agentic install --modules smart --tools none`                            |
 
 ## Examples
 
@@ -93,32 +96,32 @@ Run `npx rmb-aid install` interactively once to see the full current list of sup
 
 ```bash
 #!/bin/bash
-# install-rmbaid.sh
+# install-smart.sh
 
-npx rmb-aid install \
+npx smart-agentic install \
   --directory "${GITHUB_WORKSPACE}" \
-  --modules rmbaid \
+  --modules smart \
   --tools claude-code \
   --user-name "CI Bot" \
   --communication-language English \
   --document-output-language English \
-  --output-folder _rmbaid-output \
+  --output-folder SMART-output \
   --yes
 ```
 
 ### Update Existing Installation
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action update \
-  --modules rmbaid,bmb,custom-module
+  --modules smart,bmb,custom-module
 ```
 
 ### Quick Update (Preserve Settings)
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
   --action quick-update
 ```
@@ -126,9 +129,9 @@ npx rmb-aid install \
 ### Installation with Custom Content
 
 ```bash
-npx rmb-aid install \
+npx smart-agentic install \
   --directory ~/projects/myapp \
-  --modules rmbaid \
+  --modules smart \
   --custom-content ~/my-custom-module,~/another-module \
   --tools claude-code
 ```
@@ -137,11 +140,11 @@ npx rmb-aid install \
 
 - A fully configured `_rmbaid/` directory in your project
 - Agents and workflows configured for your selected modules and tools
-- A `_rmbaid-output/` folder for generated artifacts
+- A `SMART-output/` folder for generated artifacts
 
 ## Validation and Error Handling
 
-RMB_AID validates all provided flags:
+SMART validates all provided flags:
 
 - **Directory** — Must be a valid path with write permissions
 - **Modules** — Warns about invalid module IDs (but won't fail)
@@ -186,5 +189,5 @@ Ensure each custom content path:
 - Has a `code` field in the `module.yaml`
 
 :::note[Still stuck?]
-Run with `--debug` for detailed output, try interactive mode to isolate the issue, or report at <https://github.com/rmbaid-code-org/RMB_AID/issues>.
+Run with `--debug` for detailed output, try interactive mode to isolate the issue, or report at <https://github.com/smart-code-org/SMART/issues>.
 :::

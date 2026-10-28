@@ -1,14 +1,14 @@
-# RMB_AID CLI Tool
+# SMART CLI Tool
 
-## Installing external repo RMB_AID official modules
+## Installing external repo SMART official modules
 
 For external official modules to be discoverable during install, ensure an entry for the external repo is added to external-official-modules.yaml.
 
-For community modules - this will be handled in a different way. This file is only for registration of modules under the rmbaid-code-org.
+For community modules - this will be handled in a different way. This file is only for registration of modules under the smart-code-org.
 
 ## Post-Install Notes
 
-Modules can display setup guidance to users after configuration is collected during `npx rmb-aid install`. Notes are defined in the module's own `module.yaml` — no changes to the installer are needed.
+Modules can display setup guidance to users after configuration is collected during `npx smart-agentic install`. Notes are defined in the module's own `module.yaml` — no changes to the installer are needed.
 
 ### Simple Format
 

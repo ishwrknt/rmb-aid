@@ -14,16 +14,16 @@ module.exports = {
   options: [],
   action: async (options) => {
     try {
-      // Find the rmbaid directory
+      // Find the smart directory
       const projectDir = process.cwd();
       const { rmbaidDir } = await installer.findRmbaidDir(projectDir);
 
-      // Check if rmbaid directory exists
+      // Check if smart directory exists
       const fs = require('fs-extra');
       if (!(await fs.pathExists(rmbaidDir))) {
         await prompts.log.warn('No SMART installation found in the current directory.');
         await prompts.log.message(`Expected location: ${rmbaidDir}`);
-        await prompts.log.message('Run "rmbaid install" to set up a new installation.');
+        await prompts.log.message('Run "smart install" to set up a new installation.');
         process.exit(0);
         return;
       }
@@ -33,7 +33,7 @@ module.exports = {
 
       if (!manifestData) {
         await prompts.log.warn('No SMART installation manifest found.');
-        await prompts.log.message('Run "rmbaid install" to set up a new installation.');
+        await prompts.log.message('Run "smart install" to set up a new installation.');
         process.exit(0);
         return;
       }
@@ -56,7 +56,7 @@ module.exports = {
       process.exit(0);
     } catch (error) {
       await prompts.log.error(`Status check failed: ${error.message}`);
-      if (process.env.RMB_AID_DEBUG) {
+      if (process.env.SMART_DEBUG) {
         await prompts.log.message(error.stack);
       }
       process.exit(1);

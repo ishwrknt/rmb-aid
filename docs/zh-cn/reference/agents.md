@@ -1,28 +1,28 @@
 ---
 title: '智能体'
-description: 默认 RMB_AID 智能体的 skill ID、触发器与主要 workflow 速查。
+description: 默认 SMART 智能体的 skill ID、触发器与主要 workflow 速查。
 sidebar:
   order: 2
 ---
 
-本页列出 RMB_AID 默认提供的 RMB_AID（Agile 套件）智能体，包括它们的 skill ID、菜单触发器和主要 workflow。
+本页列出 SMART 默认提供的 SMART（Agile 套件）智能体，包括它们的 skill ID、菜单触发器和主要 workflow。
 
 ## 默认智能体列表
 
-| 智能体                   | Skill ID             | 触发器                                   | 主要 workflow                                                                                            |
-| ------------------------ | -------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Analyst (Mary)           | `rmbaid-analyst`     | `BP`、`RS`、`CB`、`DP`                   | Brainstorm、Research、Create Brief、Document Project                                                     |
-| Product Manager (John)   | `rmbaid-pm`          | `CP`、`VP`、`EP`、`CE`、`IR`、`CC`       | Create/Validate/Edit PRD、Create Epics and Stories、Implementation Readiness、Correct Course             |
-| Architect (Winston)      | `rmbaid-architect`   | `CA`、`IR`                               | Create Architecture、Implementation Readiness                                                            |
-| Developer (Amelia)       | `rmbaid-agent-dev`   | `DS`、`QD`、`QA`、`CR`、`SP`、`CS`、`ER` | Dev Story、Quick Dev、QA Test Generation、Code Review、Sprint Planning、Create Story、Epic Retrospective |
-| UX Designer (Sally)      | `rmbaid-ux-designer` | `CU`                                     | Create UX Design                                                                                         |
-| Technical Writer (Paige) | `rmbaid-tech-writer` | `DP`、`WD`、`US`、`MG`、`VD`、`EC`       | Document Project、Write Document、Update Standards、Mermaid Generate、Validate Doc、Explain Concept      |
+| 智能体                   | Skill ID            | 触发器                                   | 主要 workflow                                                                                            |
+| ------------------------ | ------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Analyst (Mary)           | `smart-analyst`     | `BP`、`RS`、`CB`、`DP`                   | Brainstorm、Research、Create Brief、Document Project                                                     |
+| Product Manager (John)   | `smart-pm`          | `CP`、`VP`、`EP`、`CE`、`IR`、`CC`       | Create/Validate/Edit PRD、Create Epics and Stories、Implementation Readiness、Correct Course             |
+| Architect (Winston)      | `smart-architect`   | `CA`、`IR`                               | Create Architecture、Implementation Readiness                                                            |
+| Developer (Amelia)       | `smart-agent-dev`   | `DS`、`QD`、`QA`、`CR`、`SP`、`CS`、`ER` | Dev Story、Quick Dev、QA Test Generation、Code Review、Sprint Planning、Create Story、Epic Retrospective |
+| UX Designer (Sally)      | `smart-ux-designer` | `CU`                                     | Create UX Design                                                                                         |
+| Technical Writer (Paige) | `smart-tech-writer` | `DP`、`WD`、`US`、`MG`、`VD`、`EC`       | Document Project、Write Document、Update Standards、Mermaid Generate、Validate Doc、Explain Concept      |
 
 ## 使用说明
 
-- `Skill ID` 是直接调用该智能体的名称（例如 `rmbaid-agent-dev`）
+- `Skill ID` 是直接调用该智能体的名称（例如 `smart-agent-dev`）
 - 触发器是进入智能体会话后可使用的菜单短码
-- QA 测试生成由 `rmbaid-qa-generate-e2e-tests` workflow skill 处理，通过 Developer 智能体调用；完整 TEA 能力位于独立模块
+- QA 测试生成由 `smart-qa-generate-e2e-tests` workflow skill 处理，通过 Developer 智能体调用；完整 TEA 能力位于独立模块
 
 ## 触发器类型
 

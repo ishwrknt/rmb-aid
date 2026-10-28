@@ -5,6 +5,7 @@ const prompts = require('../prompts');
 const { getProjectRoot, getSourcePath, getModulePath } = require('../project-root');
 const { CLIUtils } = require('../cli-utils');
 const { ExternalModuleManager } = require('./external-manager');
+const { rewriteInstalledFile } = require('../core/install-layout');
 
 class OfficialModules {
   constructor(options = {}) {
@@ -96,7 +97,7 @@ class OfficialModules {
   }
 
   /**
-   * List all available built-in modules (core and rmbaid).
+   * List all available built-in modules (core and smart).
    * All other modules come from external-official-modules.yaml
    * @returns {Object} Object with modules array and customModules array
    */
@@ -113,10 +114,10 @@ class OfficialModules {
       }
     }
 
-    // Add built-in rmbaid module (directly under src/rmbaid-skills)
-    const bmmPath = getSourcePath('rmbaid-skills');
+    // Add built-in smart module (directly under src/smart-skills)
+    const bmmPath = getSourcePath('smart-skills');
     if (await fs.pathExists(bmmPath)) {
-      const bmmInfo = await this.getModuleInfo(bmmPath, 'rmbaid', 'src/rmbaid-skills');
+      const bmmInfo = await this.getModuleInfo(bmmPath, 'smart', 'src/smart-skills');
       if (bmmInfo) {
         modules.push(bmmInfo);
       }
@@ -149,9 +150,9 @@ class OfficialModules {
       return null;
     }
 
-    // Mark as custom if it's using custom.yaml OR if it's outside src/rmbaid or src/core
+    // Mark as custom if it's using custom.yaml OR if it's outside src/smart or src/core
     const isCustomSource =
-      sourceDescription !== 'src/rmbaid-skills' && sourceDescription !== 'src/core-skills' && sourceDescription !== 'src/modules';
+      sourceDescription !== 'src/smart-skills' && sourceDescription !== 'src/core-skills' && sourceDescription !== 'src/modules';
     const moduleInfo = {
       id: defaultName,
       path: modulePath,
@@ -159,7 +160,7 @@ class OfficialModules {
         .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
-      description: 'RMB_AID Module',
+      description: 'SMART Module',
       version: '5.0.0',
       source: sourceDescription,
       isCustom: configPath === rootCustomConfigPath || isCustomSource,
@@ -203,9 +204,9 @@ class OfficialModules {
       }
     }
 
-    // Check for built-in rmbaid module (directly under src/rmbaid-skills)
-    if (moduleCode === 'rmbaid') {
-      const bmmPath = getSourcePath('rmbaid-skills');
+    // Check for built-in smart module (directly under src/smart-skills)
+    if (moduleCode === 'smart') {
+      const bmmPath = getSourcePath('smart-skills');
       if (await fs.pathExists(bmmPath)) {
         return bmmPath;
       }
@@ -223,7 +224,7 @@ class OfficialModules {
   /**
    * Install a module
    * @param {string} moduleName - Code of the module to install (from module.yaml)
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    * @param {Function} fileTrackingCallback - Optional callback to track installed files
    * @param {Object} options - Additional installation options
    * @param {Array<string>} options.installedIDEs - Array of IDE codes that were installed
@@ -267,7 +268,7 @@ class OfficialModules {
   /**
    * Update an existing module
    * @param {string} moduleName - Name of the module to update
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    */
   async update(moduleName, rmbaidDir) {
     const sourcePath = await this.findModuleSource(moduleName);
@@ -293,7 +294,7 @@ class OfficialModules {
   /**
    * Remove a module
    * @param {string} moduleName - Name of the module to remove
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    */
   async remove(moduleName, rmbaidDir) {
     const targetPath = path.join(rmbaidDir, moduleName);
@@ -313,7 +314,7 @@ class OfficialModules {
   /**
    * Check if a module is installed
    * @param {string} moduleName - Name of the module
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    * @returns {boolean} True if module is installed
    */
   async isInstalled(moduleName, rmbaidDir) {
@@ -324,7 +325,7 @@ class OfficialModules {
   /**
    * Get installed module info
    * @param {string} moduleName - Name of the module
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    * @returns {Object|null} Module info or null if not installed
    */
   async getInstalledInfo(moduleName, rmbaidDir) {
@@ -409,8 +410,9 @@ class OfficialModules {
         }
       }
 
-      // Copy the file with placeholder replacement
+      // Bind config paths to the actual installation root before IDE copies.
       await this.copyFile(sourceFile, targetFile);
+      await rewriteInstalledFile(targetFile, path.basename(path.dirname(targetPath)));
 
       // Track the file if callback provided
       if (fileTrackingCallback) {
@@ -450,7 +452,7 @@ class OfficialModules {
    * This replaces the security-risky module installer pattern with declarative config
    * During updates, if a directory path changed, moves the old directory to the new path
    * @param {string} moduleName - Name of the module
-   * @param {string} rmbaidDir - Target rmbaid directory
+   * @param {string} rmbaidDir - Target smart directory
    * @param {Object} options - Installation options
    * @param {Object} options.moduleConfig - Module configuration from config collector
    * @param {Object} options.existingModuleConfig - Previous module config (for detecting path changes during updates)
@@ -631,7 +633,7 @@ class OfficialModules {
         let configContent = await fs.readFile(configPath, 'utf8');
 
         // Replace path placeholders
-        configContent = configContent.replaceAll('{project-root}', `rmbaid/${moduleName}`);
+        configContent = configContent.replaceAll('{project-root}', `smart/${moduleName}`);
         configContent = configContent.replaceAll('{module}', moduleName);
 
         await fs.writeFile(configPath, configContent, 'utf8');
@@ -697,16 +699,16 @@ class OfficialModules {
   // ─── Config collection methods (merged from ConfigCollector) ───
 
   /**
-   * Find the rmbaid installation directory in a project
+   * Find the smart installation directory in a project
    * V6+ installations can use ANY folder name but ALWAYS have _config/manifest.yaml
    * @param {string} projectDir - Project directory
-   * @returns {Promise<string>} Path to rmbaid directory
+   * @returns {Promise<string>} Path to smart directory
    */
   async findRmbaidDir(projectDir) {
     // Check if project directory exists
     if (!(await fs.pathExists(projectDir))) {
       // Project doesn't exist yet, return default
-      return path.join(projectDir, 'rmbaid');
+      return path.join(projectDir, 'smart');
     }
 
     // V6+ strategy: Look for ANY directory with _config/manifest.yaml
@@ -728,11 +730,11 @@ class OfficialModules {
 
     // No V6+ installation found, return default
     // This will be used for new installations
-    return path.join(projectDir, 'rmbaid');
+    return path.join(projectDir, 'smart');
   }
 
   /**
-   * Detect the existing RMB_AID folder name in a project
+   * Detect the existing SMART folder name in a project
    * @param {string} projectDir - Project directory
    * @returns {Promise<string|null>} Folder name (just the name, not full path) or null if not found
    */
@@ -773,15 +775,15 @@ class OfficialModules {
       return false;
     }
 
-    // Find the actual rmbaid directory (handles custom folder names)
+    // Find the actual smart directory (handles custom folder names)
     const rmbaidDir = await this.findRmbaidDir(projectDir);
 
-    // Check if rmbaid directory exists
+    // Check if smart directory exists
     if (!(await fs.pathExists(rmbaidDir))) {
       return false;
     }
 
-    // Dynamically discover all installed modules by scanning rmbaid directory
+    // Dynamically discover all installed modules by scanning smart directory
     // A directory is a module ONLY if it contains a config.yaml file
     let foundAny = false;
     const entries = await fs.readdir(rmbaidDir, { withFileTypes: true });
@@ -920,40 +922,40 @@ class OfficialModules {
       if (this.simpleMode) {
         this.modulesToCustomize = new Set();
       } else {
-      scannedModules = await this.scanModuleSchemas(nonCoreModules);
-      const customizableModules = scannedModules.filter((m) => m.questionCount > 0);
+        scannedModules = await this.scanModuleSchemas(nonCoreModules);
+        const customizableModules = scannedModules.filter((m) => m.questionCount > 0);
 
-      if (customizableModules.length > 0) {
-        const configMode = await prompts.select({
-          message: 'Module configuration',
-          choices: [
-            { name: 'Express Setup', value: 'express', hint: 'accept all defaults (recommended)' },
-            { name: 'Customize', value: 'customize', hint: 'choose modules to configure' },
-          ],
-          default: 'express',
-        });
-
-        if (configMode === 'customize') {
-          const choices = customizableModules.map((m) => ({
-            name: `${m.displayName} (${m.questionCount} option${m.questionCount === 1 ? '' : 's'})`,
-            value: m.moduleName,
-            hint: m.hasFieldsWithoutDefaults ? 'has fields without defaults' : undefined,
-            checked: m.hasFieldsWithoutDefaults,
-          }));
-          const selected = await prompts.multiselect({
-            message: 'Select modules to customize:',
-            choices,
-            required: false,
+        if (customizableModules.length > 0) {
+          const configMode = await prompts.select({
+            message: 'Module configuration',
+            choices: [
+              { name: 'Express Setup', value: 'express', hint: 'accept all defaults (recommended)' },
+              { name: 'Customize', value: 'customize', hint: 'choose modules to configure' },
+            ],
+            default: 'express',
           });
-          this.modulesToCustomize = new Set(selected);
+
+          if (configMode === 'customize') {
+            const choices = customizableModules.map((m) => ({
+              name: `${m.displayName} (${m.questionCount} option${m.questionCount === 1 ? '' : 's'})`,
+              value: m.moduleName,
+              hint: m.hasFieldsWithoutDefaults ? 'has fields without defaults' : undefined,
+              checked: m.hasFieldsWithoutDefaults,
+            }));
+            const selected = await prompts.multiselect({
+              message: 'Select modules to customize:',
+              choices,
+              required: false,
+            });
+            this.modulesToCustomize = new Set(selected);
+          } else {
+            // Express mode: no modules to customize
+            this.modulesToCustomize = new Set();
+          }
         } else {
-          // Express mode: no modules to customize
+          // All non-core modules have zero config - no gateway needed
           this.modulesToCustomize = new Set();
         }
-      } else {
-        // All non-core modules have zero config - no gateway needed
-        this.modulesToCustomize = new Set();
-      }
       }
     }
 
@@ -1304,7 +1306,7 @@ class OfficialModules {
    * @returns {string} Capitalized username\
    */
   getDefaultUsername() {
-    let result = 'RMB_AID';
+    let result = 'SMART';
     try {
       const os = require('node:os');
       const userInfo = os.userInfo();
@@ -1313,7 +1315,7 @@ class OfficialModules {
         result = username.charAt(0).toUpperCase() + username.slice(1);
       }
     } catch {
-      // Do nothing, just return 'RMB_AID'
+      // Do nothing, just return 'SMART'
     }
     return result;
   }

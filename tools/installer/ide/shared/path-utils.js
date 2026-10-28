@@ -4,68 +4,68 @@
  * Provides utilities to convert hierarchical paths to flat naming conventions.
  *
  * DASH-BASED NAMING (new standard):
- * - Agents: rmbaid-agent-module-name.md (with rmbaid-agent- prefix)
- * - Workflows/Tasks/Tools: rmbaid-module-name.md
+ * - Agents: smart-agent-module-name.md (with smart-agent- prefix)
+ * - Workflows/Tasks/Tools: smart-module-name.md
  *
  * Example outputs:
- * - cis/agents/storymaster.md → rmbaid-agent-cis-storymaster.md
- * - rmbaid/workflows/plan-project.md → rmbaid-rmbaid-plan-project.md
- * - rmbaid/tasks/create-story.md → rmbaid-rmbaid-create-story.md
- * - core/agents/brainstorming.md → rmbaid-agent-brainstorming.md (core agents skip module name)
- * - standalone/agents/fred.md → rmbaid-agent-standalone-fred.md
+ * - cis/agents/storymaster.md → smart-agent-cis-storymaster.md
+ * - smart/workflows/plan-project.md → smart-smart-plan-project.md
+ * - smart/tasks/create-story.md → smart-smart-create-story.md
+ * - core/agents/brainstorming.md → smart-agent-brainstorming.md (core agents skip module name)
+ * - standalone/agents/fred.md → smart-agent-standalone-fred.md
  */
 
 // Type segments - agents are included in naming, others are filtered out
 const TYPE_SEGMENTS = ['workflows', 'tasks', 'tools'];
 const AGENT_SEGMENT = 'agents';
 
-// RMB_AID installation folder name - centralized constant for all installers
-const RMB_AID_FOLDER_NAME = '_rmbaid';
+// SMART installation folder name - centralized constant for all installers
+const SMART_FOLDER_NAME = 'SMART';
 
 /**
  * Convert hierarchical path to flat dash-separated name (NEW STANDARD)
- * Converts: 'rmbaid', 'agents', 'pm' → 'rmbaid-agent-rmbaid-pm.md'
- * Converts: 'rmbaid', 'workflows', 'correct-course' → 'rmbaid-rmbaid-correct-course.md'
- * Converts: 'core', 'agents', 'brainstorming' → 'rmbaid-agent-brainstorming.md' (core agents skip module name)
- * Converts: 'standalone', 'agents', 'fred' → 'rmbaid-agent-standalone-fred.md'
+ * Converts: 'smart', 'agents', 'pm' → 'smart-agent-smart-pm.md'
+ * Converts: 'smart', 'workflows', 'correct-course' → 'smart-smart-correct-course.md'
+ * Converts: 'core', 'agents', 'brainstorming' → 'smart-agent-brainstorming.md' (core agents skip module name)
+ * Converts: 'standalone', 'agents', 'fred' → 'smart-agent-standalone-fred.md'
  *
- * @param {string} module - Module name (e.g., 'rmbaid', 'core', 'standalone')
+ * @param {string} module - Module name (e.g., 'smart', 'core', 'standalone')
  * @param {string} type - Artifact type ('agents', 'workflows', 'tasks', 'tools')
  * @param {string} name - Artifact name (e.g., 'pm', 'brainstorming')
- * @returns {string} Flat filename like 'rmbaid-agent-rmbaid-pm.md' or 'rmbaid-rmbaid-correct-course.md'
+ * @returns {string} Flat filename like 'smart-agent-smart-pm.md' or 'smart-smart-correct-course.md'
  */
 function toDashName(module, type, name) {
   const isAgent = type === AGENT_SEGMENT;
 
-  // For core module, skip the module name: use 'rmbaid-agent-name.md' instead of 'rmbaid-agent-core-name.md'
+  // For core module, skip the module name: use 'smart-agent-name.md' instead of 'smart-agent-core-name.md'
   if (module === 'core') {
-    return isAgent ? `rmbaid-agent-${name}.md` : `rmbaid-${name}.md`;
+    return isAgent ? `smart-agent-${name}.md` : `smart-${name}.md`;
   }
   // For standalone module, include 'standalone' in the name
   if (module === 'standalone') {
-    return isAgent ? `rmbaid-agent-standalone-${name}.md` : `rmbaid-standalone-${name}.md`;
+    return isAgent ? `smart-agent-standalone-${name}.md` : `smart-standalone-${name}.md`;
   }
 
-  // Module artifacts: rmbaid-module-name.md or rmbaid-agent-module-name.md
+  // Module artifacts: smart-module-name.md or smart-agent-module-name.md
   // eslint-disable-next-line unicorn/prefer-string-replace-all -- regex replace is intentional here
   const dashName = name.replace(/\//g, '-'); // Flatten nested paths
-  return isAgent ? `rmbaid-agent-${module}-${dashName}.md` : `rmbaid-${module}-${dashName}.md`;
+  return isAgent ? `smart-agent-${module}-${dashName}.md` : `smart-${module}-${dashName}.md`;
 }
 
 /**
  * Convert relative path to flat dash-separated name
- * Converts: 'rmbaid/agents/pm.md' → 'rmbaid-agent-rmbaid-pm.md'
- * Converts: 'rmbaid/agents/tech-writer/tech-writer.md' → 'rmbaid-agent-rmbaid-tech-writer.md' (uses folder name)
- * Converts: 'rmbaid/workflows/correct-course.md' → 'rmbaid-rmbaid-correct-course.md'
- * Converts: 'core/agents/brainstorming.md' → 'rmbaid-agent-brainstorming.md' (core agents skip module name)
+ * Converts: 'smart/agents/pm.md' → 'smart-agent-smart-pm.md'
+ * Converts: 'smart/agents/tech-writer/tech-writer.md' → 'smart-agent-smart-tech-writer.md' (uses folder name)
+ * Converts: 'smart/workflows/correct-course.md' → 'smart-smart-correct-course.md'
+ * Converts: 'core/agents/brainstorming.md' → 'smart-agent-brainstorming.md' (core agents skip module name)
  *
- * @param {string} relativePath - Path like 'rmbaid/agents/pm.md'
- * @returns {string} Flat filename like 'rmbaid-agent-rmbaid-pm.md' or 'rmbaid-brainstorming.md'
+ * @param {string} relativePath - Path like 'smart/agents/pm.md'
+ * @returns {string} Flat filename like 'smart-agent-smart-pm.md' or 'smart-brainstorming.md'
  */
 function toDashPath(relativePath) {
   if (!relativePath || typeof relativePath !== 'string') {
     // Return a safe default for invalid input
-    return 'rmbaid-unknown.md';
+    return 'smart-unknown.md';
   }
 
   // Strip common file extensions to avoid double extensions in generated filenames
@@ -78,7 +78,7 @@ function toDashPath(relativePath) {
   let name;
 
   // For agents, if nested in a folder (more than 3 parts), use the folder name only
-  // e.g., 'rmbaid/agents/tech-writer/tech-writer' → 'tech-writer' (not 'tech-writer-tech-writer')
+  // e.g., 'smart/agents/tech-writer/tech-writer' → 'tech-writer' (not 'tech-writer-tech-writer')
   if (type === 'agents' && parts.length > 3) {
     // Use the folder name (parts[2]) as the name, ignore the file name
     name = parts[2];
@@ -92,13 +92,13 @@ function toDashPath(relativePath) {
 
 /**
  * Create custom agent dash name
- * Creates: 'rmbaid-custom-agent-fred-commit-poet.md'
+ * Creates: 'smart-custom-agent-fred-commit-poet.md'
  *
  * @param {string} agentName - Custom agent name
- * @returns {string} Flat filename like 'rmbaid-custom-agent-fred-commit-poet.md'
+ * @returns {string} Flat filename like 'smart-custom-agent-fred-commit-poet.md'
  */
 function customAgentDashName(agentName) {
-  return `rmbaid-custom-agent-${agentName}.md`;
+  return `smart-custom-agent-${agentName}.md`;
 }
 
 /**
@@ -107,17 +107,17 @@ function customAgentDashName(agentName) {
  * @returns {boolean} True if filename uses dash format
  */
 function isDashFormat(filename) {
-  return filename.startsWith('rmbaid-') && filename.includes('-');
+  return filename.startsWith('smart-') && filename.includes('-');
 }
 
 /**
  * Extract parts from a dash-formatted filename
- * Parses: 'rmbaid-agent-rmbaid-pm.md' → { prefix: 'rmbaid', module: 'rmbaid', type: 'agents', name: 'pm' }
- * Parses: 'rmbaid-rmbaid-correct-course.md' → { prefix: 'rmbaid', module: 'rmbaid', type: 'workflows', name: 'correct-course' }
- * Parses: 'rmbaid-agent-brainstorming.md' → { prefix: 'rmbaid', module: 'core', type: 'agents', name: 'brainstorming' } (core agents)
- * Parses: 'rmbaid-brainstorming.md' → { prefix: 'rmbaid', module: 'core', type: 'workflows', name: 'brainstorming' } (core workflows)
- * Parses: 'rmbaid-agent-standalone-fred.md' → { prefix: 'rmbaid', module: 'standalone', type: 'agents', name: 'fred' }
- * Parses: 'rmbaid-standalone-foo.md' → { prefix: 'rmbaid', module: 'standalone', type: 'workflows', name: 'foo' }
+ * Parses: 'smart-agent-smart-pm.md' → { prefix: 'smart', module: 'smart', type: 'agents', name: 'pm' }
+ * Parses: 'smart-smart-correct-course.md' → { prefix: 'smart', module: 'smart', type: 'workflows', name: 'correct-course' }
+ * Parses: 'smart-agent-brainstorming.md' → { prefix: 'smart', module: 'core', type: 'agents', name: 'brainstorming' } (core agents)
+ * Parses: 'smart-brainstorming.md' → { prefix: 'smart', module: 'core', type: 'workflows', name: 'brainstorming' } (core workflows)
+ * Parses: 'smart-agent-standalone-fred.md' → { prefix: 'smart', module: 'standalone', type: 'agents', name: 'fred' }
+ * Parses: 'smart-standalone-foo.md' → { prefix: 'smart', module: 'standalone', type: 'workflows', name: 'foo' }
  *
  * @param {string} filename - Dash-formatted filename
  * @returns {Object|null} Parsed parts or null if invalid format
@@ -126,7 +126,7 @@ function parseDashName(filename) {
   const withoutExt = filename.replace('.md', '');
   const parts = withoutExt.split('-');
 
-  if (parts.length < 2 || parts[0] !== 'rmbaid') {
+  if (parts.length < 2 || parts[0] !== 'smart') {
     return null;
   }
 
@@ -135,9 +135,9 @@ function parseDashName(filename) {
 
   if (isAgent) {
     // This is an agent file
-    // Format: rmbaid-agent-name (core) or rmbaid-agent-standalone-name or rmbaid-agent-module-name
+    // Format: smart-agent-name (core) or smart-agent-standalone-name or smart-agent-module-name
     if (parts.length >= 4 && parts[2] === 'standalone') {
-      // Standalone agent: rmbaid-agent-standalone-name
+      // Standalone agent: smart-agent-standalone-name
       return {
         prefix: parts[0],
         module: 'standalone',
@@ -146,7 +146,7 @@ function parseDashName(filename) {
       };
     }
     if (parts.length === 3) {
-      // Core agent: rmbaid-agent-name
+      // Core agent: smart-agent-name
       return {
         prefix: parts[0],
         module: 'core',
@@ -154,7 +154,7 @@ function parseDashName(filename) {
         name: parts[2],
       };
     } else {
-      // Module agent: rmbaid-agent-module-name
+      // Module agent: smart-agent-module-name
       return {
         prefix: parts[0],
         module: parts[2],
@@ -165,7 +165,7 @@ function parseDashName(filename) {
   }
 
   // Not an agent file - must be a workflow/tool/task
-  // If only 2 parts (rmbaid-name), it's a core workflow/tool/task
+  // If only 2 parts (smart-name), it's a core workflow/tool/task
   if (parts.length === 2) {
     return {
       prefix: parts[0],
@@ -175,7 +175,7 @@ function parseDashName(filename) {
     };
   }
 
-  // Check for standalone non-agent: rmbaid-standalone-name
+  // Check for standalone non-agent: smart-standalone-name
   if (parts[1] === 'standalone') {
     return {
       prefix: parts[0],
@@ -185,7 +185,7 @@ function parseDashName(filename) {
     };
   }
 
-  // Otherwise, it's a module workflow/tool/task (rmbaid-module-name)
+  // Otherwise, it's a module workflow/tool/task (smart-module-name)
   return {
     prefix: parts[0],
     module: parts[1],
@@ -253,7 +253,7 @@ function parseUnderscoreName(filename) {
   const withoutExt = filename.replace('.md', '');
   const parts = withoutExt.split('_');
 
-  if (parts.length < 2 || parts[0] !== 'rmbaid') {
+  if (parts.length < 2 || parts[0] !== 'smart') {
     return null;
   }
 
@@ -315,11 +315,11 @@ function parseUnderscoreName(filename) {
 
 /**
  * Resolve the skill name for an artifact.
- * Prefers canonicalId from a rmbaid-skill-manifest.yaml sidecar when available,
+ * Prefers canonicalId from a smart-skill-manifest.yaml sidecar when available,
  * falling back to the path-derived name from toDashPath().
  *
  * @param {Object} artifact - Artifact object (must have relativePath; may have canonicalId)
- * @returns {string} Filename like 'rmbaid-create-prd.md' or 'rmbaid-agent-rmbaid-pm.md'
+ * @returns {string} Filename like 'smart-create-prd.md' or 'smart-agent-smart-pm.md'
  */
 function resolveSkillName(artifact) {
   if (artifact.canonicalId) {
@@ -360,5 +360,5 @@ module.exports = {
 
   TYPE_SEGMENTS,
   AGENT_SEGMENT,
-  RMB_AID_FOLDER_NAME,
+  SMART_FOLDER_NAME,
 };

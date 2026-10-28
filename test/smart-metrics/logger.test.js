@@ -43,7 +43,7 @@ function runTests() {
     validation_method: 'unit-tests',
     loc_generated: 100,
     loc_manual: 0,
-    time_seconds: 60
+    time_seconds: 60,
   };
 
   // Test 1: Valid entry validation
@@ -59,17 +59,17 @@ function runTests() {
   // Test 3: Type mismatch (negative integer)
   const negativeInt = { ...validEntry, iterations: -1 };
   const val3 = validateEntry(negativeInt);
-  assert(!val3.valid && val3.errors.some(e => e.includes('iterations')), 'Catches negative integer');
+  assert(!val3.valid && val3.errors.some((e) => e.includes('iterations')), 'Catches negative integer');
 
   // Test 4: Invalid enum value
   const invalidEnum = { ...validEntry, satya_result: 'MAYBE' };
   const val4 = validateEntry(invalidEnum);
-  assert(!val4.valid && val4.errors.some(e => e.includes('satya_result')), 'Catches invalid enum value');
+  assert(!val4.valid && val4.errors.some((e) => e.includes('satya_result')), 'Catches invalid enum value');
 
   // Test 5: Append valid entry to file
   const appendRes = appendMetric(validEntry, TEST_FILE);
   assert(appendRes.success, 'Appends valid entry successfully');
-  
+
   // Test 6: Verify file content
   const content = fs.readFileSync(TEST_FILE, 'utf8');
   assert(content.trim() === JSON.stringify(validEntry), 'File contains correct JSONL string');

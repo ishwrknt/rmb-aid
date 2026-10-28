@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Use **Quick Dev** for bug fixes, refactorings, or small targeted changes that don't require the full RMB_AID.
+Use **Quick Dev** for bug fixes, refactorings, or small targeted changes that don't require the full SMART.
 
 ## When to Use This
 
@@ -16,7 +16,7 @@ Use **Quick Dev** for bug fixes, refactorings, or small targeted changes that do
 
 :::note[Prerequisites]
 
-- RMB_AID installed (`npx rmb-aid install`)
+- SMART installed (`npx smart-agentic install`)
 - An AI-powered IDE (Claude Code, Cursor, or similar)
   :::
 
@@ -87,10 +87,10 @@ Check this file after a run — it's your backlog of things to come back to. Eac
 
 ## When to Upgrade to Formal Planning
 
-Consider using the full RMB_AID when:
+Consider using the full SMART when:
 
 - The change affects multiple systems or requires coordinated updates across many files
 - You are unsure about the scope and need requirements discovery first
 - You need documentation or architectural decisions recorded for the team
 
-See [Quick Dev](../explanation/quick-dev.md) for more on how Quick Dev fits into the RMB_AID.
+See [Quick Dev](../explanation/quick-dev.md) for more on how Quick Dev fits into the SMART.

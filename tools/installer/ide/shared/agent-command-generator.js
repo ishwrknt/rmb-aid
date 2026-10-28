@@ -1,26 +1,26 @@
 const path = require('node:path');
 const fs = require('fs-extra');
-const { toColonPath, toDashPath, customAgentColonName, customAgentDashName, RMB_AID_FOLDER_NAME } = require('./path-utils');
+const { toColonPath, toDashPath, customAgentColonName, customAgentDashName, SMART_FOLDER_NAME } = require('./path-utils');
 
 /**
  * Generates launcher command files for each agent
  */
 class AgentCommandGenerator {
-  constructor(rmbaidFolderName = RMB_AID_FOLDER_NAME) {
+  constructor(rmbaidFolderName = SMART_FOLDER_NAME) {
     this.templatePath = path.join(__dirname, '../templates/agent-command-template.md');
     this.rmbaidFolderName = rmbaidFolderName;
   }
 
   /**
    * Collect agent artifacts for IDE installation
-   * @param {string} rmbaidDir - RMB_AID installation directory
+   * @param {string} rmbaidDir - SMART installation directory
    * @param {Array} selectedModules - Modules to include
    * @returns {Object} Artifacts array with metadata
    */
   async collectAgentArtifacts(rmbaidDir, selectedModules = []) {
-    const { getAgentsFromRmbaid } = require('./rmbaid-artifacts');
+    const { getAgentsFromRmbaid } = require('./smart-artifacts');
 
-    // Get agents from INSTALLED rmbaid/ directory
+    // Get agents from INSTALLED smart/ directory
     const agents = await getAgentsFromRmbaid(rmbaidDir, selectedModules);
 
     const artifacts = [];
@@ -29,18 +29,15 @@ class AgentCommandGenerator {
       const launcherContent = await this.generateLauncherContent(agent);
       // Use relativePath if available (for nested agents), otherwise just name with .md
       const agentPathInModule = agent.relativePath || `${agent.name}.md`;
-      // Calculate the relative agent path (e.g., rmbaid/agents/pm.md)
+      // Calculate the relative agent path (e.g., smart/agents/pm.md)
       let agentRelPath = agent.path || '';
       // Normalize path separators for cross-platform compatibility
       agentRelPath = agentRelPath.replaceAll('\\', '/');
       // Remove _rmbaid/ prefix if present to get relative path from project root
       // Handle both absolute paths (/path/to/_rmbaid/...) and relative paths (_rmbaid/...)
-      if (agentRelPath.includes('_rmbaid/')) {
-        const parts = agentRelPath.split(/_rmbaid\//);
-        if (parts.length > 1) {
-          agentRelPath = parts.slice(1).join('/');
-        }
-      }
+      const folderPrefix = `${this.rmbaidFolderName}/`;
+      const folderIndex = agentRelPath.indexOf(folderPrefix);
+      if (folderIndex !== -1) agentRelPath = agentRelPath.slice(folderIndex + folderPrefix.length);
       artifacts.push({
         type: 'agent-launcher',
         name: agent.name,
@@ -79,8 +76,7 @@ class AgentCommandGenerator {
       .replaceAll('{{module}}', agent.module)
       .replaceAll('{{path}}', agentPathInModule)
       .replaceAll('{{description}}', agent.description || `${agent.name} agent`)
-      .replaceAll('_rmbaid', this.rmbaidFolderName)
-      .replaceAll('_rmbaid', '_rmbaid');
+      .replaceAll('_rmbaid', this.rmbaidFolderName);
   }
 
   /**
@@ -119,7 +115,7 @@ class AgentCommandGenerator {
 
     for (const artifact of artifacts) {
       if (artifact.type === 'agent-launcher') {
-        // Convert relativePath to underscore format: rmbaid/agents/pm.md → rmbaid_bmm_pm.md
+        // Convert relativePath to underscore format: smart/agents/pm.md → rmbaid_bmm_pm.md
         const flatName = toColonPath(artifact.relativePath);
         const launcherPath = path.join(baseCommandsDir, flatName);
         await fs.ensureDir(path.dirname(launcherPath));
@@ -133,9 +129,9 @@ class AgentCommandGenerator {
 
   /**
    * Write agent launcher artifacts using dash format (NEW STANDARD)
-   * Creates flat files like: rmbaid-agent-rmbaid-pm.md
+   * Creates flat files like: smart-agent-smart-pm.md
    *
-   * The rmbaid-agent- prefix distinguishes agents from workflows/tasks/tools.
+   * The smart-agent- prefix distinguishes agents from workflows/tasks/tools.
    *
    * @param {string} baseCommandsDir - Base commands directory for the IDE
    * @param {Array} artifacts - Agent launcher artifacts
@@ -146,7 +142,7 @@ class AgentCommandGenerator {
 
     for (const artifact of artifacts) {
       if (artifact.type === 'agent-launcher') {
-        // Convert relativePath to dash format: rmbaid/agents/pm.md → rmbaid-agent-rmbaid-pm.md
+        // Convert relativePath to dash format: smart/agents/pm.md → smart-agent-smart-pm.md
         const flatName = toDashPath(artifact.relativePath);
         const launcherPath = path.join(baseCommandsDir, flatName);
         await fs.ensureDir(path.dirname(launcherPath));

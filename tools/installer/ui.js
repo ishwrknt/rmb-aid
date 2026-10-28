@@ -105,13 +105,13 @@ class UI {
         const hasQuickUpdate = choices.some((c) => c.value === 'quick-update');
         actionType = hasQuickUpdate ? 'quick-update' : choices[0].value;
         await prompts.log.info(`Non-interactive mode (--yes): defaulting to ${actionType}`);
-        } else if (simpleMode) {
-          actionType = choices[0].value;
-          await prompts.log.info(`Using default action: ${actionType}`);
-        } else {
-          actionType = await prompts.select({
-            message: 'How would you like to proceed?',
-            choices: choices,
+      } else if (simpleMode) {
+        actionType = choices[0].value;
+        await prompts.log.info(`Using default action: ${actionType}`);
+      } else {
+        actionType = await prompts.select({
+          message: 'How would you like to proceed?',
+          choices: choices,
           default: choices[0].value,
         });
       }
@@ -276,7 +276,18 @@ class UI {
           } else {
             await prompts.log.info('Non-interactive mode (--yes): no existing custom modules found');
           }
-        } else if (!simpleMode) {
+        } else if (simpleMode) {
+          // Simple mode: preserve existing custom modules without asking.
+          const cacheDir = path.join(rmbaidDir, '_config', 'custom');
+          if (await fs.pathExists(cacheDir)) {
+            const entries = await fs.readdir(cacheDir, { withFileTypes: true });
+            for (const entry of entries) {
+              if (entry.isDirectory()) {
+                customModuleResult.selectedCustomModules.push(entry.name);
+              }
+            }
+          }
+        } else {
           const changeCustomModules = await prompts.confirm({
             message: 'Modify custom modules, agents, or workflows?',
             default: false,
@@ -297,17 +308,6 @@ class UI {
                 if (entry.isDirectory()) {
                   customModuleResult.selectedCustomModules.push(entry.name);
                 }
-              }
-            }
-          }
-        } else {
-          // Simple mode: preserve existing custom modules without asking.
-          const cacheDir = path.join(rmbaidDir, '_config', 'custom');
-          if (await fs.pathExists(cacheDir)) {
-            const entries = await fs.readdir(cacheDir, { withFileTypes: true });
-            for (const entry of entries) {
-              if (entry.isDirectory()) {
-                customModuleResult.selectedCustomModules.push(entry.name);
               }
             }
           }
@@ -771,9 +771,8 @@ class UI {
         configCollector.collectedConfig.core = {
           user_name: coreConfig.user_name || safeUsername,
           communication_language: coreConfig.communication_language || existingConfig.communication_language || 'English',
-          document_output_language:
-            coreConfig.document_output_language || existingConfig.document_output_language || 'English',
-          output_folder: coreConfig.output_folder || existingConfig.output_folder || '_rmbaid-output',
+          document_output_language: coreConfig.document_output_language || existingConfig.document_output_language || 'English',
+          output_folder: coreConfig.output_folder || existingConfig.output_folder || 'SMART-output',
         };
         await prompts.log.info('Using simple defaults for core configuration');
       }
@@ -794,7 +793,7 @@ class UI {
           user_name: defaultUsername,
           communication_language: 'English',
           document_output_language: 'English',
-          output_folder: '_rmbaid-output',
+          output_folder: 'SMART-output',
         };
         await prompts.log.info(options.yes ? 'Using default configuration (--yes flag)' : 'Using simple defaults for core configuration');
       }
@@ -942,10 +941,10 @@ class UI {
     }
     allOptions.push(...localEntries.map(({ label, value, hint }) => ({ label, value, hint })));
 
-    // Group 2: SMART Official Modules (type: rmbaid-org)
+    // Group 2: SMART Official Modules (type: smart-org)
     const officialModules = [];
     for (const mod of externalModules) {
-      if (mod.type === 'rmbaid-org') {
+      if (mod.type === 'smart-org') {
         const entry = buildModuleEntry(mod, mod.code, 'Official');
         officialModules.push(entry);
         if (entry.selected) {
@@ -1010,9 +1009,9 @@ class UI {
       }
     }
 
-    // If no defaults found, use 'rmbaid' as the fallback default
+    // If no defaults found, use 'smart' as the fallback default
     if (defaultModules.length === 0) {
-      defaultModules.push('rmbaid');
+      defaultModules.push('smart');
     }
 
     return defaultModules;
@@ -1056,7 +1055,7 @@ class UI {
       if (stats.isDirectory()) {
         const files = await fs.readdir(directory);
         if (files.length > 0) {
-          // Check for any rmbaid installation (any folder with _config/manifest.yaml)
+          // Check for any smart installation (any folder with _config/manifest.yaml)
           const { Installer } = require('./core/installer');
           const installer = new Installer();
           const rmbaidResult = await installer.findRmbaidDir(directory);
@@ -1689,7 +1688,7 @@ class UI {
     // Update summary
     if (availableUpdates.length > 0) {
       await prompts.log.warn(`${availableUpdates.length} update(s) available`);
-      await prompts.log.message('Run \'rmbaid install\' and select "Quick Update" to update');
+      await prompts.log.message('Run \'smart install\' and select "Quick Update" to update');
     } else {
       await prompts.log.success('All modules are up to date');
     }

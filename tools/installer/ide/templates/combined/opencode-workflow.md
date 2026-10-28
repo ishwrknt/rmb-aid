@@ -2,7 +2,7 @@
 description: '{{description}}'
 ---
 
-Execute the RMB_AID '{{name}}' workflow.
+Execute the SMART '{{name}}' workflow.
 
 CRITICAL: You must load and follow the workflow definition exactly.
 

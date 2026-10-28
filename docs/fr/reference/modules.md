@@ -5,19 +5,19 @@ sidebar:
   order: 4
 ---
 
-RMB_AID s'étend via des modules officiels que vous sélectionnez lors de l'installation. Ces modules additionnels fournissent des agents, des workflows et des tâches spécialisés pour des domaines spécifiques, au-delà du noyau intégré et de RMB_AID (suite Agile).
+SMART s'étend via des modules officiels que vous sélectionnez lors de l'installation. Ces modules additionnels fournissent des agents, des workflows et des tâches spécialisés pour des domaines spécifiques, au-delà du noyau intégré et de SMART (suite Agile).
 
 :::tip[Installer des Modules]
-Exécutez `npx rmb-aid install` et sélectionnez les modules souhaités. L'installateur gère automatiquement le téléchargement, la configuration et l'intégration IDE.
+Exécutez `npx smart-agentic install` et sélectionnez les modules souhaités. L'installateur gère automatiquement le téléchargement, la configuration et l'intégration IDE.
 :::
 
-## RMB_AID Builder
+## SMART Builder
 
-Créez des agents personnalisés, des workflows et des modules spécifiques à un domaine avec une assistance guidée. RMB_AID Builder est le méta-module pour étendre le framework lui-même.
+Créez des agents personnalisés, des workflows et des modules spécifiques à un domaine avec une assistance guidée. SMART Builder est le méta-module pour étendre le framework lui-même.
 
 - **Code :** `bmb`
-- **npm :** [`rmbaid-builder`](https://www.npmjs.com/package/rmbaid-builder)
-- **GitHub :** [rmbaid-code-org/rmbaid-builder](https://github.com/rmbaid-code-org/rmbaid-builder)
+- **npm :** [`smart-builder`](https://www.npmjs.com/package/smart-builder)
+- **GitHub :** [smart-code-org/smart-builder](https://github.com/smart-code-org/smart-builder)
 
 **Fournit :**
 
@@ -31,8 +31,8 @@ Créez des agents personnalisés, des workflows et des modules spécifiques à u
 Outils basés sur l'IA pour la créativité structurée, l'idéation et l'innovation pendant le développement en phase amont. La suite fournit plusieurs agents qui facilitent le brainstorming, le design thinking et la résolution de problèmes en utilisant des cadres éprouvés.
 
 - **Code :** `cis`
-- **npm :** [`rmbaid-creative-intelligence-suite`](https://www.npmjs.com/package/rmbaid-creative-intelligence-suite)
-- **GitHub :** [rmbaid-code-org/rmbaid-module-creative-intelligence-suite](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)
+- **npm :** [`smart-creative-intelligence-suite`](https://www.npmjs.com/package/smart-creative-intelligence-suite)
+- **GitHub :** [smart-code-org/smart-module-creative-intelligence-suite](https://github.com/smart-code-org/smart-module-creative-intelligence-suite)
 
 **Fournit :**
 
@@ -46,8 +46,8 @@ Outils basés sur l'IA pour la créativité structurée, l'idéation et l'innova
 Workflows de développement de jeux structurés adaptés pour Unity, Unreal, Godot et moteurs personnalisés. Supporte le prototypage rapide via Quick Dev et la production à grande échelle avec des sprints propulsés par epics.
 
 - **Code :** `gds`
-- **npm :** [`rmbaid-game-dev-studio`](https://www.npmjs.com/package/rmbaid-game-dev-studio)
-- **GitHub :** [rmbaid-code-org/rmbaid-module-game-dev-studio](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)
+- **npm :** [`smart-game-dev-studio`](https://www.npmjs.com/package/smart-game-dev-studio)
+- **GitHub :** [smart-code-org/smart-module-game-dev-studio](https://github.com/smart-code-org/smart-module-game-dev-studio)
 
 **Fournit :**
 
@@ -61,8 +61,8 @@ Workflows de développement de jeux structurés adaptés pour Unity, Unreal, God
 Stratégie de test de niveau entreprise, conseils d'automatisation et décisions de porte de release via un agent expert et neuf workflows structurés. TEA va bien au-delà du workflow QA intégré avec une priorisation basée sur les risques et une traçabilité des exigences.
 
 - **Code :** `tea`
-- **npm :** [`rmb-aid-test-architecture-enterprise`](https://www.npmjs.com/package/rmb-aid-test-architecture-enterprise)
-- **GitHub :** [rmbaid-code-org/rmb-aid-test-architecture-enterprise](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)
+- **npm :** [`smart-agentic-test-architecture-enterprise`](https://www.npmjs.com/package/smart-agentic-test-architecture-enterprise)
+- **GitHub :** [smart-code-org/smart-agentic-test-architecture-enterprise](https://github.com/smart-code-org/smart-agentic-test-architecture-enterprise)
 
 **Fournit :**
 
@@ -73,7 +73,7 @@ Stratégie de test de niveau entreprise, conseils d'automatisation et décisions
 
 ## Modules Communautaires
 
-Les modules communautaires et une marketplace de modules sont à venir. Consultez l'[organisation GitHub RMB_AID](https://github.com/rmbaid-code-org) pour les mises à jour.
+Les modules communautaires et une marketplace de modules sont à venir. Consultez l'[organisation GitHub SMART](https://github.com/smart-code-org) pour les mises à jour.
 
 ## Glossaire
 

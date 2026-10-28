@@ -5,18 +5,18 @@ sidebar:
   order: 5
 ---
 
-RMB_AID cung cấp hai hướng kiểm thử: workflow QA tích hợp sẵn để tạo test nhanh và module Test Architect có thể cài thêm cho chiến lược kiểm thử c��p doanh nghiệp.
+SMART cung cấp hai hướng kiểm thử: workflow QA tích hợp sẵn để tạo test nhanh và module Test Architect có thể cài thêm cho chiến lược kiểm thử c��p doanh nghiệp.
 
 ## Nên Dùng Cái Nào?
 
-| Yếu tố               | QA tích hợp sẵn                             | Module TEA                                                     |
-| -------------------- | ------------------------------------------- | -------------------------------------------------------------- |
-| **Phù hợp nhất với** | Dự án nhỏ-trung bình, cần bao phủ nhanh     | Dự án lớn, miền nghiệp vụ bị ràng buộc hoặc phức tạp           |
-| **Thiết lập**        | Không cần cài thêm, đã có sẵn trong RMB_AID | Cài riêng qua `npx rmb-aid install`                            |
-| **Cách tiếp cận**    | Tạo test nhanh, lặp tinh chỉnh sau          | Lập kế hoạch trước rồi mới tạo test có truy vết                |
-| **Loại test**        | API và E2E                                  | API, E2E, ATDD, NFR và nhiều loại khác                         |
-| **Chiến lược**       | Happy path + edge case quan trọng           | Ưu tiên theo rủi ro (P0-P3)                                    |
-| **Số workflow**      | 1 (Automate)                                | 9 (design, ATDD, automate, review, trace và các workflow khác) |
+| Yếu tố               | QA tích hợp sẵn                           | Module TEA                                                     |
+| -------------------- | ----------------------------------------- | -------------------------------------------------------------- |
+| **Phù hợp nhất với** | Dự án nhỏ-trung bình, cần bao phủ nhanh   | Dự án lớn, miền nghiệp vụ bị ràng buộc hoặc phức tạp           |
+| **Thiết lập**        | Không cần cài thêm, đã có sẵn trong SMART | Cài riêng qua `npx smart-agentic install`                      |
+| **Cách tiếp cận**    | Tạo test nhanh, lặp tinh chỉnh sau        | Lập kế hoạch trước rồi mới tạo test có truy vết                |
+| **Loại test**        | API và E2E                                | API, E2E, ATDD, NFR và nhiều loại khác                         |
+| **Chiến lược**       | Happy path + edge case quan trọng         | Ưu tiên theo rủi ro (P0-P3)                                    |
+| **Số workflow**      | 1 (Automate)                              | 9 (design, ATDD, automate, review, trace và các workflow khác) |
 
 :::tip[Bắt đầu với QA tích h��p sẵn]
 Phần lớn dự án nên bắt đầu với workflow QA tích hợp sẵn. Nếu sau này bạn cần chiến lược kiểm thử, quality gate hoặc truy vết yêu cầu, hãy cài TEA song song.
@@ -24,9 +24,9 @@ Phần lớn dự án nên bắt đầu với workflow QA tích hợp sẵn. N�
 
 ## Workflow QA Tích Hợp Sẵn
 
-Workflow QA tích hợp sẵn (`rmbaid-qa-generate-e2e-tests`) nằm trong module RMB_AID (Agile suite), khả dụng thông qua Developer agent. Nó tạo test chạy được rất nhanh bằng framework kiểm thử hiện có của dự án, không cần thêm cấu hình hay bước cài đặt bổ sung.
+Workflow QA tích hợp sẵn (`smart-qa-generate-e2e-tests`) nằm trong module SMART (Agile suite), khả dụng thông qua Developer agent. Nó tạo test chạy được rất nhanh bằng framework kiểm thử hiện có của dự án, không cần thêm cấu hình hay bước cài đặt bổ sung.
 
-**Trigger:** `QA` (thông qua Developer agent) hoặc `rmbaid-qa-generate-e2e-tests`
+**Trigger:** `QA` (thông qua Developer agent) hoặc `smart-qa-generate-e2e-tests`
 
 ### Workflow Làm Gì
 
@@ -65,9 +65,9 @@ Workflow QA chỉ tạo test. Nếu bạn cần code review hoặc xác nhận s
 
 TEA là một module độc lập cung cấp agent chuyên gia Murat cùng chín workflow có cấu trúc cho kiểm thử cấp doanh nghiệp. Nó vượt ra ngoài việc tạo test để bao gồm chiến lược kiểm thử, lập kế hoạch theo rủi ro, quality gate và truy vết yêu cầu.
 
-- **Tài liệu:** [TEA Module Docs](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)
-- **Cài đặt:** `npx rmb-aid install` rồi chọn module TEA
-- **npm:** [`rmb-aid-test-architecture-enterprise`](https://www.npmjs.com/package/rmb-aid-test-architecture-enterprise)
+- **Tài liệu:** [TEA Module Docs](https://smart-code-org.github.io/smart-agentic-test-architecture-enterprise/)
+- **Cài đặt:** `npx smart-agentic install` rồi chọn module TEA
+- **npm:** [`smart-agentic-test-architecture-enterprise`](https://www.npmjs.com/package/smart-agentic-test-architecture-enterprise)
 
 ### TEA Cung Cấp Gì
 
@@ -95,11 +95,11 @@ TEA cũng hỗ trợ ưu tiên theo rủi ro P0-P3 và tích hợp tùy chọn v
 
 ## Kiểm Thử Nằm Ở Đâu Trong Workflow
 
-Workflow QA Automate xuất hiện ở Phase 4 (Implementation) trong workflow map của RMB_AID. Nó được thiết kế để chạy **sau khi hoàn tất trọn vẹn một epic** — tức là khi mọi story trong epic đó đã được triển khai và code review xong. Trình tự điển hình là:
+Workflow QA Automate xuất hiện ở Phase 4 (Implementation) trong workflow map của SMART. Nó được thiết kế để chạy **sau khi hoàn tất trọn vẹn một epic** — tức là khi mọi story trong epic đó đã được triển khai và code review xong. Trình tự điển hình là:
 
 1. Với mỗi story trong epic: triển khai bằng Dev (`DS`), sau đó xác nhận bằng Code Review (`CR`)
 2. Sau khi epic hoàn tất: tạo test bằng `QA` (thông qua Developer agent) hoặc workflow Automate của TEA
-3. Chạy retrospective (`rmbaid-retrospective`) để ghi nhận bài học rút ra
+3. Chạy retrospective (`smart-retrospective`) để ghi nhận bài học rút ra
 
 Workflow QA tích hợp sẵn làm việc trực tiếp từ source code mà không cần nạp tài liệu lập kế hoạch như PRD hay architecture. Các workflow của TEA có thể tích hợp với artifact lập kế hoạch ở các bước trước để phục vụ truy vết.
 

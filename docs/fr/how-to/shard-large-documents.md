@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-Utilisez l'outil `rmbaid-shard-doc` si vous avez besoin de diviser des fichiers markdown volumineux en fichiers plus petits et organisés pour une meilleure gestion du contexte.
+Utilisez l'outil `smart-shard-doc` si vous avez besoin de diviser des fichiers markdown volumineux en fichiers plus petits et organisés pour une meilleure gestion du contexte.
 
 :::caution[Déprécié]
 Ceci n'est plus recommandé, et bientôt avec les workflows mis à jour et la plupart des LLM et outils majeurs supportant les sous-processus, cela deviendra inutile.
@@ -41,7 +41,7 @@ _rmbaid-output/planning-artifacts/
 ### 1. Exécuter l'Outil Shard-Doc
 
 ```bash
-/rmbaid-shard-doc
+/smart-shard-doc
 ```
 
 ### 2. Suivre le Processus Interactif
@@ -62,7 +62,7 @@ Agent : Division de PRD.md...
 
 ## Comment Fonctionne la Découverte de Workflow
 
-Les workflows RMB_AID utilisent un **système de découverte double** :
+Les workflows SMART utilisent un **système de découverte double** :
 
 1. **Essaye d'abord le document entier** - Rechercher `document-name.md`
 2. **Vérifie la version divisée** - Rechercher `document-name/index.md`
@@ -70,7 +70,7 @@ Les workflows RMB_AID utilisent un **système de découverte double** :
 
 ## Support des Workflows
 
-Tous les workflows RMB_AID prennent en charge les deux formats :
+Tous les workflows SMART prennent en charge les deux formats :
 
 - Documents entiers
 - Documents divisés

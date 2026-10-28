@@ -47,7 +47,7 @@ const INSTALL_REGEX = /\{project-root\}\/(?:_rmbaid)\/([^/]+)\/workflows\/(.+)/;
 // ---------------------------------------------------------------------------
 // Test data
 // ---------------------------------------------------------------------------
-const sourcePath = '{project-root}/_rmbaid/rmbaid/workflows/4-implementation/rmbaid-create-story/workflow.md';
+const sourcePath = '{project-root}/_rmbaid/smart/workflows/4-implementation/smart-create-story/workflow.md';
 const installPath = '{project-root}/_rmbaid/bmgd/workflows/4-production/create-story/workflow.md';
 
 console.log(`\n${colors.cyan}Workflow Path Regex Tests${colors.reset}\n`);
@@ -58,14 +58,14 @@ const sourceMatch = sourcePath.match(SOURCE_REGEX);
 
 assert(sourceMatch !== null, 'Source regex matches source path');
 assert(
-  sourceMatch && sourceMatch[1] === 'rmbaid',
+  sourceMatch && sourceMatch[1] === 'smart',
   'Source regex group [1] is the module name',
-  `Expected "rmbaid", got "${sourceMatch && sourceMatch[1]}"`,
+  `Expected "smart", got "${sourceMatch && sourceMatch[1]}"`,
 );
 assert(
-  sourceMatch && sourceMatch[2] === '4-implementation/rmbaid-create-story/workflow.md',
+  sourceMatch && sourceMatch[2] === '4-implementation/smart-create-story/workflow.md',
   'Source regex group [2] is the workflow sub-path',
-  `Expected "4-implementation/rmbaid-create-story/workflow.md", got "${sourceMatch && sourceMatch[2]}"`,
+  `Expected "4-implementation/smart-create-story/workflow.md", got "${sourceMatch && sourceMatch[2]}"`,
 );
 
 // --- Install regex tests (group [2] returns module name, not sub-path) ---

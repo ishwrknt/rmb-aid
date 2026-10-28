@@ -13,18 +13,12 @@ const REQUIRED_FIELDS = [
   'validation_method',
   'loc_generated',
   'loc_manual',
-  'time_seconds'
+  'time_seconds',
 ];
 
 const ALLOWED_AGENTS = ['Karma', 'Yukti'];
 const ALLOWED_SATYA_RESULTS = ['PASS', 'PARTIAL', 'FAIL'];
-const ALLOWED_METHODS = [
-  'analytical',
-  'benchmark',
-  'cross-validation',
-  'unit-tests',
-  'structural'
-];
+const ALLOWED_METHODS = ['analytical', 'benchmark', 'cross-validation', 'unit-tests', 'structural'];
 
 const TASK_ID_REGEX = /^phase-\d{2}-epic-\d{2}$/;
 
@@ -58,7 +52,7 @@ function validateEntry(entry) {
   }
 
   // 3. timestamp format (ISO 8601 UTC parseable)
-  if (typeof entry.timestamp !== 'string' || isNaN(new Date(entry.timestamp).getTime())) {
+  if (typeof entry.timestamp !== 'string' || Number.isNaN(new Date(entry.timestamp).getTime())) {
     errors.push(`timestamp must be a valid ISO 8601 date string. Got: ${entry.timestamp}`);
   }
 
@@ -68,13 +62,7 @@ function validateEntry(entry) {
   }
 
   // 5. non-negative integers
-  const intFields = [
-    'iterations',
-    'auto_errors_caught',
-    'loc_generated',
-    'loc_manual',
-    'time_seconds'
-  ];
+  const intFields = ['iterations', 'auto_errors_caught', 'loc_generated', 'loc_manual', 'time_seconds'];
 
   for (const field of intFields) {
     const val = entry[field];
@@ -95,7 +83,7 @@ function validateEntry(entry) {
 
   return {
     valid: errors.length === 0,
-    errors
+    errors,
   };
 }
 

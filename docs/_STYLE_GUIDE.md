@@ -62,10 +62,10 @@ Critical warnings only — data loss, security issues
 **Skills:**
 
 ```md
-| Skill                  | Agent   | Purpose                              |
-| ---------------------- | ------- | ------------------------------------ |
-| `rmbaid-brainstorming` | Analyst | Brainstorm a new project             |
-| `rmbaid-create-prd`    | PM      | Create Product Requirements Document |
+| Skill                 | Agent   | Purpose                              |
+| --------------------- | ------- | ------------------------------------ |
+| `smart-brainstorming` | Analyst | Brainstorm a new project             |
+| `smart-create-prd`    | PM      | Create Product Requirements Document |
 ```
 
 ## Folder Structure Blocks
@@ -75,7 +75,7 @@ Show in "What You've Accomplished" sections:
 ````md
 ```
 your-project/
-├── _rmbaid/                                   # RMB_AID configuration
+├── _rmbaid/                                   # SMART configuration
 ├── _rmbaid-output/
 │   ├── planning-artifacts/
 │   │   └── PRD.md                           # Your requirements document
@@ -325,7 +325,7 @@ Starlight generates right-side "On this page" navigation from headers:
 Add italic context at definition start for limited-scope terms:
 
 - `*Quick Flow only.*`
-- `*RMB_AID/Enterprise.*`
+- `*SMART/Enterprise.*`
 - `*Phase N.*`
 - `*BMGD.*`
 - `*Established projects.*`
@@ -349,11 +349,11 @@ Add italic context at definition start for limited-scope terms:
 
 ### Do I always need architecture?
 
-Only for RMB_AID and Enterprise tracks. Quick Flow skips to implementation.
+Only for SMART and Enterprise tracks. Quick Flow skips to implementation.
 
 ### Can I change my plan later?
 
-Yes. The `rmbaid-correct-course` workflow handles scope changes mid-implementation.
+Yes. The `smart-correct-course` workflow handles scope changes mid-implementation.
 
 **Have a question not answered here?** [Open an issue](...) or ask in [Discord](...).
 ```

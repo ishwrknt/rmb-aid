@@ -103,8 +103,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Test agent compilation components
-        run: npm run test:install
+      - name: Test components and packed SMART installation
+        run: npm test
 
       - name: Validate file references
         run: npm run validate:refs

@@ -1,6 +1,6 @@
-# RMB_AID Method Documentation Site
+# SMART Method Documentation Site
 
-This directory contains the Astro + Starlight configuration for the RMB_AID Method documentation site.
+This directory contains the Astro + Starlight configuration for the SMART Method documentation site.
 
 ## Architecture
 

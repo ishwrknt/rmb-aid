@@ -2,7 +2,7 @@
 
 ## Overview
 
-Every SMART session begins with the same startup check before any agent is
+Every pipeline invocation (`smart`, `@smart`, or `/smart`) begins with the same startup check before any agent is
 invoked. This ensures that interrupted sessions are always resumed correctly
 and fresh sessions always start with a clean slate.
 
@@ -10,22 +10,17 @@ and fresh sessions always start with a clean slate.
 
 ## The Startup Check
 
-Execute exactly this command as the first action of every session:
+Inspect state when entering the pipeline (a direct named-agent call does not resume the pipeline):
 
-```bash
-ls -la && cat PROGRESS.md 2>/dev/null || echo "FRESH START"
-```
-
-This command:
-
-1. Lists the working directory so Drishti can identify the platform and context
-2. Prints PROGRESS.md if it exists (resume) or prints "FRESH START"
+Inspect the directory and read `PROGRESS.md` if present. Distinguish a missing
+file from a read failure. Only a missing tracker permits a fresh start; preserve
+empty, unreadable, or unrelated trackers and resolve their state with the user.
 
 ---
 
 ## Resume Mode
 
-**Trigger:** PROGRESS.md is found and is non-empty.
+**Trigger:** PROGRESS.md is non-empty, belongs to the current task, and records an approved plan with unfinished work. Do not resume a tracker for an unrelated task.
 
 **Procedure:**
 
@@ -49,13 +44,13 @@ This command:
 
 ## Fresh Start Mode
 
-**Trigger:** PROGRESS.md does not exist, or `cat` returns empty.
+**Trigger:** PROGRESS.md does not exist.
 
 **Procedure:**
 
 1. Announce to the user: "🆕 Fresh start detected. Beginning SMART pipeline."
-2. Invoke Drishti to read the task and scan the working directory
-3. Invoke Bodhi + Tarka to build and display the execution plan
+2. Invoke Drishti to read the task and scan the working directory. If no task was supplied or established in context, ask what to work on before planning.
+3. Continue through Bodhi (knowledge), Tarka (hypothesis), and Yukti (method) to build and display the execution plan
 4. Wait for user approval ("yes" or "modify: [change]")
 5. On approval: create PROGRESS.md as the very first file, then continue
 
@@ -65,21 +60,20 @@ This command:
 
 If PROGRESS.md exists but cannot be parsed (malformed markdown):
 
-1. Announce: "⚠️ PROGRESS.md is unreadable. Treating as fresh start."
-2. Rename the file: `mv PROGRESS.md PROGRESS.md.bak`
-3. Proceed with fresh start mode
-4. Log to the new PROGRESS.md: "Recovered from corrupted PROGRESS.md.bak"
+1. Preserve the existing file and any backups.
+2. Report the read or parsing problem.
+3. Ask the user how to recover before replacing or renaming the tracker.
 
 ---
 
 ## Session State Rules
 
-| Rule | Behaviour |
-|---|---|
-| Never re-create a completed file | Skip `[x]` items; go straight to first `[ ]` |
-| Never assume file contents | Always read files explicitly before using them |
-| Update PROGRESS.md atomically | Write the full file, not append individual lines |
-| Log every decision | Append to "Decisions Log" section immediately |
+| Rule                             | Behaviour                                        |
+| -------------------------------- | ------------------------------------------------ |
+| Never re-create a completed file | Skip `[x]` items; go straight to first `[ ]`     |
+| Never assume file contents       | Always read files explicitly before using them   |
+| Update PROGRESS.md atomically    | Write the full file, not append individual lines |
+| Log every decision               | Append to "Decisions Log" section immediately    |
 
 ---
 
@@ -101,9 +95,12 @@ decisions.
 
 ```markdown
 # SMART PROGRESS TRACKER
+
 Task: Build a Kotlin Android physics-tracker app
 Started: 2026-05-30T07:07:00Z
 Last Updated: 2026-05-30T09:30:00Z
+Plan approved: 2026-05-30T07:10:00Z
+Approved scope: Core sensor capture and CSV export
 ```
 
 The `Last Updated` field MUST be refreshed every time PROGRESS.md is written.
@@ -113,5 +110,5 @@ The `Last Updated` field MUST be refreshed every time PROGRESS.md is written.
 ## References
 
 - Full pipeline: `smart/pipeline.md`
-- Agent definitions: `.rmbaid-core/agents/`
-- Installable skill: `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md`
+- Agent definitions: `.smart-core/agents/`
+- Installable skill: `src/smart-skills/smart-pipeline/SKILL.md`

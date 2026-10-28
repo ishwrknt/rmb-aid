@@ -14,7 +14,7 @@ async function initializeModules() {
 }
 
 /**
- * YAML Formatter and Linter for RMB_AID-Method
+ * YAML Formatter and Linter for SMART-Method
  * Formats and validates YAML files and YAML embedded in Markdown
  */
 

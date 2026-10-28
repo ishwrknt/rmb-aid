@@ -6,13 +6,13 @@ Status: IN PROGRESS
 
 ## Goal
 
-Package the SMART agentic coding runtime prompt as a valid, installable rmb-aid
-skill (`rmbaid-smart-pipeline`) so any user who runs `npx rmb-aid` gets the full
+Package the SMART agentic coding runtime prompt as a valid, installable smart-agentic
+skill (`smart-pipeline`) so any user who runs `npx smart-agentic` gets the full
 pipeline available as a slash command or skill invocation.
 
 ## Acceptance Criteria
 
-- `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` exists
+- `src/smart-skills/smart-pipeline/SKILL.md` exists
 - Passes all 14 deterministic skill rules (`npm run validate:skills`)
 - Description starts with "Use when" and is ≥ 50 characters
 - Skill name matches directory basename exactly

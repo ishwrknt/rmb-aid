@@ -7,9 +7,9 @@ validate and append metric entries to any `smart_metrics.jsonl` file.
 
 ## Epics
 
-| Epic | Deliverable | Status |
-|---|---|---|
-| 01 | `logger.js` + `schema.js` + `logger.test.js` | ✅ |
+| Epic | Deliverable                                  | Status |
+| ---- | -------------------------------------------- | ------ |
+| 01   | `logger.js` + `schema.js` + `logger.test.js` | ✅     |
 
 ## Satya Result: PASS
 

@@ -17,7 +17,7 @@ Các lượt human-in-the-loop vừa cần thiết vừa tốn kém.
 
 LLM hiện tại vẫn thất bại theo những cách dễ đoán: hiểu sai ý định, tự điền vào khoảng trống bằng những phán đoán tự tin, lệch sang công việc không liên quan, và tạo ra các bản review nhiễu. Đồng thời, việc cần con người nhảy vào liên tục làm giảm tốc độ phát triển. Sự chú ý của con người là nút thắt.
 
-`rmbaid-quick-dev` cân bằng lại đánh đổi đó. Nó tin model có thể chạy tự chủ lâu hơn, nhưng chỉ sau khi workflow đã tạo được một ranh giới đủ mạnh để làm điều đó an toàn.
+`smart-quick-dev` cân bằng lại đánh đổi đó. Nó tin model có thể chạy tự chủ lâu hơn, nhưng chỉ sau khi workflow đã tạo được một ranh giới đủ mạnh để làm điều đó an toàn.
 
 ## Thiết kế cốt lõi
 
@@ -25,7 +25,7 @@ LLM hiện tại vẫn thất bại theo những cách dễ đoán: hiểu sai �
 
 Workflow bắt đầu bằng việc để con người và model nén yêu cầu thành một mục tiêu thống nhất. Đầu vào có thể bắt đầu như một ý định thô, nhưng trước khi workflow tự vận hành thì nó phải đủ nhỏ, đủ rõ ràng, và đủ ít mâu thuẫn để có thể thực thi.
 
-Ý định có thể đến từ nhiều dạng: vài cụm từ, liên kết bug tracker, output từ plan mode, đoạn văn bản copy từ phiên chat, hoặc thậm chí một số story trong `epics.md` của chính RMB_AID. Ở trường hợp cuối, workflow không hiểu được ngữ nghĩa theo dõi story của RMB_AID, nhưng vẫn có thể lấy chính story đó và tiếp tục.
+Ý định có thể đến từ nhiều dạng: vài cụm từ, liên kết bug tracker, output từ plan mode, đoạn văn bản copy từ phiên chat, hoặc thậm chí một số story trong `epics.md` của chính SMART. Ở trường hợp cuối, workflow không hiểu được ngữ nghĩa theo dõi story của SMART, nhưng vẫn có thể lấy chính story đó và tiếp tục.
 
 Workflow này không loại bỏ quyền kiểm soát của con người. Nó chuyển nó về một số thời điểm có giá trị cao:
 

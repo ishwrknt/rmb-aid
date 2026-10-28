@@ -1,6 +1,6 @@
 # Workflow Alias Map
 
-These aliases keep RMB_AID's underlying workflow architecture intact while offering a renamed command shell.
+These aliases keep SMART's underlying workflow architecture intact while offering a renamed command shell.
 
 | Alias              | Slash               | Target Skill                            | Notes                                          |
 | ------------------ | ------------------- | --------------------------------------- | ---------------------------------------------- |

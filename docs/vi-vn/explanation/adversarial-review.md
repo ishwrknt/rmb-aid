@@ -26,7 +26,7 @@ Những lần review thông thường dễ bị confirmation bias. Bạn lướt
 
 ## Nó được dùng ở đâu
 
-Đánh giá đối kháng xuất hiện xuyên suốt các workflow của RMB_AID - code review, kiểm tra sẵn sàng triển khai, xác thực spec, và nhiều nơi khác. Đôi khi là bước bắt buộc, đôi khi là tùy chọn (như khai thác nâng cao hoặc party mode). Mẫu này được điều chỉnh theo artifact cần bị soi kỹ.
+Đánh giá đối kháng xuất hiện xuyên suốt các workflow của SMART - code review, kiểm tra sẵn sàng triển khai, xác thực spec, và nhiều nơi khác. Đôi khi là bước bắt buộc, đôi khi là tùy chọn (như khai thác nâng cao hoặc party mode). Mẫu này được điều chỉnh theo artifact cần bị soi kỹ.
 
 ## Vẫn cần bộ lọc của con người
 

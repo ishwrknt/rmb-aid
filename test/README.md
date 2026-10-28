@@ -1,6 +1,6 @@
 # Test Suite
 
-Tests for the RMB_AID tooling infrastructure.
+Tests for the SMART tooling infrastructure.
 
 ## Quick Start
 

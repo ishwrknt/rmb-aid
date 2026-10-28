@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Sử dụng **Quick Dev** cho sửa lỗi, refactor, hoặc các thay đổi nhỏ có mục tiêu rõ ràng mà không cần quy trình RMB_AID đầy đủ.
+Sử dụng **Quick Dev** cho sửa lỗi, refactor, hoặc các thay đổi nhỏ có mục tiêu rõ ràng mà không cần quy trình SMART đầy đủ.
 
 ## Khi nào nên dùng
 
@@ -16,7 +16,7 @@ Sử dụng **Quick Dev** cho sửa lỗi, refactor, hoặc các thay đổi nh�
 
 :::note[Điều kiện tiên quyết]
 
-- Đã cài RMB_AID (`npx rmb-aid install`)
+- Đã cài SMART (`npx smart-agentic install`)
 - Một IDE tích hợp AI (Claude Code, Cursor, hoặc tương tự)
   :::
 
@@ -87,10 +87,10 @@ Hãy kiểm tra tệp này sau mỗi lần chạy - đó là backlog các việc
 
 ## Khi nào nên nâng cấp lên quy trình lập kế hoạch đầy đủ
 
-Cân nhắc dùng toàn bộ RMB_AID khi:
+Cân nhắc dùng toàn bộ SMART khi:
 
 - Thay đổi ảnh hưởng nhiều hệ thống hoặc cần cập nhật đồng bộ trên nhiều tệp
 - Bạn chưa chắc phạm vi và cần làm rõ yêu cầu trước
 - Bạn cần ghi lại tài liệu hoặc quyết định kiến trúc cho cả nhóm
 
-Xem [Quick Dev](../explanation/quick-dev.md) để hiểu rõ hơn Quick Dev nằm ở đâu trong RMB_AID.
+Xem [Quick Dev](../explanation/quick-dev.md) để hiểu rõ hơn Quick Dev nằm ở đâu trong SMART.

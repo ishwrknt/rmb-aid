@@ -1,6 +1,6 @@
-description = "Executes the {{name}} tool from the RMB_AID Method."
+description = "Executes the {{name}} tool from the SMART Method."
 prompt = """
-Execute the RMB_AID '{{name}}' tool.
+Execute the SMART '{{name}}' tool.
 
 TOOL INSTRUCTIONS:
 1. LOAD the tool file from {project-root}/{{rmbaidFolderName}}/{{path}}

@@ -2,7 +2,7 @@
 description: '{{description}}'
 ---
 
-Execute the RMB_AID '{{name}}' task.
+Execute the SMART '{{name}}' task.
 
 TASK INSTRUCTIONS:
 

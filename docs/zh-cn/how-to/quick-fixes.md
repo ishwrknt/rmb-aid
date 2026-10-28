@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-对于 bug 修复、重构或小范围改动，使用 **Quick Dev** 即可，不必走完整的 RMB_AID。
+对于 bug 修复、重构或小范围改动，使用 **Quick Dev** 即可，不必走完整的 SMART。
 
 ## 何时使用本指南
 
@@ -16,7 +16,7 @@ sidebar:
 
 :::note[前置条件]
 
-- 已安装 RMB_AID（`npx rmb-aid install`）
+- 已安装 SMART（`npx smart-agentic install`）
 - AI 驱动的 IDE（Claude Code、Cursor 或类似工具）
   :::
 
@@ -87,10 +87,10 @@ Quick Dev 每次只聚焦一个目标。如果你的请求包含多个独立目�
 
 ## 何时升级到正式规划
 
-在以下情况下考虑使用完整的 RMB_AID：
+在以下情况下考虑使用完整的 SMART：
 
 - 更改影响多个系统或需要在许多文件中进行协调更新
 - 你不确定范围，需要先进行需求发现
 - 你需要为团队记录文档或架构决策
 
-参见 [Quick Dev](../explanation/quick-dev.md) 了解 Quick Dev 在 RMB_AID 中的位置与边界。
+参见 [Quick Dev](../explanation/quick-dev.md) 了解 Quick Dev 在 SMART 中的位置与边界。

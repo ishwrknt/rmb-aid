@@ -1,12 +1,12 @@
 # Contributors
 
-RMB_AID Core, RMB_AID and RMB_AID and Community RMB_AID Modules are made possible by contributions from our community. We gratefully acknowledge everyone who has helped improve this project.
+SMART Core, SMART and SMART and Community SMART Modules are made possible by contributions from our community. We gratefully acknowledge everyone who has helped improve this project.
 
 ## How We Credit Contributors
 
 - **Git history** — Every contribution is preserved in the project's commit history
 - **Contributors badge** — See the dynamic contributors list on our [README](README.md)
-- **GitHub contributors graph** — Visual representation at <https://github.com/rmbaid-code-org/RMB_AID/graphs/contributors>
+- **GitHub contributors graph** — Visual representation at <https://github.com/smart-code-org/SMART/graphs/contributors>
 
 ## Becoming a Contributor
 
@@ -23,10 +23,10 @@ There are no minimum contribution requirements — whether it's a one-character 
 
 ## Copyright
 
-The RMB_AID project is copyrighted by RMB_AID Code, LLC. Individual contributions are licensed under the same MIT License as the project. Contributors retain authorship credit through Git history and the contributors graph.
+The SMART project is copyrighted by SMART Code, LLC. Individual contributions are licensed under the same MIT License as the project. Contributors retain authorship credit through Git history and the contributors graph.
 
 ---
 
-**Thank you to everyone who has helped make RMB_AID better!**
+**Thank you to everyone who has helped make SMART better!**
 
 For contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).

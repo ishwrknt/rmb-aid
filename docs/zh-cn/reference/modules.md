@@ -1,28 +1,28 @@
 ---
 title: '官方模块'
-description: RMB_AID 可选模块参考：能力边界、适用场景与外部资源
+description: SMART 可选模块参考：能力边界、适用场景与外部资源
 sidebar:
   order: 4
 ---
 
-RMB_AID 通过可选模块扩展能力。你可以在安装时按需选择模块，为当前项目增加特定领域的 `agent`、`workflow` 与 `skill`。
+SMART 通过可选模块扩展能力。你可以在安装时按需选择模块，为当前项目增加特定领域的 `agent`、`workflow` 与 `skill`。
 
 :::tip[安装模块]
-运行 `npx rmb-aid install`，在交互步骤中勾选所需模块。安装器会自动生成对应 skills 并写入当前 IDE 的 skills 目录。
+运行 `npx smart-agentic install`，在交互步骤中勾选所需模块。安装器会自动生成对应 skills 并写入当前 IDE 的 skills 目录。
 :::
 
 ## 先看总览
 
 | 模块                        | 代码  | 最适合             | 核心能力                             |
 | --------------------------- | ----- | ------------------ | ------------------------------------ |
-| RMB_AID Builder             | `bmb` | 扩展 RMB_AID 本身  | 构建自定义 agent / workflow / module |
+| SMART Builder               | `bmb` | 扩展 SMART 本身    | 构建自定义 agent / workflow / module |
 | Creative Intelligence Suite | `cis` | 前期创意与问题探索 | 头脑风暴、设计思维、创新策略         |
 | Game Dev Studio             | `gds` | 游戏方向研发       | 游戏设计文档、原型推进、叙事支持     |
 | Test Architect（TEA）       | `tea` | 企业级测试治理     | 测试策略、可追溯性、质量门控         |
 
-## RMB_AID Builder（`bmb`）
+## SMART Builder（`bmb`）
 
-用于“构建 RMB_AID”的元模块，重点是把你的方法沉淀成可复用能力。
+用于“构建 SMART”的元模块，重点是把你的方法沉淀成可复用能力。
 
 **你会得到：**
 
@@ -33,8 +33,8 @@ RMB_AID 通过可选模块扩展能力。你可以在安装时按需选择模块
 
 **外部资源（英文）：**
 
-- npm: [`rmbaid-builder`](https://www.npmjs.com/package/rmbaid-builder)
-- GitHub: [rmbaid-code-org/rmbaid-builder](https://github.com/rmbaid-code-org/rmbaid-builder)
+- npm: [`smart-builder`](https://www.npmjs.com/package/smart-builder)
+- GitHub: [smart-code-org/smart-builder](https://github.com/smart-code-org/smart-builder)
 
 ## Creative Intelligence Suite（`cis`）
 
@@ -48,8 +48,8 @@ RMB_AID 通过可选模块扩展能力。你可以在安装时按需选择模块
 
 **外部资源（英文）：**
 
-- npm: [`rmbaid-creative-intelligence-suite`](https://www.npmjs.com/package/rmbaid-creative-intelligence-suite)
-- GitHub: [rmbaid-code-org/rmbaid-module-creative-intelligence-suite](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)
+- npm: [`smart-creative-intelligence-suite`](https://www.npmjs.com/package/smart-creative-intelligence-suite)
+- GitHub: [smart-code-org/smart-module-creative-intelligence-suite](https://github.com/smart-code-org/smart-module-creative-intelligence-suite)
 
 ## Game Dev Studio（`gds`）
 
@@ -64,8 +64,8 @@ RMB_AID 通过可选模块扩展能力。你可以在安装时按需选择模块
 
 **外部资源（英文）：**
 
-- npm: [`rmbaid-game-dev-studio`](https://www.npmjs.com/package/rmbaid-game-dev-studio)
-- GitHub: [rmbaid-code-org/rmbaid-module-game-dev-studio](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)
+- npm: [`smart-game-dev-studio`](https://www.npmjs.com/package/smart-game-dev-studio)
+- GitHub: [smart-code-org/smart-module-game-dev-studio](https://github.com/smart-code-org/smart-module-game-dev-studio)
 
 ## Test Architect（TEA，`tea`）
 
@@ -80,9 +80,9 @@ RMB_AID 通过可选模块扩展能力。你可以在安装时按需选择模块
 
 **外部资源（英文）：**
 
-- 文档: [TEA Module Docs](https://rmbaid-code-org.github.io/rmb-aid-test-architecture-enterprise/)
-- npm: [`rmb-aid-test-architecture-enterprise`](https://www.npmjs.com/package/rmb-aid-test-architecture-enterprise)
-- GitHub: [rmbaid-code-org/rmb-aid-test-architecture-enterprise](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)
+- 文档: [TEA Module Docs](https://smart-code-org.github.io/smart-agentic-test-architecture-enterprise/)
+- npm: [`smart-agentic-test-architecture-enterprise`](https://www.npmjs.com/package/smart-agentic-test-architecture-enterprise)
+- GitHub: [smart-code-org/smart-agentic-test-architecture-enterprise](https://github.com/smart-code-org/smart-agentic-test-architecture-enterprise)
 
 ## 如何选择模块
 

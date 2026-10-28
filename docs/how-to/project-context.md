@@ -9,7 +9,7 @@ Use the `project-context.md` file to ensure AI agents follow your project's tech
 
 :::note[Prerequisites]
 
-- RMB_AID installed
+- SMART installed
 - Understanding of your project's technology stack and conventions
   :::
 
@@ -81,7 +81,7 @@ sections_completed: ['technology_stack', 'critical_rules']
 Run the workflow in a fresh chat:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 The workflow scans your architecture document and project files to generate a context file capturing the decisions made.
@@ -91,7 +91,7 @@ The workflow scans your architecture document and project files to generate a co
 For existing projects, run:
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 The workflow analyzes your codebase to identify conventions, then generates a context file you can review and refine.
@@ -123,7 +123,7 @@ A `project-context.md` file that:
 - **Focus on the unobvious** — Document patterns agents might miss (e.g., "Use JSDoc on every public class"), not universal practices like "use meaningful variable names."
 - **Keep it lean** — This file is loaded by every implementation workflow. Long files waste context. Exclude content that only applies to narrow scope or specific stories.
 - **Update as needed** — Edit manually when patterns change, or re-generate after significant architecture changes.
-- Works for Quick Flow and full RMB_AID projects alike.
+- Works for Quick Flow and full SMART projects alike.
   :::
 
 ## Next Steps

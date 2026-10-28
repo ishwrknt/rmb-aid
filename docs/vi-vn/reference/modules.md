@@ -5,19 +5,19 @@ sidebar:
   order: 4
 ---
 
-RMB_AID được mở rộng thông qua các module chính thức mà bạn chọn trong quá trình cài đặt. Những module bổ sung này cung cấp agent, workflow và task chuyên biệt cho các lĩnh vực cụ thể, vượt ra ngoài phần lõi tích hợp sẵn và RMB_AID (Agile suite).
+SMART được mở rộng thông qua các module chính thức mà bạn chọn trong quá trình cài đặt. Những module bổ sung này cung cấp agent, workflow và task chuyên biệt cho các lĩnh vực cụ thể, vượt ra ngoài phần lõi tích hợp sẵn và SMART (Agile suite).
 
 :::tip[Cài đặt module]
-Chạy `npx rmb-aid install` rồi chọn những module bạn muốn. Trình cài đặt sẽ tự xử lý phần tải về, cấu hình và tích hợp vào IDE.
+Chạy `npx smart-agentic install` rồi chọn những module bạn muốn. Trình cài đặt sẽ tự xử lý phần tải về, cấu hình và tích hợp vào IDE.
 :::
 
-## RMB_AID Builder
+## SMART Builder
 
-Tạo agent tùy chỉnh, workflow tùy chỉnh và module chuyên biệt theo lĩnh vực với sự hỗ trợ có hướng dẫn. RMB_AID Builder là meta-module để mở rộng chính framework này.
+Tạo agent tùy chỉnh, workflow tùy chỉnh và module chuyên biệt theo lĩnh vực với sự hỗ trợ có hướng dẫn. SMART Builder là meta-module để mở rộng chính framework này.
 
 - **Mã:** `bmb`
-- **npm:** [`rmbaid-builder`](https://www.npmjs.com/package/rmbaid-builder)
-- **GitHub:** [rmbaid-code-org/rmbaid-builder](https://github.com/rmbaid-code-org/rmbaid-builder)
+- **npm:** [`smart-builder`](https://www.npmjs.com/package/smart-builder)
+- **GitHub:** [smart-code-org/smart-builder](https://github.com/smart-code-org/smart-builder)
 
 **Cung cấp:**
 
@@ -31,8 +31,8 @@ Tạo agent tùy chỉnh, workflow tùy chỉnh và module chuyên biệt theo l
 Bộ công cụ vận hành bởi AI dành cho sáng tạo có cấu trúc, phát ý tưởng và đổi mới trong giai đoạn đầu phát triển. Bộ này cung cấp nhiều agent giúp brainstorming, design thinking và giải quyết vấn đề bằng các framework đã được kiểm chứng.
 
 - **Mã:** `cis`
-- **npm:** [`rmbaid-creative-intelligence-suite`](https://www.npmjs.com/package/rmbaid-creative-intelligence-suite)
-- **GitHub:** [rmbaid-code-org/rmbaid-module-creative-intelligence-suite](https://github.com/rmbaid-code-org/rmbaid-module-creative-intelligence-suite)
+- **npm:** [`smart-creative-intelligence-suite`](https://www.npmjs.com/package/smart-creative-intelligence-suite)
+- **GitHub:** [smart-code-org/smart-module-creative-intelligence-suite](https://github.com/smart-code-org/smart-module-creative-intelligence-suite)
 
 **Cung cấp:**
 
@@ -46,8 +46,8 @@ Bộ công cụ vận hành bởi AI dành cho sáng tạo có cấu trúc, phá
 Các workflow phát triển game có cấu trúc, được điều chỉnh cho Unity, Unreal, Godot và các engine tùy chỉnh. Hỗ trợ làm prototype nhanh qua Quick Flow và sản xuất toàn diện bằng sprint theo epic.
 
 - **Mã:** `gds`
-- **npm:** [`rmbaid-game-dev-studio`](https://www.npmjs.com/package/rmbaid-game-dev-studio)
-- **GitHub:** [rmbaid-code-org/rmbaid-module-game-dev-studio](https://github.com/rmbaid-code-org/rmbaid-module-game-dev-studio)
+- **npm:** [`smart-game-dev-studio`](https://www.npmjs.com/package/smart-game-dev-studio)
+- **GitHub:** [smart-code-org/smart-module-game-dev-studio](https://github.com/smart-code-org/smart-module-game-dev-studio)
 
 **Cung cấp:**
 
@@ -61,8 +61,8 @@ Các workflow phát triển game có cấu trúc, được điều chỉnh cho U
 Chiến lược kiểm thử cấp doanh nghiệp, hướng dẫn tự động hóa và quyết định release gate thông qua một agent chuyên gia cùng chín workflow có cấu trúc. TEA vượt xa QA agent tích hợp sẵn nhờ ưu tiên theo rủi ro và truy vết yêu cầu.
 
 - **Mã:** `tea`
-- **npm:** [`rmb-aid-test-architecture-enterprise`](https://www.npmjs.com/package/rmb-aid-test-architecture-enterprise)
-- **GitHub:** [rmbaid-code-org/rmb-aid-test-architecture-enterprise](https://github.com/rmbaid-code-org/rmb-aid-test-architecture-enterprise)
+- **npm:** [`smart-agentic-test-architecture-enterprise`](https://www.npmjs.com/package/smart-agentic-test-architecture-enterprise)
+- **GitHub:** [smart-code-org/smart-agentic-test-architecture-enterprise](https://github.com/smart-code-org/smart-agentic-test-architecture-enterprise)
 
 **Cung cấp:**
 
@@ -73,4 +73,4 @@ Chiến lược kiểm thử cấp doanh nghiệp, hướng dẫn tự động h
 
 ## Community Modules
 
-Các module cộng đồng và một chợ module đang được chuẩn bị. Hãy theo dõi [tổ chức RMB_AID trên GitHub](https://github.com/rmbaid-code-org) để cập nhật.
+Các module cộng đồng và một chợ module đang được chuẩn bị. Hãy theo dõi [tổ chức SMART trên GitHub](https://github.com/smart-code-org) để cập nhật.

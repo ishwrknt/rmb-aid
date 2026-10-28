@@ -21,13 +21,13 @@ is error-free (code runs without exceptions).
 
 Satya MUST select the highest-applicable method from this list:
 
-| Priority | Method | Applicable when |
-|---|---|---|
-| 1 | Analytical | Output has a known closed-form solution |
-| 2 | Benchmark | A published reference result exists |
-| 3 | Cross-validation | An alternative working implementation exists |
-| 4 | Unit tests | Automated tests can be written and run |
-| 5 | Structural | Epic is planning/documentation only |
+| Priority | Method           | Applicable when                              |
+| -------- | ---------------- | -------------------------------------------- |
+| 1        | Analytical       | Output has a known closed-form solution      |
+| 2        | Benchmark        | A published reference result exists          |
+| 3        | Cross-validation | An alternative working implementation exists |
+| 4        | Unit tests       | Automated tests can be written and run       |
+| 5        | Structural       | Epic is planning/documentation only          |
 
 ### Structural Validation Checklist (Method 5)
 
@@ -43,11 +43,11 @@ Used for all planning epics (PROJECT-BRIEF, PRD, ARCHITECTURE etc.):
 
 ### Verdict Definitions
 
-| Verdict | Meaning | Action |
-|---|---|---|
-| PASS | All method criteria met | Hand to Siddhi |
+| Verdict | Meaning                       | Action                       |
+| ------- | ----------------------------- | ---------------------------- |
+| PASS    | All method criteria met       | Hand to Siddhi               |
 | PARTIAL | Core criteria met; minor gaps | Karma minor fix; re-validate |
-| FAIL | Core criteria not met | Yukti/Karma retry (max 5) |
+| FAIL    | Core criteria not met         | Yukti/Karma retry (max 5)    |
 
 ---
 
@@ -57,27 +57,27 @@ Each line in `smart_metrics.jsonl` is a single valid JSON object.
 
 ### Required Fields
 
-| Field | Type | Constraint | Description |
-|---|---|---|---|
-| `task_id` | string | `phase-NN-epic-NN` format | Unique identifier for this epic |
-| `timestamp` | string | ISO 8601 UTC | When Siddhi logged this entry |
-| `agent` | string | One of: Karma, Yukti | Primary executing agent |
-| `iterations` | integer | ≥ 1 | Number of Karma+Yukti loops taken |
-| `auto_errors_caught` | integer | ≥ 0 | Errors caught and fixed automatically |
-| `satya_result` | string | PASS, PARTIAL, or FAIL | Satya's final verdict |
-| `validation_method` | string | See method list above | Method Satya applied |
-| `loc_generated` | integer | ≥ 0 | Lines of code / content generated |
-| `loc_manual` | integer | ≥ 0 | Lines added by human after generation |
-| `time_seconds` | integer | ≥ 0 | Wall-clock seconds for the epic |
+| Field                | Type    | Constraint                | Description                           |
+| -------------------- | ------- | ------------------------- | ------------------------------------- |
+| `task_id`            | string  | `phase-NN-epic-NN` format | Unique identifier for this epic       |
+| `timestamp`          | string  | ISO 8601 UTC              | When Siddhi logged this entry         |
+| `agent`              | string  | One of: Karma, Yukti      | Primary executing agent               |
+| `iterations`         | integer | ≥ 1                       | Number of Karma+Yukti loops taken     |
+| `auto_errors_caught` | integer | ≥ 0                       | Errors caught and fixed automatically |
+| `satya_result`       | string  | PASS, PARTIAL, or FAIL    | Satya's final verdict                 |
+| `validation_method`  | string  | See method list above     | Method Satya applied                  |
+| `loc_generated`      | integer | ≥ 0                       | Lines of code / content generated     |
+| `loc_manual`         | integer | ≥ 0                       | Lines added by human after generation |
+| `time_seconds`       | integer | ≥ 0                       | Wall-clock seconds for the epic       |
 
 ### Optional Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `notes` | string | Any Yukti diagnostic or decision note |
+| Field        | Type   | Description                                 |
+| ------------ | ------ | ------------------------------------------- |
+| `notes`      | string | Any Yukti diagnostic or decision note       |
 | `case_study` | string | Identifier for the case study if applicable |
-| `phase` | string | Human-readable phase name |
-| `epic_name` | string | Human-readable epic name |
+| `phase`      | string | Human-readable phase name                   |
+| `epic_name`  | string | Human-readable epic name                    |
 
 ### Sample Valid Entry
 
@@ -121,7 +121,7 @@ Each line in `smart_metrics.jsonl` is a single valid JSON object.
 npm run validate:skills
 ```
 
-Expected: 0 HIGH findings. The new `rmbaid-smart-pipeline` skill must pass
+Expected: 0 HIGH findings. The new `smart-pipeline` skill must pass
 all 14 deterministic rules.
 
 ### AT-02 — Markdown Lint

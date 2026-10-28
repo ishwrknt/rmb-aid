@@ -1,40 +1,40 @@
 ---
 title: Core Tools
-description: Tài liệu tham chiếu cho mọi task và workflow tích hợp sẵn có trong mọi bản cài RMB_AID mà không cần module bổ sung.
+description: Tài liệu tham chiếu cho mọi task và workflow tích hợp sẵn có trong mọi bản cài SMART mà không cần module bổ sung.
 sidebar:
   order: 2
 ---
 
-Mọi bản cài RMB_AID đều bao gồm một tập core skills có thể dùng cùng với bất cứ việc gì bạn đang làm — các task và workflow độc lập hoạt động xuyên suốt mọi dự án, mọi module và mọi phase. Chúng luôn có sẵn bất kể bạn cài những module tùy chọn nào.
+Mọi bản cài SMART đều bao gồm một tập core skills có thể dùng cùng với bất cứ việc gì bạn đang làm — các task và workflow độc lập hoạt động xuyên suốt mọi dự án, mọi module và mọi phase. Chúng luôn có sẵn bất kể bạn cài những module tùy chọn nào.
 
 :::tip[Lối đi nhanh]
-Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ `rmbaid-help`, trong IDE của bạn. Không cần mở phiên agent trước.
+Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ `smart-help`, trong IDE của bạn. Không cần mở phiên agent trước.
 :::
 
 ## Tổng Quan
 
-| Công cụ                                                                   | Loại     | Mục đích                                                         |
-| ------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------- |
-| [`rmbaid-help`](#rmbaid-help)                                             | Task     | Nhận hướng dẫn có ngữ cảnh về việc nên làm gì tiếp theo          |
-| [`rmbaid-brainstorming`](#rmbaid-brainstorming)                           | Workflow | Tổ chức các phiên brainstorming có tương tác                     |
-| [`rmbaid-party-mode`](#rmbaid-party-mode)                                 | Workflow | Điều phối thảo luận nhóm nhiều agent                             |
-| [`rmbaid-distillator`](#rmbaid-distillator)                               | Task     | Nén tài liệu tối ưu cho LLM mà không mất thông tin               |
-| [`rmbaid-advanced-elicitation`](#rmbaid-advanced-elicitation)             | Task     | Đẩy đầu ra của LLM qua các vòng tinh luyện lặp                   |
-| [`rmbaid-review-adversarial-general`](#rmbaid-review-adversarial-general) | Task     | Review hoài nghi để tìm chỗ thiếu và chỗ sai                     |
-| [`rmbaid-review-edge-case-hunter`](#rmbaid-review-edge-case-hunter)       | Task     | Phân tích toàn bộ nhánh rẽ để tìm edge case chưa được xử lý      |
-| [`rmbaid-editorial-review-prose`](#rmbaid-editorial-review-prose)         | Task     | Biên tập câu chữ nhằm tăng độ rõ ràng khi giao tiếp              |
-| [`rmbaid-editorial-review-structure`](#rmbaid-editorial-review-structure) | Task     | Biên tập cấu trúc — cắt, gộp và tổ chức lại                      |
-| [`rmbaid-shard-doc`](#rmbaid-shard-doc)                                   | Task     | Tách file markdown lớn thành các phần có tổ chức                 |
-| [`rmbaid-index-docs`](#rmbaid-index-docs)                                 | Task     | Tạo hoặc cập nhật mục lục cho toàn bộ tài liệu trong một thư mục |
+| Công cụ                                                                 | Loại     | Mục đích                                                         |
+| ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------------- |
+| [`smart-help`](#smart-help)                                             | Task     | Nhận hướng dẫn có ngữ cảnh về việc nên làm gì tiếp theo          |
+| [`smart-brainstorming`](#smart-brainstorming)                           | Workflow | Tổ chức các phiên brainstorming có tương tác                     |
+| [`smart-party-mode`](#smart-party-mode)                                 | Workflow | Điều phối thảo luận nhóm nhiều agent                             |
+| [`smart-distillator`](#smart-distillator)                               | Task     | Nén tài liệu tối ưu cho LLM mà không mất thông tin               |
+| [`smart-advanced-elicitation`](#smart-advanced-elicitation)             | Task     | Đẩy đầu ra của LLM qua các vòng tinh luyện lặp                   |
+| [`smart-review-adversarial-general`](#smart-review-adversarial-general) | Task     | Review hoài nghi để tìm chỗ thiếu và chỗ sai                     |
+| [`smart-review-edge-case-hunter`](#smart-review-edge-case-hunter)       | Task     | Phân tích toàn bộ nhánh rẽ để tìm edge case chưa được xử lý      |
+| [`smart-editorial-review-prose`](#smart-editorial-review-prose)         | Task     | Biên tập câu chữ nhằm tăng độ rõ ràng khi giao tiếp              |
+| [`smart-editorial-review-structure`](#smart-editorial-review-structure) | Task     | Biên tập cấu trúc — cắt, gộp và tổ chức lại                      |
+| [`smart-shard-doc`](#smart-shard-doc)                                   | Task     | Tách file markdown lớn thành các phần có tổ chức                 |
+| [`smart-index-docs`](#smart-index-docs)                                 | Task     | Tạo hoặc cập nhật mục lục cho toàn bộ tài liệu trong một thư mục |
 
-## rmbaid-help
+## smart-help
 
 **Người dẫn đường thông minh cho bước tiếp theo của bạn.** Công cụ này kiểm tra trạng thái dự án, phát hiện những gì đã hoàn thành và đề xuất bước bắt buộc hoặc tùy chọn tiếp theo.
 
 **Dùng khi:**
 
 - Bạn vừa hoàn tất một workflow và muốn biết tiếp theo là gì
-- Bạn mới làm quen với RMB_AID và cần định hướng
+- Bạn mới làm quen với SMART và cần định hướng
 - Bạn đang mắc kẹt và muốn lời khuyên có ngữ cảnh
 - Bạn vừa cài module mới và muốn xem có gì khả dụng
 
@@ -45,11 +45,11 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 3. Đề xuất bước tiếp theo theo thứ tự ưu tiên — bước bắt buộc trước, tùy chọn sau
 4. Trình bày từng đề xuất cùng lệnh skill và mô tả ngắn
 
-**Đầu vào:** Truy vấn ngôn ngữ tự nhiên tùy chọn, ví dụ `rmbaid-help I have a SaaS idea, where do I start?`
+**Đầu vào:** Truy vấn ngôn ngữ tự nhiên tùy chọn, ví dụ `smart-help I have a SaaS idea, where do I start?`
 
 **Đầu ra:** Danh sách ưu tiên các bước tiếp theo được khuyến nghị kèm lệnh skill
 
-## rmbaid-brainstorming
+## smart-brainstorming
 
 **Tạo ra nhiều ý tưởng đa dạng bằng các kỹ thuật sáng tạo có tương tác.** Đây là một phiên brainstorming có điều phối, nạp các phương pháp phát ý tưởng đã được kiểm chứng từ thư viện kỹ thuật và dẫn bạn đến 100+ ý tưởng trước khi bắt đầu sắp xếp.
 
@@ -75,9 +75,9 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 Điểm bứt phá thường nằm ở vùng ý tưởng thứ 50-100. Workflow này khuyến khích bạn tạo 100+ ý tưởng trước khi sắp xếp.
 :::
 
-## rmbaid-party-mode
+## smart-party-mode
 
-**Điều phối thảo luận nhóm nhiều agent.** Công cụ này nạp toàn bộ agent RMB_AID đã cài và tạo một cuộc trao đổi tự nhiên, nơi mỗi agent đóng góp từ góc nhìn chuyên môn và cá tính riêng.
+**Điều phối thảo luận nhóm nhiều agent.** Công cụ này nạp toàn bộ agent SMART đã cài và tạo một cuộc trao đổi tự nhiên, nơi mỗi agent đóng góp từ góc nhìn chuyên môn và cá tính riêng.
 
 **Dùng khi:**
 
@@ -97,7 +97,7 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 
 **Đầu ra:** Cuộc hội thoại nhiều agent theo thời gian thực, vẫn giữ nguyên cá tính từng agent
 
-## rmbaid-distillator
+## smart-distillator
 
 **Nén tài liệu nguồn tối ưu cho LLM mà không mất thông tin.** Công cụ này tạo ra các bản chưng cất dày đặc, tiết kiệm token nhưng vẫn giữ nguyên toàn bộ thông tin cho LLM dùng về sau. Có thể xác minh bằng tái dựng hai chiều.
 
@@ -124,7 +124,7 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 
 **Đầu ra:** Một hoặc nhiều file markdown distillate kèm báo cáo tỷ lệ nén, ví dụ `3.2:1`
 
-## rmbaid-advanced-elicitation
+## smart-advanced-elicitation
 
 **Đẩy đầu ra của LLM qua các phương pháp tinh luyện lặp.** Công cụ này chọn từ thư viện kỹ thuật elicitation để cải thiện nội dung một cách có hệ thống qua nhiều lượt.
 
@@ -146,7 +146,7 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 
 **Đầu ra:** Phiên bản nội dung đã được nâng cấp
 
-## rmbaid-review-adversarial-general
+## smart-review-adversarial-general
 
 **Kiểu review hoài nghi, mặc định cho rằng vấn đề luôn tồn tại và phải đi tìm chúng.** Công cụ này đứng ở góc nhìn của một reviewer khó tính, thiếu kiên nhẫn với sản phẩm cẩu thả. Nó tìm xem còn thiếu gì, không chỉ tìm cái gì sai.
 
@@ -170,7 +170,7 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 
 **Đầu ra:** Danh sách markdown gồm 10+ phát hiện kèm mô tả
 
-## rmbaid-review-edge-case-hunter
+## smart-review-edge-case-hunter
 
 **Đi qua mọi nhánh rẽ và điều kiện biên, chỉ báo cáo những trường hợp chưa được xử lý.** Đây là phương pháp thuần túy dựa trên truy vết đường đi, suy ra các lớp edge case một cách cơ học. Nó trực giao với adversarial review — khác phương pháp, không khác thái độ.
 
@@ -195,10 +195,10 @@ Chạy bất kỳ core tool nào bằng cách gõ tên skill của nó, ví dụ
 **Đầu ra:** Mảng JSON các phát hiện, mỗi phát hiện có `location`, `trigger_condition`, `guard_snippet` và `potential_consequence`
 
 :::note[Các kiểu review bổ trợ nhau]
-Hãy chạy cả `rmbaid-review-adversarial-general` và `rmbaid-review-edge-case-hunter` để có độ bao phủ trực giao. Adversarial review bắt lỗi về chất lượng và độ đầy đủ; edge case hunter bắt các đường đi chưa được xử lý.
+Hãy chạy cả `smart-review-adversarial-general` và `smart-review-edge-case-hunter` để có độ bao phủ trực giao. Adversarial review bắt lỗi về chất lượng và độ đầy đủ; edge case hunter bắt các đường đi chưa được xử lý.
 :::
 
-## rmbaid-editorial-review-prose
+## smart-editorial-review-prose
 
 **Biên tập câu chữ kiểu lâm sàng, tập trung vào độ rõ ràng khi truyền đạt.** Công cụ này review văn bản để tìm ra các vấn đề cản trở việc hiểu. Nó dùng Microsoft Writing Style Guide làm nền và vẫn giữ giọng văn của tác giả.
 
@@ -223,7 +223,7 @@ Hãy chạy cả `rmbaid-review-adversarial-general` và `rmbaid-review-edge-cas
 
 **Đầu ra:** Bảng markdown ba cột: Original Text | Revised Text | Changes
 
-## rmbaid-editorial-review-structure
+## smart-editorial-review-structure
 
 **Biên tập cấu trúc — đề xuất cắt, gộp, di chuyển và cô đọng.** Công cụ này review cách tổ chức tài liệu và đề xuất thay đổi mang tính nội dung để tăng độ rõ ràng và luồng đọc trước khi chỉnh câu chữ.
 
@@ -250,7 +250,7 @@ Hãy chạy cả `rmbaid-review-adversarial-general` và `rmbaid-review-edge-cas
 
 **Đầu ra:** Tóm tắt tài liệu, danh sách khuyến nghị ưu tiên và ước tính mức giảm
 
-## rmbaid-shard-doc
+## smart-shard-doc
 
 **Tách file markdown lớn thành các file phần có tổ chức.** Công cụ này dùng các header cấp 2 làm điểm cắt để tạo ra một thư mục gồm các file phần tự chứa cùng một file chỉ mục.
 
@@ -271,7 +271,7 @@ Hãy chạy cả `rmbaid-review-adversarial-general` và `rmbaid-review-edge-cas
 
 **Đầu ra:** Một thư mục gồm `index.md` và các file `01-{section}.md`, `02-{section}.md`, v.v.
 
-## rmbaid-index-docs
+## smart-index-docs
 
 **Tạo hoặc cập nhật mục lục cho toàn bộ tài liệu trong một thư mục.** Công cụ này quét thư mục, đọc từng file để hiểu mục đích của nó, rồi tạo `index.md` có tổ chức với liên kết và mô tả.
 

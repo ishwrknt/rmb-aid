@@ -52,12 +52,12 @@ This prevents:
 
 ## When Solutioning is Required
 
-| Track           | Solutioning Required? |
-| --------------- | --------------------- |
-| Quick Flow      | No - skip entirely    |
-| RMB_AID Simple  | Optional              |
-| RMB_AID Complex | Yes                   |
-| Enterprise      | Yes                   |
+| Track         | Solutioning Required? |
+| ------------- | --------------------- |
+| Quick Flow    | No - skip entirely    |
+| SMART Simple  | Optional              |
+| SMART Complex | Yes                   |
+| Enterprise    | Yes                   |
 
 :::tip[Rule of Thumb]
 If you have multiple epics that could be implemented by different agents, you need solutioning.

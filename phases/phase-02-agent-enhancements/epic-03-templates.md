@@ -6,7 +6,7 @@ Status: IN PROGRESS
 
 ## Goal
 
-Create two reusable templates in `.rmbaid-core/templates/`:
+Create two reusable templates in `.smart-core/templates/`:
 
 - `smart-metrics-schema.md` — canonical JSONL entry spec and field reference
 - `epic-tmpl.md` — standard epic document template for all future epics

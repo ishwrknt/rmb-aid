@@ -12,7 +12,7 @@ sidebar:
 
 :::note[前置条件]
 
-- 已安装 RMB_AID
+- 已安装 SMART
 - 了解项目的技术栈与团队约定
   :::
 
@@ -84,7 +84,7 @@ sections_completed: ['technology_stack', 'critical_rules']
 在新的会话中运行：
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 该工作流会扫描架构文档和项目文件，生成能够反映已做决策的上下文文件。
@@ -94,7 +94,7 @@ rmbaid-generate-project-context
 对于既有项目，运行：
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 该工作流会分析代码库中的约定，然后生成可供你审阅和完善的上下文文件。
@@ -128,7 +128,7 @@ rmbaid-generate-project-context
 - **保持精简**：此文件会被多数实现工作流加载，过长会浪费上下文窗口。避免写入
   只适用于单一 story 的细节。
 - **按需更新**：当团队约定变化时手动更新，或在架构发生较大变化后重新生成。
-- **适用于 Quick Flow 与完整 RMB_AID**：两种模式都可共享同一份项目上下文。
+- **适用于 Quick Flow 与完整 SMART**：两种模式都可共享同一份项目上下文。
   :::
 
 ## 后续步骤

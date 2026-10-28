@@ -2,15 +2,15 @@
 
 ## Goal
 
-Package the SMART runtime prompt as an installable rmb-aid skill and create
+Package the SMART runtime prompt as an installable smart-agentic skill and create
 canonical pipeline reference documentation.
 
 ## Epics
 
-| Epic | Deliverable | Status |
-|---|---|---|
-| 01 | `src/rmbaid-skills/rmbaid-smart-pipeline/SKILL.md` | ✅ |
-| 02 | `smart/pipeline.md` + `smart/startup.md` | ✅ |
+| Epic | Deliverable                                | Status |
+| ---- | ------------------------------------------ | ------ |
+| 01   | `src/smart-skills/smart-pipeline/SKILL.md` | ✅     |
+| 02   | `smart/pipeline.md` + `smart/startup.md`   | ✅     |
 
 ## Satya Result: PASS
 

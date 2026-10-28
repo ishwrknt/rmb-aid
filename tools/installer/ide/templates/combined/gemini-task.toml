@@ -1,6 +1,6 @@
-description = "Executes the {{name}} task from the RMB_AID Method."
+description = "Executes the {{name}} task from the SMART Method."
 prompt = """
-Execute the RMB_AID '{{name}}' task.
+Execute the SMART '{{name}}' task.
 
 TASK INSTRUCTIONS:
 1. LOAD the task file from {project-root}/{{rmbaidFolderName}}/{{path}}

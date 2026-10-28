@@ -62,10 +62,10 @@ Chỉ dùng cho cảnh báo nghiêm trọng — mất dữ liệu, vấn đề b
 **Skill:**
 
 ```md
-| Skill                  | Agent   | Mục đích                      |
-| ---------------------- | ------- | ----------------------------- |
-| `rmbaid-brainstorming` | Analyst | Brainstorm cho dự án mới      |
-| `rmbaid-create-prd`    | PM      | Tạo tài liệu yêu cầu sản phẩm |
+| Skill                 | Agent   | Mục đích                      |
+| --------------------- | ------- | ----------------------------- |
+| `smart-brainstorming` | Analyst | Brainstorm cho dự án mới      |
+| `smart-create-prd`    | PM      | Tạo tài liệu yêu cầu sản phẩm |
 ```
 
 ## Khối cấu trúc thư mục
@@ -75,7 +75,7 @@ Hiển thị trong phần "Bạn đã hoàn thành những gì":
 ````md
 ```
 your-project/
-├── _rmbaid/                                   # Cấu hình RMB_AID
+├── _rmbaid/                                   # Cấu hình SMART
 ├── _rmbaid-output/
 │   ├── planning-artifacts/
 │   │   └── PRD.md                           # Tài liệu yêu cầu của bạn
@@ -325,7 +325,7 @@ Starlight tạo phần điều hướng "On this page" từ các tiêu đề:
 Thêm ngữ cảnh in nghiêng ở đầu định nghĩa với các thuật ngữ có phạm vi hẹp:
 
 - `*Chỉ dành cho Quick Flow.*`
-- `*RMB_AID/Enterprise.*`
+- `*SMART/Enterprise.*`
 - `*Phase N.*`
 - `*BMGD.*`
 - `*Dự án hiện có.*`
@@ -349,11 +349,11 @@ Thêm ngữ cảnh in nghiêng ở đầu định nghĩa với các thuật ng�
 
 ### Lúc nào cũng cần kiến trúc à?
 
-Chỉ với nhánh RMB_AID và Enterprise. Quick Flow bỏ qua để đi thẳng vào triển khai.
+Chỉ với nhánh SMART và Enterprise. Quick Flow bỏ qua để đi thẳng vào triển khai.
 
 ### Tôi có thể đổi kế hoạch về sau không?
 
-Có. Workflow `rmbaid-correct-course` xử lý thay đổi phạm vi giữa chừng.
+Có. Workflow `smart-correct-course` xử lý thay đổi phạm vi giữa chừng.
 
 **Có câu hỏi chưa được trả lời ở đây?** [Mở issue](...) hoặc hỏi trên [Discord](...).
 ```

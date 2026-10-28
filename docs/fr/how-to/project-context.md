@@ -9,7 +9,7 @@ Utilisez le fichier `project-context.md` pour garantir que les agents IA respect
 
 :::note[Prérequis]
 
-- Méthode RMB_AID installée
+- Méthode SMART installée
 - Connaissance de la pile technologique et des conventions de votre projet
   :::
 
@@ -81,7 +81,7 @@ sections_completed: ['technology_stack', 'critical_rules']
 Exécutez le workflow dans une nouvelle conversation :
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Le workflow analyse votre document d'architecture et vos fichiers projet pour générer un fichier de contexte qui capture les décisions prises.
@@ -91,7 +91,7 @@ Le workflow analyse votre document d'architecture et vos fichiers projet pour g�
 Pour les projets existants, exécutez :
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Le workflow analyse votre base de code pour identifier les conventions, puis génère un fichier de contexte que vous pouvez réviser et affiner.
@@ -123,7 +123,7 @@ Un fichier `project-context.md` qui :
 - **Concentrez-vous sur ce qui n'est pas évident** — Documentez les patterns que les agents pourraient manquer (par ex. « Utiliser JSDoc sur chaque classe publique »), et non les pratiques universelles comme « utiliser des noms de variables significatifs ».
 - **Gardez-le concis** — Ce fichier est chargé par chaque workflow d'implémentation. Les fichiers longs gaspillent le contexte. Excluez le contenu qui ne s'applique qu'à un périmètre restreint ou à des stories spécifiques.
 - **Mettez à jour si nécessaire** — Modifiez manuellement lorsque les patterns changent, ou régénérez après des changements d'architecture significatifs.
-- Fonctionne aussi bien pour Quick Dev que pour les projets complets méthode RMB_AID.
+- Fonctionne aussi bien pour Quick Dev que pour les projets complets méthode SMART.
   :::
 
 ## Prochaines étapes

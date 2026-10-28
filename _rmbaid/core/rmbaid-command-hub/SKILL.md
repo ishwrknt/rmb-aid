@@ -1,9 +1,9 @@
 ---
 name: rmbaid-command-hub
-description: Renamed BMAD-style command shell and router. Use when you want slash commands shortcut aliases renamed personas and one-mode-at-a-time routing across RMB_AID.
+description: Route SMART and named agent calls. Use when the user says smart, @smart, @drishti, @bodhi, @tarka, @tarak, @yukti, @karma, @satya, or @siddhi, or requests slash commands and workflow shortcuts.
 ---
 
-# RMB_AID Command Hub
+# SMART Command Hub
 
 ## Purpose
 
@@ -14,7 +14,7 @@ Provide an easy entrypoint that feels like a mode engine instead of a document l
 - Enforce one active mode or persona per execution window.
 - If the user gives a direct slash command, alias, menu code, or persona name, route immediately.
 - If the user is ambiguous, recommend one best-fit command and stop for confirmation.
-- Prefer the renamed compatibility layer first, then the underlying RMB_AID skill name.
+- Named SMART agents and `smart` take precedence over compatibility aliases. Keep the requested agent’s canonical name.
 - Treat `A` as show all commands, `C` as challenge/critical review, `Z` as finish/proceed/exit the active mode.
 
 ## Registry
@@ -22,14 +22,41 @@ Provide an easy entrypoint that feels like a mode engine instead of a document l
 Load and follow `./registry.md`.
 Load `./workflow-aliases.md` when the user asks for the full renamed workflow catalog.
 
-## Routing Contract
+## Named Calls and SMART
 
-For every routed response, provide:
+Recognize calls at the start of a request, case-insensitively, with an optional
+`@` or `/` prefix. Treat names mentioned inside ordinary prose as context, not
+activation. `@tarak` is an accepted alias for Tarka; respond as Tarka without a
+spelling-correction preamble. Never guess an unknown name: ask which agent was
+intended and show the seven names.
 
-1. `Mode` — selected renamed command or persona
-2. `Why` — one sentence explaining the fit
-3. `Target` — exact RMB_AID skill to invoke
-4. `Shortcuts` — accepted slash aliases or quick letters
+- For Drishti, Bodhi, Tarka, Yukti, Karma, Satya, or Siddhi, read
+  `./smart-personas.md` and adopt that agent’s role immediately.
+- Speak directly as the named agent, beginning with `**Drishti:**` (or the
+  selected name). Do the requested work using the current task and context.
+  Avoid “Mode / Why / Target / Shortcuts”, internal skill names, and “I’ll look
+  up this persona” narration in the agent’s answer.
+- A bare name switches the active agent. If there is no task in context, use a
+  brief personal greeting and one question, e.g. “**Drishti:** I’m here. What
+  problem are we working on?” Never invent a task or resume unrelated work.
+- Stay with the selected agent until another name, `smart`, or an exit command
+  is given. An individual call does not authorize the full pipeline; its
+  handoff is a suggestion unless the user requested continuation.
+- `smart`, `@smart`, and `/smart` invoke the `rmbaid-smart-pipeline` skill.
+  Carry the task text and conversation context into it. This starts sequential
+  coordination, not the help menu. If the skill is unavailable, say so and
+  identify the missing SMART pipeline; do not silently substitute help.
+- In SMART mode, each role speaks under its own name and passes its result to
+  the next role automatically, subject to the pipeline’s plan approval and
+  validation gates. A direct named call during the pipeline pauses automatic
+  handoffs and focuses that agent on the user’s request; `smart` resumes the
+  same approved task when applicable.
+
+## Other Commands
+
+Invoke the mapped skill directly for explicit commands. Show routing details
+only when the user asks for help or the command catalog. Prefer a concise
+command suggestion when the intended workflow is ambiguous.
 
 ## Direct Command Handling
 
@@ -55,7 +82,7 @@ Accept these command forms:
 - `squad` -> `skill:rmbaid-party-mode`
 - `help` -> `skill:rmbaid-help`
 
-For workflow-level slash aliases such as `/blueprint`, `/system-design`, `/story-build`, or `/code-check`, consult `./workflow-aliases.md` and route to the mapped RMB_AID skill.
+For workflow-level slash aliases such as `/blueprint`, `/system-design`, `/story-build`, or `/code-check`, consult `./workflow-aliases.md` and route to the mapped SMART skill.
 
 ## Fallback Behavior
 

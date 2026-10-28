@@ -1,28 +1,28 @@
 ---
 title: Agents
-description: Các agent mặc định của RMB_AID cùng skill ID, trigger menu và workflow chính
+description: Các agent mặc định của SMART cùng skill ID, trigger menu và workflow chính
 sidebar:
   order: 2
 ---
 
 ## Các Agent Mặc Định
 
-Trang này liệt kê các agent mặc định của RMB_AID (bộ Agile suite) được cài cùng với RMB_AID, bao gồm skill ID, trigger menu và workflow chính của chúng. Mỗi agent được gọi dưới dạng một skill.
+Trang này liệt kê các agent mặc định của SMART (bộ Agile suite) được cài cùng với SMART, bao gồm skill ID, trigger menu và workflow chính của chúng. Mỗi agent được gọi dưới dạng một skill.
 
 ## Ghi Chú
 
-- Mỗi agent đều có sẵn dưới dạng một skill do trình cài đặt tạo ra. Skill ID, ví dụ `rmbaid-dev`, được dùng để gọi agent.
+- Mỗi agent đều có sẵn dưới dạng một skill do trình cài đặt tạo ra. Skill ID, ví dụ `smart-dev`, được dùng để gọi agent.
 - Trigger là các mã menu ngắn, ví dụ `CP`, cùng với các fuzzy match hiển thị trong menu của từng agent.
-- Việc tạo test QA do workflow skill `rmbaid-qa-generate-e2e-tests` đảm nhận, khả dụng thông qua Developer agent. Module Test Architect (TEA) đầy đủ nằm trong một module riêng.
+- Việc tạo test QA do workflow skill `smart-qa-generate-e2e-tests` đảm nhận, khả dụng thông qua Developer agent. Module Test Architect (TEA) đầy đủ nằm trong một module riêng.
 
-| Agent                    | Skill ID             | Trigger                                  | Workflow chính                                                                                           |
-| ------------------------ | -------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Analyst (Mary)           | `rmbaid-analyst`     | `BP`, `RS`, `CB`, `WB`, `DP`             | Brainstorm Project, Research, Create Brief, PRFAQ Challenge, Document Project                            |
-| Product Manager (John)   | `rmbaid-pm`          | `CP`, `VP`, `EP`, `CE`, `IR`, `CC`       | Create/Validate/Edit PRD, Create Epics and Stories, Implementation Readiness, Correct Course             |
-| Architect (Winston)      | `rmbaid-architect`   | `CA`, `IR`                               | Create Architecture, Implementation Readiness                                                            |
-| Developer (Amelia)       | `rmbaid-agent-dev`   | `DS`, `QD`, `QA`, `CR`, `SP`, `CS`, `ER` | Dev Story, Quick Dev, QA Test Generation, Code Review, Sprint Planning, Create Story, Epic Retrospective |
-| UX Designer (Sally)      | `rmbaid-ux-designer` | `CU`                                     | Create UX Design                                                                                         |
-| Technical Writer (Paige) | `rmbaid-tech-writer` | `DP`, `WD`, `US`, `MG`, `VD`, `EC`       | Document Project, Write Document, Update Standards, Mermaid Generate, Validate Doc, Explain Concept      |
+| Agent                    | Skill ID            | Trigger                                  | Workflow chính                                                                                           |
+| ------------------------ | ------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Analyst (Mary)           | `smart-analyst`     | `BP`, `RS`, `CB`, `WB`, `DP`             | Brainstorm Project, Research, Create Brief, PRFAQ Challenge, Document Project                            |
+| Product Manager (John)   | `smart-pm`          | `CP`, `VP`, `EP`, `CE`, `IR`, `CC`       | Create/Validate/Edit PRD, Create Epics and Stories, Implementation Readiness, Correct Course             |
+| Architect (Winston)      | `smart-architect`   | `CA`, `IR`                               | Create Architecture, Implementation Readiness                                                            |
+| Developer (Amelia)       | `smart-agent-dev`   | `DS`, `QD`, `QA`, `CR`, `SP`, `CS`, `ER` | Dev Story, Quick Dev, QA Test Generation, Code Review, Sprint Planning, Create Story, Epic Retrospective |
+| UX Designer (Sally)      | `smart-ux-designer` | `CU`                                     | Create UX Design                                                                                         |
+| Technical Writer (Paige) | `smart-tech-writer` | `DP`, `WD`, `US`, `MG`, `VD`, `EC`       | Document Project, Write Document, Update Standards, Mermaid Generate, Validate Doc, Explain Concept      |
 
 ## Các Loại Trigger
 

@@ -1,27 +1,27 @@
 ---
 title: Agents
-description: Agents RMB_AID par défaut avec leurs identifiants de skill, déclencheurs de menu et workflows principaux (Analyst, Developer, Architect, UX Designer, Technical Writer)
+description: Agents SMART par défaut avec leurs identifiants de skill, déclencheurs de menu et workflows principaux (Analyst, Developer, Architect, UX Designer, Technical Writer)
 sidebar:
   order: 2
 ---
 
 ## Agents par défaut
 
-Cette page liste les cinq agents RMB_AID (suite Agile) par défaut installés avec la méthode RMB_AID, ainsi que leurs identifiants de skill, déclencheurs de menu et workflows principaux. Chaque agent est invoqué en tant que skill.
+Cette page liste les cinq agents SMART (suite Agile) par défaut installés avec la méthode SMART, ainsi que leurs identifiants de skill, déclencheurs de menu et workflows principaux. Chaque agent est invoqué en tant que skill.
 
 ## Notes
 
-- Chaque agent est disponible en tant que skill, généré par l’installateur. L’identifiant de skill (par exemple, `rmbaid-analyst`) est utilisé pour invoquer l’agent.
+- Chaque agent est disponible en tant que skill, généré par l’installateur. L’identifiant de skill (par exemple, `smart-analyst`) est utilisé pour invoquer l’agent.
 - Les déclencheurs sont les codes courts de menu (par exemple, `BP`) et les correspondances approximatives affichés dans chaque menu d’agent.
-- La génération de tests QA est gérée par le skill de workflow `rmbaid-qa-generate-e2e-tests`. L’architecte de tests complet (TEA) se trouve dans son propre module.
+- La génération de tests QA est gérée par le skill de workflow `smart-qa-generate-e2e-tests`. L’architecte de tests complet (TEA) se trouve dans son propre module.
 
 | Agent                       | Identifiant de skill | Déclencheurs                       | Workflows principaux                                                                                                                                           |
 | --------------------------- | -------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Analyste (Mary)             | `rmbaid-analyst`     | `BP`, `MR`, `DR`, `TR`, `CB`, `DP` | Brainstorming du projet, Recherche marché/domaine/technique, Création du brief[^1], Documentation du projet                                                    |
-| Architecte (Winston)        | `rmbaid-architect`   | `CA`, `IR`                         | Créer l’architecture, Préparation à l’implémentation                                                                                                           |
-| Développeur (Amelia)        | `rmbaid-dev`         | `DS`, `QD`, `CR`                   | Dev Story, Quick Dev, Code Review                                                                                                                              |
-| Designer UX (Sally)         | `rmbaid-ux-designer` | `CU`                               | Création du design UX[^2]                                                                                                                                      |
-| Rédacteur Technique (Paige) | `rmbaid-tech-writer` | `DP`, `WD`, `US`, `MG`, `VD`, `EC` | Documentation du projet, Rédaction de documents, Mise à jour des standards, Génération de diagrammes Mermaid, Validation de documents, Explication de concepts |
+| Analyste (Mary)             | `smart-analyst`      | `BP`, `MR`, `DR`, `TR`, `CB`, `DP` | Brainstorming du projet, Recherche marché/domaine/technique, Création du brief[^1], Documentation du projet                                                    |
+| Architecte (Winston)        | `smart-architect`    | `CA`, `IR`                         | Créer l’architecture, Préparation à l’implémentation                                                                                                           |
+| Développeur (Amelia)        | `smart-dev`          | `DS`, `QD`, `CR`                   | Dev Story, Quick Dev, Code Review                                                                                                                              |
+| Designer UX (Sally)         | `smart-ux-designer`  | `CU`                               | Création du design UX[^2]                                                                                                                                      |
+| Rédacteur Technique (Paige) | `smart-tech-writer`  | `DP`, `WD`, `US`, `MG`, `VD`, `EC` | Documentation du projet, Rédaction de documents, Mise à jour des standards, Génération de diagrammes Mermaid, Validation de documents, Explication de concepts |
 
 ## Types de déclencheurs
 

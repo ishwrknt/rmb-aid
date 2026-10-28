@@ -9,7 +9,7 @@ Regroupez tous vos agents IA dans une seule conversation.
 
 ## Qu'est-ce que le Party Mode ?
 
-Lancez `rmbaid-party-mode` et vous avez toute votre équipe IA dans une même pièce - PM, Architecte, Développeur, Designer UX, selon vos besoins. RMB_AID Master orchestre, en sélectionnant les agents pertinents à chaque message. Les agents répondent en personnage, sont en accord ou désaccord, et construisent sur les idées des autres.
+Lancez `smart-party-mode` et vous avez toute votre équipe IA dans une même pièce - PM, Architecte, Développeur, Designer UX, selon vos besoins. SMART Master orchestre, en sélectionnant les agents pertinents à chaque message. Les agents répondent en personnage, sont en accord ou désaccord, et construisent sur les idées des autres.
 
 La conversation continue aussi longtemps que vous le souhaitez. Posez des questions de suivi, remettez en question les réponses, redirigez la discussion - c'est un véritable échange avec vos agents jusqu'à ce que vous ayez terminé.
 

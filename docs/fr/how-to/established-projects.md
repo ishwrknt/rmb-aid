@@ -1,24 +1,24 @@
 ---
 title: 'Projets existants'
-description: Comment utiliser la méthode RMB_AID sur des bases de code existantes
+description: Comment utiliser la méthode SMART sur des bases de code existantes
 sidebar:
   order: 6
 ---
 
-Utilisez la méthode RMB_AID efficacement lorsque vous travaillez sur des projets existants et des bases de code legacy.
+Utilisez la méthode SMART efficacement lorsque vous travaillez sur des projets existants et des bases de code legacy.
 
-Ce guide couvre le flux de travail essentiel pour l'intégration à des projets existants avec la méthode RMB_AID.
+Ce guide couvre le flux de travail essentiel pour l'intégration à des projets existants avec la méthode SMART.
 
 :::note[Prérequis]
 
-- méthode RMB_AID installée (`npx rmb-aid install`)
+- méthode SMART installée (`npx smart-agentic install`)
 - Une base de code existante sur laquelle vous souhaitez travailler
 - Accès à un IDE IA (Claude Code ou Cursor)
   :::
 
 ## Étape 1 : Nettoyer les artefacts de planification terminés
 
-Si vous avez terminé tous les epics et stories du PRD[^1] via le processus RMB_AID, nettoyez ces fichiers. Archivez-les, supprimez-les, ou appuyez-vous sur l'historique des versions si nécessaire. Ne conservez pas ces fichiers dans :
+Si vous avez terminé tous les epics et stories du PRD[^1] via le processus SMART, nettoyez ces fichiers. Archivez-les, supprimez-les, ou appuyez-vous sur l'historique des versions si nécessaire. Ne conservez pas ces fichiers dans :
 
 - `docs/`
 - `_rmbaid-output/planning-artifacts/`
@@ -33,7 +33,7 @@ Générez `project-context.md` pour capturer les patterns et conventions de votr
 Exécutez le workflow de génération de contexte du projet :
 
 ```bash
-rmbaid-generate-project-context
+smart-generate-project-context
 ```
 
 Cela analyse votre base de code pour identifier :
@@ -57,34 +57,34 @@ Votre dossier `docs/` doit contenir une documentation succincte et bien organis�
 - L'architecture
 - Toute autre information pertinente sur le projet
 
-Pour les projets complexes, envisagez d'utiliser le workflow `rmbaid-document-project`. Il offre des variantes d'exécution qui analyseront l'ensemble de votre projet et documenteront son état actuel réel.
+Pour les projets complexes, envisagez d'utiliser le workflow `smart-document-project`. Il offre des variantes d'exécution qui analyseront l'ensemble de votre projet et documenteront son état actuel réel.
 
 ## Étape 4 : Obtenir de l'aide
 
-### RMB_AID-Help : Votre point de départ
+### SMART-Help : Votre point de départ
 
-**Exécutez `rmbaid-help` chaque fois que vous n'êtes pas sûr de la prochaine étape.** Ce guide intelligent :
+**Exécutez `smart-help` chaque fois que vous n'êtes pas sûr de la prochaine étape.** Ce guide intelligent :
 
 - Inspecte votre projet pour voir ce qui a déjà été fait
 - Affiche les options basées sur vos modules installés
 - Comprend les requêtes en langage naturel
 
 ```
-rmbaid-help J'ai une app Rails existante, par où dois-je commencer ?
-rmbaid-help Quelle est la différence entre quick-dev et la méthode complète ?
-rmbaid-help Montre-moi quels workflows sont disponibles
+smart-help J'ai une app Rails existante, par où dois-je commencer ?
+smart-help Quelle est la différence entre quick-dev et la méthode complète ?
+smart-help Montre-moi quels workflows sont disponibles
 ```
 
-RMB_AID-Help s'exécute également **automatiquement à la fin de chaque workflow**, fournissant des conseils clairs sur exactement quoi faire ensuite.
+SMART-Help s'exécute également **automatiquement à la fin de chaque workflow**, fournissant des conseils clairs sur exactement quoi faire ensuite.
 
 ### Choisir votre approche
 
 Vous avez deux options principales selon l'ampleur des modifications :
 
-| Portée                              | Approche recommandée                                                                                                                                                                      |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Petites mises à jour ou ajouts**  | Exécutez `rmbaid-quick-dev` pour clarifier l'intention, planifier, implémenter et réviser dans un seul workflow. La méthode RMB_AID complète en quatre phases est probablement excessive. |
-| **Modifications ou ajouts majeurs** | Commencez avec la méthode RMB_AID, en appliquant autant ou aussi peu de rigueur que nécessaire.                                                                                           |
+| Portée                              | Approche recommandée                                                                                                                                                                   |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Petites mises à jour ou ajouts**  | Exécutez `smart-quick-dev` pour clarifier l'intention, planifier, implémenter et réviser dans un seul workflow. La méthode SMART complète en quatre phases est probablement excessive. |
+| **Modifications ou ajouts majeurs** | Commencez avec la méthode SMART, en appliquant autant ou aussi peu de rigueur que nécessaire.                                                                                          |
 
 ### Pendant la création du PRD
 
